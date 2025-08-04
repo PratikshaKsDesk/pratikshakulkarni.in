@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .filter-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            border: 1px solid #e5e7eb;
+        }
+        .filter-tab.active {
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .filter-tab:not(.active) {
+            background-color: #fff;
+            color: #000;
+        }
+        .filter-tab:not(.active):hover {
+            background-color: #f9fafb;
+            border-color: #d1d5db;
+        }
+        .read-more-btn {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold text-white tracking-wide cursor-pointer" onclick="showPage('home')">Pratiksha Kulkarni</h1>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="showPage('home')" class="px-6 py-3 rounded-lg bg-white text-black transition-all duration-300">Home</button>
+                    <button onclick="showPage('products')" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300">Products</button>
+                    <button onclick="showPage('design')" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300">Creatives</button>
+                    <button onclick="showPage('blog')" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300">Blog</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Blog Page -->
+    <div id="blog-page" class="page-content">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">BLOG</h1>
+                <p class="text-2xl text-gray-700 font-light">Insights, thoughts, and stories that inspire</p>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterBlogs('all')" class="filter-tab active" id="tab-all">ALL POSTS</button>
+                <button onclick="filterBlogs('product-management')" class="filter-tab" id="tab-product-management">PRODUCT MANAGEMENT</button>
+                <button onclick="filterBlogs('advertising-marketing')" class="filter-tab" id="tab-advertising-marketing">ADVERTISING & MARKETING</button>
+                <button onclick="filterBlogs('designing')" class="filter-tab" id="tab-designing">DESIGNING</button>
+                <button onclick="filterBlogs('moody-writeups')" class="filter-tab" id="tab-moody-writeups">MOODY WRITEUPS</button>
+                <button onclick="filterBlogs('books')" class="filter-tab" id="tab-books">BOOKS</button>
+            </div>
+            
+            <!-- Blog Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+                <!-- Product Management Blogs -->
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="product-management" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Product Strategy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">PRODUCT MANAGEMENT</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Building Products That Users Actually Want</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A deep dive into user-centered product development and validation strategies...</p>
+                        <button onclick="openBlogPost('product-strategy')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="product-management" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Data-Driven Decisions" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">PRODUCT MANAGEMENT</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Art of Data-Driven Product Decisions</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">How to balance quantitative insights with qualitative user feedback...</p>
+                        <button onclick="openBlogPost('data-driven')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <!-- Advertising & Marketing Blogs -->
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="advertising-marketing" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=400&h=300&fit=crop" alt="Digital Marketing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">ADVERTISING & MARKETING</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Future of Digital Marketing in 2024</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Emerging trends and technologies reshaping the marketing landscape...</p>
+                        <button onclick="openBlogPost('digital-marketing')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="advertising-marketing" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" alt="Brand Strategy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">ADVERTISING & MARKETING</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Building Authentic Brand Connections</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Strategies for creating meaningful relationships with your audience...</p>
+                        <button onclick="openBlogPost('brand-strategy')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <!-- Designing Blogs -->
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=300&fit=crop" alt="UI Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Minimalism in Modern UI Design</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Why less is more when it comes to user interface design...</p>
+                        <button onclick="openBlogPost('ui-design')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Design Systems" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Creating Scalable Design Systems</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A comprehensive guide to building design systems that grow with your product...</p>
+                        <button onclick="openBlogPost('design-systems')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <!-- Moody Writeups -->
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Reflection" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Midnight Thoughts on Creativity</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A personal reflection on the creative process and finding inspiration...</p>
+                        <button onclick="openBlogPost('midnight-thoughts')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop" alt="Journey" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Weight of Unfinished Dreams</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Contemplating the projects we start but never complete...</p>
+                        <button onclick="openBlogPost('unfinished-dreams')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <!-- Books -->
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop" alt="Book Review" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Review: "Atomic Habits" by James Clear</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Key insights from this transformative book on building better habits...</p>
+                        <button onclick="openBlogPost('atomic-habits')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+
+                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">My 2024 Reading List for Creatives</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Essential books every creative professional should read this year...</p>
+                        <button onclick="openBlogPost('reading-list')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        function filterBlogs(category) {
+            const blogCards = document.querySelectorAll('.blog-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+            
+            // Update tab styles
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(`tab-${category}`).classList.add('active');
+            
+            // Filter blog cards
+            blogCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.classList.add('fade-in');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('fade-in');
+                }
+            });
+        }
+
+        // Open blog post in new window
+        function openBlogPost(postId) {
+            const blogPosts = {
+                'product-strategy': {
+                    title: 'Building Products That Users Actually Want',
+                    category: 'Product Management',
+                    date: 'March 15, 2024',
+                    readTime: '8 min read',
+                    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Product development is often driven by internal assumptions rather than user needs. This fundamental disconnect leads to products that fail to gain traction in the market.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Problem with Assumption-Driven Development</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Most product teams start with a solution in mind and then try to find users who might want it. This backwards approach leads to feature bloat, poor user adoption, and ultimately, product failure.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">A User-Centered Approach</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Instead, successful products start with deep user research and validation:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li>Conduct extensive user interviews before building anything</li>
+                            <li>Create detailed user personas based on real data</li>
+                            <li>Build MVPs that test core assumptions</li>
+                            <li>Iterate based on user feedback, not internal opinions</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Validation Strategies That Work</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The most effective validation happens before you write a single line of code. Use landing pages, mockups, and prototype testing to validate demand and usability.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "The goal is not to build what users ask for, but to understand what they actually need."
+                        </blockquote>
+                        
+                        <p class="text-gray-700 leading-relaxed">By putting users at the center of your product development process, you'll build products that people actually want to use and pay for.</p>
+                    `
+                },
+                'data-driven': {
+                    title: 'The Art of Data-Driven Product Decisions',
+                    category: 'Product Management',
+                    date: 'March 10, 2024',
+                    readTime: '6 min read',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Data-driven decision making has become the holy grail of product management. But raw data without context and human insight can be just as dangerous as gut-feeling decisions.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Data Trap</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Many product teams fall into the trap of letting metrics drive every decision. While data is crucial, it doesn't tell the complete story of user behavior and needs.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Balancing Quantitative and Qualitative Insights</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">The best product decisions combine:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li><strong>Quantitative data:</strong> What users are doing</li>
+                            <li><strong>Qualitative insights:</strong> Why they're doing it</li>
+                            <li><strong>User feedback:</strong> What they think about it</li>
+                            <li><strong>Market context:</strong> How it fits the bigger picture</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Building a Data-Informed Culture</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Create systems that make data accessible to everyone on your team, but also encourage critical thinking about what the data means and what it doesn't show.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed">Remember: data should inform your decisions, not make them for you. The human element of understanding context, empathy, and strategic vision remains irreplaceable.</p>
+                    `
+                },
+                'digital-marketing': {
+                    title: 'The Future of Digital Marketing in 2024',
+                    category: 'Advertising & Marketing',
+                    date: 'March 12, 2024',
+                    readTime: '10 min read',
+                    image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">The digital marketing landscape is evolving at breakneck speed. AI, privacy changes, and shifting consumer behaviors are reshaping how brands connect with their audiences.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The AI Revolution</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Artificial intelligence is no longer a future concept—it's here and transforming every aspect of digital marketing from content creation to customer segmentation.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Privacy-First Marketing</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">With the death of third-party cookies and increasing privacy regulations, marketers must adapt to a privacy-first world:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li>First-party data collection strategies</li>
+                            <li>Contextual advertising approaches</li>
+                            <li>Building direct relationships with customers</li>
+                            <li>Transparent data usage policies</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Rise of Authentic Content</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Consumers are craving authenticity. User-generated content, behind-the-scenes glimpses, and genuine brand stories are outperforming polished corporate content.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Omnichannel Integration</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The future belongs to brands that can create seamless experiences across all touchpoints—from social media to email to in-store interactions.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed">Success in 2024 will require marketers to be more strategic, more authentic, and more respectful of user privacy while leveraging technology to create better experiences.</p>
+                    `
+                },
+                'brand-strategy': {
+                    title: 'Building Authentic Brand Connections',
+                    category: 'Advertising & Marketing',
+                    date: 'March 8, 2024',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">In an age of information overload and brand skepticism, authentic connections have become the currency of successful marketing. But what does authenticity really mean for brands?</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Beyond Surface-Level Authenticity</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">True brand authenticity goes deeper than using casual language or showing behind-the-scenes content. It's about aligning your brand's actions with its stated values consistently over time.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Trust Equation</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Building trust requires:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li><strong>Consistency:</strong> Your message matches your actions</li>
+                            <li><strong>Transparency:</strong> You're open about your processes and mistakes</li>
+                            <li><strong>Value delivery:</strong> You consistently provide value to your audience</li>
+                            <li><strong>Community focus:</strong> You prioritize community needs over short-term profits</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Storytelling That Resonates</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The most powerful brand stories aren't about the brand—they're about the customer's journey and how the brand plays a supporting role in their success.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "People don't buy products; they buy better versions of themselves."
+                        </blockquote>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Measuring Authentic Connection</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Look beyond vanity metrics. Measure engagement quality, customer lifetime value, brand advocacy, and community growth to understand if you're building real connections.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed">Authentic brand connections can't be manufactured overnight. They're built through consistent, value-driven interactions that put the customer's needs first.</p>
+                    `
+                },
+                'ui-design': {
+                    title: 'Minimalism in Modern UI Design',
+                    category: 'Designing',
+                    date: 'March 14, 2024',
+                    readTime: '5 min read',
+                    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Minimalism in UI design isn't about removing elements for the sake of simplicity. It's about intentional design choices that enhance user experience by reducing cognitive load.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Psychology of Minimal Design</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Our brains process visual information incredibly quickly. When interfaces are cluttered, users spend mental energy parsing the layout instead of focusing on their goals.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Principles of Effective Minimalism</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Successful minimal design follows these principles:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li><strong>Purposeful whitespace:</strong> Every empty space serves a function</li>
+                            <li><strong>Clear hierarchy:</strong> Important elements stand out naturally</li>
+                            <li><strong>Consistent patterns:</strong> Users learn the interface once</li>
+                            <li><strong>Focused content:</strong> Every element has a clear purpose</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Common Minimalism Mistakes</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Many designers confuse minimalism with removing functionality. True minimalism enhances functionality by making it more accessible and intuitive.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Business Case for Minimal Design</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Minimal interfaces typically see higher conversion rates, lower bounce rates, and better user satisfaction scores because they reduce friction in the user journey.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "Simplicity is the ultimate sophistication." - Leonardo da Vinci
+                        </blockquote>
+                        
+                        <p class="text-gray-700 leading-relaxed">Remember: minimalism is not about having less—it's about having exactly what you need, when you need it, in the clearest way possible.</p>
+                    `
+                },
+                'design-systems': {
+                    title: 'Creating Scalable Design Systems',
+                    category: 'Designing',
+                    date: 'March 11, 2024',
+                    readTime: '12 min read',
+                    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">A design system is more than a style guide—it's the foundation that enables teams to build consistent, scalable products efficiently. Here's how to create one that grows with your organization.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Starting with Foundations</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Before creating components, establish your foundational elements:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li><strong>Color palette:</strong> Primary, secondary, and semantic colors</li>
+                            <li><strong>Typography scale:</strong> Consistent font sizes and weights</li>
+                            <li><strong>Spacing system:</strong> Standardized margins and padding</li>
+                            <li><strong>Grid system:</strong> Layout structure and breakpoints</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Component Architecture</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Build components with flexibility in mind. Each component should handle multiple use cases while maintaining visual consistency across different contexts.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Documentation That Developers Actually Use</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The best design systems include clear usage guidelines, code examples, and interactive demos. Make it easier to use the system correctly than to create one-off solutions.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Governance and Evolution</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Establish clear processes for proposing changes, reviewing updates, and communicating system evolution to all stakeholders.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Measuring Success</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Track these metrics to understand your design system's impact:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li>Development velocity improvements</li>
+                            <li>Design consistency scores</li>
+                            <li>System adoption rates</li>
+                            <li>Bug reduction in UI components</li>
+                        </ul>
+                        
+                        <p class="text-gray-700 leading-relaxed">A successful design system becomes invisible—teams use it naturally because it makes their work easier and more efficient.</p>
+                    `
+                },
+                'midnight-thoughts': {
+                    title: 'Midnight Thoughts on Creativity',
+                    category: 'Moody Writeups',
+                    date: 'March 13, 2024',
+                    readTime: '4 min read',
+                    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6 italic">It's 2:47 AM, and the world feels different. The harsh edges of daylight have softened into something more forgiving, more honest. This is when creativity whispers its secrets.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">There's something magical about the quiet hours when most of the world sleeps. The constant noise of notifications, meetings, and expectations fades away, leaving space for thoughts to breathe and ideas to emerge from the shadows.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Paradox of Solitude</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">We live in a hyperconnected world, yet creativity often requires disconnection. In these midnight moments, I find myself most connected to the work that matters—not the work that pays the bills or impresses others, but the work that feeds the soul.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">The cursor blinks on an empty page, patient and non-judgmental. Unlike the harsh fluorescent lights of the office, the soft glow of the screen feels like an invitation rather than an interrogation.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Permission to Be Imperfect</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Midnight creativity doesn't demand perfection. It asks only for honesty. The ideas that emerge in these quiet hours are raw, unpolished, but authentic in a way that daylight rarely allows.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "The cave you fear to enter holds the treasure you seek." - Joseph Campbell
+                        </blockquote>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">Maybe that's what creativity really is—the courage to enter the cave of uncertainty, to sit with the discomfort of not knowing, and to trust that something meaningful will emerge from the darkness.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed">The sun will rise soon, bringing with it the demands of the practical world. But for now, in this liminal space between day and night, creativity reigns supreme.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed italic mt-6">3:15 AM. Time to sleep, but the ideas will wait for me in tomorrow's midnight hour.</p>
+                    `
+                },
+                'unfinished-dreams': {
+                    title: 'The Weight of Unfinished Dreams',
+                    category: 'Moody Writeups',
+                    date: 'March 9, 2024',
+                    readTime: '6 min read',
+                    image: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">They sit in the corners of our minds like forgotten photographs—the projects we started with such enthusiasm, the dreams we abandoned halfway through, the promises we made to ourselves that we never kept.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">I have a folder on my computer labeled "Ideas." It's filled with half-written stories, sketches of apps that will never be built, business plans for companies that exist only in my imagination. Each file is a small monument to possibility, now gathering digital dust.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Seduction of New Beginnings</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">There's something intoxicating about starting something new. The blank canvas, the fresh notebook, the empty repository. Everything is possible in those first moments. The vision is clear, the motivation is high, and the obstacles seem surmountable.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">But then reality sets in. The work becomes harder than expected. The initial excitement fades. Other opportunities present themselves, shinier and more appealing than the current struggle.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Middle is Where Dreams Go to Die</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The middle of any creative project is a wasteland. The novelty has worn off, but the finish line is still too far away to provide motivation. This is where most dreams are abandoned—not in a dramatic moment of failure, but in a quiet surrender to the mundane.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "The graveyard is the richest place on earth, because it is here that you will find all the hopes and dreams that were never fulfilled." - Les Brown
+                        </blockquote>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Making Peace with Incompletion</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Perhaps the weight of unfinished dreams isn't entirely negative. Maybe these abandoned projects serve a purpose—they teach us about ourselves, about what truly matters, about the difference between fleeting interests and lasting passions.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">Not every idea deserves to be completed. Some are meant to be stepping stones, leading us toward something better. Others are practice runs, preparing us for the project that will truly matter.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The One That Matters</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Among all the unfinished dreams, there's usually one that haunts us differently. It's the project that we return to in quiet moments, the idea that refuses to be forgotten. This is the one worth finishing, even if it takes years.</p>
+                        
+                        <p class="text-gray-700 leading-relaxed">The weight of unfinished dreams can be crushing, or it can be fuel. The choice is ours to make, one project at a time.</p>
+                    `
+                },
+                'atomic-habits': {
+                    title: 'Review: "Atomic Habits" by James Clear',
+                    category: 'Books',
+                    date: 'March 7, 2024',
+                    readTime: '9 min read',
+                    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">"Atomic Habits" by James Clear isn't just another self-help book—it's a practical guide to understanding how small changes compound into remarkable results. After implementing its principles for six months, here's my honest review.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Core Philosophy</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Clear's central thesis is simple: you don't rise to the level of your goals, you fall to the level of your systems. This reframe from outcome-based to process-based thinking is the book's greatest strength.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Four Laws of Behavior Change</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Clear breaks down habit formation into four actionable laws:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li><strong>Make it Obvious:</strong> Design your environment for success</li>
+                            <li><strong>Make it Attractive:</strong> Bundle habits with things you enjoy</li>
+                            <li><strong>Make it Easy:</strong> Reduce friction for good habits</li>
+                            <li><strong>Make it Satisfying:</strong> Create immediate rewards</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">What Works in Practice</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The book's strength lies in its practicality. The habit stacking technique (linking new habits to existing ones) has been particularly effective for building my morning routine. The 2-minute rule helped me start a daily writing practice that has grown into something substantial.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">The Identity-Based Approach</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">Perhaps the most powerful concept is focusing on identity change rather than outcome change. Instead of "I want to write a book," think "I am a writer." This subtle shift changes how you see yourself and, consequently, how you behave.</p>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "Every action you take is a vote for the type of person you wish to become."
+                        </blockquote>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Where It Falls Short</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">The book occasionally oversimplifies complex behavioral psychology. Some readers might find the examples repetitive, and the focus on individual habits doesn't address systemic barriers that some people face.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">My Personal Results</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">After six months of applying these principles:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li>Established a consistent morning routine</li>
+                            <li>Built a daily writing habit (this blog is proof!)</li>
+                            <li>Improved my reading consistency</li>
+                            <li>Created better work-life boundaries</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Final Verdict</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6"><strong>Rating: 4.5/5 stars</strong></p>
+                        <p class="text-gray-700 leading-relaxed">"Atomic Habits" delivers on its promise to provide a practical framework for building good habits and breaking bad ones. While not groundbreaking in its insights, its strength lies in making behavioral science accessible and actionable. If you're looking to make lasting changes in your life, this book provides the roadmap.</p>
+                    `
+                },
+                'reading-list': {
+                    title: 'My 2024 Reading List for Creatives',
+                    category: 'Books',
+                    date: 'March 5, 2024',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop',
+                    content: `
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">As we navigate an increasingly complex creative landscape, the right books can provide both inspiration and practical guidance. Here's my carefully curated reading list for creative professionals in 2024.</p>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">On Creativity and Process</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"The Creative Act" by Rick Rubin</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Rubin's latest work explores creativity as a fundamental human experience rather than a professional skill. His insights on the creative process are both profound and practical.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"Steal Like an Artist" by Austin Kleon</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">A modern classic that reframes influence and inspiration in the digital age. Essential reading for anyone struggling with originality anxiety.</p>
+                        </div>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">On Design and User Experience</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"Design for the Real World" by Victor Papanek</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Though written decades ago, Papanek's call for responsible design feels more relevant than ever. A must-read for designers who want their work to matter.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"The Design of Everyday Things" by Don Norman</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">The foundational text on user-centered design. If you haven't read it yet, 2024 is the year to fix that.</p>
+                        </div>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">On Business and Strategy</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"Company of One" by Paul Jarvis</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Challenges the growth-at-all-costs mentality and offers a sustainable approach to creative business. Perfect for freelancers and small agencies.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"The Mom Test" by Rob Fitzpatrick</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Essential for anyone who needs to validate ideas or gather user feedback. The principles apply far beyond startups.</p>
+                        </div>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">On Writing and Communication</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"Bird by Bird" by Anne Lamott</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Part writing guide, part life philosophy. Lamott's wisdom extends far beyond the craft of writing.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"Made to Stick" by Chip Heath & Dan Heath</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">Why some ideas survive and others die. Essential for anyone who needs to communicate ideas effectively.</p>
+                        </div>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">On Technology and the Future</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-black mb-2">"The Age of AI" by Henry Kissinger, Eric Schmidt, and Daniel Huttenlocher</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">A thoughtful exploration of how AI will reshape society. Important context for creatives working in the digital age.</p>
+                        </div>
+                        
+                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
+                            "A reader lives a thousand lives before he dies. The man who never reads lives only one." - George R.R. Martin
+                        </blockquote>
+                        
+                        <h2 class="text-2xl font-bold text-black mb-4">Reading Strategy for Busy Creatives</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">Here's how I approach this list:</p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                            <li>Mix fiction and non-fiction to keep things interesting</li>
+                            <li>Take notes and share insights with your team</li>
+                            <li>Don't feel obligated to finish every book</li>
+                            <li>Revisit favorites—good books reveal new insights on re-reading</li>
+                        </ul>
+                        
+                        <p class="text-gray-700 leading-relaxed">What books are on your 2024 reading list? I'd love to hear your recommendations for expanding this collection.</p>
+                    `
+                }
+            };
+        }
+    </script>
+</body>
+</html>
+        <!-- Contact Footer -->
+    <footer class="bg-black text-white py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">👤</div>
+                        <span class="text-white font-light">Pratiksha Kulkarni</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">📧</div>
+                        <a href="mailto:contact@pratikshakulkarni.in" class="text-white hover:text-gray-300 transition-colors font-light">contact@pratikshakulkarni.in</a>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">💼</div>
+                        <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="text-white hover:text-gray-300 transition-colors font-light">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="text-gray-400 text-sm font-light">
+                    © 2025 Pratiksha Kulkarni
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // This would typically navigate to different pages
+            // For demo purposes, we'll show an alert
+            if (pageId === 'home') {
+                return; // Already on home page
+            }
+            alert(`Navigating to ${pageId.charAt(0).toUpperCase() + pageId.slice(1)} page...`);
+        }
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Contact Form Handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Resume Download
+        function downloadResume() {
+            alert('Resume download would start here. This is a demo version.');
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.hover-lift, .floating-animation');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('backdrop-blur-lg');
+            } else {
+                nav.classList.remove('backdrop-blur-lg');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96879892228a396c',t:'MTc1NDA3NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
