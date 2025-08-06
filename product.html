@@ -549,7 +549,7 @@
                             <h4 class="text-lg font-semibold mb-4 text-gray-800">Product Screenshots</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                                 ${data.images.map((img, index) => `
-                                    <div class="h-32 overflow-hidden rounded-lg border shadow-md">
+                                    <div class="overflow-hidden rounded-lg border shadow-md">
                                         <img src="${img}" alt="Screenshot ${index + 1}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                         <div class="image-placeholder w-full h-full" style="display: none;">Screen ${index + 1}<br>300x200px</div>
                                     </div>
