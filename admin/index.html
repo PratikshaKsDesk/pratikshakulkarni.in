@@ -1,27 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Blog Admin</title>
-
-    <!-- Netlify Identity Widget (for login) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    <!-- Netlify CMS App -->
-    <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
+    <title>Content Manager</title>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
+    <!-- Netlify CMS will inject its UI here -->
     <script>
-      // Auto-init identity widget when page loads
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script>
+      CMS.init();
     </script>
   </body>
 </html>
