@@ -48,6 +48,87 @@
         .read-more-btn:hover {
             text-decoration: underline;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .close-btn {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+            margin: 1.5rem 0 1rem 0;
+        }
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000;
+            margin: 1.25rem 0 0.75rem 0;
+        }
+        .article-content p {
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .article-content ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #000;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #6b7280;
+            margin: 1.5rem 0;
+        }
+        .article-content strong {
+            font-weight: 600;
+            color: #000;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans">
@@ -69,179 +150,252 @@
     </div>
     </nav>
     
-    <!-- Blog Page -->
-    <div id="blog-page" class="page-content">
-        <div class="max-w-7xl mx-auto px-4 py-16">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">BLOG</h1>
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">BLOG PORTFOLIO</h1>
                 <p class="text-2xl text-gray-700 font-light">Insights, thoughts, and stories that inspire</p>
             </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button onclick="filterBlogs('all')" class="filter-tab active" id="tab-all">ALL POSTS</button>
+            <button onclick="filterBlogs('product-management')" class="filter-tab" id="tab-product-management">PRODUCT MANAGEMENT</button>
+            <button onclick="filterBlogs('advertising-marketing')" class="filter-tab" id="tab-advertising-marketing">ADVERTISING & MARKETING</button>
+            <button onclick="filterBlogs('designing')" class="filter-tab" id="tab-designing">DESIGNING</button>
+            <button onclick="filterBlogs('moody-writeups')" class="filter-tab" id="tab-moody-writeups">MOODY WRITEUPS</button>
+            <button onclick="filterBlogs('books')" class="filter-tab" id="tab-books">BOOKS</button>
+        </div>
+        
+        <!-- Blog Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+        
             
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="filterBlogs('all')" class="filter-tab active" id="tab-all">ALL POSTS</button>
-                <button onclick="filterBlogs('product-management')" class="filter-tab" id="tab-product-management">PRODUCT MANAGEMENT</button>
-                <button onclick="filterBlogs('advertising-marketing')" class="filter-tab" id="tab-advertising-marketing">ADVERTISING & MARKETING</button>
-                <button onclick="filterBlogs('designing')" class="filter-tab" id="tab-designing">DESIGNING</button>
-                <button onclick="filterBlogs('moody-writeups')" class="filter-tab" id="tab-moody-writeups">MOODY WRITEUPS</button>
-                <button onclick="filterBlogs('books')" class="filter-tab" id="tab-books">BOOKS</button>
+
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="advertising-marketing" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" alt="Brand Strategy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">Product Management</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Not Just an App...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">How Myma Turned Real Pain Points into Product Features...</p>
+                    <button onclick="openModal('Not Just an App')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
             </div>
-            
-            <!-- Blog Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
-                <!-- Product Management Blogs -->
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="product-management" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Product Strategy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">PRODUCT MANAGEMENT</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Building Products That Users Actually Want</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A deep dive into user-centered product development and validation strategies...</p>
-                        <button onclick="openBlogPost('product-strategy')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
-                </div>
 
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="product-management" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Data-Driven Decisions" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">PRODUCT MANAGEMENT</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Art of Data-Driven Product Decisions</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">How to balance quantitative insights with qualitative user feedback...</p>
-                        <button onclick="openBlogPost('data-driven')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+         
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=300&fit=crop" alt="UI Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">When Metrics Mislead...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Some products fail even when the metrics look good... </p>
+                    <button onclick="openModal('When Metrics Mislead')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <!-- Advertising & Marketing Blogs -->
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="advertising-marketing" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=400&h=300&fit=crop" alt="Digital Marketing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">ADVERTISING & MARKETING</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Future of Digital Marketing in 2024</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Emerging trends and technologies reshaping the marketing landscape...</p>
-                        <button onclick="openBlogPost('digital-marketing')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Design Systems" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">From Graphic Designer to...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">I didn't plan to become a product manager. In fact...</p>
+                    <button onclick="openModal('From Graphic Designer to Product Manager')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="advertising-marketing" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" alt="Brand Strategy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">ADVERTISING & MARKETING</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Building Authentic Brand Connections</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Strategies for creating meaningful relationships with your audience...</p>
-                        <button onclick="openBlogPost('brand-strategy')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+      
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Reflection" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Marketing without Manipulation...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Let's be honest — most people don't read fine print...</p>
+                    <button onclick="openModal('Marketing without Manipulation')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <!-- Designing Blogs -->
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=300&fit=crop" alt="UI Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Minimalism in Modern UI Design</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Why less is more when it comes to user interface design...</p>
-                        <button onclick="openBlogPost('ui-design')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop" alt="Journey" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">From Scroll to Sign-up...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Sometimes, your users don't need a beautiful app...</p>
+                    <button onclick="openModal('From Scroll to Sign-up')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="designing" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Design Systems" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">DESIGNING</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Creating Scalable Design Systems</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A comprehensive guide to building design systems that grow with your product...</p>
-                        <button onclick="openBlogPost('design-systems')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+    
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop" alt="Book Review" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">User Trust is the Best CTA...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">In January 2020, we launched Myma — a home-cooked food app...</p>
+                    <button onclick="openModal('Best CTA')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <!-- Moody Writeups -->
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Reflection" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Midnight Thoughts on Creativity</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">A personal reflection on the creative process and finding inspiration...</p>
-                        <button onclick="openBlogPost('midnight-thoughts')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Designing for People...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Let's be honest: Most people don't read instructions...</p>
+                    <button onclick="openModal('Designing for People')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="moody-writeups" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop" alt="Journey" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">MOODY WRITEUPS</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">The Weight of Unfinished Dreams</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Contemplating the projects we start but never complete...</p>
-                        <button onclick="openBlogPost('unfinished-dreams')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Mother-Made Design...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">What do most food apps sell? Discounts. Delivery speed...</p>
+                    <button onclick="openModal('Mother-Made Design')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <!-- Books -->
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop" alt="Book Review" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">Review: "Atomic Habits" by James Clear</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Key insights from this transformative book on building better habits...</p>
-                        <button onclick="openBlogPost('atomic-habits')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Your Design Should Feel...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Let's get real — nobody opens a new app thinking...</p>
+                    <button onclick="openModal('Design like WhatsApp')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
 
-                <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-3">
-                            <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-black mb-3 leading-tight">My 2024 Reading List for Creatives</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Essential books every creative professional should read this year...</p>
-                        <button onclick="openBlogPost('reading-list')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
-                    </div>
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">From Dashboard Chaos to Clean UX...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Banking isn't boring. But banking dashboards often are...</p>
+                    <button onclick="openModal('PMS App')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
+
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Spiritual UX: Designing a Parayan...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Devotion is deeply personal. It's calm. Slow. Peaceful...</p>
+                    <button onclick="openModal('Online Parayan')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
+
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Aarogya Club: Building a Wellness...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">You can't design a women's wellness app if you don't know what women truly need...</p>
+                    <button onclick="openModal('Aarogya Club')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
+
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">Design Thinking for Non-Designers...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">You don't need to be a designer to think like one. But you do need to think like a user...</p>
+                    <button onclick="openModal('Design Thinking')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
+
+            <div class="blog-card bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift fade-in" data-category="books" style="height: 400px;">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Reading List" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="text-xs font-bold text-gray-500 tracking-wide">BOOKS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-black mb-3 leading-tight">What Failure Taught Me...</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">They say failure is the best teacher. But when it happens...</p>
+                    <button onclick="openModal('Failure')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <div class="close-btn p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold">Article</h2>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
+            <div id="modalBody" class="p-6">
+                <!-- Article content will be loaded here -->
             </div>
         </div>
     </div>
 
     <script>
-        // Filter functionality
+        // Blog filtering
         function filterBlogs(category) {
             const blogCards = document.querySelectorAll('.blog-card');
-            const tabs = document.querySelectorAll('.filter-tab');
+            const tabs = document.querySelectorAll('[id^="tab-"]');
             
             // Update tab styles
             tabs.forEach(tab => {
@@ -261,9 +415,12 @@
             });
         }
 
-        // Open blog post in new window
-        function openBlogPost(postId) {
-            const blogPosts = {
+        // Modal functionality
+        function openModal(articleId) {
+            const modal = document.getElementById('articleModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            const articles = {
                 'product-strategy': {
                     title: 'Building Products That Users Actually Want',
                     category: 'Product Management',
@@ -271,28 +428,30 @@
                     readTime: '8 min read',
                     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Product development is often driven by internal assumptions rather than user needs. This fundamental disconnect leads to products that fail to gain traction in the market.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Problem with Assumption-Driven Development</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Most product teams start with a solution in mind and then try to find users who might want it. This backwards approach leads to feature bloat, poor user adoption, and ultimately, product failure.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">A User-Centered Approach</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Instead, successful products start with deep user research and validation:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li>Conduct extensive user interviews before building anything</li>
-                            <li>Create detailed user personas based on real data</li>
-                            <li>Build MVPs that test core assumptions</li>
-                            <li>Iterate based on user feedback, not internal opinions</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Validation Strategies That Work</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The most effective validation happens before you write a single line of code. Use landing pages, mockups, and prototype testing to validate demand and usability.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "The goal is not to build what users ask for, but to understand what they actually need."
-                        </blockquote>
-                        
-                        <p class="text-gray-700 leading-relaxed">By putting users at the center of your product development process, you'll build products that people actually want to use and pay for.</p>
+                        <div class="article-content">
+                            <p class="text-lg">Product development is often driven by internal assumptions rather than user needs. This fundamental disconnect leads to products that fail to gain traction in the market.</p>
+                            
+                            <h2>The Problem with Assumption-Driven Development</h2>
+                            <p>Most product teams start with a solution in mind and then try to find users who might want it. This backwards approach leads to feature bloat, poor user adoption, and ultimately, product failure.</p>
+                            
+                            <h2>A User-Centered Approach</h2>
+                            <p>Instead, successful products start with deep user research and validation:</p>
+                            <ul>
+                                <li>Conduct extensive user interviews before building anything</li>
+                                <li>Create detailed user personas based on real data</li>
+                                <li>Build MVPs that test core assumptions</li>
+                                <li>Iterate based on user feedback, not internal opinions</li>
+                            </ul>
+                            
+                            <h2>Validation Strategies That Work</h2>
+                            <p>The most effective validation happens before you write a single line of code. Use landing pages, mockups, and prototype testing to validate demand and usability.</p>
+                            
+                            <blockquote>
+                                "The goal is not to build what users ask for, but to understand what they actually need."
+                            </blockquote>
+                            
+                            <p>By putting users at the center of your product development process, you'll build products that people actually want to use and pay for.</p>
+                        </div>
                     `
                 },
                 'data-driven': {
@@ -302,24 +461,26 @@
                     readTime: '6 min read',
                     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Data-driven decision making has become the holy grail of product management. But raw data without context and human insight can be just as dangerous as gut-feeling decisions.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Data Trap</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Many product teams fall into the trap of letting metrics drive every decision. While data is crucial, it doesn't tell the complete story of user behavior and needs.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Balancing Quantitative and Qualitative Insights</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">The best product decisions combine:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li><strong>Quantitative data:</strong> What users are doing</li>
-                            <li><strong>Qualitative insights:</strong> Why they're doing it</li>
-                            <li><strong>User feedback:</strong> What they think about it</li>
-                            <li><strong>Market context:</strong> How it fits the bigger picture</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Building a Data-Informed Culture</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Create systems that make data accessible to everyone on your team, but also encourage critical thinking about what the data means and what it doesn't show.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed">Remember: data should inform your decisions, not make them for you. The human element of understanding context, empathy, and strategic vision remains irreplaceable.</p>
+                        <div class="article-content">
+                            <p class="text-lg">Data-driven decision making has become the holy grail of product management. But raw data without context and human insight can be just as dangerous as gut-feeling decisions.</p>
+                            
+                            <h2>The Data Trap</h2>
+                            <p>Many product teams fall into the trap of letting metrics drive every decision. While data is crucial, it doesn't tell the complete story of user behavior and needs.</p>
+                            
+                            <h2>Balancing Quantitative and Qualitative Insights</h2>
+                            <p>The best product decisions combine:</p>
+                            <ul>
+                                <li><strong>Quantitative data:</strong> What users are doing</li>
+                                <li><strong>Qualitative insights:</strong> Why they're doing it</li>
+                                <li><strong>User feedback:</strong> What they think about it</li>
+                                <li><strong>Market context:</strong> How it fits the bigger picture</li>
+                            </ul>
+                            
+                            <h2>Building a Data-Informed Culture</h2>
+                            <p>Create systems that make data accessible to everyone on your team, but also encourage critical thinking about what the data means and what it doesn't show.</p>
+                            
+                            <p>Remember: data should inform your decisions, not make them for you. The human element of understanding context, empathy, and strategic vision remains irreplaceable.</p>
+                        </div>
                     `
                 },
                 'digital-marketing': {
@@ -329,334 +490,1099 @@
                     readTime: '10 min read',
                     image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">The digital marketing landscape is evolving at breakneck speed. AI, privacy changes, and shifting consumer behaviors are reshaping how brands connect with their audiences.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The AI Revolution</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Artificial intelligence is no longer a future concept—it's here and transforming every aspect of digital marketing from content creation to customer segmentation.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Privacy-First Marketing</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">With the death of third-party cookies and increasing privacy regulations, marketers must adapt to a privacy-first world:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li>First-party data collection strategies</li>
-                            <li>Contextual advertising approaches</li>
-                            <li>Building direct relationships with customers</li>
-                            <li>Transparent data usage policies</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Rise of Authentic Content</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Consumers are craving authenticity. User-generated content, behind-the-scenes glimpses, and genuine brand stories are outperforming polished corporate content.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Omnichannel Integration</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The future belongs to brands that can create seamless experiences across all touchpoints—from social media to email to in-store interactions.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed">Success in 2024 will require marketers to be more strategic, more authentic, and more respectful of user privacy while leveraging technology to create better experiences.</p>
+                        <div class="article-content">
+                            <p class="text-lg">The digital marketing landscape is evolving at breakneck speed. AI, privacy changes, and shifting consumer behaviors are reshaping how brands connect with their audiences.</p>
+                            
+                            <h2>The AI Revolution</h2>
+                            <p>Artificial intelligence is no longer a future concept—it's here and transforming every aspect of digital marketing from content creation to customer segmentation.</p>
+                            
+                            <h2>Privacy-First Marketing</h2>
+                            <p>With the death of third-party cookies and increasing privacy regulations, marketers must adapt to a privacy-first world:</p>
+                            <ul>
+                                <li>First-party data collection strategies</li>
+                                <li>Contextual advertising approaches</li>
+                                <li>Building direct relationships with customers</li>
+                                <li>Transparent data usage policies</li>
+                            </ul>
+                            
+                            <h2>The Rise of Authentic Content</h2>
+                            <p>Consumers are craving authenticity. User-generated content, behind-the-scenes glimpses, and genuine brand stories are outperforming polished corporate content.</p>
+                            
+                            <h2>Omnichannel Integration</h2>
+                            <p>The future belongs to brands that can create seamless experiences across all touchpoints—from social media to email to in-store interactions.</p>
+                            
+                            <p>Success in 2024 will require marketers to be more strategic, more authentic, and more respectful of user privacy while leveraging technology to create better experiences.</p>
+                        </div>
                     `
                 },
-                'brand-strategy': {
-                    title: 'Building Authentic Brand Connections',
-                    category: 'Advertising & Marketing',
-                    date: 'March 8, 2024',
-                    readTime: '7 min read',
+                'Not Just an App': {
+                    title: 'Not Just an App — A Real Solution',
+                    category: 'Product Management',
+                    date: 'January 4, 2020',
+                    readTime: '6 min read',
                     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">In an age of information overload and brand skepticism, authentic connections have become the currency of successful marketing. But what does authenticity really mean for brands?</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Beyond Surface-Level Authenticity</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">True brand authenticity goes deeper than using casual language or showing behind-the-scenes content. It's about aligning your brand's actions with its stated values consistently over time.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Trust Equation</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Building trust requires:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li><strong>Consistency:</strong> Your message matches your actions</li>
-                            <li><strong>Transparency:</strong> You're open about your processes and mistakes</li>
-                            <li><strong>Value delivery:</strong> You consistently provide value to your audience</li>
-                            <li><strong>Community focus:</strong> You prioritize community needs over short-term profits</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Storytelling That Resonates</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The most powerful brand stories aren't about the brand—they're about the customer's journey and how the brand plays a supporting role in their success.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "People don't buy products; they buy better versions of themselves."
-                        </blockquote>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Measuring Authentic Connection</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Look beyond vanity metrics. Measure engagement quality, customer lifetime value, brand advocacy, and community growth to understand if you're building real connections.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed">Authentic brand connections can't be manufactured overnight. They're built through consistent, value-driven interactions that put the customer's needs first.</p>
+
+                        <div class="article-content"> <p class="text-lg">When we started building Myma in 2019, we weren't building an app.<br> We were solving a pain that most people in India didn't even know had a solution.<br> After listening to 11,000+ homemakers across India, one thing was clear: every woman has a skill. But not every woman gets the confidence, clarity, or support to turn it into a business.</p>
+                            <h2>Real Problem, Real Product</h2>
+                            <p>That's where the idea of Myma was born — a platform where women could sell homemade food to people who craved “ghar ka khana.”<br>
+                            Myma wasn't a food app. It was a solution to:</p>
+                            <ul>
+                                <li>Homemakers who wanted to earn but had no idea how or where to start</li>
+                                <li>Young professionals away from home, looking for safe, soul-satisfying food</li>
+                            </ul>
+                            <p>We didn't write feature specs. We wrote problems.</p>
+
+                            <h2>📱 The MVP That Actually Meant “Minimal”</h2>
+                            <p>We launched Myma on January 4, 2020 — just 21 days before COVID shook the world.<br>
+                            We had to triple our server capacity within weeks.<br>
+                            The app had just three main things: profile, food menu, order button. That's it.<br>
+                            No filters. No fluff. But it worked — because it was built on real user needs, not founder fantasies.</p>
+                            <p>Every homemaker we onboarded had fears — about FSSAI, pricing, delivery, even using a smartphone. We answered each personally.<br>
+                            For them, Myma wasn't a product. It was possibility.</p>
+
+                            <h2>🦠 Then COVID Hit. And Everything Changed.</h2>
+                            <p>We paused deliveries to protect our homemakers.<br>
+                            But they kept asking, “Kab se shuru karna hai dobara?”<br>
+                            That trust — built with empathy, not incentives — kept us alive.</p>
+                            <p>During lockdown, my role expanded:<br>
+                            I was no longer “just a designer.”<br>
+                            I became:</p>
+                            <ul>
+                            <li>The researcher</li>
+                            <li>The UX strategist</li>
+                            <li>The QA lead</li>
+                            <li>The team therapist</li>
+                            <li>And most importantly — the listener</li>
+                            </ul>
+
+                            <h2>💡 What I Learned as a First-Time Product Manager</h2>
+                            <ul>
+                            <li>Real products don't come from market gaps — they come from empathy</li>
+                            <li>MVP doesn't mean fewer features — it means only the right ones</li>
+                            <li>UX is emotional, not visual</li>
+                            <li>Trust builds traction, not tricks</li>
+                            <li>And most importantly — building a product changes you, if you let it</li>
+                            </ul>
+                            <p>I started as a graphic designer who had never worked on an app.<br>
+                            Today, I've built 11+ products across industries.<br>
+                            But Myma made me a product thinker — not through a course, but through people.</p>
+
+                            <h2>💬 Want to build products that matter?</h2>
+                            <p>Don't just chase metrics. Listen for pain.<br>
+                            Don't just solve use-cases. Solve real lives.<br>
+                            Your user's voice will teach you more than any analytics dashboard ever will.</p>
+                        </div>
                     `
                 },
-                'ui-design': {
-                    title: 'Minimalism in Modern UI Design',
-                    category: 'Designing',
-                    date: 'March 14, 2024',
-                    readTime: '5 min read',
-                    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=400&fit=crop',
-                    content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">Minimalism in UI design isn't about removing elements for the sake of simplicity. It's about intentional design choices that enhance user experience by reducing cognitive load.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Psychology of Minimal Design</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Our brains process visual information incredibly quickly. When interfaces are cluttered, users spend mental energy parsing the layout instead of focusing on their goals.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Principles of Effective Minimalism</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Successful minimal design follows these principles:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li><strong>Purposeful whitespace:</strong> Every empty space serves a function</li>
-                            <li><strong>Clear hierarchy:</strong> Important elements stand out naturally</li>
-                            <li><strong>Consistent patterns:</strong> Users learn the interface once</li>
-                            <li><strong>Focused content:</strong> Every element has a clear purpose</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Common Minimalism Mistakes</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Many designers confuse minimalism with removing functionality. True minimalism enhances functionality by making it more accessible and intuitive.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Business Case for Minimal Design</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Minimal interfaces typically see higher conversion rates, lower bounce rates, and better user satisfaction scores because they reduce friction in the user journey.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "Simplicity is the ultimate sophistication." - Leonardo da Vinci
-                        </blockquote>
-                        
-                        <p class="text-gray-700 leading-relaxed">Remember: minimalism is not about having less—it's about having exactly what you need, when you need it, in the clearest way possible.</p>
-                    `
-                },
-                'design-systems': {
-                    title: 'Creating Scalable Design Systems',
-                    category: 'Designing',
-                    date: 'March 11, 2024',
-                    readTime: '12 min read',
-                    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop',
-                    content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">A design system is more than a style guide—it's the foundation that enables teams to build consistent, scalable products efficiently. Here's how to create one that grows with your organization.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Starting with Foundations</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Before creating components, establish your foundational elements:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li><strong>Color palette:</strong> Primary, secondary, and semantic colors</li>
-                            <li><strong>Typography scale:</strong> Consistent font sizes and weights</li>
-                            <li><strong>Spacing system:</strong> Standardized margins and padding</li>
-                            <li><strong>Grid system:</strong> Layout structure and breakpoints</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Component Architecture</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Build components with flexibility in mind. Each component should handle multiple use cases while maintaining visual consistency across different contexts.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Documentation That Developers Actually Use</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The best design systems include clear usage guidelines, code examples, and interactive demos. Make it easier to use the system correctly than to create one-off solutions.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Governance and Evolution</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Establish clear processes for proposing changes, reviewing updates, and communicating system evolution to all stakeholders.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Measuring Success</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Track these metrics to understand your design system's impact:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li>Development velocity improvements</li>
-                            <li>Design consistency scores</li>
-                            <li>System adoption rates</li>
-                            <li>Bug reduction in UI components</li>
-                        </ul>
-                        
-                        <p class="text-gray-700 leading-relaxed">A successful design system becomes invisible—teams use it naturally because it makes their work easier and more efficient.</p>
-                    `
-                },
-                'midnight-thoughts': {
-                    title: 'Midnight Thoughts on Creativity',
-                    category: 'Moody Writeups',
-                    date: 'March 13, 2024',
-                    readTime: '4 min read',
-                    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
-                    content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6 italic">It's 2:47 AM, and the world feels different. The harsh edges of daylight have softened into something more forgiving, more honest. This is when creativity whispers its secrets.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">There's something magical about the quiet hours when most of the world sleeps. The constant noise of notifications, meetings, and expectations fades away, leaving space for thoughts to breathe and ideas to emerge from the shadows.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Paradox of Solitude</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">We live in a hyperconnected world, yet creativity often requires disconnection. In these midnight moments, I find myself most connected to the work that matters—not the work that pays the bills or impresses others, but the work that feeds the soul.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">The cursor blinks on an empty page, patient and non-judgmental. Unlike the harsh fluorescent lights of the office, the soft glow of the screen feels like an invitation rather than an interrogation.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Permission to Be Imperfect</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Midnight creativity doesn't demand perfection. It asks only for honesty. The ideas that emerge in these quiet hours are raw, unpolished, but authentic in a way that daylight rarely allows.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "The cave you fear to enter holds the treasure you seek." - Joseph Campbell
-                        </blockquote>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">Maybe that's what creativity really is—the courage to enter the cave of uncertainty, to sit with the discomfort of not knowing, and to trust that something meaningful will emerge from the darkness.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed">The sun will rise soon, bringing with it the demands of the practical world. But for now, in this liminal space between day and night, creativity reigns supreme.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed italic mt-6">3:15 AM. Time to sleep, but the ideas will wait for me in tomorrow's midnight hour.</p>
-                    `
-                },
-                'unfinished-dreams': {
-                    title: 'The Weight of Unfinished Dreams',
-                    category: 'Moody Writeups',
-                    date: 'March 9, 2024',
+                'When Metrics Mislead': {
+                    title: 'When Metrics Mislead: What GoDocs Taught Me About Building the Right Product',
+                    category: 'Product Management',
+                    date: 'August 7, 2025',
                     readTime: '6 min read',
-                    image: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=400&fit=crop',
+                    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">They sit in the corners of our minds like forgotten photographs—the projects we started with such enthusiasm, the dreams we abandoned halfway through, the promises we made to ourselves that we never kept.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">I have a folder on my computer labeled "Ideas." It's filled with half-written stories, sketches of apps that will never be built, business plans for companies that exist only in my imagination. Each file is a small monument to possibility, now gathering digital dust.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Seduction of New Beginnings</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">There's something intoxicating about starting something new. The blank canvas, the fresh notebook, the empty repository. Everything is possible in those first moments. The vision is clear, the motivation is high, and the obstacles seem surmountable.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">But then reality sets in. The work becomes harder than expected. The initial excitement fades. Other opportunities present themselves, shinier and more appealing than the current struggle.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Middle is Where Dreams Go to Die</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The middle of any creative project is a wasteland. The novelty has worn off, but the finish line is still too far away to provide motivation. This is where most dreams are abandoned—not in a dramatic moment of failure, but in a quiet surrender to the mundane.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "The graveyard is the richest place on earth, because it is here that you will find all the hopes and dreams that were never fulfilled." - Les Brown
-                        </blockquote>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Making Peace with Incompletion</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Perhaps the weight of unfinished dreams isn't entirely negative. Maybe these abandoned projects serve a purpose—they teach us about ourselves, about what truly matters, about the difference between fleeting interests and lasting passions.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed mb-6">Not every idea deserves to be completed. Some are meant to be stepping stones, leading us toward something better. Others are practice runs, preparing us for the project that will truly matter.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The One That Matters</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Among all the unfinished dreams, there's usually one that haunts us differently. It's the project that we return to in quiet moments, the idea that refuses to be forgotten. This is the one worth finishing, even if it takes years.</p>
-                        
-                        <p class="text-gray-700 leading-relaxed">The weight of unfinished dreams can be crushing, or it can be fuel. The choice is ours to make, one project at a time.</p>
+
+                        <div class="article-content"> <p class="text-lg">Some products fail even when the metrics look good.<br> GoDocs was one of them. But it also became one of my biggest lessons in product validation.</p>
+                            
+                            <h2>Building with a Clear Mission</h2>
+                            <p>We started GoDocs in 2021 to help people — especially small food business owners — get documents like FSSAI, GST, and MSME licenses quickly, affordably, and honestly.<br>
+                            At the time, these entrepreneurs were being charged anywhere from ₹2000-₹12000 for something that officially costs ₹100-₹500. We wanted to end that exploitation.</p>
+                            <p>We started lean: just WhatsApp and phone calls. No app. No dashboard. Just real conversations and real help.<br>
+                            And it worked. Word of mouth grew. Trust followed. Revenue came in.<br>
+                            So naturally, we thought: “Let's build an app to make this process smoother.”</p>
+
+                            <h2>📲 We Built the App. The Downloads Came. But Users Didn't.</h2>
+                            <p>The app was clean. Fast. Functional.<br>
+                            Users could fill forms, upload docs, and track progress — all in one place.<br>
+                            The metrics said we were doing fine:</p>
+                            <ul>
+                            <li>Decent downloads</li>
+                            <li>Smooth UI</li>
+                            <li>Fast load times</li>
+                            </ul>
+                            <p>But users? They stayed on WhatsApp.<br>
+                            Why?</p>
+                            <ul>
+                            <li>For them, government paperwork is a one-time task — not worth installing an app</li>
+                            <li>They trust talking to a real human more than tapping icons</li>
+                            <li>Typing on WhatsApp felt easier than navigating our “smart” UI</li>
+                            </ul>
+                            <p>We kept improving the app. We explained features. We reworked UX flows.<br>
+                            But eventually, we had to face reality:<br>
+                            The business was working. The app was not.</p>
+
+                            <h2>💡 So… Did the App Fail?</h2>
+                            <p>Yes. But the idea didn't.<br>
+                            We realized that GoDocs wasn't meant to be an app. It was meant to be a service — human, fast, trustworthy.<br>
+                            So we pulled the app. And we doubled down on what was already working: WhatsApp, Facebook, phone calls.<br>
+                            And GoDocs grew — not despite removing the app, but because of it.</p>
+
+                            <h2>📉 What GoDocs Taught Me About Product Management</h2>
+                            <ul>
+                            <li>Validation doesn't mean downloads — it means usage</li>
+                            <li>Metrics can mislead if you don't add context</li>
+                            <li>Sometimes tech is not the solution — trust is</li>
+                            <li>In Tier 2 & Tier 3 India, WhatsApp-first can beat app-first</li>
+                            <li>Your platform is not your product. The experience is.</li>
+                            </ul>
+
+                            <h2>📌 Final Thought</h2>
+                            <p>As product people, we love dashboards — MAUs, DAUs, CTRs, funnel drops.<br>
+                            But real product success? It's in the messages that say “Thank you, aapki wajah se kaam ho gaya.”<br>
+                            If your user gets the job done — even without your app — you've still built the right thing.</p>
+
+                        </div>
                     `
                 },
-                'atomic-habits': {
-                    title: 'Review: "Atomic Habits" by James Clear',
-                    category: 'Books',
-                    date: 'March 7, 2024',
-                    readTime: '9 min read',
-                    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=400&fit=crop',
-                    content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">"Atomic Habits" by James Clear isn't just another self-help book—it's a practical guide to understanding how small changes compound into remarkable results. After implementing its principles for six months, here's my honest review.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Core Philosophy</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Clear's central thesis is simple: you don't rise to the level of your goals, you fall to the level of your systems. This reframe from outcome-based to process-based thinking is the book's greatest strength.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Four Laws of Behavior Change</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Clear breaks down habit formation into four actionable laws:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li><strong>Make it Obvious:</strong> Design your environment for success</li>
-                            <li><strong>Make it Attractive:</strong> Bundle habits with things you enjoy</li>
-                            <li><strong>Make it Easy:</strong> Reduce friction for good habits</li>
-                            <li><strong>Make it Satisfying:</strong> Create immediate rewards</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">What Works in Practice</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The book's strength lies in its practicality. The habit stacking technique (linking new habits to existing ones) has been particularly effective for building my morning routine. The 2-minute rule helped me start a daily writing practice that has grown into something substantial.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">The Identity-Based Approach</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">Perhaps the most powerful concept is focusing on identity change rather than outcome change. Instead of "I want to write a book," think "I am a writer." This subtle shift changes how you see yourself and, consequently, how you behave.</p>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "Every action you take is a vote for the type of person you wish to become."
-                        </blockquote>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Where It Falls Short</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6">The book occasionally oversimplifies complex behavioral psychology. Some readers might find the examples repetitive, and the focus on individual habits doesn't address systemic barriers that some people face.</p>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">My Personal Results</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">After six months of applying these principles:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li>Established a consistent morning routine</li>
-                            <li>Built a daily writing habit (this blog is proof!)</li>
-                            <li>Improved my reading consistency</li>
-                            <li>Created better work-life boundaries</li>
-                        </ul>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Final Verdict</h2>
-                        <p class="text-gray-700 leading-relaxed mb-6"><strong>Rating: 4.5/5 stars</strong></p>
-                        <p class="text-gray-700 leading-relaxed">"Atomic Habits" delivers on its promise to provide a practical framework for building good habits and breaking bad ones. While not groundbreaking in its insights, its strength lies in making behavioral science accessible and actionable. If you're looking to make lasting changes in your life, this book provides the roadmap.</p>
-                    `
-                },
-                'reading-list': {
-                    title: 'My 2024 Reading List for Creatives',
-                    category: 'Books',
-                    date: 'March 5, 2024',
+                'From Graphic Designer to Product Manager': {
+                    title: 'From Graphic Designer to Product Manager — The Product That Changed Me',
+                    category: 'Product Management',
+                    date: 'August 7, 2025',
                     readTime: '7 min read',
-                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop',
+                    image: 'https://images.unsplash.com/photo-1581090700227-1e8e109fdf70?w=800&h=400&fit=crop',
                     content: `
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">As we navigate an increasingly complex creative landscape, the right books can provide both inspiration and practical guidance. Here's my carefully curated reading list for creative professionals in 2024.</p>
+                    <div class="article-content">
+                        <p class="text-lg">I didn't plan to become a product manager.<br>
+                        In fact, I didn't even know what a “product manager” really did when I started.</p>
+
+                        <p>Back then, I was working as a graphic designer — designing visuals, writing campaign ideas, and creating content. I loved storytelling and thinking visually, but I always felt there was more I could do.</p>
+
+                        <p>Then I got a chance to work on something completely new: a food-tech app that would empower women to start home-based food businesses.</p>
+
+                        <p>I was told, “We're building this from scratch. Want to help?”<br>
+                        I said yes.<br>
+                        That “yes” changed my entire career.</p>
+
+                        <h2>🎯 Starting from Zero: Learning Product by Doing Product</h2>
+                        <p>My first task was to understand our target users — mostly homemakers from smaller towns and semi-urban India. These weren't your typical “app users.” Many of them didn't even consider themselves entrepreneurs. But they all had one thing in common: a love for cooking and a desire to earn from home.</p>
+
+                        <p>I started with research. Then moved to user personas. Then to user flows.</p>
+
+                        <p>Soon I was designing screens, writing UX copy, handling QA testing, talking to our developer, planning user onboarding, and coordinating launch campaigns.</p>
+
+                        <p>In just a few months, I had unknowingly stepped into product management.</p>
+
+                        <p>I wasn't formally trained. I didn't attend a bootcamp.<br>
+                        I just kept solving problems — one user, one screen, one issue at a time.</p>
+
+                        <h2>📱 The Product That Became My Teacher</h2>
+                        <p>That app — called Myma — became the biggest teacher of my life.<br>
+                        Through it, I learned:</p>
+                        <ul>
+                        <li>How to break down user problems and build features that truly help</li>
+                        <li>How to balance design with tech constraints</li>
+                        <li>How to lead without managing</li>
+                        <li>How to think about the business side of product (delivery, pricing, trust-building)</li>
+                        <li>How to see product not just as a tool — but as a service, a support system, and a solution</li>
+                        </ul>
+
+                        <p>I went from knowing only design tools to learning how to manage timelines, align teams, and prioritize real user needs — especially during the early MVP days and even through challenges like COVID lockdowns.</p>
+
+                        <h2>🧠 What I Know Now (That I Didn't Then)</h2>
+                        <ul>
+                        <li>You don't need to be technical to be a great product manager</li>
+                        <li>You don't need a title to start thinking like one</li>
+                        <li>The best PMs are just curious people who deeply care about their users</li>
+                        <li>Product isn't about features — it's about clarity, trust, and timing</li>
+                        </ul>
+
+                        <p>My journey from designer to PM wasn't a big leap. It was a series of small, consistent steps: asking questions, noticing gaps, offering solutions, listening more than talking, and keeping the user at the center — always.</p>
+
+                        <h2>💬 To Anyone Starting Late or Starting Over</h2>
+                        <p>If you come from a non-technical or creative background and want to move into product — don't wait for permission. Start building. Start researching. Start asking why.</p>
+
+                        <p>Every screen, every campaign, every user interaction you improve — that's product work.<br>
+                        You might already be doing it. You just haven't labeled it yet.</p>
+                    </div>
+                    `
+                },
+                'Marketing without Manipulation': {
+                    title: 'Marketing without Manipulation: Why GoDocs Refused to Exploit Aspiring Entrepreneurs',
+                    category: 'Advertising & Marketing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1581092918368-1f7851df2f36?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Let's be honest — most people don't read fine print. Especially when it comes to government documents.</p>
+
+                        <p>They Google “how to register FSSAI license” and click on the first flashy link that looks official. What they don't realize is that they're often paying ₹2,000 to ₹12,000 for something that costs just ₹100–₹500 if done the right way.</p>
+
+                        <p>That's exactly the gap GoDocs set out to solve.</p>
+
+                        <h2>⚠️ A Broken System Built on Confusion</h2>
+                        <p>When we started working with small-scale food business owners (mostly women from Tier 2 and Tier 3 cities), we kept hearing the same story:</p>
+                        <ul>
+                        <li>"I paid ₹3000 for FSSAI registration."</li>
+                        <li>"They told me it's valid for one year."</li>
+                        <li>"They said they're government-approved."</li>
+                        </ul>
+
+                        <p>The reality?<br>
+                        FSSAI registration costs as low as ₹100 if you apply directly through the official government portal. But that portal isn't exactly user-friendly — especially for non-tech users.</p>
+
+                        <p>So third-party platforms take advantage of this. They charge massive markups, hide info behind jargon, and sometimes don't even give full transparency.<br>
+                        It was frustrating. And unfair.</p>
+
+                        <p>That's when we decided: We won't be a part of this.</p>
+
+                        <h2>🛠️ Building GoDocs — The Ethical Way</h2>
+                        <p>We launched GoDocs with one simple rule:<br>
+                        No manipulation. No hidden fees. No upsells.</p>
+
+                        <p>Our pricing was clear. Our communication was even clearer.<br>
+                        We started by helping people through WhatsApp, calls, and Facebook — no pushy landing pages, no misleading offers.</p>
+
+                        <p>We told users:</p>
+                        <ul>
+                        <li>What the actual government fee was</li>
+                        <li>What we were charging (as service fee)</li>
+                        <li>What documents were truly required</li>
+                        <li>What the certificate actually meant</li>
+                        </ul>
+
+                        <p>We even turned people away when they didn't need a service.<br>
+                        Because for us, GoDocs wasn't just a business. It was a responsibility.</p>
+
+                        <h2>📣 Campaigns That Told the Truth</h2>
+                        <p>Our content and ads were written like we were talking to a friend — not trying to convert a lead.</p>
+
+                        <p>We said things like:</p>
+                        <ul>
+                        <li>“Don't pay ₹3000 for what's worth ₹100.”</li>
+                        <li>“We'll guide you — or even tell you how to do it yourself.”</li>
+                        <li>“Start your business. Not your regret.”</li>
+                        </ul>
+
+                        <p>The result?<br>
+                        We didn't get millions of downloads. But we got hundreds of DMs that said:</p>
+                        <ul>
+                        <li>“Thank you for making this clear.”</li>
+                        <li>“Can I send my cousin to you?”</li>
+                        <li>“You guys are doing good work. Please don't stop.”</li>
+                        </ul>
+
+                        <p>That kind of trust? You can't buy it. You earn it.</p>
+
+                        <h2>💬 Why This Matters</h2>
+                        <p>In today's world, marketing often means:</p>
+                        <ul>
+                        <li>Highlighting urgency even if there's none</li>
+                        <li>Selling convenience while hiding costs</li>
+                        <li>Using “official-looking” language to gain false credibility</li>
+                        </ul>
+
+                        <p>But we chose the harder path — the honest one.<br>
+                        And yes, it was slower. But it was cleaner. More satisfying. And more sustainable.</p>
+
+                        <h2>🎯 Final Thought</h2>
+                        <p>Ethical marketing isn't just a trend — it's a stand.<br>
+                        When your user is already struggling to take a small step toward their dreams, don't make it harder with overpriced tricks.</p>
+
+                        <p><strong>Be the brand they trust. Not the one they regret.</strong></p>
+                    </div>
+                    `
+                },
+                'From Scroll to Sign-up': {
+                    title: 'From Scroll to Sign-up: How We Used Content to Convert Users on WhatsApp',
+                    category: 'Advertising & Marketing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1560264357-8f0c1d0e4856?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Sometimes, your users don't need a beautiful app. They just need one friendly, well-timed message that says: “Don't worry, we've got you.”</p>
+
+                        <p>That's exactly what we learned while building and scaling services like GoDocs, Myma, and other digital-first, user-second platforms.</p>
+
+                        <p>We realized early on: most of our audience wasn't on Slack or Telegram. They were on WhatsApp.</p>
+
+                        <p>They didn't fill out fancy forms or check email regularly. They read forwards, tapped on blue ticks, and replied with voice notes.</p>
+
+                        <p>So instead of forcing users to adapt to our “product flow,” we adapted to theirs.</p>
+
+                        <h2>📲 Why WhatsApp Was the Best Conversion Channel</h2>
+                        <p>Our users were:</p>
+                        <ul>
+                        <li>First-time entrepreneurs</li>
+                        <li>From small towns, speaking regional languages</li>
+                        <li>Struggling with tech, but eager to grow</li>
+                        </ul>
+
+                        <p>They didn't want another app. They wanted clarity, handholding, and trust. WhatsApp was perfect. It's familiar, personal, and easy to use — even for people who've never ordered anything online before.</p>
+
+                        <p>So we made WhatsApp our funnel — not just a support tool.</p>
+
+                        <h2>✍️ What Worked: Content that Felt Like a Human, Not a Brand</h2>
+                        <p>We rewrote every message in a way that sounded less like a company and more like a friend who wants to help.</p>
+                        <p>Examples of what worked:</p>
+                        <ul>
+                        <li>“Send your name and city — we'll guide you next.”</li>
+                        <li>“Don't worry if you don't know your FSSAI category. We'll explain it simply.”</li>
+                        <li>“If this is your first time, we'll do it step-by-step on call.”</li>
+                        </ul>
+
+                        <p>Every word was written with empathy and zero jargon. Even our templates had local greetings like “Namaste Didi” or “Bhau, tumcha form baray.”</p>
+
+                        <h2>🎯 Our Onboarding Hacks (That You Can Steal)</h2>
+                        <ol>
+                        <li><strong>Voice Notes > PDFs:</strong> We started sending short voice notes explaining steps. This worked better than long instructions.</li>
+                        <li><strong>Visual Reminders:</strong> We used simple creatives with “3 steps to register FSSAI” in regional languages — shared via WhatsApp stories and DPs.</li>
+                        <li><strong>No Dead-Ends:</strong> Even if the user didn't respond, our follow-ups were friendly, spaced out, and useful.</li>
+                        <li><strong>Less is More:</strong> One message = one action. “Send PAN card photo” or “Reply YES to continue.”</li>
+                        <li><strong>Trust > Tech:</strong> People trusted us because we responded quickly, remembered their name, and followed through.</li>
+                        </ol>
+
+                        <h2>📉 What Didn't Work</h2>
+                        <ul>
+                        <li>Redirecting to a landing page: Drop-offs were 80%</li>
+                        <li>Automated chatbots: People got confused, stopped replying</li>
+                        <li>English-heavy messaging: Caused delays, low conversions</li>
+                        </ul>
+
+                        <p>So we stuck to what worked — humans helping humans.</p>
+
+                        <h2>📌 Final Thought</h2>
+                        <p>If your users aren't tech-savvy, don't try to make them fit into your system. Meet them where they are — and talk like a human.</p>
+
+                        <p>WhatsApp isn't just a messaging app. For many in India, it's their digital identity.</p>
+
+                        <p><strong>And if you use it wisely, it can become your best onboarding platform — not just a support window.</strong></p>
+                    </div>
+                    `
+                },
+                'Best CTA': {
+                    title: 'User Trust is the Best CTA: Lessons from Launching Myma During COVID',
+                    category: 'Advertising & Marketing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1588776814546-ec7f3f191bfa?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">In January 2020, we launched Myma — a home-cooked food app that empowered Indian homemakers to start their own food business.</p>
                         
-                        <h2 class="text-2xl font-bold text-black mb-4">On Creativity and Process</h2>
+                        <p>It was built with one vision: to bring Ghar Ka Khana to people missing home, while giving homemakers a platform to earn and grow.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"The Creative Act" by Rick Rubin</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Rubin's latest work explores creativity as a fundamental human experience rather than a professional skill. His insights on the creative process are both profound and practical.</p>
-                        </div>
+                        <p>We had barely started onboarding our early home chefs. The app was still in its MVP stage. Marketing plans were half-written. And then… COVID-19 hit.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"Steal Like an Artist" by Austin Kleon</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">A modern classic that reframes influence and inspiration in the digital age. Essential reading for anyone struggling with originality anxiety.</p>
-                        </div>
+                        <p>The world shut down. So did restaurants. So did delivery networks. But what didn't shut down — was our community.</p>
                         
-                        <h2 class="text-2xl font-bold text-black mb-4">On Design and User Experience</h2>
+                        <h2>🧡 What Kept Myma Alive? Trust.</h2>
+                        <p>Our homemakers — despite all fears — kept asking us, <br>“Ma'am, batao na kab se shuru karna hai dobara?”</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"Design for the Real World" by Victor Papanek</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Though written decades ago, Papanek's call for responsible design feels more relevant than ever. A must-read for designers who want their work to matter.</p>
-                        </div>
+                        <p>They weren't employees. They weren't on payroll. They were women with families, children, and responsibilities — in the middle of a global pandemic.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"The Design of Everyday Things" by Don Norman</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">The foundational text on user-centered design. If you haven't read it yet, 2024 is the year to fix that.</p>
-                        </div>
+                        <p>But they were ready to work. For Myma. With us. Because they trusted the intention behind the product.</p>
                         
-                        <h2 class="text-2xl font-bold text-black mb-4">On Business and Strategy</h2>
+                        <blockquote>The most powerful CTA isn't “Buy Now.” It's “I believe in this.”</blockquote>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"Company of One" by Paul Jarvis</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Challenges the growth-at-all-costs mentality and offers a sustainable approach to creative business. Perfect for freelancers and small agencies.</p>
-                        </div>
+                        <h2>🚫 We Didn't Push. We Paused.</h2>
+                        <p>For their safety, we asked our homemakers to stop taking orders during COVID.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"The Mom Test" by Rob Fitzpatrick</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Essential for anyone who needs to validate ideas or gather user feedback. The principles apply far beyond startups.</p>
-                        </div>
+                        <p>We could've kept the business running. We could've pushed ads. Created FOMO. Used “safe kitchen” labels and tried to be clever.</p>
                         
-                        <h2 class="text-2xl font-bold text-black mb-4">On Writing and Communication</h2>
+                        <p>But we didn't. We chose to stop, inform, educate, and stand by our users — even if it meant zero revenue for a while.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"Bird by Bird" by Anne Lamott</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Part writing guide, part life philosophy. Lamott's wisdom extends far beyond the craft of writing.</p>
-                        </div>
+                        <p>And that's exactly what built deeper trust. The kind of trust that no campaign or creative can buy.</p>
                         
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"Made to Stick" by Chip Heath & Dan Heath</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">Why some ideas survive and others die. Essential for anyone who needs to communicate ideas effectively.</p>
-                        </div>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">On Technology and the Future</h2>
-                        
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-black mb-2">"The Age of AI" by Henry Kissinger, Eric Schmidt, and Daniel Huttenlocher</h3>
-                            <p class="text-gray-700 leading-relaxed mb-4">A thoughtful exploration of how AI will reshape society. Important context for creatives working in the digital age.</p>
-                        </div>
-                        
-                        <blockquote class="border-l-4 border-black pl-6 italic text-gray-600 mb-6">
-                            "A reader lives a thousand lives before he dies. The man who never reads lives only one." - George R.R. Martin
-                        </blockquote>
-                        
-                        <h2 class="text-2xl font-bold text-black mb-4">Reading Strategy for Busy Creatives</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">Here's how I approach this list:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                            <li>Mix fiction and non-fiction to keep things interesting</li>
-                            <li>Take notes and share insights with your team</li>
-                            <li>Don't feel obligated to finish every book</li>
-                            <li>Revisit favorites—good books reveal new insights on re-reading</li>
+                        <h2>📈 Real Growth Comes Without Ads</h2>
+                        <p>Myma didn't grow because of marketing tricks. It grew because:</p>
+                        <ul>
+                        <li>Homemakers told other homemakers</li>
+                        <li>Users shared their love for the app with friends</li>
+                        <li>Communities supported each other</li>
                         </ul>
                         
-                        <p class="text-gray-700 leading-relaxed">What books are on your 2024 reading list? I'd love to hear your recommendations for expanding this collection.</p>
+                        <p>We had no budget. No agency. But we had:</p>
+                        <ul>
+                        <li>WhatsApp groups full of thank-yous</li>
+                        <li>5-star Play Store reviews from genuine customers</li>
+                        <li>Real stories, real referrals, real retention</li>
+                        </ul>
+                        
+                        <p>Sometimes, not selling is the best way to sell.</p>
+                        
+                        <h2>🧠 What I Learned About Trust-Based Growth</h2>
+                        <ul>
+                        <li>If you're solving a real problem, users become your ambassadors</li>
+                        <li>Trust takes time to build — but it lasts longer than any performance campaign</li>
+                        <li>Your best marketing team might be your earliest users</li>
+                        <li>People remember how you behave when they're vulnerable</li>
+                        <li>Selling is not just about the product — it's about your intention</li>
+                        </ul>
+                        
+                        <h2>🌱 Final Thought</h2>
+                        <p>In a world full of retargeting, drip campaigns, and clickbait CTAs — choose to build trust.</p>
+                        
+                        <p>Myma didn't grow because we were smart. It grew because we were sincere.</p>
+                        
+                        <p><strong>So if you're launching a product — especially during hard times — focus less on reach and more on respect.</strong></p>
+                        
+                        <p>Because the greatest growth hack is still:<br> “People trust you. So they come back. And they bring others.”</p>
+                    </div>
+                    `
+                },
+                'Designing for People': {
+                    title: 'Designing for People Who Do not Read Instructions',
+                    category: 'Designing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1611224885991-fd7bb9d33001?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Let's be honest: Most people don't read instructions.</p>
+                        
+                        <p>They skip onboarding, tap randomly, swipe too fast, and then say, “App kaam nahi kar raha.”</p>
+                        
+                        <p>And when your app is built for first-time users — especially homemakers who are trying to earn from home but aren't comfortable with digital platforms — that reality hits harder.</p>
+                        
+                        <p>At Myma, we weren't designing for tech-savvy early adopters. We were designing for people who:</p>
+                        <ul>
+                        <li>Had never used a business app before</li>
+                        <li>Weren't confident with forms or dropdowns</li>
+                        <li>Got nervous when the screen “didn't move”</li>
+                        </ul>
+
+                        <p>So, we had only one rule:<br><strong>If your user needs instructions to understand your UI… your UI is wrong.</strong></p>
+
+                        <h2>👀 Let's Start With the Role Selection Screen</h2>
+                        <p>We had 2 types of users:</p>
+                        <ul>
+                        <li>Food lovers looking for home-cooked meals</li>
+                        <li>Homemakers looking to start their food business</li>
+                        </ul>
+
+                        <p>Sounds easy, right? Just ask them to choose a role.<br>But it wasn't.</p>
+                        
+                        <p>The first version had two buttons: “Customer” and “Homemaker.”<br>Guess what? 40% of users chose the wrong role — mostly out of fear, hesitation, or plain confusion.</p>
+                        
+                        <p><strong>Fix?</strong><br>We added emojis, simplified text, added a line like “Want to eat home food?” vs. “Want to sell your food?”<br>We even tested voice messages and dummy screenshots in later versions.<br><strong>Result?</strong> Drop-offs reduced. Smile count increased.</p>
+
+                        <h2>📲 Onboarding Flow: Tap, Don't Type</h2>
+                        <p>Most of our homemakers didn't want to fill long forms. They were okay with WhatsApp and voice notes but got anxious with:</p>
+                        <ul>
+                        <li>Password fields</li>
+                        <li>Confirm password fields</li>
+                        <li>Address pinning</li>
+                        </ul>
+
+                        <p><strong>So we simplified:</strong></p>
+                        <ul>
+                        <li>No long forms, just one screen at a time</li>
+                        <li>Auto-fill from WhatsApp wherever possible</li>
+                        <li>“Call us if you're stuck” buttons on every step</li>
+                        </ul>
+
+                        <p>Our onboarding was less like a form — more like a casual conversation.</p>
+
+                        <h2>📉 What We Thought Would Work (But Didn't)</h2>
+                        <ul>
+                        <li>Tooltips? Ignored.</li>
+                        <li>Skip tutorial buttons? Always skipped.</li>
+                        <li>Carousels explaining features? Swiped without reading.</li>
+                        </ul>
+
+                        <p>So instead of trying to “teach,” we made the design so obvious they didn't need to learn anything.</p>
+                        
+                        <p><strong>Example:</strong> Instead of explaining how to upload a dish photo, we showed a sample image with text: “Tap here to add your dish photo.”<br>That one tweak increased successful uploads by 60%.</p>
+
+                        <h2>🧠 Key UX Lessons for Designing for Low-Literacy or First-Time Users</h2>
+                        <ul>
+                        <li>Don't assume they know what a “login” is. Say “Enter your phone number to start” instead.</li>
+                        <li>Every field that can be avoided — should be avoided. Use autofill, WhatsApp data, or voice notes.</li>
+                        <li>Error messages should guide, not scold. “Please enter a name” is better than “Invalid input.”</li>
+                        <li>Think visually: icons, emojis, step-by-step dots, voice buttons.</li>
+                        <li>If your mom or dad can't figure it out in 10 seconds, redesign it.</li>
+                        </ul>
+
+                        <h2>😂 One Funny Moment</h2>
+                        <p>One of our early homemakers called us in panic:<br>
+                        <em>"Madam, maine photo daala tha… par wo app ne kha gaya!"</em></p>
+
+                        <p>(She had uploaded a food photo, but it didn't show up instantly due to network lag.)</p>
+
+                        <p>We fixed the delay and added a small “Your photo is uploading…” message with a spinner.<br>Not fancy. But necessary.</p>
+
+                        <h2>💡 Final Thought</h2>
+                        <p>Designing for people who don't read instructions doesn't mean dumbing things down.<br>It means:</p>
+                        <ul>
+                        <li>Making it intuitive</li>
+                        <li>Speaking their language</li>
+                        <li>And above all, respecting their courage to try something new</li>
+                        </ul>
+
+                        <p>Because if someone is using a mobile app for the first time to start a business from their kitchen — the least you can do is not make them feel lost.</p>
+                    </div>
+                    `
+                },
+                'Mother-Made Design': {
+                    title: 'Mother-Made Design: How Emotion Drives Better UX',
+                    category: 'Designing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1627662953801-7519f104a8d6?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">What do most food apps sell?<br>
+                        Discounts. Delivery speed. Restaurant variety. Convenience.</p>
+
+                        <p>What did we sell at Myma?<br><strong>Maa ke haath ka khana.</strong></p>
+
+                        <p>And that changed everything — not just in our messaging, but in our design.</p>
+
+                        <p>Because when you're building a product for users who miss home, who crave familiarity, and who want to eat something that feels safe and made with love… your design can't just look clean.<br>It has to feel like home.</p>
+
+                        <h2>🧡 Designing for Emotion, Not Just Function</h2>
+                        <p>From day one, we knew Myma wasn't a food-tech app in the traditional sense.<br>
+                        It wasn't about convenience — it was about connection.</p>
+
+                        <p>Our users weren't browsing for restaurants.<br>
+                        They were thinking of the pulao their mom made. Or the kadhi their grandmother used to serve.</p>
+
+                        <p>So, we designed the app like a memory. A feeling. Not like a menu.</p>
+                        <p>Every button, image, and word was chosen to trigger emotion — not just conversion.</p>
+
+                        <h2>📝 Copy That Feels Like a Conversation</h2>
+                        <p>We didn't use copy like “Get your meal in 30 minutes.”<br>We said:</p>
+                        <ul>
+                        <li>“Ghar Ka Khana. Ghar Se.”</li>
+                        <li>“Jaisa nahi, Ghar ka hi khana.”</li>
+                        <li>“Maa ke haathon ka swaad. Ab app pe.”</li>
+                        </ul>
+
+                        <p>These weren't marketing lines. They were emotional truths.<br>
+                        We wanted our users to feel warmth, trust, and nostalgia — not FOMO or urgency.</p>
+
+                        <p>Even notifications were written with care:</p>
+                        <ul>
+                        <li>“Aaj kya banaye aapke liye Maa?”</li>
+                        <li>“Didi ne aaj Garma Garam Theplas banaye hain — try karoge?”</li>
+                        </ul>
+
+                        <h2>📲 Icon Choices & Design Language</h2>
+                        <p>Instead of using polished, modern, “techy” icons — we used visuals that felt familiar.</p>
+                        <ul>
+                        <li>A steel dabba instead of a plate</li>
+                        <li>A rolling pin (belan) instead of a chef hat</li>
+                        <li>Warm beige tones instead of stark whites</li>
+                        <li>Local food photos clicked in real kitchens — not studio mockups</li>
+                        </ul>
+
+                        <p>We also made design choices to slow things down — just a little.<br>
+                        Not everything had to be rushed. Some users enjoyed reading homemakers' bios. Some wanted to chat before placing an order.<br>
+                        We didn't want to erase that humanity.</p>
+
+                        <h2>🧠 Why Emotional UX Works (Especially in India)</h2>
+                        <ul>
+                        <li>It builds trust — quickly</li>
+                        <li>It reduces anxiety, especially for first-time users</li>
+                        <li>It increases repeat usage without needing discounts</li>
+                        <li>It makes users feel like they're part of a community — not just a customer base</li>
+                        </ul>
+
+                        <p>When you design for emotion, users don't just use your app.<br>
+                        They care about it.<br>
+                        They tell their friends. They check in even when they're not hungry.<br>
+                        They become part of your journey.</p>
+
+                        <h2>📌 Final Thought</h2>
+                        <p>Design isn't just about colors, fonts, and grids.<br>
+                        Good UX solves a problem.<br>
+                        But great UX makes people feel something.</p>
+
+                        <p>At Myma, we didn't just design an interface.<br>
+                        We designed a digital version of “Ghar.”</p>
+
+                        <p>So if you're building a product — especially for an emotional category like food, health, or family — remember:<br>
+                        Sometimes the best UX starts with a memory.<br>
+                        And sometimes the strongest CTA… is a feeling.</p>
+                    </div>
+                    `
+                },
+                'Design like WhatsApp': {
+                    title: 'Your Design Should Feel Like WhatsApp, Not a Wall',
+                    category: 'Designing',
+                    date: 'August 7, 2025',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1603899124068-41f7fa07338e?w=800&h=400&fit=crop',
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Let's get real — nobody opens a new app thinking, “Yay, something new to figure out!”</p>
+                        
+                        <p>People don't want friction. They want familiarity.<br>
+                        They want something that works like what they already know — like WhatsApp.</p>
+                        
+                        <p>And if you're designing for the Indian market — especially first-time digital users — familiarity isn't optional. It's survival.</p>
+                        
+                        <p>That's exactly what we learned while building Myma and GoDocs:<br>
+                        If your design feels even a little unfamiliar, it's already a barrier.<br>
+                        If it feels like WhatsApp?<br>
+                        You've won half the UX battle.</p>
+
+                        <h2>📲 What “Feeling Like WhatsApp” Really Means</h2>
+                        <p>It doesn't mean you copy WhatsApp's UI.<br>
+                        It means your app should:</p>
+                        <ul>
+                        <li>✔ Feel lightweight</li>
+                        <li>✔ Respond fast</li>
+                        <li>✔ Speak in simple language</li>
+                        <li>✔ Use familiar icons (paperclip = upload, mic = voice note)</li>
+                        <li>✔ Be tap-first, type-later</li>
+                        <li>✔ Never require a manual to understand</li>
+                        </ul>
+                        <p>Your users should open your app and think, “I get this.” Not, “Ab kya karna hai?”</p>
+
+                        <h2>🧩 Example 1: Myma's Homemaker Onboarding</h2>
+                        <p>We initially built Myma with a typical signup form — phone, email, location, password, confirm password…<br>
+                        Result? Drop-offs.</p>
+
+                        <p>Then we asked: “How would they talk to a friend?”</p>
+
+                        <p>So we redesigned onboarding to:</p>
+                        <ul>
+                        <li>Ask only for a phone number first (WhatsApp-style)</li>
+                        <li>Auto-fill names from saved contacts</li>
+                        <li>Offer voice support on each step</li>
+                        <li>Use regional terms like “Didi” and “Tai” instead of “Vendor”</li>
+                        </ul>
+                        <p>That single change made onboarding feel more human — and conversion went up.</p>
+
+                        <h2>🧾 Example 2: GoDocs — Government Docs, WhatsApp-Style</h2>
+                        <p>GoDocs was supposed to simplify government document processes.<br>
+                        But the minute we asked users to fill a form inside an app… they hesitated.</p>
+
+                        <p>So we flipped it.<br>
+                        We said: “Just send your PAN and Aadhaar on WhatsApp. We'll take it from there.”</p>
+
+                        <p>People responded immediately. Because:</p>
+                        <ul>
+                        <li>They already trusted WhatsApp</li>
+                        <li>They knew where to find their attachments</li>
+                        <li>They didn't feel like they were doing “tech stuff”</li>
+                        </ul>
+
+                        <p>We later realized: for one-time tasks, people prefer chat over an app.</p>
+
+                        <h2>🖼️ Even Campaign Creatives Work Better When They Feel Familiar</h2>
+                        <p>Our ads and social media visuals always used:</p>
+                        <ul>
+                        <li>Real photos over stock images</li>
+                        <li>Regional food, stainless steel plates, Indian kitchen scenes</li>
+                        <li>Fonts and icons that looked like posters, not startups</li>
+                        <li>Colors like mustard, maroon, and earthy tones (familiar, not flashy)</li>
+                        </ul>
+                        <p>Why? Because you're not here to impress — you're here to connect.</p>
+
+                        <h2>🧠 UX Rule of Thumb for Bharat Users</h2>
+                        <p>If it feels too clean, it may feel cold.<br>
+                        If it feels too clever, it may feel confusing.<br>
+                        If it feels like WhatsApp, it feels like home.</p>
+
+                        <h2>🎯 Final Thought</h2>
+                        <p>Great design doesn't scream “Look at me!”<br>
+                        It whispers, “I'm here. I understand you.”</p>
+
+                        <p>If your user has to ask how to use something, you've already lost them.<br>
+                        But if they can tap, scroll, or voice-record without thinking — you've earned their trust.</p>
+
+                        <p>So the next time you're designing for everyday India — make it feel like WhatsApp.<br>
+                        Not like a wall full of dropdowns.</p>
+                    </div>
+                    `
+                },
+                'PMS App': {
+                    title: 'From Dashboard Chaos to Clean UX: Designing the PMS App for a Bank',
+                    category: 'UX & Product Design',
+                    date: 'August 7, 2025',
+                    readTime: '6 min read',
+                    image: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=800&h=400&fit=crop',
+                    tags: ['UX for banking', 'PMS app India', 'dashboard redesign', 'admin dashboard UX', 'enterprise UX'],
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Banking isn't boring. But banking dashboards often are.</p>
+                        <p>More importantly — they're often broken. Especially when they're built by people who've never actually sat at a bank desk and tried to use one.</p>
+                        <p>Let me tell you how we cleaned the mess.</p>
+
+                        <h2>The Client: Chandrapur Urban Co-operative Bank</h2>
+                        <p><strong>The Problem:</strong> An in-house Process Management System (PMS) that had become too big, too fast — and far too confusing.</p>
+                        <p><strong>The Users:</strong> Non-tech banking staff — most of whom had never used any “modern” system besides Tally, Core Banking, and WhatsApp.</p>
+                        <p><strong>The Goal:</strong> Redesign the PMS app — simplify workflows, reduce visual noise, and make it something people could actually use without calling the IT guy every 10 minutes.</p>
+
+                        <h2>🧩 Step 1: Understanding the Real Use Cases</h2>
+                        <p>Before touching Figma or picking fonts, we went to the bank.</p>
+                        <p>We watched employees work — what they clicked, what confused them, what they never touched.</p>
+                        <p>We made notes when they paused, called for help, or pulled out a calculator to double-check something.</p>
+                        <p>What we found was chaos disguised as a “feature-rich admin panel.”</p>
+                        <ul>
+                        <li>Everyone had their own workaround.</li>
+                        <li>Some tabs were never used. Others were buried three clicks too deep.</li>
+                        <li>Data was scattered. Visuals were cluttered. Nothing was intuitive.</li>
+                        </ul>
+                        <p>That told us everything.</p>
+
+                        <h2>📌 Step 2: Cutting Clutter, Not Just Redesigning It</h2>
+                        <p>Instead of re-skinning the old UI, we rewired it.</p>
+                        <ul>
+                        <li>Stripped down the dashboard to the top 3 actions done daily.</li>
+                        <li>Renamed buttons to match human language (“Create New Entry” instead of “Execute Form”).</li>
+                        <li>Moved critical alerts to the top — and dumped everything users didn't actually care about.</li>
+                        <li>Introduced color cues — green for clear, red for action-needed, yellow for pending — but subtle. No flashy neon.</li>
+                        </ul>
+                        <p>We followed a strict principle: “If it's not helping, it's hurting.”</p>
+                        <p>Every unnecessary field was a friction point. Every extra dropdown was one more chance to click wrong. Every decorative box was stealing attention from real work.</p>
+
+                        <h2>🧑‍💼 Step 3: Designing for People, Not Personas</h2>
+                        <p>These weren't startup PMs or digital natives. These were tellers, back-office staff, and middle-aged accountants juggling registers and mousepads.</p>
+                        <p>So we kept the UX close to what they already knew:</p>
+                        <ul>
+                        <li>Fewer tabs, flat navigation</li>
+                        <li>Action buttons in plain sight</li>
+                        <li>No multi-step workflows unless absolutely necessary</li>
+                        <li>Bigger fonts. Real labels. Tooltips written like a human, not a dev</li>
+                        </ul>
+                        <p>We also sat down with them — real users — to test and refine. Not once. Multiple times.</p>
+                        <p>Some said, “Yeh toh WhatsApp jaisa lag raha hai.” That was a win.</p>
+
+                        <h2>🎯 What I Learned</h2>
+                        <ul>
+                        <li>Good UX isn't about fancy animations. It's about saving time.</li>
+                        <li>Admin dashboards need hierarchy, not decoration.</li>
+                        <li>“Less is more” isn't minimalism. It's mercy for the people doing actual work.</li>
+                        <li>And most importantly — users won't tell you what's broken. But they'll show you. You just have to watch.</li>
+                        </ul>
+
+                        <h2>💡 Final Thought</h2>
+                        <p>The banking PMS redesign wasn't glamorous. But it was one of the most satisfying projects I've done.</p>
+                        <p>Because when someone says, “This is so much easier now,” — that's real design impact.</p>
+                        <p>Not just a portfolio piece. A product that actually helps someone do their job better.</p>
+                    </div>
+                    `
+                },
+                'Online Parayan': {
+                    title: 'Spiritual UX: Designing a Parayan App for Devotees & Seniors',
+                    category: 'UX & Product Design',
+                    date: 'August 7, 2025',
+                    readTime: '5 min read',
+                    image: 'https://images.unsplash.com/photo-1617127365659-3f4f1ea35dc4?w=800&h=400&fit=crop',
+                    tags: ['devotional app design', 'senior-friendly UX', 'religious apps India', 'spiritual app UX', 'Parayan app design'],
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">Devotion is deeply personal.</p>
+                        <p>It's calm. Slow. Peaceful. Not something you want to interrupt with pop-ups, notifications, or a login wall.</p>
+                        <p>So when we started building the Parayan App, we made one thing clear:</p>
+                        <p>This app isn't for “users.” It's for devotees — many of them seniors, many not fluent with tech, but all emotionally invested in their daily reading and spiritual practice.</p>
+
+                        <h2>📿 What Is a Parayan App?</h2>
+                        <p>In simple words: Parayan means “daily spiritual reading” — of sacred texts like the Ramayan, Dnyaneshwari, Shivleelamrut, etc.</p>
+                        <p>Traditionally, people read them from a physical book, at a fixed time each day — sometimes in groups, sometimes alone. The act itself is calming, reflective, and emotional.</p>
+                        <p>But during COVID, a lot of devotees — especially seniors — felt disconnected. Books were not available. Temples were shut. Group Parayan stopped. Not everyone was comfortable using YouTube or complex apps.</p>
+                        <p>So the idea was born: let's build a digital version of Parayan that feels just like reading from a book — only simpler.</p>
+
+                        <h2>🧓 Designing for Seniors Is NOT the Same as Designing for “Everyone”</h2>
+                        <ul>
+                        <li><strong>No login wall:</strong> Why should someone need an OTP to read the Ramayan?</li>
+                        <li><strong>Bigger font sizes:</strong> No need to zoom or squint</li>
+                        <li><strong>Soft color palette:</strong> Earthy saffron, white, deep red — no harsh contrast</li>
+                        <li><strong>One-tap reading:</strong> Today's reading opens by default</li>
+                        <li><strong>No horizontal swipes:</strong> Vertical, scroll-free navigation</li>
+                        <li><strong>Clear Marathi typography:</strong> Truly local — not just translated</li>
+                        </ul>
+                        <p>We also ensured the app had zero ads, zero distractions, and no flashy animations. It needed to feel like prayer — not a gadget.</p>
+
+                        <h2>🌸 Regional + Emotional = Real Connection</h2>
+                        <ul>
+                        <li>Familiar icons (like a bell for “Start Reading”)</li>
+                        <li>Simple, no-explanation-needed buttons like “Start Parayan”</li>
+                        <li>Audio versions of readings for those who prefer listening</li>
+                        <li>Marathi-first interface — not a translation toggle</li>
+                        </ul>
+                        <p>We designed every detail thinking: “What would my Ajji or Aai want here?”</p>
+
+                        <h2>🙏 What I Learned</h2>
+                        <ul>
+                        <li>Simplicity isn't basic — it's respectful.</li>
+                        <li>Religious apps aren't about user retention. They're about spiritual routine.</li>
+                        <li>UX for seniors isn't just bigger fonts — it's empathy in action.</li>
+                        <li>You don't need to impress users. You need to comfort them.</li>
+                        </ul>
+
+                        <h2>💭 Final Thought</h2>
+                        <p>This wasn't just a design project. It was an emotional one — for people who rely on spiritual routine to stay calm, connected, and centered.</p>
+                        <p>We didn't add fireworks. We added silence, space, and ease — and that made all the difference.</p>
+                    </div>
+                    `
+                },
+                'Aarogya Club': {
+                    title: 'Aarogya Club: Building a Wellness Product for Women, by Women',
+                    category: 'Product Design / UX',
+                    date: 'August 7, 2025',
+                    readTime: '5 min read',
+                    image: 'https://images.unsplash.com/photo-1601039641958-6bbf02057f3e?w=800&h=400&fit=crop',
+                    tags: [
+                    'health app for women India',
+                    'yoga app UX',
+                    'wellness product UX',
+                    'female-led app',
+                    'inclusive health design'
+                    ],
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">You can't design a women's wellness app if you don't know what women truly need.</p>
+                        <p>And I don't mean generic “fitness goals” or diet plans written by celebrities. I mean real needs. From real women. Like:</p>
+                        <ul>
+                        <li>“How can I do yoga quietly before my kids wake up?”</li>
+                        <li>“What's a healthy snack I can make with what's in my kitchen?”</li>
+                        <li>“I don't want to weigh myself — I just want to feel good again.”</li>
+                        </ul>
+                        <p>That's the mindset that birthed Aarogya Club — a health and wellness app made for women, by women, with zero pressure and 100% empathy.</p>
+
+                        <h2>🌼 The Starting Point: Research, Not Assumptions</h2>
+                        <p>We started with 1:1 calls, WhatsApp groups, and long voice notes from women across India — mostly homemakers and working women from tier-2 and semi-urban cities.</p>
+                        <p>They didn't care about calorie counts. They cared about feeling less tired, sleeping better, and having 30 minutes for themselves without guilt.</p>
+                        <p>That insight shaped everything. We didn't build a fitness app. We built a wellness club that listens first, suggests later.</p>
+
+                        <h2>🧘‍♀️ UX Choices That Worked</h2>
+                        <ul>
+                        <li>No rigid “Day 1, Day 2” fitness programs</li>
+                        <li>Daily activities included yoga, breathing, recipe ideas, and emotional check-ins</li>
+                        <li>Women could scroll and select based on their mood, not a fixed track</li>
+                        <li>The UI was simple, calming, and fully in Marathi + Hindi — because wellness shouldn't need translation</li>
+                        <li>No pop-ups that guilt users (“You skipped your session!”)</li>
+                        <li>No body-shaming metrics — just “How do you feel today?” buttons</li>
+                        </ul>
+
+                        <h2>👭 Building Community, Not Just Content</h2>
+                        <p>Instead of video-first learning, we started community-led learning. Women recorded videos in their kitchens or balconies — showing exercises, healthy recipes, or just sharing positive affirmations.</p>
+                        <p>This built a new kind of engagement:</p>
+                        <ul>
+                        <li>Women learned from each other — not from some perfect fitness guru</li>
+                        <li>They felt seen and heard</li>
+                        <li>And most importantly, they came back the next day… not because we nudged them, but because they wanted to</li>
+                        </ul>
+
+                        <h2>⚕️ Designing Trust Without “Expert Overload”</h2>
+                        <p>We didn't plaster “Certified Nutritionist” everywhere. We didn't quote WHO stats on every screen.</p>
+                        <p>Instead, we focused on:</p>
+                        <ul>
+                        <li>Credible tone of voice (friendly, not bossy)</li>
+                        <li>Soft visual cues (warm colors, clean layouts)</li>
+                        <li>Simple language (“Try this if you have back pain after cooking” instead of “targeted lumbar stretches”)</li>
+                        <li>Real stories, real voices, real faces</li>
+                        </ul>
+
+                        <h2>💡 What I Learned</h2>
+                        <ul>
+                        <li>Health is emotional. Especially for women.</li>
+                        <li>Wellness is more about “How are you feeling?” than “How many steps did you walk?”</li>
+                        <li>Designing for women means respecting their context, their time, and their everyday battles</li>
+                        <li>Community can be the strongest product feature — if you build it with empathy</li>
+                        </ul>
+
+                        <h2>💭 Final Thought</h2>
+                        <p>Aarogya Club wasn't just another wellness app. It was a digital space where women could breathe, stretch, vent, laugh, and heal — together.</p>
+                        <p>And to me, that's what real product design is about: Creating something that doesn't just work… but feels right.</p>
+                    </div>
+                    `
+                },
+                'Design Thinking': {
+                    title: 'Design Thinking for Non-Designers: What I Taught My Team',
+                    category: 'Design Leadership / Cross-Functional Collaboration',
+                    date: 'August 7, 2025',
+                    readTime: '5 min read',
+                    image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&h=400&fit=crop',
+                    tags: [
+                    'design thinking India',
+                    'cross-functional UX',
+                    'UX workshops',
+                    'product mindset',
+                    'user-first culture'
+                    ],
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">You don't need to be a designer to think like one. But you do need to think like a user.</p>
+                        <p>That's what I tell every intern, developer, operations team member, or marketing colleague I work with.</p>
+                        <p>Because design isn't about Figma or color palettes. It's about how people feel when they use your product.</p>
+                        <p>So, in every product I've worked on — Myma, GoDocs, Aarogya Club, PMS App, Storytelling App — I've made it a habit to involve my team in design thinking. Whether they came from tech, admin, or marketing, they got a dose of UX, empathy, and user-first logic. And surprisingly? They started loving it.</p>
+
+                        <h2>🎯 Why Teach Design Thinking to Non-Designers?</h2>
+                        <p>Because otherwise, you end up with this:</p>
+                        <ul>
+                        <li>Devs building features that don't solve real problems</li>
+                        <li>Writers using complex words your users can't understand</li>
+                        <li>Testers checking functionality but ignoring experience</li>
+                        <li>Marketers selling features users don't even notice</li>
+                        </ul>
+                        <p>Design thinking fixes this — not with jargon, but with empathy.</p>
+
+                        <h2>🧩 Exercises I've Done with My Team</h2>
+
+                        <h3>💬 1. “What Would Your Mom Do?”</h3>
+                        <p>During a user flow meeting for GoDocs, I asked our intern: “If your mom opened this screen, would she know what to click?”</p>
+                        <p>She paused. “No… she'd call me.” Exactly. That's your UX problem.</p>
+                        <p><strong>💡 Lesson:</strong> If it's not obvious, it's not working.</p>
+
+                        <h3>📍 2. Emotion Tagging in Figma</h3>
+                        <p>While designing the Maan App (a mental wellness concept), we marked every screen with one word: Calm, Safe, Confused, Motivated.</p>
+                        <p>Each team member had to label their emotion per screen.</p>
+                        <p><strong>💡 Lesson:</strong> Feelings are data too.</p>
+
+                        <h3>🧪 3. Tap-Test Game</h3>
+                        <p>We made our dev team click through the Myma onboarding flow… without reading any text. Whoever reached the homepage fastest won a chai. The ones who didn't? Found bugs in clarity.</p>
+                        <p><strong>💡 Lesson:</strong> Nobody reads. Build for that.</p>
+
+                        <h3>🖍️ 4. Make a Flow from Scratch (No Tools)</h3>
+                        <p>I asked our intern to draw the GoDocs Pro flow… on paper. No Figma. No Canva. No device. They hated it — at first. But within 30 minutes, they understood the user journey 10x better.</p>
+                        <p><strong>💡 Lesson:</strong> Tools don't teach UX. People do.</p>
+
+                        <h2>🧠 My Own Learning: Design Without the Buzzwords</h2>
+                        <p>When I started in 2019, I didn't know what UX meant. I was just listing problems and solving them with better screens.</p>
+                        <p>I didn't call it “user empathy.” I called it common sense.</p>
+                        <p>But now that I know the terms — wireframes, usability, cognitive load — I don't overuse them. Because most great products are built by people who:</p>
+                        <ul>
+                        <li>Ask dumb questions</li>
+                        <li>Listen deeply</li>
+                        <li>Don't design to impress, but to solve</li>
+                        </ul>
+
+                        <h2>📢 Why Every Team Must Think Like a User</h2>
+                        <p>Because even the best Figma file fails if your developer doesn't understand the user's pain.</p>
+                        <p>Design thinking across teams leads to:</p>
+                        <ul>
+                        <li>Better QA</li>
+                        <li>Fewer reworks</li>
+                        <li>Stronger product decisions</li>
+                        <li>More love from users</li>
+                        </ul>
+                        <p>And isn't that the whole point?</p>
+
+                        <h2>💬 Final Thought</h2>
+                        <p>Design thinking isn't a workshop. It's a mindset.</p>
+                        <p>And the moment your team starts thinking like your user, your product starts working better.</p>
+                        <p>Don't wait for a degree in UX. Start by asking: “What would confuse my dad here?”</p>
+                        <p>Trust me, that's more valuable than any fancy UX certification.</p>
+                    </div>
+                `
+                },
+                'Failure': {
+                    title: 'What Failure Taught Me More Than Success Ever Could',
+                    category: 'Career & Growth',
+                    date: 'August 7, 2025',
+                    readTime: '6 min read',
+                    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&h=400&fit=crop',
+                    tags: [
+                    'learnings from failure',
+                    'career journey',
+                    'women in product',
+                    'product mistakes',
+                    'startup lessons',
+                    'education and experience'
+                    ],
+                    content: `
+                    <div class="article-content">
+                        <p class="text-lg">They say failure is the best teacher. But when it happens, it doesn't feel like a lesson. It feels like a punch in the gut.</p>
+                        <p>I've been there.</p>
+                        <p>From switching careers to working on products that never launched, to having days where I couldn't design a visiting card due to burnout — failure has been a part of my journey. And looking back, I'm grateful for every bit of it.</p>
+                        <p>Because it didn't just shape my skills. It shaped me.</p>
+
+                        <h2>🎓 Lesson 1: Education Doesn't Guarantee Direction</h2>
+                        <p>I did my BFA in Applied Arts. At that time, I thought I'd become an advertising professional — copy, design, maybe some branding.</p>
+                        <p>But I didn't get placed in a big agency. I started with small firms, print ads, brochures, and local clients. I was doing decent work… but I wasn't growing.</p>
+                        <p>It felt like failure. I questioned my degree. My choices. My potential.</p>
+                        <p>But here's the truth: Education gives you skills, not clarity. And clarity often comes when things don't work out.</p>
+                        <p>Today, I'm a product manager, UX researcher, designer, copywriter, campaign planner — and co-founder of social initiatives.</p>
+                        <p>I didn't learn that in college. I learned that through missteps, experiments, and trying things that didn't make sense at the time.</p>
+
+                        <h2>📱 Lesson 2: Not Every App Should Be an App</h2>
+                        <p>One of our early projects was GoDocs — a platform to help small business owners (especially women) get government certificates like FSSAI and MSME.</p>
+                        <p>We started with calls and WhatsApp. It worked brilliantly. Then we built an app.</p>
+                        <p>It looked great. Functioned well. Even got downloads. But guess what? Users didn't use it.</p>
+                        <p>They preferred talking on WhatsApp. They found the form-filling easier with voice notes. The app felt like friction, not convenience.</p>
+                        <p>It failed — not because of bad design, but because we misunderstood the behavior of our real users.</p>
+                        <p><strong>Lesson?</strong> Technology is not always the answer. Sometimes trust is.</p>
+
+                        <h2>🧠 Lesson 3: Learning Without Labels</h2>
+                        <p>When I started working on Myma, I didn't know what UX was. I wasn't aware of words like “user flow,” “QA testing,” or “product-led growth.”</p>
+                        <p>I was just solving problems — listing issues, drawing wireframes, coordinating with devs, and writing content that felt human.</p>
+                        <p>Later, I realized I had been doing product management, UX research, and user testing — without knowing the terms.</p>
+                        <p><strong>Lesson?</strong> Don't wait for the perfect title or training. Start doing. Let the label come later.</p>
+
+                        <h2>💔 Lesson 4: You Can Burn Out Doing What You Love</h2>
+                        <p>There was a phase — post-COVID — where I was mentally exhausted. I had been working non-stop: building products, managing teams, coordinating projects, writing, testing, designing — wearing 5 hats a day.</p>
+                        <p>And then, suddenly, I couldn't create. No ideas. No focus. No motivation.</p>
+                        <p>It scared me. I thought I had lost my “spark.”</p>
+                        <p>But that failure taught me to pause. To breathe. To ask for help. To accept that even passionate people need rest.</p>
+                        <p>Now, I don't chase 24/7 hustle. I chase consistency, clarity, and calmness.</p>
+
+                        <h2>🧗‍♀️ Lesson 5: Failure Builds Empathy</h2>
+                        <p>When I work with users today — whether it's a homemaker trying to earn ₹500 from cooking, or a senior citizen using a spiritual app for the first time — I see them with softness.</p>
+                        <p>Because I've failed too. And that makes me design with empathy. Lead with understanding. Write with honesty.</p>
+                        <p>I don't want to impress people with tech. I want to serve them with care.</p>
+
+                        <h2>🌱 Final Thought</h2>
+                        <p>Failure is not a full stop. It's a redirection.</p>
+                        <p>If everything had gone perfectly in my career, I wouldn't have:</p>
+                        <ul>
+                        <li>Built Myma from 0 to 100K+ users</li>
+                        <li>Co-founded Swayampoorna and impacted 1.2 lakh+ women</li>
+                        <li>Created branding for meaningful campaigns</li>
+                        <li>Managed teams, products, people — without a business degree</li>
+                        <li>Designed 10+ apps that solve real-world problems</li>
+                        </ul>
+                        <p>So if you're in a season of failure — breathe.</p>
+                        <p>You're still building. Just not in the way you expected.</p>
+                        <p><strong>The biggest success?</strong> Still caring enough to try again.</p>
+                    </div>
                     `
                 }
             };
+
+            if (articles[articleId]) {
+                const article = articles[articleId];
+                modalBody.innerHTML = `
+                    <div class="mb-6">
+                        <img src="${article.image}" alt="${article.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <div class="mb-4">
+                            <span class="text-sm font-semibold text-gray-500 tracking-wide uppercase">${article.category}</span>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">${article.title}</h1>
+                        <div class="flex items-center text-gray-500 text-sm space-x-4 mb-6">
+                            <span>${article.date}</span>
+                            <span>•</span>
+                            <span>${article.readTime}</span>
+                        </div>
+                    </div>
+                    ${article.content}
+                `;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
+
+        function closeModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('articleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b3f94b5211897b',t:'MTc1NDU0MDM0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-        <!-- Contact Footer -->
+
+<!-- Contact Footer -->
     <footer class="bg-black text-white py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-wrap justify-between items-center">
