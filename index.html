@@ -48,7 +48,7 @@
         .stagger-4 { animation-delay: 0.4s; }
     </style>
 </head>
-<body class="bg-white font-sans overflow-x-hidden">
+<body class="bg-white font-sans overflow-x-hidden flex flex-col min-h-screen">
     <!-- Navigation -->
     <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,6 +65,8 @@
         </div>
     </div>
     </nav>
+
+    <main>
 
     <!-- Home Page -->
     <div id="home-page" class="page-content">
@@ -311,8 +313,9 @@
                     </div>
                 </div>
             </div>    
+    </main>
 
-        <!-- Contact Footer -->
+    <!-- Contact Footer -->
     <footer class="bg-black text-white py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-wrap justify-between items-center">
@@ -337,7 +340,7 @@
         </div>
     </footer>
 
-    <script>
+<script>
         // Page Navigation
         function showPage(pageId) {
             // This would typically navigate to different pages
