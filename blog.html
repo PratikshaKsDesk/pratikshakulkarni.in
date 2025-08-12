@@ -154,7 +154,7 @@
     <main id="design-page" class="page-content flex-grow">
         <div class="max-w-7xl mx-auto px-4 py-16 pb-4">
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">Some Learnings, Some Sayings!</h1>
+                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">Some Learnings... Some Sayings…</h1>
                 <p class="text-2xl text-gray-700 font-light">"Exploring the art of writing... from real-world lessons in business, product making, and marketing to creative storytelling through stories, books, and poetry that inspire."</p>
             </main>
         
@@ -1655,5 +1655,30 @@
             }
         });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('designModal');
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close if clicking outside the modal content
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Optional: Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+});
+</script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96879892228a396c',t:'MTc1NDA3NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
