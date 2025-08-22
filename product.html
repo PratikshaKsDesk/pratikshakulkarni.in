@@ -282,6 +282,44 @@
                         '/images/design/myma_app_screens_3.webp',
                         '/images/design/myma_app_screens_4.webp',
                         '/images/design/myma_app_screens_5.webp'
+                    ],
+                    links: [
+                    { label: "Website", url: "https://myma.in/" },
+                    { label: "Instagram", url: "https://www.instagram.com/mymaindia_official/" },
+                    { label: "Facebook", url: "https://www.facebook.com/officialmyma" },
+                    { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.mymameals.mainapp&hl=en_IN&gl=US" },
+                    { label: "App Store", url: "https://apps.apple.com/in/app/myma-home-cooked-food/id1497424909?platform=iphone" },
+                    ],
+                    videos: [
+                    { 
+                    label: "Promotion Video", 
+                    videoId: "SWmy1tiVfSI", 
+                    url: "https://youtu.be/SWmy1tiVfSI?si=FWirQliMxHR68_HD" 
+                    },
+
+                    { 
+                    label: "News", 
+                    videoId: "VZZndO-2VRs", 
+                    url: "https://youtu.be/VZZndO-2VRs?si=lWcOQSjpP3EiUHNj" 
+                    },
+
+                    { 
+                    label: "Mera Kitchen, Mera Business Campaign", 
+                    videoId: "THinTp50Wpc", 
+                    url: "https://youtu.be/THinTp50Wpc?si=qxlvT_eR7o76D2HS" 
+                    },
+
+                    { 
+                    label: "Business Explainatory Video", 
+                    videoId: "HHJQYlffvAY", 
+                    url: "https://youtu.be/HHJQYlffvAY?si=c6rmnScQHb_Id2Xn" 
+                    },
+
+                    { 
+                    label: "Business Explainatory Video", 
+                    videoId: "_0zmf5TPhWM", 
+                    url: "https://youtu.be/_0zmf5TPhWM?si=pgpE6Vys7U4ds5vO" 
+                    },
                     ]
                 },
 
@@ -314,7 +352,49 @@
                 ],
                 hideCurrentState: true, 
                 currentState: 'Outcome: Swayampoorna became a supportive ecosystem for women — offering motivation, education, and opportunities. By blending community-driven engagement with digital platforms, we enabled women to take their first steps toward independence with confidence.',
-                images: []
+                images: [],
+                links: [
+                    { label: "Website", url: "https://swayampoorna.com/" },
+                    { label: "Instagram", url: "https://www.instagram.com/swayampoorna_foundation/?hl=en" },
+                    { label: "Facebook", url: "https://www.facebook.com/meswayampoorna" },
+                    ],
+                    videos: [
+                    { 
+                    label: "तुमच्या आमच्यातली 'ती'", 
+                    videoId: "KTrZSXp5VAs", 
+                    url: "https://youtu.be/KTrZSXp5VAs?si=DAuBEXDaZtzaZ-HQ" 
+                    },
+
+                    { 
+                    label: "प्रत्येक आईसाठी एक प्रश्न...", 
+                    videoId: "JayehX1_UII", 
+                    url: "https://youtu.be/JayehX1_UII?si=7cF8kArSi9TVyIp7" 
+                    },
+
+                    { 
+                    label: "Let's Appreciate Her", 
+                    videoId: "3c_lfNcpk-w", 
+                    url: "https://youtu.be/3c_lfNcpk-w?si=PhD7VaMetCKpPDD9" 
+                    },
+
+                    { 
+                    label: "Let's Appreciate Her", 
+                    videoId: "mYm25k7nHVc", 
+                    url: "https://youtu.be/mYm25k7nHVc?si=HTR7y18sIUyt5kf7" 
+                    },
+
+                    { 
+                    label: "Let's Appreciate Her", 
+                    videoId: "AEc0jZxkU4Y", 
+                    url: "https://youtu.be/AEc0jZxkU4Y?si=XLiUqWdO-5xIrugH" 
+                    },
+
+                    { 
+                    label: "Let's Appreciate Her", 
+                    videoId: "LL2EDkfqge4", 
+                    url: "https://youtu.be/LL2EDkfqge4?si=NRF4l4n_sxc28GR6" 
+                    },
+                    ]
                 },
 
 
@@ -538,6 +618,23 @@
                 modal.classList.add('flex');
                 document.body.style.overflow = 'hidden';
             }
+            if (data.links && data.links.length > 0) 
+            {
+            const linksHtml = `
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold mb-3">Online Presence</h3>
+                    <div class="flex flex-wrap gap-3">
+                        ${data.links.map(l => `
+                            <a href="${l.url}" target="_blank" 
+                            class="px-4 py-2 bg-black text-white rounded-lg text-sm hover:bg-gray-800 transition">
+                            ${l.label}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            content.innerHTML += linksHtml;
+        }
         }
 
         function generateProductContent(data) {
@@ -564,16 +661,16 @@
                 ` : ''}
 
                 ${(!data.hideKpis && data.kpis) ? `
-                <h3 class="text-2xl font-semibold text-indigo-600">Impact & Metrics</h3>
-                <ul class="space-y-2">
-                    ${data.kpis.map(kpi => `<li>• ${kpi}</li>`).join('')}
-                </ul>
-            ` : ''}
+                    <h3 class="text-2xl font-semibold text-indigo-600">Impact & Metrics</h3>
+                    <ul class="space-y-2">
+                        ${data.kpis.map(kpi => `<li>• ${kpi}</li>`).join('')}
+                    </ul>
+                ` : ''}
 
-               ${(!data.hideCurrentState && data.currentState) ? `
-                <h3 class="text-2xl font-semibold text-teal-600">Current State</h3>
-                <p>${data.currentState}</p>
-            ` : ''}
+                ${(!data.hideCurrentState && data.currentState) ? `
+                    <h3 class="text-2xl font-semibold text-teal-600">Current State</h3>
+                    <p>${data.currentState}</p>
+                ` : ''}
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     ${data.images.map((img, index) => `
@@ -587,6 +684,40 @@
                         </div>
                     `).join('')}
                 </div>
+
+                ${data.links && data.links.length > 0 ? `
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-semibold text-pink-600">Digital Presence</h3>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            ${data.links.map(l => `
+                                <a href="${l.url}" target="_blank" 
+                                class="px-4 py-2 bg-black text-white rounded-lg text-sm hover:bg-gray-800 transition">
+                                ${l.label}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${data.videos && data.videos.length > 0 ? `
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-semibold text-red-500">Videos</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+                            ${data.videos.map(v => `
+                                <a href="${v.url}" target="_blank" class="relative group">
+                                    <img src="https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg" 
+                                        alt="${v.label}" 
+                                        class="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="bg-black bg-opacity-60 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition">
+                                            ▶ ${v.label}
+                                        </span>
+                                    </div>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
 
             </div>
         `;
