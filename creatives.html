@@ -4,19 +4,34 @@
     <!-- Navigation -->
     <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div class="flex justify-between items-center h-20">
-            <div class="flex items-center">
-                <a href="index.html" class="text-3xl font-bold text-white tracking-wide">Pratiksha Kulkarni</a>
+            <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+                Pratiksha Kulkarni
+            </a>
+
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Links -->
+            <div id="menu" class="hidden md:flex flex-col md:flex-row md:space-x-1 absolute md:static top-20 left-0 w-full md:w-auto bg-black md:bg-transparent">
+                <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+                <a href="product.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
+                <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+                <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
             </div>
-            <div class="flex space-x-1">
-                <a href="index.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
-                <a href="product.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
-                <a href="creatives.html" class="px-6 py-3 rounded-lg bg-white text-black">Creatives</a>
-                <a href="blog.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
             </div>
         </div>
-    </div>
-    </nav>
+        </nav>
+
+        <script>
+        // Toggle mobile menu
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+        </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creatives</title>
@@ -55,11 +70,11 @@
                 <p class="text-2xl text-gray-700 font-light">All of these works began with an idea...shaped through writing, visualization, and design. Often, my role has been to think, ideate, and craft the narrative behind them, ensuring every piece communicates clearly and creates impact.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Row 1 -->                   
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design1')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design1')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_firstock_broking.webp" alt="Brand Identity System" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_firstock_broking.webp" alt="Brand Identity System" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Firstock Broking Private limited</h3>
@@ -71,9 +86,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design2')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design2')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_ks_engineers.webp" alt="E-commerce Platform" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_ks_engineers.webp" alt="E-commerce Platform" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">KS Engineers</h3>
@@ -85,9 +100,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design3')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design3')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_kathakali_restaurant.webp" alt="Mobile App Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_kathakali_restaurant.webp" alt="Mobile App Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Kathakali Restaurant</h3>
@@ -99,9 +114,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design4')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design4')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_myma.webp" alt="Web Application UI" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_myma.webp" alt="Web Application UI" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Myma</h3>
@@ -113,9 +128,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design5')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design5')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_nakhara.webp" alt="Print Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_nakhara.webp" alt="Print Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Nakhara Makeup Artist</h3>
@@ -127,9 +142,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design6')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design6')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_swayampoorna_foundation.webp" alt="Logo Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_swayampoorna_foundation.webp" alt="Logo Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Swayampoorna Foundation</h3>
@@ -141,9 +156,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design7')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design7')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_chandrapur_urban.webp" alt="Packaging Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_chandrapur_urban.webp" alt="Packaging Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Chandrapur Urban</h3>
@@ -155,9 +170,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design8')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift"  onclick="showDesignDetail('design8')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_mayaa_artcity.webp" alt="Social Media Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_mayaa_artcity.webp" alt="Social Media Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Identity Design</h3>
@@ -169,9 +184,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design9')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design9')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_pavanraje_multistate.webp" alt="Illustration Work" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_pavanraje_multistate.webp" alt="Illustration Work" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Pavanraje Multistate</h3>
@@ -183,9 +198,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design10')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design10')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_ozo.webp" alt="Typography Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_ozo.webp" alt="Typography Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Ozo Aesthetic Clinique</h3>
@@ -197,9 +212,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design11')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design11')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_biba.webp" alt="Motion Graphics" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_biba.webp" alt="Motion Graphics" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Biba</h3>
@@ -211,9 +226,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design12')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design12')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_rejoyce.webp" alt="UX Research" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_rejoyce.webp" alt="UX Research" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Rejoyce</h3>
@@ -225,9 +240,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design13')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design13')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_aarogya_club.webp" alt="Typography Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_aarogya_club.webp" alt="Typography Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Aarogya Club</h3>
@@ -239,9 +254,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design14')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design14')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_unique_mpsc_upsc_academy.webp" alt="Motion Graphics" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_unique_mpsc_upsc_academy.webp" alt="Motion Graphics" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Unique Academy</h3>
@@ -253,9 +268,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design15')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design15')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_senses_spalon.webp" alt="UX Research" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_senses_spalon.webp" alt="UX Research" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Senses Spalon</h3>
@@ -267,9 +282,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design16')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design16')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_lemontree_media.webp" alt="Typography Design" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_lemontree_media.webp" alt="Typography Design" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">LemonTree Media Works</h3>
@@ -281,9 +296,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design17')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design17')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_urth_trooper.webp" alt="Motion Graphics" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_urth_trooper.webp" alt="Motion Graphics" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">Urth Trooper</h3>
@@ -295,9 +310,9 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" style="aspect-ratio: 4/3; height: 280px;" onclick="showDesignDetail('design18')">
+                    <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showDesignDetail('design18')">
                         <div class="h-32 overflow-hidden">
-                            <img src="\images\design\creative_page_work_thumbnail_ad_webstar.webp" alt="UX Research" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <img src="\images\design\creative_page_work_thumbnail_ad_webstar.webp" alt="UX Research" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4">
                             <h3 class="text-sm font-bold text-black mb-1 tracking-wide">AD Webstar</h3>
