@@ -17,9 +17,6 @@
         flex: 1;
     }
 
-    .product-card {
-        aspect-ratio: 3/4;
-    }
 
     .hover-lift:hover {
         transform: translateY(-2px);
@@ -41,19 +38,33 @@
     <!-- Navigation -->
     <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div class="flex justify-between items-center h-20">
-            <div class="flex items-center">
-                <a href="index.html" class="text-3xl font-bold text-white tracking-wide">Pratiksha Kulkarni</a>
+            <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+                Pratiksha Kulkarni
+            </a>
+
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Links -->
+            <div id="menu" class="hidden md:flex flex-col md:flex-row md:space-x-1 absolute md:static top-20 left-0 w-full md:w-auto bg-black md:bg-transparent">
+                <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+                <a href="product.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
+                <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+                <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
             </div>
-            <div class="flex space-x-1">
-                <a href="index.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
-                <a href="product.html" class="px-6 py-3 rounded-lg bg-white text-black">Products</a>
-                <a href="creatives.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
-                <a href="blog.html" class="px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
             </div>
         </div>
-    </div>
-    </nav>
+        </nav>
+
+        <script>
+        // Toggle mobile menu
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+        </script>
 
     <!-- Products Page -->
     <main class="flex-grow">
@@ -63,14 +74,15 @@
                 <p class="text-2xl text-gray-700 font-light">I've worked on apps, communities, and social initiatives, leading them from research and design to launch, growth, and adoption. In small, fast-moving teams, I've taken on multiple roles across product, UX, marketing, and QA. This experience shaped my ability to align user needs with business goals and deliver products that truly work in the real world.</p>
             </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Product 1 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product1')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="images/design/mobile_app_product_Myma.webp" alt="Myma" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product1')">
+
+                <div class="h-w-full overflow-hidden">
+                    <img src="images/design/mobile_app_product_Myma.webp" alt="Myma" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Myma<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Myma</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A mobile app enabling homemakers to start their food businesses from home and individuals to order fresh, home-cooked meals.</p>
@@ -83,12 +95,12 @@
             </div>
 
             <!-- Product 2 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product2')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\swayampoorna_social_foundation.webp" alt="Swayampoorna Foundation" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product2')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\swayampoorna_social_foundation.webp" alt="Swayampoorna Foundation" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Swayampoorna Foundation<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Swayampoorna Foundation</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A social initiative aimed at motivating, educating, and providing opportunities for women to realize their potential and build their own identities.</p>
@@ -101,12 +113,12 @@
             </div>
 
             <!-- Product 3 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product3')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\mobile_app_product_pms.webp" alt="Pavanraje Multistate" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product3')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\mobile_app_product_pms.webp" alt="Pavanraje Multistate" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Pavanraje Multistate<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Pavanraje BMS</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A SaaS product designed for multistate businesses, enabling seamless management of everything from daily attendance to customer loan applications.</p>
@@ -119,12 +131,12 @@
             </div>
 
             <!-- Product 4 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product4')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\mobile_app_product_godocs_services.webp" alt="GoDocs Services" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product4')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\mobile_app_product_godocs_services.webp" alt="GoDocs Services" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">GoDocs Services<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">GoDocs Services</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A product that simplifies obtaining government documents (FSSAI License, Udyam, Shop Act, etc) at minimal cost via mobile.</p>
@@ -137,12 +149,12 @@
             </div>
 
             <!-- Product 5 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product5')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\community_product_online_parayan.webp" alt="Online Parayan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product5')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\community_product_online_parayan.webp" alt="Online Parayan" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Online Parayan<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Online Parayan</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">Swayampoorna Foundation built a community for followers of Saint Dnyaneshwar, Saint Tukaram, Lord Vitthala, and others. </p>
@@ -155,12 +167,12 @@
             </div>
 
             <!-- Product 6 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product6')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\product_aarogya_club.webp" alt="Aarogya Club" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product6')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\product_aarogya_club.webp" alt="Aarogya Club" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Aarogya Club<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Aarogya Club</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A community initiative by Swayampoorna Foundation offering online yoga classes, primarily targeting women.</p>
@@ -173,12 +185,12 @@
             </div>
 
             <!-- Product 7 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product7')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\mobile_app_product_ecommerce_Maan.webp" alt="Maan India" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product7')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\mobile_app_product_ecommerce_Maan.webp" alt="Maan India" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Maan India<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Maan India</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">Initiative aimed at empowering women with diverse skills. The platform connects artisans to buyers seeking local, handcrafted products. </p>
@@ -191,12 +203,12 @@
             </div>
 
             <!-- Product 8 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product8')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\mobile_app_product_elearning.webp" alt="E-Learning App" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product8')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\mobile_app_product_elearning.webp" alt="E-Learning App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">E-Learning App<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">E-Learning App</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">This project aims to bridge the gap between knowledge seekers and subject matter experts.</p>
@@ -209,12 +221,12 @@
             </div>
 
             <!-- Product 9 -->
-            <div class="bg-white rounded-none shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift product-card" onclick="showProductDetail('product9')">
-                <div class="h-3/5 overflow-hidden">
-                    <img src="\images\design\mobile_app_product_Storytelling.webp" alt="Storytelling App" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product9')">
+                <div class="h-w-full overflow-hidden">
+                    <img src="\images\design\mobile_app_product_Storytelling.webp" alt="Storytelling App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder w-full h-full" style="display: none;">Storytelling App<br>400x300px</div>
                 </div>
-                <div class="p-6 h-2/5 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Storytelling App</h3>
                         <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">This app connects children with elderly storytellers, fostering intergenerational bonding through storytelling.</p>
@@ -676,7 +688,7 @@
                     ${data.images.map((img, index) => `
                         <div class="overflow-hidden rounded-lg border shadow-md">
                             <img src="${img}" alt="Screenshot ${index + 1}" 
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" 
                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="image-placeholder w-full h-full" style="display: none;">
                                 Screen ${index + 1}<br>300x200px
