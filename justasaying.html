@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just A Saying | Pratiksha Kulkarni</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hover-lift { transition: transform 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-4px); }
+    .fade-in { animation: fadeIn 0.6s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .read-more-btn:hover { text-decoration: underline; }
+    .modal { display: none; }
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      z-index:1000;
+    }
+    .modal-content {
+      background: white;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    }
+    /* Mobile menu fade + slide animation */
+    #mobileMenu {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #mobileMenu.flex {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans flex flex-col">
+
+  <!-- Navigation -->
+  <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+          Pratiksha Kulkarni
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+          ☰
+        </button>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex flex-row space-x-1">
+          <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+          <a href="product.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
+          <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+          <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
+          <a href="writeups.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Just A Saying</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 hidden flex-col justify-center items-center space-y-8 z-50">
+    <a href="index.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Home</a>
+    <a href="product.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Products</a>
+    <a href="creatives.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Creatives</a>
+    <a href="blog.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Blog</a>
+    <a href="writeups.html" class="text-white text-2xl font-bold hover:text-gray-300 transition">Just A Saying</a>
+    <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+  </div>
+
+  <!-- Page Content -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-black mb-4">Just A Saying</h1>
+      <p class="text-lg text-gray-700">A personal corner for my poems, thoughts & random writings (not professional).</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Post 1 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Hindi • Poem]</span>
+  <h3 class="text-lg font-bold text-black my-2">खुद को कर बुलंद इतना</h3>
+  <p class="text-gray-600 text-sm mb-4">चाहे कोणी काही बोले, स्वतःला कधीच कमजोर न समजणे...</p>
+  <button onclick="openModal('post1')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 2 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">चक्रीवादळ... मनातलं</h3>
+  <p class="text-gray-600 text-sm mb-4">सतत सतावणाऱ्या विचारांचं, भीतीचं आणि जिद्दीचं चक्रीवादळ...</p>
+  <button onclick="openModal('post2')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 3 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">सवय...</h3>
+  <p class="text-gray-600 text-sm mb-4">चांगली सवय घडवते, वाईट सवय बिघडवते, आणि व्यक्ती बदलवते...</p>
+  <button onclick="openModal('post3')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 4 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">माणूस आहे...</h3>
+  <p class="text-gray-600 text-sm mb-4">पडतो, थकतो, चुकतो पण महत्वाचं आहे पुन्हा उभं राहणं...</p>
+  <button onclick="openModal('post4')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 5 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">भीती वाटते...</h3>
+  <p class="text-gray-600 text-sm mb-4">जेव्हा समोरचा न कळता मनातील सगळं वेगळं समजतो...</p>
+  <button onclick="openModal('post5')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 6 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">जाणीव व्हायला वेळ लागतो...</h3>
+  <p class="text-gray-600 text-sm mb-4">स्वतःची चूक, स्वभाव, विचार कळणं हेच खरं महत्वाचं...</p>
+  <button onclick="openModal('post6')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 7 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">कधीतरी...</h3>
+  <p class="text-gray-600 text-sm mb-4">कधी स्वप्नं पूर्ण होतात, कधी तुटतात... पण सगळे दिवस सारखे नसतात.</p>
+  <button onclick="openModal('post7')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 8 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">रोजचा दिवस नवा...</h3>
+  <p class="text-gray-600 text-sm mb-4">रोज नवे प्रयत्न, नवे अडथळे आणि शेवटी नव्या जीतचा आनंद...</p>
+  <button onclick="openModal('post8')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 9 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">तु वेळ नको घालवू...</h3>
+  <p class="text-gray-600 text-sm mb-4">ध्येयापासून मागे खेचणाऱ्या गोष्टींपेक्षा स्वतःवर विश्वास ठेव.</p>
+  <button onclick="openModal('post9')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 10 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">एक भेट...</h3>
+  <p class="text-gray-600 text-sm mb-4">जी भेट आयुष्य बदलवते, विचार बदलवते आणि मन आनंदी करते.</p>
+  <button onclick="openModal('post10')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 11 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">धावत असतो आपण...</h3>
+  <p class="text-gray-600 text-sm mb-4">फॅमिली, करिअर, प्रेम... पण शेवटी खरंच काय कमावतो?</p>
+  <button onclick="openModal('post11')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 12 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">“You have changed”</h3>
+  <p class="text-gray-600 text-sm mb-4">वेळ, माणसं आणि अनुभव बदलतात; आणि आपणही बदलतो...</p>
+  <button onclick="openModal('post12')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 13 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">माणूस निघून जातो...</h3>
+  <p class="text-gray-600 text-sm mb-4">कोणी जगातून, कोणी आयुष्यातून... मागे सोडतो फक्त आठवणी.</p>
+  <button onclick="openModal('post13')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 14 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">बालिका... लाडाची लेक</h3>
+  <p class="text-gray-600 text-sm mb-4">आई-वडिलांची जीव असते ती; पण समाज तिच्याकडे वेगळ्याच नजरेने पाहतो...</p>
+  <button onclick="openModal('post14')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 15 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">तो... पुरुष असतो</h3>
+  <p class="text-gray-600 text-sm mb-4">स्वप्नं मारून, जबाबदाऱ्या पेलूनही ‘काहीच नाही वाटत’ हे ऐकून घेतो.</p>
+  <button onclick="openModal('post15')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 16 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">नसतं माहीत...</h3>
+  <p class="text-gray-600 text-sm mb-4">आपले शब्द-हावभाव समोरच्याला त्रास देत आहेत का आनंद देत आहेत?</p>
+  <button onclick="openModal('post16')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 17 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">सहजच एक भेट...</h3>
+  <p class="text-gray-600 text-sm mb-4">जुन्या नात्यात freshness आणणारी, जीवनात tonic घेऊन येणारी भेट.</p>
+  <button onclick="openModal('post17')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 18 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">किती ताकद असते...</h3>
+  <p class="text-gray-600 text-sm mb-4">क्षण, माणसं आणि विचार आयुष्य बदलून टाकण्याची ताकद ठेवतात.</p>
+  <button onclick="openModal('post18')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 19 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">प्रत्येकाच्या आयुष्यात येते ती व्यक्ती</h3>
+  <p class="text-gray-600 text-sm mb-4">जी सांगते की आयुष्य सुंदर आहे आणि प्रत्येक क्षण जगण्यासारखा आहे.</p>
+  <button onclick="openModal('post19')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 20 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">हो... प्रेमात पडलीये ती</h3>
+  <p class="text-gray-600 text-sm mb-4">साडेसात वर्षांनी पुन्हा भेटून नव्याने उमललेलं पहिलं प्रेम...</p>
+  <button onclick="openModal('post20')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 21 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">गुंतून बसतो माणूस...</h3>
+  <p class="text-gray-600 text-sm mb-4">छोट्याशा भेटीत अडकून, स्वप्नातून वास्तवात येतो.</p>
+  <button onclick="openModal('post21')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 22 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">विचारू का रे एक प्रश्न तुला...</h3>
+  <p class="text-gray-600 text-sm mb-4">शेवटच्या भेटीनंतर मनात फुललेल्या भावनांचा प्रश्न...</p>
+  <button onclick="openModal('post22')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 23 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">बिंधास्त स्वतःच्या मनाचं करा</h3>
+  <p class="text-gray-600 text-sm mb-4">लोक काय म्हणतील यापेक्षा स्वतःच्या हट्टाला प्रामाणिक राहा.</p>
+  <button onclick="openModal('post23')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 24 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">नातं ते...</h3>
+  <p class="text-gray-600 text-sm mb-4">जिथे आदर, समजूतदारपणा आणि स्वीकार आहे; तिथे खरं नातं टिकतं.</p>
+  <button onclick="openModal('post24')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 25 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">'लिहिणे' काही खायचं काम नाही</h3>
+  <p class="text-gray-600 text-sm mb-4">लेखक होणं म्हणजे फक्त लिहिणं नाही, तर भावना उलगडणं आहे.</p>
+  <button onclick="openModal('post25')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 26 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">दिवसातला थोडा तरी वेळ...</h3>
+  <p class="text-gray-600 text-sm mb-4">स्वतःसाठी वेळ काढणं म्हणजेच खरं refresh होणं.</p>
+  <button onclick="openModal('post26')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 27 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">तोंड द्यावेच लागते...</h3>
+  <p class="text-gray-600 text-sm mb-4">प्रसंग असो वा हार, आनंद असो वा नाती — तोंड द्यावंच लागतं.</p>
+  <button onclick="openModal('post27')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 28 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">आयुष्यात एकदा तरी...</h3>
+  <p class="text-gray-600 text-sm mb-4">तुटून पुन्हा उभं राहणं, नमणं आणि बंडखोर होणं गरजेचं आहे.</p>
+  <button onclick="openModal('post28')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 29 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">कधी कधी भीती वाटते...</h3>
+  <p class="text-gray-600 text-sm mb-4">स्पष्ट बोलताना, प्रश्न विचारताना, मन मांडताना आपण थबकतो.</p>
+  <button onclick="openModal('post29')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 30 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">दिवस दररोज बदलतो...</h3>
+  <p class="text-gray-600 text-sm mb-4">माणूस, विचार, नाती — सगळं बदलतं; ते मान्य केलं की त्रास कमी.</p>
+  <button onclick="openModal('post30')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 31 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">काय मिळतं एखाद्याला...</h3>
+  <p class="text-gray-600 text-sm mb-4">खोटं पाडून, दुखावून किंवा आरोप करून खरा आनंद मिळतो का?</p>
+  <button onclick="openModal('post31')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 32 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">आठवणी...</h3>
+  <p class="text-gray-600 text-sm mb-4">ज्या पुढे जाणं थांबवतात तर कधी थांबलेल्याला पुढे नेण्याचं बळ देतात.</p>
+  <button onclick="openModal('post32')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 33 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">'ती'ला नक्की काय हवं असतं?</h3>
+  <p class="text-gray-600 text-sm mb-4">आराम, कौतुक, विश्वास — अगदी साध्या पण अतिशय महत्वाच्या गोष्टी.</p>
+  <button onclick="openModal('post33')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 34 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">ती... स्त्री असते</h3>
+  <p class="text-gray-600 text-sm mb-4">घर, ऑफिस, समाज — सर्व ठिकाणी जबाबदाऱ्या उचलणारी ती.</p>
+  <button onclick="openModal('post34')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 35 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">काहीच फरक नाही का?</h3>
+  <p class="text-gray-600 text-sm mb-4">ती केलेल्या चुका माझ्याशी जोडून पाहणं योग्य आहे का?</p>
+  <button onclick="openModal('post35')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 36 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">माणूस आहे... मन आहे</h3>
+  <p class="text-gray-600 text-sm mb-4">स्वप्न तुटली, नाती दूर गेली तरी त्रास होतोच.</p>
+  <button onclick="openModal('post36')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 37 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">समजून घेणाऱ्याने समजून घ्यावे</h3>
+  <p class="text-gray-600 text-sm mb-4">गृहीत धरणाऱ्याच्या वागण्याने समजून घेणाऱ्याचं मन तुटतं.</p>
+  <button onclick="openModal('post37')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 38 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">खुश राहणं काही 'कॉस्टली' नाही</h3>
+  <p class="text-gray-600 text-sm mb-4">हसू, प्रेम आणि नात्यांना जवळ करणं पैशांनी नाही मोजता येत.</p>
+  <button onclick="openModal('post38')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 39 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">ते म्हणतात... 'तरुण वय'</h3>
+  <p class="text-gray-600 text-sm mb-4">उफाळत्या रक्ताचं वय... घडवणारं किंवा बिघडवणारं!</p>
+  <button onclick="openModal('post39')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 40 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">प्रत्येक ठिकाणी दिसते 'ती'</h3>
+  <p class="text-gray-600 text-sm mb-4">गर्दीत, घरात, माणसांमध्ये... भीती म्हणून त्रास देणारी ती.</p>
+  <button onclick="openModal('post40')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 41 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">प्रत्येक गोष्टीत काय रडायचं?</h3>
+  <p class="text-gray-600 text-sm mb-4">स्वप्न तुटलं, अपयश आलं... म्हणून स्वप्नं बघणं थांबवायचं?</p>
+  <button onclick="openModal('post41')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 42 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Poem]</span>
+  <h3 class="text-lg font-bold text-black my-2">शेती स्वप्नांची...</h3>
+  <p class="text-gray-600 text-sm mb-4">मातीमध्ये पेरलेली स्वप्नं, वाढलेलं भविष्य आणि उंच ध्येय.</p>
+  <button onclick="openModal('post42')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 43 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">2020 सारखं वर्ष...</h3>
+  <p class="text-gray-600 text-sm mb-4">शतकातून एकदा येऊन माणसाला निसर्ग आणि आयुष्य शिकवणारं.</p>
+  <button onclick="openModal('post43')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 44 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Story]</span>
+  <h3 class="text-lg font-bold text-black my-2">तिची जागा...</h3>
+  <p class="text-gray-600 text-sm mb-4">आईचं फक्त किचन आहे...</p>
+  <button onclick="openModal('post44')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 45 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Blog]</span>
+  <h3 class="text-lg font-bold text-black my-2">Internship Programme</h3>
+  <p class="text-gray-600 text-sm mb-4">लग्नाआधी सासरचं घर समजून घेण्याचा एक वेगळा विचार.</p>
+  <button onclick="openModal('post45')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 46 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Writeup]</span>
+  <h3 class="text-lg font-bold text-black my-2">चूक माझीच आहे...</h3>
+  <p class="text-gray-600 text-sm mb-4">हो, चूक माझीच आहे... कारण मी मुलगी म्हणून जन्माला आले!</p>
+  <button onclick="openModal('post46')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+
+<!-- Post 47 -->
+<div class="bg-white shadow-xl border border-gray-200 p-6 hover-lift fade-in">
+  <span class="text-xs font-bold text-gray-500">[Marathi • Blog]</span>
+  <h3 class="text-lg font-bold text-black my-2">मर्दांगी</h3>
+  <p class="text-gray-600 text-sm mb-4">अहो माहिती आहे आम्हाला, तुम्ही "मर्द" आहात ते.</p>
+  <button onclick="openModal('post47')" class="read-more-btn text-black font-semibold text-sm">Read More →</button>
+</div>
+</div>
+
+
+
+</main>
+
+  <!-- Modals -->
+
+  <div id="post1" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post1')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">खुद को कर बुलंद इतना</h2>
+    <p>
+      खुद को कर बुलंद इतना की<br>
+      चाहे कोई बोले तुझे, तू बुरा ना माने...<br>
+      चाहे कोई मरोड़े तुझे, तू अपना बुरा हाल ना करे...<br><br>
+
+      खुद को कर बुलंद इतना की<br>
+      चाहे इंसान टोके तुझे, तेरे आखों सें आँसू ना टपके...<br>
+      चाहे तक़दीर टोके तुझे, तेरी जिद ना टूटे...<br><br>
+
+      खुद को कर बुलंद इतना की<br>
+      चाहे हो स्वास्थ्य कमजोर, पर तू अपना मन ना कमजोर करे...<br>
+      चाहे हो पैसों से हालात ख़राब, तू अपनी नियत ना ख़राब करे...<br><br>
+
+      खुद को कर बुलंद इतना की<br>
+      चाहे हो तू परीक्षा में विफल, पर तू लक्ष्य में ना विफल हो...<br>
+      चाहे हो तेरा लक्ष्य विफल, पर तू जिंदगी में ना विफल हो...<br><br>
+
+      खुद को कर बुलंद इतना की<br>
+      चाहे तेरे अपने टूटे, तू अपनेपन को ना तोडे...<br>
+      चाहे तेरा सपना टूटें, तू अपने आप को ना तोडे...<br><br>
+
+      खुद को कर बुलंद इतना की<br>
+      चाहे कोई रोके तुझे, तू ना थमें...<br>
+      चाहे कोई तोड़े तुझे, तू ना टूटे...<br>
+      चाहे जो हो जायें, बस.... तू हार ना माने...<br><br>
+
+      <span class="font-semibold">- प्रतिक्षा कुलकर्णी</span>
+    </p>
+  </div>
+</div>
+
+  <div id="post2" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post2')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">चक्रीवादळ</h2>
+    <p>
+      चक्रीवादळ... किनारपट्टीवरचं नाही, मनातलं!<br>
+      सतत सतावणाऱ्या विचारांचं...<br><br>
+
+      का, काय, कसे, कुठे, कधी या न संपणाऱ्या प्रश्नाचं...<br>
+      आणि पुढे काय होईल या यक्ष प्रश्नाचं…<br><br>
+
+      चक्रीवादळ हे मनातलं...<br>
+      कालच्या आठवणींचं आणि उद्याच्या स्वप्नांचं...<br>
+      कोण आहे सोबत आणि कोण असणार पुढे या भीतीचं...<br><br>
+
+      चक्रीवादळ हे मनातलं...<br>
+      रोज अनेकदा अयशस्वी होऊनसुद्धा <br>
+      रोज नव्याने जिंकण्याच्या प्रयत्नांचं...<br><br>
+
+      चक्रीवादळ हे मनातलं...<br>
+      प्रत्येक अडचणीतून मार्ग काढण्याचं<br>
+      आणि ठरवलेल्या मार्गावरून यश गाठण्याचं...<br><br>
+
+      चक्रीवादळ हे मनातलं...<br>
+      स्वप्न पूर्ण करण्याचं, स्वतःला सिद्ध करण्याचं<br>
+      आणि स्वतःची नवी ओळख निर्माण करण्याचं...<br><br>
+
+      चक्रीवादळ हे मनातलं...<br>
+      कितीही दाबलं तरी उफाळून बाहेर येणारं...<br>
+      सगळं काही नष्ट करणारं... आणि <br>
+      नष्ट करूनही पुनर्निर्मितीचा मार्ग दाखवणारं...
+    </p>
+  </div>
+</div>
+
+  <div id="post3" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post3')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">सवय</h2>
+    <p>
+      सवय...<br>
+      सवय चांगली, जी लागता लागत नाही.<br>
+      सवय वाईट, जी सुटता सुटत नाही.<br><br>
+
+      सवय...<br>
+      कामाची... जे असले तरी त्रास आणि नसले तरी त्रास...<br>
+      नंतर कुठे थांबायचं हे कळत नसल्यामुळे होणारा त्रास...<br><br>
+
+      सवय...<br>
+      चांगल्या कामांची, जी योग्यप्रकारे लागली कि आयुष्य घडते<br>
+      आणि 'नाही' लागली तर कदाचित बिघडते...<br><br>
+
+      सवय...<br>
+      वाईट कामांची, जी आयुष्य बिघडवते<br>
+      आणि सोडली तर नक्कीच घडवते...<br><br>
+
+      सवय...<br>
+      व्यक्तीची... जिच्याशिवाय जगणे जमत नाही<br>
+      पण सोबत असताना मात्र तिची किंमत रहात नाही...<br><br>
+
+      सवय कामाची... सवय व्यक्तीची...<br>
+      सवय जी बदलता बदलत नाही,<br>
+      जोपर्यंत आपण मनापासून ठरवत नाही!
+    </p>
+  </div>
+</div>
+
+<div id="post4" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post4')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">माणूस आहे...</h2>
+    <p>
+      माणूस आहे... पडणारच,<br>
+      महत्वाचं आहे ते पुन्हा उभं राहणं!<br><br>
+
+      माणूस आहे... थकणारच,<br>
+      महत्वाचं आहे थांबून न राहणं!<br><br>
+
+      माणूस आहे... चुकणारच,<br>
+      महत्वाचं आहे ते चूक मान्य करणं!<br><br>
+
+      माणूस आहे... हारणारच,<br>
+      महत्वाचं आहे ते हार न मानणं!<br><br>
+
+      माणूस आहे... <br>
+      जन्माला आलाय तर मरणारच,<br>
+      महत्वाचं आहे ते प्रत्येक क्षण जगणं!
+    </p>
+  </div>
+</div>
+
+<div id="post5" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post5')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">भीती वाटते...</h2>
+    <p>
+      भीती वाटते...<br>
+      जेव्हा सध्या बोलण्याचाही कोणी भलताच अर्थ काढतं....<br><br>
+
+      भीती वाटते...<br>
+      जेव्हा कोणी स्वतःमध्येच गुंतून बसतं आणि स्वतःला त्रास करून घेतं...<br><br>
+
+      भीती वाटते...<br>
+      जेव्हा मनामधील सगळं साठलेले कोणी बाहेर काढायचा प्रयत्न करतं...<br><br>
+
+      भीती वाटते...<br>
+      जेव्हा कोणी 'काहीच नाही' म्हणून सगळे काही मनातच ठेवतं...<br><br>
+
+      भीती वाटते...<br>
+      जेव्हा कोणाच्या मनात 'काय चाललंय' याचा अंदाज काढावा लागतो...
+    </p>
+  </div>
+</div>
+
+<div id="post6" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post6')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">जाणीव</h2>
+    <p>
+      वेळ लागतो तो जाणीव व्हायला...<br>
+      जाणीव आपल्या चुकीची...<br>
+      जाणीव आपल्या स्वभावाची...<br>
+      जाणीव आपल्या विचारांची...<br>
+      'जाणीव झाली' हे महत्वाचं आहे.<br><br>
+
+      कारण अनेकांना ती कधीच होत नाही!<br><br>
+
+      आपण फक्त 'कळतं पण वळत नाही' बोलून मोकळे होतो <br>
+      पण बाबा... कळलं आहे हे तर नशीब समज आधी! <br>
+      कळलं आहे तर वळेल पण लवकरच...<br>
+      आणि रोज प्रयत्न केल्यावर फरक ही पडेल!<br><br>
+
+      शेवटी वळायला थोडा वेळ तर द्यावा लागेलच ना?
+    </p>
+  </div>
+</div>
+
+<div id="post7" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post7')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">कधीतरी</h2>
+    <p>
+      कधीतरी वाटतं कोणी जवळचं... <br>
+      कधीतरी वाटतं कोणी आपलं... <br>
+      कधीतरी होते एखादी गोष्ट आपली हक्काची... <br>
+      कधीतरी बनते एखादी व्यक्ती स्पेशल...<br><br>
+
+      कधीतरी बदलतात स्वप्नं... <br>
+      कधीतरी होतात आपले दूर... <br>
+      कधीतरी विसरतात आपलेच आपल्याला... <br>
+      कधीतरी नाही होत स्वप्नं पूर्ण...<br><br>
+
+      कधीतरी हारतो माणूस... <br>
+      कधीतरी रडतो माणूस... <br>
+      कधीतरी थांबते आयुष्य... <br>
+      कधीतरी नाही कळत काय करायचं ते.. <br><br>
+
+      कधीतरी येते मग ती आपली वेळ... <br>
+      कधीतरी मार्गी लागतात सारी कामं... <br>
+      कधीतरी होतात पूर्ण सारी स्वप्नं... <br>
+      कधीतरी होतात सर्व इच्छा पूर्ण...<br><br>
+
+      कधीतरी... <br>
+      हो... कधीतरीच... <br>
+      कारण सर्व दिवस सारखे नसतात!
+    </p>
+  </div>
+</div>
+
+<div id="post8" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post8')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">रोजचा दिवस नवा...</h2>
+    <p>
+      रोजचा दिवस नवा...<br>
+      रोजचा उत्साह नवा...<br>
+      रोजचे अडथळे नवे...<br>
+      रोजचे प्रयत्न नवे...<br>
+      रोज येणारी हार ही नवी...<br>
+      आणि रोज-रोजच्या प्रयत्नानंतर मिळणाऱ्या <br>
+      'जीत' चा आनंद ही नवा आणि हवा-हवासा
+    </p>
+  </div>
+</div>
+
+<div id="post9" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post9')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">वेळ नको घालवू</h2>
+    <p>
+      तुला, तुझ्या ध्येयापासून मागे खेचणाऱ्या गोष्टींवर वेळ नको घालवू... <br>
+      तुझे मन आणि विचार न कळणाऱ्या लोकांसोबत भांडत नको बसू... <br>
+      ज्यांना काही फरकच पडत नाही अश्यांसाठी तुझे अश्रू नको ढाळू... <br>
+      स्वप्न पूर्ण करताना रस्त्यात अडचणी आल्या म्हणून थांबून नको राहू... <br>
+      जग जिंकण्याची शक्ती आहे तुझ्यात, तू स्वतःला कमजोर नको समजू...
+    </p>
+  </div>
+</div>
+
+<div id="post10" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post10')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">एक भेट...</h2>
+    <p>
+      एक भेट... बदलवून टाकते आयुष्य<br>
+      एक भेट... बदलवून टाकते भविष्य<br>
+      एक भेट... बदलवून टाकते ते वाहणारे वारे<br>
+      एक भेट... बदलवून टाकते आपले विचार<br>
+      एक भेट... बदलवून टाकते आपल्याला...<br><br>
+      ती एक भेट... मनातून आणि मनापासून <br>
+      आनंदी करून टाकते आपल्याला!
+    </p>
+  </div>
+</div>
+
+<div id="post11" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post11')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">धावत असतो आपण...</h2>
+    <p>
+      धावत असतो आपण... सतत...<br>
+      फॅमिली म्हटलं की फॅमिलीच्याच मागे...<br>
+      इतके की स्वतःच अस्तित्व, स्वतःची ओळख विसरून जातो...<br>
+      आणि मग फॅमिलीच म्हणते 'काय कमावलं???'<br><br>
+
+      धावत असतो आपण... सतत...<br>
+      करिअर म्हटलं तर करिअरच्याच मागे...<br>
+      इतके की फॅमिलीला पण सेकेंड प्रायोरिटी ठेवतो...<br>
+      पण समजा करिअरमध्ये यश नाही मिळवलं <br>
+      तर आपण 'काय कमावलं???'<br><br>
+
+      धावत असतो आपण... सतत...<br>
+      प्रेम म्हटलं तर प्रेमाच्याच मागे...<br>
+      इतके की फॅमिली, करिअर, अस्तित्व सर्वच बाजूला पडतं...<br>
+      त्या व्यक्तीशिवाय एक दिवस जगणंही अवघड होऊन जातं...<br>
+      पण जेव्हा ती व्यक्तीच आपल्याशिवाय जगण्याचा मार्ग शोधते <br>
+      तेव्हा आपण नक्की 'काय कमावलं???’<br><br>
+
+      खरंच... आपण नक्की काय कमावतो??? आणि काय गमावतो???<br>
+      पाहिजे तर सगळंच असतं... फॅमिली, करिअर, प्रेमाची माणसं....<br>
+      पण सगळ्यांना सगळं मिळतच का??? सतत धावून सुद्धा????
+    </p>
+  </div>
+</div>
+
+<div id="post12" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post12')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">“You have Changed”</h2>
+    <p>
+      “You have Changed”<br>
+      म्हणणं खूप सोप्प असतं,<br>
+      अवघड असतं ते... तो change घडवून आणणं...<br><br>
+
+      माणूस बदलतो...<br>
+      जसे दिवस जातात, जश्या घटना घडतात...<br>
+      तसा माणूस बदलतो...<br>
+      अवघड असतं ते... ते बदल घडतानाचे दिवस..<br>
+      आणि त्यासोबत होणारा मानसिक त्रास...<br><br>
+
+      वेळ बदलते...<br>
+      वेळ माणसाला बदलवते,<br>
+      गोष्टींना बदलवते...<br>
+      अवघड असतं ते... ती वेळ समजून घेणं<br>
+      आणि त्या बदलत्या वेळेत टिकून राहणं!<br><br>
+
+      विचार बदलतात...<br>
+      माणूस, अनुभव, वेळ...<br>
+      ह्या गोष्टी आपले विचार पूर्णपणे बदलतात...<br>
+      अवघड असतं ते... ते विचार सहन आणि मान्य करणं...<br>
+      आणि त्याचसोबत त्या बदलासह समजून घेणं...<br>
+      स्वतःलाही आणि समोरच्यालाही!
+    </p>
+  </div>
+</div>
+
+<div id="post13" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post13')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">आठवणी</h2>
+    <p>
+      माणूस निघून जातो...<br>
+      कधी आयुष्यातून तर कधी जगातून...<br>
+      पण जाताना सोडून जातो मागे अनेक आठवणी...<br><br>
+
+      कधी तारखेत तर <br>
+      कधी जागेत त्या आठवणी...<br>
+      कधी फोनमध्ये तर <br>
+      कधी फोटोमध्ये त्या आठवणी...<br>
+      कधी शब्दात तर <br>
+      कधी शरीरावर त्या आठवणी...<br><br>
+
+      हसता हसता रडवणाऱ्या आठवणी...<br>
+      रडता रडता हसवणाऱ्या आठवणी...<br>
+      चालता चालता थांबवणाऱ्या आठवणी...<br>
+      तर आठवणींमध्ये थांबलेल्याला पुन्हा <br>
+      पुढे चालायला शिकवणाऱ्या आठवणी!
+    </p>
+  </div>
+</div>
+
+<div id="post14" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post14')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">बालिका... लाडाची लेक</h2>
+    <p>
+      बालिका... कन्या... मुलगी... नाही... नाही... लाडाची लेक!<br>
+      घरी लाडाची लेक जन्मली...<br>
+      जन्मापूर्वीच आईचा प्राण झाली आणि<br>
+      जन्म झाल्यावर पहिल्यांदा हातात घेताच वडिलांचा ती जीव झाली!<br><br>
+
+      पहिल्या वर्षातच सगळ्यांना तिचे वेड लागले...<br>
+      हळू-हळू सगळे तिच्या नाजूक हालचाली ओळखू लागले!<br>
+      आणि ५ वर्षांपर्यंत ती स्वतः घरातल्या सगळ्यांना ओळखू लागली!<br><br>
+
+      आई जरी तिचा जीव असली तरी बाबांवर जरा जीव जास्तच आहे तिचा...<br>
+      कारण बाबा हिरो आहे तिचा!<br><br>
+
+      १० वर्षांची झाली आणि बाबा-आईचे भांडण बघू लागली...<br>
+      १५ वर्षाची झाली आणि बाबासुद्धा एक पुरुष आहे आणि<br>
+      बाकी मुलींकडे बघण्याची नजर त्याची वेगळी आहे हे कळून चुकली!<br><br>
+
+      २० वर्षांपर्यंत तर बाबाबद्दल अनेक 'अफवा' तिने ऐकल्या...<br>
+      आईसोबत लग्न होण्याआधीचे कारस्थान ऐकले आणि<br>
+      तिच्या जन्मानंतरची वागणूक तर तिने स्वतःच बघितली!<br><br>
+
+      २५ ची झाली तेव्हा बाबाचा ती जीव आहे हे तर कळलंच...<br>
+      सोबतच ह्या जगातील प्रत्येक मुलगी कोणाचीतरी लाडाची लेक आहे<br>
+      हे बाबा विसरला हे सुद्धा तीला कळलं!<br><br>
+
+      आणि तिचा एके काळचा तो हिरो आज तिच्यासाठी सगळ्यात मोठा व्हिलन झाला आहे...<br><br>
+
+      त्याने तारुण्यात केलेल्या मस्तीने आज तिचा बाबा, तिचा बाप झाला आहे...<br><br>
+
+      चुका घडतात माणसाकडून हे ती जाणत आहे...<br>
+      पण तरीदेखील देवाकडे प्रत्येक मुलासाठी (पुरुषासाठी)<br>
+      हीच सद्बुद्धी मागत आहे की<br>
+      अश्या चुका नको कधी 'त्या'च्याकडून घडू देऊस,<br>
+      अशी नजर नको कधी 'त्या'ची फिरू देऊस की<br>
+      पुन्हा ह्या जगातील कोणताही बाबा त्याच्या मुलीसाठी बाप होईल,<br>
+      लहानपणी वाटत असलेला हिरो अचानक एका गोष्टीने व्हिलन होईल!<br><br>
+
+      राष्ट्रीय बालिका दिनाला हीच प्रार्थना करत आहे प्रत्येक मुलगी की<br>
+      प्रत्येक मुलाची-बाबाची-दादाची-मित्राची नियत नको बिघडू देऊ!
+    </p>
+  </div>
+</div>
+
+<div id="post15" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post15')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">तो पुरुष असतो</h2>
+    <p>
+      तो...<br>
+      संसाराचा रहाटगाडा तो देखील ओढतो...<br>
+      मुलांना तो ही घडवतो आणि वाढवतो...<br>
+      परिवाराच्या गरजा आणि इच्छा तो ही पूर्ण करतो...<br>
+      आणि ह्या सगळ्या नंतर 'काय केलं' हे ऐकून घेतो...<br>
+      तो पुरुष असतो!<br><br>
+
+      तो...<br>
+      स्वप्न बाजूला ठेऊन जबाबदाऱ्यांवर लक्ष देतो...<br>
+      मूड बाजूला ठेवून संसार गाडा ओढतो...<br>
+      इच्छा मारून आपल्या माणसांसाठी राबतो...<br>
+      आणि तरीसुद्धा 'काहीच नाही वाटत' हे ऐकून घेतो...<br>
+      तो पुरुष असतो!<br><br>
+
+      तो...<br>
+      सुंदर स्त्री कडे आकर्षित होतो आणि बघून शांत राहतो...<br>
+      कोणी असतो जो डोळ्यांनी स्कॅन करतो...<br>
+      हजारांमधला एक असतो जो हात टाकतो...<br>
+      आणि मग अश्या एकामुळे जो बदनाम होतो...<br>
+      तो पूर्ण पुरुष समाज असतो!<br><br>
+
+      तो...<br>
+      ती राबते, बोलते, रडते, चिडते, मत व्यक्त करते...<br>
+      पण तिला आधाराचा खांदा देणारा असतो तो पुरुष!<br>
+      कीतीही मनाला लागलं तरी तिच्याकडे बघून<br>
+      खंबीर उभा राहतो तो असतो पुरुष!<br>
+      ती आहे शक्ती आणि तिला तिच्यातल्या शक्तीची<br>
+      जाणीव करून देतो तो असतो पुरुष!
+    </p>
+  </div>
+</div>
+
+<div id="post16" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post16')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">नसतं माहीत...</h2>
+    <p>
+      नसतं माहीत...<br>
+      कोणाच्या आयुष्यात काय चालू आहे?<br>
+      कोण काय विचार करत आहे?<br>
+      कोणाला काय वाटत आहे?<br><br>
+
+      नसतं माहीत...<br>
+      आपला एक शब्द समोरच्या मनावर <br>
+      आघात करतोय का आनंद देतोय?<br>
+      आपलं एक वागणं समोरच्याला <br>
+      त्रास देत आहे का रिलॅक्स करत आहे?<br><br>
+
+      नसतं माहीत आपल्याला...<br>
+      आणि म्हणूनच गरज असते....<br>
+      राजकारण, हार, आजार, टेन्शन, <br>
+      प्रॉब्लेम्स अश्या विषयांना दूर ठेवण्याची.<br><br>
+
+      गरज असते... विचार करून बोलण्याची...<br>
+      चांगलं आणि सकारात्मक बोलण्याची...<br>
+      स्वतःला समोरच्याच्या जागी ठेवून विचार करायची!
+    </p>
+  </div>
+</div>
+
+<div id="post17" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post17')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">अनपेक्षित घडलेली सुंदर भेट</h2>
+    <p>
+      सहजच एक भेट घडते आणि <br>
+      आयुष्यच बदलवून टाकते...<br>
+      अनेक नवी स्वप्नं दाखवते <br>
+      तर अनेक जुनी स्वप्नं बदलवते...<br>
+      अशी ही अनपेक्षित घडलेली सुंदर भेट <br>
+      सगळे equations बदलवून टाकते!<br><br>
+
+      जुन्या आठवणी ताज्या करते, <br>
+      अनेक गैरसमज दूर करते...<br>
+      जुन्या गोष्टी नव्याने सांगते, <br>
+      एक नवी सुरुवात करते...<br>
+      अशी ही अनपेक्षित घडलेली सुंदर भेट <br>
+      त्याच जुन्या नात्यामध्ये freshness आणते!<br><br>
+
+      संथ आयुष्यात आनंदाची लाट आणते...<br>
+      नव्याने एकमेकांची ओळख करून देते...<br>
+      अशी ही अनपेक्षित घडलेली सुंदर भेट <br>
+      आयुष्यात आनंदाचं tonic घेऊन येते!
+    </p>
+  </div>
+</div>
+
+<div id="post18" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post18')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">किती ताकद असते...</h2>
+    <p>
+      किती ताकद असते काही क्षणांमध्ये...<br>
+      किती ताकद असते काही माणसांमध्ये...<br>
+      एका भेटीत कोणी खूप सारे दुःख देऊन जाते;;<br>
+      तर एका शब्दात कोणी अफाट आनंद देऊन जाते!<br><br>
+
+      किती ताकद असते काही क्षणांमध्ये...<br>
+      किती ताकद असते काही माणसांमध्ये...<br>
+      कोणी चांगुलपणा दिसत असून नष्ट करून जाते;;<br>
+      तर कोणी अनोळखी असूनही आत्मविश्वास देऊन जाते!<br><br>
+
+      किती ताकद असते आपल्या मनामध्ये...<br>
+      किती ताकद असते आपल्या विचारांमध्ये...<br>
+      जे आपण इतरांचा स्वतःवर इतका परिणाम करून घेतो<br>
+      की कधी जिंकूनही हरतो... तर कधी <br>
+      पूर्णपणे मोडूनही पुन्हा उभे राहतो!
+    </p>
+  </div>
+</div>
+
+<div id="post19" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post19')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">ती एक व्यक्ती...</h2>
+    <p>
+      प्रत्येकाच्या आयुष्यात एकदा तरी येते ती व्यक्ती... <br>
+      आयुष्य सुंदर आहे हे सांगायला येते ती एक व्यक्ती...<br>
+      प्रत्येक क्षण मनापासून जगावा हे सांगण्या येते ती एक व्यक्ती...<br>
+      संथ-स्वच्छ पाण्यामध्ये आनंदाची लाट घेऊन येते ते एक व्यक्ती...<br><br>
+
+      हवी-हवीशी वाटणारी असते ती एक व्यक्ती...<br>
+      मनापासून आनंदी करणारी असते ती एक व्यक्ती...<br>
+      सतत मनात-बोलण्यात-विचारांत येते ती एक व्यक्ती...<br>
+      जिच्यामध्ये गुंतून स्वतःला विसरतो अशी असते ती एक व्यक्ती...<br><br>
+
+      आयुष्य जगायला आणि प्रत्येक गोष्ट अनुभवयाला शिकवते ती व्यक्ती...<br>
+      आपल्याला मन आहे, भावना आहे हे सांगण्यासाठी येते ती व्यक्ती...<br>
+      आयुष्य पूर्ण करणारी प्रत्येक भावना, प्रत्येक गोष्ट घेऊन येते ती व्यक्ती...<br>
+      प्रत्येकाच्या आयुष्यात एकदा तरी अशी कोणीतरी येते ती एक व्यक्ती!
+    </p>
+  </div>
+</div>
+
+<div id="post20" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post20')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">हो... प्रेमात पडलीये ती</h2>
+    <p>
+      हो...<br>
+      प्रेमात पडलीये ती आणि प्रेमात पडलाय तो...<br><br>
+
+      जसे साडे-सात वर्षांपूर्वी पडलो होतो तसेच!<br>
+      पण ही साडेसाती शनी नाही तर <br>
+      रवी बनला आहे आमच्या कहाणीचा...<br><br>
+
+      नवी प्रभात घेऊन आलेला हा रवी...<br>
+      त्याच लहानपणीच्या पहिल्या-वहिल्या प्रेमावर <br>
+      वाढत्या वयाची समजूतदारपणाची किरणं टाकणारा रवी!<br><br>
+
+      जिथे लहानपणाची ती मैत्री आहे आणि <br>
+      सोबतच मोठेपणाची मॅच्युरिटी आहे..<br>
+      आयुष्यात नक्की काय हवे याची क्लॅरिटी आहे!<br><br>
+
+      साडे-सात वर्षांत <br>
+      ना तो तिला विसरला, ना ती त्याला...<br>
+      ना त्याच्या आयुष्यात कोणी आलं, ना तिच्या आयुष्यात...<br><br>
+
+      साडे-सात वर्षांचं अंतर लोटलं जगाने...<br>
+      जे त्यांनी मात्र फक्त एका भेटीतच कापलं...<br>
+      भेटले असे सहज जसे कधी वेगळेच झाले नव्हते!<br><br>
+
+      प्रेमाबद्दल नाही त्यांना माहिती काहीही ह्या क्षणी...<br>
+      पण एकमेकांच्या मनातल्या भावना मात्र माहिती आहेत...<br>
+      फक्त डोळ्यांनीच नाही तर ओठांवाटेही त्या कळत आहेत!<br><br>
+
+      त्या एका सहज भेटीने आयुष्य बदललंय त्यांचं...<br>
+      जुनी स्वप्नं बदलली आहेत तर नवी स्वप्नं रंगवली आहेत...<br>
+      एकत्र आयुष्य स्पष्ट नजरेसमोर येते आहे त्यांच्या...<br><br>
+
+      एव्हडं सगळं घडलेलं आणि बदलेलं कळतंय दोघांना...<br>
+      बोलायचे मात्र एकालाही नाही... कारण साडे-सात वर्षांपूर्वी<br>
+      झालेली जखम क्लिअर झाली असली तरी विसरले मात्र दोघेही नाहीत!
+    </p>
+  </div>
+</div>
+
+<div id="post21" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post21')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">गुंतून बसतो माणूस...</h2>
+    <p>
+      गुंतून बसतो माणूस काही क्षणांमध्ये...<br>
+      अडकून बसतो त्या छोट्याशा भेटीमध्ये...<br><br>
+
+      हिंदोळके घेत आनंदाचे, जगत असतो आपण<br>
+      जेव्हा अचानक 'आपली' ती व्यक्ती येऊन <br>
+      प्रेमाने धक्का देऊन जोरात पाडून जाते!<br><br>
+
+      सुंदर स्वप्नांच्या दुनियेतून बाहेर काढून <br>
+      खऱ्या या दुनियेत घेऊन येते... <br>
+      आनंद फक्त स्वप्नात आहे पण <br>
+      खऱ्या नशिबात नाही हे सांगून जाते!
+    </p>
+  </div>
+</div>
+
+<div id="post22" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post22')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">विचारू का रे एक प्रश्न तुला...</h2>
+    <p>
+      विचारू का रे एक प्रश्न तुला...<br>
+      शेवटच्या भेटीनंतर<br>
+      फुलल्या आहेत ज्या भावना मनात माझ्या,<br>
+      त्या फुलल्या आहेत का मनात तुझ्या ???<br><br>
+
+      विचारू का रे एक प्रश्न तुला...<br>
+      काय विचार आहेत मनात तुझ्या?<br>
+      काय वाटतं तुला माझ्याबद्दल ?<br>
+      काय वाटतं तुला आपल्याबद्दल ?<br><br>
+
+      विचारू का रे एक प्रश्न तुला...<br>
+      गेल्या इतक्या वर्षांत <br>
+      नाही का रे आवडली तुला दुसरी कोणीच?<br>
+      का नाही रे विसरलास तू मला?<br><br>
+
+      विचारू का रे एक प्रश्न तुला...<br>
+      काय आहे तुझ्या मनात?<br>
+      आपण यावं का रे एकत्र आयुष्यात?<br>
+      माझ्यासारखाच तूही आहेस का रे प्रेमात?
+    </p>
+  </div>
+</div>
+
+<div id="post23" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post23')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">बिंधास्त स्वतःच्या मनाचं करा…</h2>
+    <p>
+      बिंधास्त स्वतःच्या मनाचं करा…<br><br>
+
+      तुम्हाला विश्वास आहे की तुमच्या <br>
+      हट्टाने कोणाला त्रास होणार नाही;<br>
+      मग जगाचा विचार न करता <br>
+      स्वतःच्या मनाला जे वाटतंय ते करा!<br><br>
+
+      कारण रिझल्ट्स वाईट आले तर <br>
+      लोक तुमच्या हट्टाला नावं ठेवतील...<br>
+      पण चांगले आले तर तेच लोक <br>
+      तुमच्या हट्टाचं कौतुक करतील!<br><br>
+
+      वाईट रिझल्ट्स शिकवतील...<br>
+      चांगले रिझल्ट्स घडवतील!
+    </p>
+  </div>
+</div>
+
+<div id="post24" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post24')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">नातं ते...</h2>
+    <p>
+      नातं ते... जिथे एकमेकांचा आदर केला जातो...<br>
+      ते नाही... जिथे फक्त स्वतःचाच विचार केला जातो!<br><br>
+
+      नातं ते... जे टिकवण्यासाठी एक कारणही खूप असतं,<br>
+      ते नाही... जे एका छोट्या गैरसमजामुळे तुटतं!<br><br>
+
+      नातं ते... जिथे एकमेकांना समजून घेतलं जातं,<br>
+      ते नाही... जिथे फक्त स्वतःचीच वकिली केली जाते!<br><br>
+
+      नातं ते... जिथे दोघांच्या समाधानाचा आणि आनंदाचा विचार केला जातो,<br>
+      ते नाही... जिथे फक्त स्वतःला समाधान नाही मिळालं म्हणून तोडलं जातं!<br><br>
+
+      नातं ते... जिथे आपल्याला आहे तसं स्वीकारलं जातं,<br>
+      ते नाही... जिथे आपल्यामध्ये बदल करून मग स्वीकारले जातं!
+    </p>
+  </div>
+</div>
+
+<div id="post25" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post25')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">'लिहिणे' काही खायचं काम नाही…</h2>
+    <p>
+      'लिहिणे' काही खायचं काम नाही…<br><br>
+
+      वाचणारा प्रत्येक गोष्ट लिहिणाऱ्याची<br>
+      स्वतःचीच आहे असच समजतो;<br>
+      वाचक प्रत्येक गोष्ट, प्रत्येक कविता<br>
+      लिहणाऱ्या व्यक्तीच्या आयुष्यालाच जोडतो!<br><br>
+
+      वाचणारा कधी स्वतःच्या आयुष्याला ते शब्द जोडतो<br>
+      तर कधी लिहिणाऱ्याविषयी बिनबुडाचे मत बनवतो!<br><br>
+
+      म्हणूनच थोडंफार लिहिण्याचा प्रयत्न करणारी व्यक्ती म्हणते<br>
+      'लिहिणे' काही खायचे काम नाही...<br>
+      विचार, मत, गोष्टी, कविता मांडणे काही सोप्पे नाही...<br><br>
+
+      पण हे सगळं असूनही जे लिहितात आणि लेखक होतात<br>
+      त्यांना, त्यांच्या प्रयत्नांना, सातत्याला दुर्लक्ष करणे योग्य नाही!<br><br>
+
+      पु. ल., व. पु., बहिणाबाई चौधरी, सत्यजित रे, प्रेमचंद....<br>
+      आपण जितकी नावं घेऊ तितकी ती कमीच...<br>
+      आणि कितीही शोधले तरी त्यांच्या कार्याला<br>
+      शोभेल असे कौतुकाचे शब्द मिळणे कमीच...
+    </p>
+  </div>
+</div>
+
+<div id="post26" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post26')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">दिवसातला थोडा तरी वेळ...</h2>
+    <p>
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      थकलेल्या शरीराला आराम देण्याकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      थकलेल्या मन आणि ब्रेनला रिलॅक्स करण्याकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      आपण दिवसभरात घेतलेल्या निर्णयांचा आढावा घेण्याकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      आपल्या आवडीचे काम करण्याकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      आपल्याला मनाला शांतता देईल अश्या एखाद्या छंदाकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      आपल्याच हृदयाचे ठोके अनुभवण्याकरिता!<br><br>
+
+      दिवसातला थोडा तरी वेळ असावा स्वतःकरिता...<br>
+      आयुष्य जगण्याकरिता आणि पुन्हा रिफ्रेश होण्याकरिता!
+    </p>
+  </div>
+</div>
+
+<div id="post27" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post27')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">तोंड द्यावेच लागते...</h2>
+    <p>
+      तोंड द्यावेच लागते...<br>
+      मग तो कठीण प्रसंग असो किंवा प्रयत्नानंतर आलेली हार!<br><br>
+
+      मेहनत घ्यावीच लागते...<br>
+      मग ते आपले स्वप्न पूर्ण करणे असो किंवा नाते जपणे!<br><br>
+
+      दुर्लक्ष करावेच लागते...<br>
+      मग ते आपल्याला न पटणाऱ्या गोष्टी असो किंवा बोलणारी ती चार लोकं!<br><br>
+
+      कष्ट घ्यावेच लागतात...<br>
+      मग आयुष्यात हव ते यश मिळवणे असो किंवा हवी ती व्यक्ती!<br><br>
+
+      स्वतःला बदलावेच लागते...<br>
+      मग ते दुसऱ्यांच्या चांगल्यासाठी असो किंवा स्वतःच्या चांगल्यासाठी!<br><br>
+
+      प्रयत्न करावेच लागतात...<br>
+      मग ते आपली त्वचा जपण्यासाठी असो किंवा आपली इमेज!<br><br>
+
+      आनंदी रहावेच लागते...<br>
+      मग ते आपल्या माणसांसाठी असो किंवा आपल्या स्वतःसाठी!
+    </p>
+  </div>
+</div>
+
+<div id="post28" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post28')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">आयुष्यात एकदा तरी...</h2>
+    <p>
+      आयुष्यात एकदा तरी तुटावे...<br>
+      पुन्हा स्वतःला समेटावे...<br><br>
+
+      आयुष्यात एकदा पुन्हा जन्म घ्यावा...<br>
+      पुन्हा नव्याने सुरुवात करावी...<br><br>
+
+      आयुष्यात एकदा तरी नमावे...<br>
+      आपल्यांच्या आनंदासाठी झुकावे...<br><br>
+
+      आयुष्यात एकदा तरी बंडखोर व्हावे...<br>
+      आपल्या अस्तित्वासाठी पेटून उठावे!
+    </p>
+  </div>
+</div>
+
+<div id="post29" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post29')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">कधी कधी भीती वाटते...</h2>
+    <p>
+      कधी कधी मनातलं बोलायची भीती वाटते...<br>
+      समोरचा कोणाला सांगेल का म्हणून नाही,<br>
+      तर तो आपल्याला Judge करेल म्हणून!<br><br>
+
+      कधी कधी प्रश्न विचारायची भीती वाटते...<br>
+      प्रश्न विचारायची हिम्मत नसते म्हणून नाही,<br>
+      तर उत्तर आपल्याला माहित असतं म्हणून!<br><br>
+
+      कधी कधी स्पष्ट बोलायची भीती वाटते...<br>
+      समोरचा चिडेल, नातं तोडेल म्हणून नाही,<br>
+      तर तो आपलं मन समजून घेणार नाही म्हणून!
+    </p>
+  </div>
+</div>
+
+<div id="post30" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post30')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">दिवस दररोज बदलतो...</h2>
+    <p>
+      दिवस दररोज बदलतो...<br>
+      माणूस दररोज बदलतो...<br>
+      विचार दररोज बदलतात...<br><br>
+
+      गरज बदलते...<br>
+      स्वप्न बदलतात...<br>
+      इच्छा बदलतात...<br><br>
+
+      नातीसुद्धा बदलतात...<br>
+      स्वभावसुद्धा बदलतात...<br><br>
+
+      आणि निसर्गाचा हा एक नियम<br>
+      आपण मनापासून मान्य केला ना...<br>
+      की निम्म्याहून जास्त त्रास कमी होतो!
+    </p>
+  </div>
+</div>
+
+<div id="post31" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post31')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">काय मिळतं एखाद्याला...</h2>
+    <p>
+      काय मिळतं एखाद्याला...<br>
+      खरं आहे हे माहित असूनसुद्धा<br>
+      समोरच्याला खोटं पाडून ???<br><br>
+
+      काय मिळतं एखाद्याला...<br>
+      विश्वास असतानासुद्धा<br>
+      अविश्वास आहे असं दाखवून ???<br><br>
+
+      काय मिळतं एखाद्याला...<br>
+      समोरच्याला काही कारण<br>
+      नसताना दुखावून ???<br><br>
+
+      काय मिळतं एखाद्याला...<br>
+      माहित आहे समोरची व्यक्ती सगळं करतीये<br>
+      तरीसुद्धा तिलाच बोलून ???<br><br>
+
+      काय मिळतं एखाद्याला...<br>
+      समोरच्यावर खोटे आरोप लावून ???<br><br>
+
+      काय मिळतं एखाद्याला...<br>
+      खरं वागणं सोप्पं<br>
+      असतानाही खोटं वागून ???
+    </p>
+  </div>
+</div>
+
+<div id="post32" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post32')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">आठवणी...</h2>
+    <p>
+      आठवणी,<br>
+      कधी तारखेमध्ये तर कधी जागेमध्ये...<br>
+      कधी शब्दांमध्ये तर कधी व्यक्तीमध्ये...<br><br>
+
+      आठवणी,<br>
+      कधी त्रास देणाऱ्या तर कधी आनंद देणाऱ्या...<br>
+      कधी जुन्या प्रश्नाची उत्तर देणाऱ्या तर<br>
+      कधी काही नवे प्रश्न निर्माण करणाऱ्या...<br><br>
+
+      आठवणी,<br>
+      कधी पुढे जाणाऱ्या माणसाला जागेवर थांबवणाऱ्या<br>
+      तर कधी थांबलेल्या माणसाला पुन्हा पुढे जायला सांगणाऱ्या!<br><br>
+
+      आठवणी,<br>
+      कोणाला विश्वास ठेवायला शिकवणाऱ्या...<br>
+      तर कोणाला खोटं बोलायला शिकवणाऱ्या...<br><br>
+
+      आठवणी,<br>
+      कोणा परक्याला आपलंस करणाऱ्या...<br>
+      तर कोणा आपल्याला परकं करणाऱ्या...<br><br>
+
+      आठवणी,<br>
+      कधी स्वतःवरच प्रश्न निर्माण करणाऱ्या,<br>
+      तर कशी ‘स्वतःला’ शोधायला लावणाऱ्या!
+    </p>
+  </div>
+</div>
+
+<div id="post33" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post33')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">'ती'ला नक्की काय हवं असतं हो???</h2>
+    <p>
+      'ती'ला नक्की काय हवं असतं हो???<br><br>
+
+      ती जेव्हा सकाळी ५ पासून रात्री १२ पर्यंत घरच्यांसाठी राबते ना<br>
+      तेव्हा तिला हवे असतात आरामाचे आणि प्रेमाचे क्षण!<br><br>
+
+      ती जेव्हा मनापासून, आपलं मानून एखादं कामं करते ना<br>
+      तेव्हा तिला हवे असतात कौतुकाचे आणि मानाचे शब्द!<br><br>
+
+      ती जेव्हा एखाद्यावर पूर्ण विश्वास ठेवते, प्रेम करते<br>
+      तेव्हा तिला हवा असतो त्या व्यक्तीचा विश्वास आणि प्रेम!<br><br>
+
+      ती जेव्हा समाजात वावरत असते तेव्हा तिला हवे असते<br>
+      कोणीही आपल्यावर घाणेरडी नजर फिरवू नये!<br><br>
+
+      खूप सोप्प्या गोष्टी हव्या असतात तिला...<br>
+      ज्या इतरांसाठी खूप साध्या पण तिच्यासाठी खूप महत्वाच्या असतात!
+    </p>
+  </div>
+</div>
+
+<div id="post34" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post34')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">Happy Women's Day?</h2>
+    <p>
+      ती जन्म घेते तेव्हापासूनच<br>
+      एक मुलगी असते, स्त्री असते...<br>
+      ती दररोज एक स्त्री म्हणूनच वावरत असते...<br>
+      आणि म्हणूनच आपण तिला 8 मार्चला Happy Women's Day wish करतो!<br><br>
+
+      ती नात्यांना जीव लावते...<br>
+      आई, वडील, बहीण, भाऊ, मित्र, नवरा, सासू, सासरे...<br>
+      स्वतःच्या तब्येतीचा, इच्छांचा विचार न करता सगळ्यांसाठी सगळं करते<br>
+      आणि म्हणूनच आपण तिला 8 मार्चला Happy Women's Day wish करतो!<br><br>
+
+      चार भिंतींना ती घर बनवते...<br>
+      घरातल्या प्रत्येकाची कामं, स्वप्न पूर्ण व्हावीत म्हणून<br>
+      ती स्वतः जास्त कामं करते, स्वतःची स्वप्न विसरते...<br>
+      आणि म्हणूनच आपण तिला 8 मार्चला Happy Women's Day wish करतो!<br><br>
+
+      ती ऑफिस देखील सांभाळते...<br>
+      'आपलं' मानून खूप मनापासून कामं करते...<br>
+      कंपनीला फॅमिली तर कलिग्जला फॅमिली मेम्बर मानते<br>
+      आणि म्हणूनच आपण तिला 8 मार्चला Happy Women's Day wish करतो!<br><br>
+
+      कधी परिवारासाठी, कधी समाजासाठी,<br>
+      कधी आपल्यांसाठी तर कधी इतरांसाठी उभी राहते...<br>
+      आणि म्हणूनच आपण तिला 8 मार्चला Happy Women's Day wish करतो!<br><br>
+
+      पण तिला खरच हे मेसेजेस हवे आहेत का?<br><br>
+
+      समाधान, सन्मान... कामाचं थोडं कौतुक, कष्टांना जरा मान...<br>
+      कोणी वाईट नजरेने बघू नये, कोणी अंगावर हात टाकू नये...<br>
+      ह्या इतक्या साध्या अपेक्षा आहेत 'ती'च्या;<br>
+      ज्या फक्त 8 मार्चच्या मेसेजेस आणि सेलिब्रेशनने नाही पूर्ण होत!
+    </p>
+  </div>
+</div>
+
+<div id="post35" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post35')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">काहीच फरक नाही का माझ्यात आणि तिच्यात?</h2>
+    <p>
+      काहीच फरक नाही का माझ्यात आणि तिच्यात?<br>
+      तिने तुझ्या चांगुलपणाचा फायदा घेतला म्हणून<br>
+      तू माझ्या चांगुलपणाचा फायदा घेतलास...<br><br>
+
+      काहीच फरक नाही का माझ्यात आणि तिच्यात?<br>
+      तिने तुझ्या चांगल्या आयुष्याला नजर लावली म्हणून<br>
+      तुला वाटलं कि मीसुद्धा तुझ्या चांगल्या आयुष्याला नजर लावेल...<br><br>
+
+      काहीच फरक नाही का माझ्यात आणि तिच्यात?<br>
+      तिने तुला त्रास दिला, तुझा विश्वासघात केला<br>
+      म्हणून तू ही माझ्यावर विश्वास ठेवायचं सोडून दिलंस...<br><br>
+
+      काहीच फरक नाही का माझ्यात आणि तिच्यात?<br>
+      जे तिने धोका दिल्यानंतर त्या वागण्या-बोलण्याचे<br>
+      धागे शोधून माझ्यासोबत तपासून बघतोयस!<br><br>
+
+      काहीच फरक नाही का माझ्यात आणि तिच्यात?<br>
+      तिने केलेल्या कर्मांची शिक्षा,<br>
+      मी काहीही न करून तू मलाच देत आहेस.....
+    </p>
+  </div>
+</div>
+
+<div id="post36" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post36')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">माणूस आहे, मन आहे... त्रास होतोच...</h2>
+    <p>
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा पूर्ण प्रयत्न करूनही स्वप्न तुटतात...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपलेच आपल्यापासून दूर जातात...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपण खरे असूनसुद्धा समोरचा आपल्याला खोटं समजतो!<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा समोरचा आपल्यातल्या नसलेल्या चुका काढतो...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपल्याच माणसाला आपण त्यांच्या वाईटाचा विचार करतोय असं वाटतं...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपलाच माणूस आपल्यावर अविश्वास दाखवतो...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपलेच आपल्यासोबत त्यांच्या सोयीनुसार तटस्थ वागायला लागतात...<br><br>
+
+      माणूस आहे, मन आहे... त्रास होतोच...<br>
+      जेव्हा आपलेच आपल्याला ओळखूनही अनोळखी होतात...
+    </p>
+  </div>
+</div>
+
+<div id="post37" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post37')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">समजून घेणाऱ्याने...</h2>
+    <p>
+      समजून घेणाऱ्याने समजून घेत जावे<br>
+      (नकळत) गृहीत धरणाऱ्याने गृहीत धरत जावे<br><br>
+
+      आपल्या माणसांना समजून घ्यावे<br>
+      हातात नसणाऱ्या गोष्टींना समजून घ्यावे<br>
+      परिस्थितीला समजून घ्यावे<br>
+      समोरच्या व्यक्तीला समजून घ्यावे<br><br>
+
+      समजून घेणाऱ्याने समजून घेत जावे<br>
+      गृहीत धरणाऱ्याने गृहीत धरत जावे<br>
+      गृहीत धरता धरता एक दिवस<br>
+      समजून घेणाऱ्याचे मन घ्यावे!
+    </p>
+  </div>
+</div>
+
+<div id="post38" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post38')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">खुश राहणं काही 'कॉस्टली' नाही...</h2>
+    <p>
+      खुश राहणं काही 'कॉस्टली' नाही...<br>
+      पण तरी चेहऱ्यावर हसू आणताना<br>
+      खूप 'प्राईसी' होतो आपण!<br><br>
+
+      प्रेम करायला काही पैसे लागत नाही...<br>
+      पण तरी प्रेम महागड्या<br>
+      वस्तूंमध्येच मोजतो आपण!<br><br>
+
+      नात्यांना जवळ करणं काही अवघड नाही...<br>
+      पण तरी नात्यांमध्येच<br>
+      दुरावा आणतो आपण!<br><br>
+
+      आयुष्य काही स्वस्त नाही...<br>
+      पण तरी आयुष्याकडेच<br>
+      दुर्लक्ष करतो आपण!
+    </p>
+  </div>
+</div>
+
+<div id="post39" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post39')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">ते म्हणतात... 'तरुण वय असंच असतं!'</h2>
+    <p>
+      ते म्हणतात... 'तरुण वय असंच असतं!'<br><br>
+
+      बिंधास्त... धावणारं, पळणारं<br>
+      उफाळतं रक्त असतं...<br>
+      ते 'तरुण वय असंच असतं!'<br><br>
+
+      प्रत्येक स्वप्न पूर्ण करण्यासाठी<br>
+      हट्टाने पेटून उठणारं...<br>
+      ते 'तरुण वय असंच असतं!'<br><br>
+
+      आयुष्य घडवणारं किंवा<br>
+      आयुष्य बिघडवणारं<br>
+      ते 'तरुण वय असंच असतं!'<br><br>
+
+      बिघडवलेल्या आयुष्याला<br>
+      घडवणारं, ४०-४५ वय असलेलं<br>
+      ते 'अनुभवी तरुण वय असंच असतं!'
+    </p>
+  </div>
+</div>
+
+<div id="post40" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post40')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">प्रत्येक ठिकाणी दिसते 'ती' त्याला...</h2>
+    <p>
+      प्रत्येक ठिकाणी दिसते 'ती' त्याला...<br><br>
+
+      कधी ट्रेनच्या गर्दीत,<br>
+      तर कधी मॉलच्या वर्दळीत!<br><br>
+
+      कधी त्याच्या कन्येच्या मागे,<br>
+      तर कधी त्याच्या सुपुत्राच्या मागे!<br><br>
+
+      कधी आजारी आईजवळ,<br>
+      तर कधी बीजी बायकोजवळ!<br><br>
+
+      प्रत्येक ठिकाणी दिसते 'ती' त्याला...<br>
+      ती-भीती... स्वस्थ जगू देत नाही त्याला!
+    </p>
+  </div>
+</div>
+
+<div id="post41" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post41')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">प्रत्येक गोष्टीत काय रडायचं?</h2>
+    <p>
+      प्रत्येक गोष्टीत काय रडायचं?<br>
+      जरा मनासारखं झालं नाही<br>
+      म्हणून काय लगेच रुसून बसायचं?<br><br>
+
+      आपल्या मनाप्रमाणे कोणी वागलं नाही,<br>
+      म्हणून काय लगेच अबोला धरून बसायचं?<br><br>
+
+      जरा कुठे अपयश आलं कधी,<br>
+      म्हणून काय हातावर हात भरून बसायचं?<br><br>
+
+      प्रत्येक गोष्टीत काय रडायचं?<br>
+      एखादं स्वप्न पूर्ण झालं नाही<br>
+      म्हणून काय स्वप्न बघणं सोडून द्यायचं?<br><br>
+
+      प्रत्येक गोष्टीत काय रडायचं?<br>
+      प्रत्येक गोष्टीत का रडायचं?
+    </p>
+  </div>
+</div>
+
+<div id="post42" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post42')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">शेती स्वप्नांची...</h2>
+    <p>
+      शेती स्वप्नांची...<br><br>
+
+      काळ्या काळ्या मातीमध्ये<br>
+      पेरले अनेक रोप मी स्वप्नांचे...<br><br>
+
+      रोज खत-पाणी घालून<br>
+      वाढवते मी माझे रोपटे स्वप्नांचे...<br><br>
+
+      बहारदार फुला-फळांची बहरलेलं<br>
+      भविष्य दिसतं मला ह्या शेतात...<br><br>
+
+      उंचच उंच ध्येय गाठलेले<br>
+      माझे आयुष्य दिसतं मला<br>
+      माझ्या ह्या शेतात…
+    </p>
+  </div>
+</div>
+
+<div id="post43" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post43')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">2020 सारखं वर्ष...</h2>
+    <p>
+      2020 सारखं वर्ष शतकातून एकदा तरी यायलाच हवं...<br><br>
+
+      जेव्हा माणूस स्वतच्याच धुंदीत पळत असतो...<br>
+      चूक - बरोबर सगळं विसरून स्वतःचच खरं करत असतो...<br>
+      आपली सगळी स्वप्न पूर्ण करण्यामध्ये साथ देणाऱ्या<br>
+      आपल्या शरीराकडेसुद्धा जेव्हा तो दुर्लक्ष करायला लागतो... तेव्हा...<br>
+      तेव्हा त्याला थांबवण्यासाठी कोरोना सारख्या रोगाला घेऊन 2020 सारखं वर्ष यायलाच हवं..<br><br>
+
+      जेव्हा स्वतःलाच माणूस खूप मोठा तीस मार खान समजायला लागतो...<br>
+      आपल्या स्वार्थासाठी झाडं तोडायला लागतो...<br>
+      'Sea view bunglow' बांधण्यासाठी समुद्राच्या राज्यात शिरायला लागतो...<br>
+      निसर्गाला for granted म्हणून माणूस जेव्हा घ्यायला लागतो तेव्हा...<br>
+      चक्रीवादळाला घेऊन 2020 सारखं वर्ष यायलाच हवं...<br><br>
+
+      जेव्हा समोरच्यावर आपण खूप विश्वास ठेवू लागतो<br>
+      आणि समोरचा 'वाटलं' म्हणून विश्वास तोडतो....<br>
+      अघोरीपणाला गंमत जेव्हा तो समजायला लागतो...<br>
+      माणसातली माणुसकी जेव्हा तो विसरायला लागतो तेव्हा...<br>
+      तेव्हा निसर्ग आणि प्राण्यांचा बळी घेणाऱ्या 2020 सारख्या वर्षाला यायलाच हवं...<br><br>
+
+      जेव्हा ही सृष्टी निर्माण करणाऱ्या त्या अदृश्य शक्तीला<br>
+      आणि आपल्याला जगवणाऱ्या या निसर्गाला विसरून<br>
+      जेव्हा माणूस स्वतःला महान समजायला लागतो तेव्हा<br><br>
+
+      "बाबा रे ... तुझ्यापेक्षा पण मोठी शक्ती आहे या जगात!" हे दाखवण्यासाठी;<br>
+      माणसाचे डोळे उघडून डोकं जागेवर आणण्यासाठी;<br>
+      2020 सारखं वर्ष शतकातून एकदा तरी  यायलाच हवं...
+    </p>
+  </div>
+</div>
+
+<div id="post44" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post44')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">तिची जागा...</h2>
+    <p>
+      8-9 वर्षांचा मुलगा आई - बाबांसोबत नवीन फ्लॅट बघायला गेलेला.<br><br>
+
+      बोलत होता - "बाबा... बाबा हे तर आपल्या आत्ताच्या घरापेक्षा पण खूप मोठ्ठ आहे... 3-3 रूम आहेत." <br><br>
+
+      बाबा - आवडलं तुला? हे बघ हा हॉल, ही बेडरूम आणि हे किचन.<br><br>
+
+      मुलगा - बेडरूम माझी... बेडरूम माझी...<br><br>
+
+      बाबा - हो ? आणि मग माझी आणि आईची रूम कोणती?<br><br>
+
+      मुलगा - सोप्पंय... तुमचा हॉल... आणि आईचं किचन.<br><br>
+
+      आईचं किचन....<br><br>
+
+      हो... आईचं किचन...<br><br>
+
+      .<br><br>
+
+      हे असे वाक्य नेहमी नाही पण नक्कीच कधी तरी ऐकली असतीलच तुम्ही. आपण प्रत्येकानेच... अनेक जण नकळत बोलूनही गेले असतील.<br><br>
+
+      खरंच का???<br><br>
+
+      तिची जागा फक्त किचनमध्ये आहे?<br><br>
+
+      तुझी जागा फक्त किचनमध्ये आहे?<br><br>
+
+      "आईला वेगळी रूम कशाला हवी?"<br><br>
+
+      "आईचं हॉलमध्ये काय काम? आई... तू जा किचनमध्ये?"<br><br>
+
+      "आई... तुला मागितलं ना मी, बाबांना का सांगते. तुझं काम आहे, तू पोळी आणून दे!"<br><br>
+
+      "आई तुला घरातली खूप कामं असतात माहीत आहे पण मग अजून कोण करणार? तुझंच कामं आहे ना ते...!"<br><br>
+
+      असे अनेक वाक्य माणूस बोलून जातो पण बोलून गेल्यावर त्याचा त्या व्यक्तीवर काय परिणाम होतो याचा नाही विचार करत.<br><br>
+
+      कुठून बोलतात ही मुलं हे सगळं.. नक्कीच कोणाकडून तरी ऐकलं असेल... आपल्या मोठ्यांकडून ऐकलं असेल. त्यांनी त्यांच्या लहानपणी, त्यांच्या मोठ्यांकडून ऐकलं असेल...<br><br>
+
+      हो ना?<br><br>
+
+      पण कधी विचार केला आहे, जी व्यक्ती सगळं न सांगता, मनापासून, प्रेमाने करते तिला हे असं सगळं ऐकल्यावर काय वाटत असेल?<br><br>
+
+      तुम्हीच विचार करा.. कसं वाटेल तुम्हाला जेव्हा तुम्ही खूप मनापासून कामं केलेल्या एका assignment वर कॉलेजच्या Ma'am म्हणतात "हे काय करून ठेवलयस?; कामं केलंच नाहीयेस..." किंवा C grade देतात?<br><br>
+
+      कसं वाटतं जेव्हा खूप मनापासून कामं केलेला प्रोजेक्ट, बॉस Reject करतो किंवा तुमचा insult करतो?  <br><br>
+
+      पिढ्यान-पिढ्या तिने बाहेर पडता येत नाही किंवा पडायचं नाही म्हणून खंबीरपणे घरची आणि घरातल्या प्रत्येकाची जबाबदारी घेतली आणि पिढ्यान-पिढ्या प्रत्येक जण तिच्या जबाबदारीला तिचा जॉब समजत आले आहे.<br><br>
+
+      पण हा खरंच तिच्या एकटीचा जॉब आहे का? <br><br>
+
+      खायला फक्त तिलाच लागतं?<br><br>
+
+      धुवायला कपडे फक्त तिचेच असतात?<br><br>
+
+      तिला शरीर नाही? ती आजारी पडू शकत नाही?<br><br>
+
+      मुलं फक्त तिचीच आहेत... मान्य आहे की 9 महिने तिने पोटात वाढवले पण म्हणून वडिलांचा, नाव लावण्याशिवाय आणि पैसे कमावून आणण्याशिवाय काही रोल नाही? रक्त तर त्यांचं पण आहे ना?<br><br>
+
+      तिने घर, ऑफिस, फॅमिली सगळं सांभाळायचं... तीच कामं आहे म्हणून? <br><br>
+
+      पण त्याने मात्र घर, ऑफिस, फॅमिली असं सगळं नाही बघायचं... कारण ते त्याचं कामं नाही म्हणून!<br><br>
+
+      लक्षात ठेवा ती सगळ्या जबाबदाऱ्या घेते आणि निभावते कारण तिला माहीत आहे की ती हे करू शकते. तिच्यात emotionally, mentally आणि physically ते सगळं सांभाळण्याची शक्ती आहे... आणि सगळ्यात महत्वाचं ती लहानपणापासून ते बघत आली आहे म्हणून... . ते तिचं कामं आहे म्हणून नाही. <br><br>
+
+      आणि तेच कारण आहे ज्यामुळे वयासोबतच तिची चीड-चीड वाढते, व्याधी लागतात.<br><br>
+
+      अहो 12-15 वर्षांची असल्यापासून दर महिन्याला शरीरातील एव्हडं मोठं रक्त जाणं, त्यामुळे हिमोग्लोबिन कमी होणं; नंतर हाडा-माणसाचा एक मनुष्यप्राणी आपल्या शरीरातून बाहेर काढणं हे काय सोप्प आणि त्रास न देणार वाटतं का? एवढे सगळे बदल शरीरात होत असतील तर वयाच्या आधी शरीर थकणे, व्याधी लागणे, emotionally disturbed होणे साहजिक नाही का?<br><br>
+
+      'तिने जड उचलू नये, शक्ती प्रदर्शनाची कामं करू नये' हे ती करू शकत नाही म्हणून नाही सांगत आले आहेत पूर्वज... तर, शरीरामध्ये सततच्या होणाऱ्या बदलांमुळे तिला कळत-नकळत त्रास होत असतो. अश्या वेळी तिचे शारीरिक कष्ट थोडे तरी आपण कमी करावे या विचाराने 'पुरुष बलवान आहे...स्ट्रॉंग आहे' हे विचार बिंबवले गेले आहेत.<br><br>
+
+      बाकी कोण खरंच physically किती स्ट्रॉंग आहे ते एवढ्याशा सर्दीने सुद्धा कळतच की...<br><br>
+
+      .<br><br>
+
+      असेच न बोलण्यात येणारे अनेक बदल पुरुषांमध्ये पण होत असतात... त्यांना सुद्धा अनेक टेन्शन असतात, जबाबदारी असते... याला दुमत नाहीच!<br><br>
+
+      .<br><br>
+
+      म्हणणं फक्त इतकंच आहे की... ती घरात आहे म्हणून तिला टेन्शन नाही, तिची जागा किचनमध्येच आहे हे विचार चुकीचे आहेत... प्रत्येक कामं तिनेच करावं ही टेंडेंसी चुकीची आहे. <br><br>
+
+      आपली lifestyle, खाण्याची पद्धत, कपडे हे सगळं पिढ्यांप्रमाणे बदललं ना आपण? मग आपले विचार का नाही?<br><br>
+
+      हळू हळू बदल घडत आहेत. पण तो बदल घडवण्यासाठी जाणीव होणे गरजेचे आहे. फक्त तेव्हडी जाणीव करून देण्याचा हा एक छोटासा प्रयत्न आहे. <br><br>
+
+      जेवायला प्रत्येकाला लागतं मग प्रत्येकाने बनवायला काय हरकत आहे?<br><br>
+
+      ती आणि तो दोघेही working आहेत मग तरीसुद्धा तिलाच का घर आणि ऑफिस असा डबल जॉब?<br><br>
+
+      घर आहे हो आपलं... तिच्या कामाला जॉब नाही तर जबाबदारी समजा. म्हणजे प्रत्येकालाच स्वतःची जबाबदारी कळेल. पुरुषाने घरातल्या कामांमध्ये मदत केली तर लगेच पुरुषार्थ कमी नाही होणार.<br><br>
+
+      "मी पुरुष आहे, मी हे करणार नाही, ते माझं कामं नाही" अश्या विचारांमध्ये पुरुषार्थ नाही...<br><br>
+
+      खरा पुरुषार्थ तर....<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      जाऊद्या... खरा पुरुषार्थ कश्यात आहे आणि काय आहे हे सांगून काही फायदा नाही कारण अनेकांना समोरच्याला त्याची 'जागा' दाखवून देण्यातच पुरुषार्थ आहे असं वाटतं!<br><br>
+
+      .<br><br>
+
+      असो...<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      प्रत्येक आईला मातृदिनाच्या हार्दिक शुभेच्छा...<br><br>
+    </p>
+  </div>
+</div>
+
+<div id="post45" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post45')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">‘Internship Programme’?</h2>
+    <p>
+      "So... what do you people think? Should we run this Internship programme ????"<br><br>
+
+      Yessss...... सगळ्याजणी literally ओरडल्या... आनंदाने ओरडल्या!<br><br>
+
+      आणि सगळ्याजणी म्हणजे 4, 5, 10 किंवा 12 नाही तर complete 11,200+ ledies...<br><br>
+
+      आणि ही तिची यशाची पहिली पायरी... नाही, पहिला अक्खा जिना तिनं पार केला. <br><br>
+
+      Chief Innovation Officer (CINO) Ms. राणी देव साठी हे सगळं तसं बघायला तर अवघड नक्कीच नव्हतं!<br><br>
+
+      आजपर्यंत जिने शेकडो ideas and concepts बद्दल लाखो लोकांना convince केलं होतं आणि फक्त convince च नव्हतं केलं तर प्रत्येकाला त्या innovationच्या प्रेमात पाडलं होतं; तिच्यासाठी हा एक काही Project नक्कीच नव्हता पण हो... अनेक projectsला एक मोठा brand बनवणाऱ्या राणीला हे नक्कीच माहीत होतं कि 'project' म्हटलं तर जीत तिचीच असणार आहे. पण म्हणून हवेत नव्हती उडत बर का ती... टेन्शन होतंच. करण अजून main playersसमोर हे सगळं मांडणं बाकी होतं. आणि आता यशाचा हा पहिला टप्पा पार पडल्यावर ती वाट बघत होती ते उद्याची. कारण main match तर उद्याच होती!<br><br>
+
+      .....<br><br>
+
+      "घ्या ना चहा... राणीने केलाय... स्वयंपाक येतो सगळं... आणि चहा तर फारच छान करते! ऑफिस आणि घर दोन्ही manage करायची सवयसुद्धा आहे आणि तिला" - राणीची आई सांगत होती.<br><br>
+
+      बघायला आलेली मुलाची आई लगेच खुश झाली, "हो मग.. यायलाच हवं! आणि आत्तापासूनच सवय आहे हे खूप चांगलं आहे!"<br><br> 
+
+      "हो...हो..." - राणीची आई<br><br>
+
+      "तुम्हाला दोघांना काही बोलायचं असेल तर बोला तुम्ही... राणी, यांना तुझी रूम दाखव आणि तिकडेच गप्पा मारत बसा" - राणीचा भाऊ<br><br>
+
+      "नाही... I mean, आम्ही बोललो आहोत या आधी एकदा. आत्ता खरं तर मला काकुंशी बोलायचं आहे"<br><br>
+
+      "माझ्याशी?" मुलाची आई थोडी confuse होऊन आणि 'माझा काय संबंध' अश्या अविर्भावात म्हणाली.<br><br>
+
+      "हो... तुमच्याशी!" राणीनेही तेवढ्याच confidently उत्तर दिले. "लग्न ठरलं तर जसा हा माझा नवरा होणार आहे, life partner होणार आहे, तश्याच तुम्हीसुद्धा माझ्या आई होणार आहात, आणि त्या नात्याने मी तुमची मुलगी... बरोबर ना???"<br><br>
+
+      .....<br><br>
+
+      "आई तू कसं ऐकून घेतलास तीच? सरळ नाही म्हणून टाकायचं... आग ही काय पद्धत आहे का? असं कुठे असत का? Innovation officer असेल तिच्या ऑफिसमध्ये; हे आयुष्य आहे... इथे कसले असले Innovation आणतीये ही... काही नाही... कळवून टाक नकार! मला नाही करायचं असल्या दीड-शहाण्या पोरीशी लग्न!" <br><br>
+
+      आई मात्र शांतच होती. कोणत्यातरी विचारात होती... एकदा फक्त तिच्या लग्न झालेल्या मुलीकडे बघितलं आणि फोने उचलून नंबर डायल केला.<br><br>
+
+      "हॅलो... राणी, मी बोलतीये!<br><br>
+
+      हो... माझ्या मुलाचं मला नाही माहीत पण मी मात्र तय्यार आहे! माझ्याकडून या Internship programmeसाठी होकार आहे."<br><br>
+
+      आणि  फोन ठेवला... <br><br>
+
+      "अगं आई हे तू काय केलंस? हो काय म्हणालीस?"<br><br>
+
+      "हो... हो म्हणाले मी. आणि मला सांग... Live-in Relationship चालतं ना रे तुम्हा पोरांना? ते कश्यासाठी... तर याच कारणासाठी ना कि आधी एकमेकांना जाणून-समजून घेऊ आणि मग लग्नाचा विचार करू म्हणून... मग आता ह्या Internship programmeला काय हरकत आहे? तू हवे तर live-in च समाज... फक्त पूर्ण फॅमिलीसोबतच live-in!"<br><br>
+
+      .....<br><br>
+
+      राणी त्या 11,200 लेडीज समोर नवीन Internship Programme बद्दल बोलत होती - <br><br>
+
+      "कोणत्याही जॉबमधे सुरवातीला Internship असते किंवा Prohibition period... का तर कंपनीला कळावं कि candidate कसा आहे? काम किती येत आणि कसा करतो? Team player आहे का नाही? Politics करत आहे का? etc etc... and at the same time त्या employeeला कळतं की आपल्याला जे काम करायचं आहे तेच आपण करतोय का? Future आहे का? शिकायला मिळतंय का? आपल्याला झेपतंय का? आपण पुढे जातोय का? Company atmosphere कसं आहे? ani आपल्याला इथे काम करून आनंद आणि समाधान मिळतंय का? <br><br>
+
+      म्हणजेच जॉब, जिथे की आपण lifetime एकाच कंपनीमध्ये राहणार असलो किंवा नसलो तरी इतका सगळं विचार करतो;<br><br>
+
+      मग 'लग्न' करताना, आपलं घर सोडून दुसऱ्या एका घरात आयुष्यभरासाठी जाताना असा विचार का नाही होतं?<br><br>
+
+      जॉबच्या वेळेस आपण म्हणतो की पहिले 1-2 महिनेच आहेत, try करू मग पुढचं पुढे बघू.<br><br>
+
+      मग तेच लग्न ठरवताना 'फक्त मुलाला बघा, फॅमिलीला भेट आणि शक्य आहे तेव्हडा समजून घ्या' असं विचार का? कमी वेळात आणि कमी जेव्हड्याच तेवढ्या भेटींमध्ये तर प्रत्येक जण आपली चांगली बाजूच दाखवणार ना... आणि त्या सगळ्यातून आपण फक्त अंदाज लावत बसायचं की फॅमिली actually अशी असेल, असे विचार आहेत, अश्या प्रथा आहेत, वगैरे वगैरे... पण assurity मात्र कसलीच नाही.<br><br>
+
+      Paertnerला समजून घेण्यासाठी आपल्याला 'Live-in-relationship' मान्य आहे मग पूर्ण फॅमिलीला समजून घेण्यासाठी महिन्याभराचा Internship programme का नाही? <br><br>
+
+      भारतीय संस्कृतीप्रमाणे मुलीनेच तिचं घर सोडून दुसऱ्या घरी जायचं. ठीक आहे, मान्य! पण पूर्ण आयुष्य जर एका दुसऱ्या फॅमिलीसोबत, एका दुसऱ्या घरात काढायचं असेल तर त्यांना नीट समजून घ्याल नको का? <br><br>
+
+      कोणत्याही घरात एका व्यक्तीच्या 'येण्याचा' किंवा 'जाण्याचा' परिणाम हा त्या घरातील प्रत्येकावर होतं असतो, प्रत्येकाच्या आयुष्यावर होतं असतो. मुलगी घरात येत आहे म्हणून तिचं आयुष्य तर 360 degree बदलतच, पण त्या घरातील आईचं, बहिणीचं, मुलाचं, नवऱ्याचं, वडिलांचं, अगदी लहान बाळाचं आयुष्यसुद्धा बदलत. फरक पडतो. प्रत्येकाला थोडं समजून घ्यावं लागतं, प्रत्येकाला थोडं adjust करावं लागतं आणि प्रत्येकाला काही नवीन गोष्टी मान्य कराव्या लागतात."<br><br>
+
+      "हो... I am agree with you... मी माझ्या नवऱ्याला लग्नाआधी अनेकदा भेटले होते पण त्याला सकाळी ब्रशसुद्धा हातात लागतो हे लग्नानंतरच कळलं. आणि आधी का नाही सांगितलं म्हटलं तर, 'साधी-छोटी गोष्ट तर आहे...त्यात सांगण्यासारखं काय?' असं उत्तर आलं... जे की बरोबर आहे, आपण या छोट्या गोष्टी नाही विचारत...पण नंतर याच छोट्या गोष्टी खूप मोठ्या वादामध्ये बदलतात."<br><br>
+
+      .<br><br>
+
+      11,200+ मधली एक जण बोलली... आणि आता प्रत्येक 'ती' बोलायला लागली.<br><br>
+
+      .<br><br>
+
+      "हा ना वं... मला माहिती असत की सासरे सारखं किचनमध्ये लुइ-बुडू करताय, त्यांना सगळा स्वयंपाक येतो तर स्वयंपाक शिकण्यासाठी एव्हडा खटाटोप केलाच नसता... माझं शिक्षण पूर केलं असतं... त्या खावण्या-पावण्याच्या नादापायी दहावी बी नीट पुरी नाय करू दिली माझ्या माय नं मला"<br><br>
+
+      .<br><br>
+
+      "खरंच... असा काही महिन्याभराचा Internship Programme असता तर आधीच कळलं असतं की दर महिन्याला 4 दिवस दुसऱ्या कोपऱ्यातल्या खोलीत राहावं लागणार आहे ते."<br><br>
+
+      .<br><br>
+
+      "I truely agree with you miss Rani... मला तर आत्ता प्रेग्नेंट राहिल्यानंतर कळलंय की सासरच्यांना मुलगी नको, मुलगाच हवा आहे... आजच्या काळातसुद्धा ही अशी थिंकिंग... I don't know how I am gonna handle this?"<br><br>
+
+      .<br><br>
+
+      "माझ्या सासूने तर प्रत्येकाला तव्यावरच्या पोळीची सवय लावली आहे. मी जॉब करते. मला नाही जमत हे असं दिवसभर किचनमध्येच राहणं... किचनच्या बाहेरपण आयुष्य असतं हेच माझी सासू विसरली आहे, आणि आता त्याचा त्रास मला होतोय... रोज उठून भांडणं. <br><br>
+
+      .<br><br>
+
+      "असं काही असतं तर मी माझ्या मुलीला नक्की करायला लावलं असतं... म्हणजे आम्हाला पण कळलं असतं सासरचं वातावरण कसं आहे ते... स्वतःच तिच्या लग्नाची घाई केली आणि आम्हालाच आता पचतावा होतोय"<br><br>
+
+      .<br><br>
+
+      "I am gonna try this... bcz I am an independent girl... गेले 2 वर्ष झाले एकटी राहत आहे. माझी आणि फॅमिलीची पूर्ण जबाबदारी घेऊ शकते but that does not mean की लग्नानंतर नवऱ्याला ब्रश आणि टॉवेल हातात देईल... मला नाही चालणार एव्हडा आयताळू स्वभाव आणि आळस."<br><br>
+
+      .<br><br>
+
+      "असं असतं तर आमच्या सुनेचा स्वभाव इतका विचित्र आहे आणि पुढे जाऊन मुलाला, आम्हाला इतका त्रास होऊ शकतो हे तरी आधी कळालं असतं."<br><br>
+
+      .<br><br>
+
+      "मला हे आधी माहिती असतं तर आज divorce घ्यायची वेळ नसती आली"<br><br>
+
+      .<br><br>
+
+      "खरं बोलीस बघ पोरी तू... माझं लग्न होऊन 40 वर्ष झाले... मी खमकी होते म्हणून या घरात टिकले आणि फक्त टाकलेच नाही तर सगळ्यांना नीट सवयी पण लावल्या. पण माझ्या मैत्रिणीसाठी मात्र मला वाईट वाटतंय..  अगदी पोतेरं करून घेतलाय तिने स्वतःच."<br><br>
+
+      .<br><br>
+
+      "माझ्या लग्नाला अजून खूप वेळ आहे... I am still studying but I ll definetly do this... माझं नवरा कसा आहे त्याचबरोबर त्याची फॅमिली आणि घरातला वातावरण कसं आहे ते कळायला हवं ना मला. माझे आई-बाबा माझी इतकी care करता तशीच ते करतील का?"<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      .<br><br>
+
+      प्रत्येक जण बोलत होतं... राणीला आता काही बोलायची गरजच नव्हती... CINO आहे शेवटी... 'TG experience and feedback'च प्रत्येक प्रोजेक्टला 'Brand' बनवतो हे तिला चांगलंच माहिती होतं... आणि आज तर या वर 1000% खात्री सुद्धा बसली.<br><br>
+
+      "लग्न ठरत आलं, पत्रिका, आवडी-निवडी, काही भेटी झाल्यावर final होकार देण्याआधी, 1 महिना मुलीने सासरी-पूर्ण फॅमिलीसोबत राहायचं... जशी ती आत्ता आहे तसाच... no change. आणि त्या फॅमिलीनेसुद्धा दिखावा नं करता जस आहे तसेच राहायचं. एक महिन्यानंतर मग सगळ्यांनी एकत्र यायचं आणि आपले विचार, मुद्दे समोर ठेवायचे. कोणाला कोणती गोष्ट आवडली, कोणती नाही ते कळेल आणि त्यावरूनच प्रत्येकाने 'स्वतःमध्ये काय बदल करावा' समजेल. त्याचसोबत प्रत्येकाची विचारसरणी आणि स्वभाव कळेल. या सगळ्या गोष्टी आधीच कळाल्या तर माणूस prepare होतो, decision घ्यायला सोप्प जातं. आधीच काही गोष्टी कळाल्या तर नंतर 'फक्त आम्ही दोघे वेगळे राहतो' असं म्हणायचीसुद्धा गरज नाही पडणार कदाचित. <br><br>
+
+      काही गोष्टी या वेळेप्रमाणे कळतील आणि बदलतील पण base तर clear होईल. जिथे त्या मुलीला आणि फॅमिलीला दोघांना कळेल की Future आहे का नाही आणि कसं आहे ते ते... ज्याने divorceचे chances थोड्याप्रमाणात तरी नक्कीच कमी होतील! <br><br>
+
+      हा... आता पुढे काय होणार आहे हे आपल्याला नाही माहीत. प्रत्येकवेळेस आपण जसा विचार करतो किंवा ठरवतो तसंच होतं असं नाही... पण एक समाधान तरी असेल की आपला निर्णय चुकला नाही... मग ती मुलगी असो, मुलगा असो किंवा फॅमिली!<br><br>
+
+      .<br><br>
+
+      आणि बाकी काही नाही पण "मला हे लग्नाआधी माहिती असतं ना तर......" या वाक्यात आणि हे वाक्य बोलल्यानंतर घडणाऱ्या रामायण-महाभारतात तरी नक्कीच फरक पडेल!
+</p>
+  </div>
+</div>
+
+
+<div id="post46" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post46')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">चूक माझीच आहे...</h2>
+    <p>
+      चूक माझी आहे... हो, चूक माझीच आहे!<br><br>
+
+      चूक माझीच आहे... जे मी लहानपणापासूनच मोठं होण्याचं स्वप्न पाहिलं...<br>
+      चूक माझीच आहे... जे मी घडण्याचा आणि घडवण्याचा विचार केला...<br>
+      चूक माझीच आहे... जे मी माझ्या आई-बाबांवर खूप प्रेम केलं आणि त्यांचा जीव गुंतवून ठेवला...<br><br>
+
+      चूक माझीच आहे... जे मी स्वतःची नवी ओळख बनवण्यासाठी प्रयत्न केला....<br>
+      चूक माझीच आहे... जे आई-बाबांच्या नजरेत माझ्याबद्दल proud feeling असल्याचं स्वप्न उराशी बाळगलं...<br>
+      चूक माझीच आहे... जे त्यांच्या आरामदायी 'उद्यासाठी' माझा 'आज' एन्जॉय करणं बाजूला ठेवलं...<br><br>
+
+      हो... चूक माझीच आहे... जे या जगात मुलीला बाहुली समजून हवं तसं खेळवणाऱ्या लोकांना मी जन्म दिला...<br>
+      चूक माझीच आहे... जे अश्या नराधमांची कधी बहीण, कधी मैत्रीण, कधी बायको तर कधी मुलगीसुद्धा झाले...<br>
+      चूक माझीच आहे... जे माझ्याकडे घाणेरड्या नजरेने बघितलं गेलं आणि माझ्या अंगावर हात टाकला गेला...<br>
+      चूक माझीच आहे... जे अश्या लोकांना घाबरून मी जन्म घेणं नाही थांबवलं...<br><br>
+
+      चूक माझीच आहे... जे मी जगातल्या वाईट गोष्टींचा विचार करतच जगायला शिकले...<br>
+      चूक माझीच आहे... जे वाईटाला घाबरून, तोंड बंद करून घरात बसून राहिले...<br>
+      चूक माझीच आहे... जे माझ्या मुलीला, बहिणीला आणि आईलासुद्धा घरातच बसायला सांगितलं...<br><br>
+
+      चूक माझीच आहे... जे मी आहे ते स्वीकारत गेले...<br>
+      चूक माझीच आहे... जे मी बदल घडवायचा प्रयत्न केला...<br>
+      चूक माझीच आहे... जे मी कधीतरी बदल घडेल हा विश्वास ठेवला...<br><br>
+
+      चूक माझीच आहे... जे कितीही प्रॉब्लेम्स आले तरी मी मात्र strong राहायचं ठरवलं....<br>
+      चूक माझीच आहे... जे हार मानून स्वतःला संपवण्याऐवजी मी लढायचं ठरवलं...<br><br>
+
+      चूक माझीच आहे... जे स्वतःची ओळख बनवायचं ठरवलं...<br>
+      चूक माझीच आहे... जे कोणाच्याही पैश्यांवर मजा न मारता स्वतः पैसे कमवायचं ठरवलं...<br>
+      चूक माझीच आहे... जे मी नवऱ्याच्या नावाने ओळखलं जाण्याआधी स्वतःच नाव कमवायचं ठरवलं...<br><br>
+
+      चूक माझीच आहे... जे मी संसाराला आर्थिक हातभार लावण्यासाठी दिवस-रात्र कष्ट केले...<br>
+      खरॊखरच चूक माझीच आहे... जे career, family, health हे सगळं कर्तव्य म्हणून सांभाळता सांभाळता #AllRounder tag लावून घेतला...<br><br>
+
+      चूक माझीच आहे... जे सगळ्यांना माझी सवय लावली... इतकी की मी नसली की कामं अडतातच सगळ्यांची...<br>
+      चूक माझीच आहे... जे मी मुलांना चांगलं जीवन देण्यासाठी मेहनत घेतली...<br>
+      चूक माझीच आहे... जे 'आई-आई' म्हणणाऱ्या मुलांनीच आज 'आई' शब्दाला शिवी बनवली आहे...<br><br>
+
+      चूक माझीच आहे... जे मी प्रत्येक नातं जपण्यासाठी, फुलवण्यासाठी प्रयत्न केले...<br>
+      चूक माझीच आहे... जे मी स्वतःसोबतच माझ्या माणसांना पण पुढे नेण्याचा विचार केला...<br><br>
+
+      अश्या अनेक चुका दिसतील तुम्हाला हो माझ्या....<br>
+      पण खरं सांगू का? माझी ना.... तसं बघायला गेलं तर चूक फक्त एकच आहे.....<br><br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      ती म्हणजे मी एक मुलगी म्हणून जन्माला आले!<br><br>
+    </p>
+  </div>
+</div>
+
+<div id="post47" class="modal">
+  <div class="modal-content">
+    <button onclick="closeModal('post47')" class="text-2xl font-bold float-right">&times;</button>
+    <h2 class="text-xl font-bold mb-4">मर्दांगी</h2>
+    <p>
+      
+    कसं ना म्हणजे .....<br><br>
+
+    अहो माहिती आहे आम्हाला, तुम्ही "मर्द" आहात ते.<br><br>
+    पण हे असे उद्योग करून स्वतःच स्वतःच्या so called "मर्दांगी" चे क्रूर रुप दाखवून, ईज्जत घालवून घेणं मात्र खुप मस्त जमलं बरं का !<br><br>
+
+    आम्हालाही दिसतात, पुरूषांचे वरचे उघडे बटण. पायावरचे भरपूर केस, शॉर्ट घातलेली असताना. स्विमिंग पुलात पोहताणाही पाहिले आहेत.<br><br>
+    मग आम्ही म्हणतो का, आम्हाला Signal देत आहेत म्हणून. का मग घेतो तुम्हाला कोपऱ्यात ओढून. का मग Group करुन टाकतो हात आणि लुटतो ईज्जत.<br><br>
+
+    आम्ही मात्र ब्रा ची पट्टी आत घालावी. पॅन्ट प्रत्येक वेळी वर ओढावी. ओढणी नीट करावी. का....तर कोणाला कोणता Signal भेटू नये.<br><br>
+    But let me tell you so called मर्द .... We don't live to impress others.<br><br>
+
+    हो.... मान्य आहे ना.... आम्हांला पण आवडतो एखादा. वाटतो रुबाबदार. येतं प्रेम. वाटत एखाद्या handsome कडे बघत रहावे.<br><br>
+    पण म्हणून तस करत नाही. At_least कोणाची ईज्जत तरी नक्कीच नाही काढत. Rape/Gangrape and Murder करुन विवस्त्र नाही फेकुन देत.<br><br>
+
+    थोडी तरी ईज्जत ठेवा रे. दुसऱ्यांची नाही तर At least स्वतःची.<br><br>
+    नाही का भीती वाटत परिणामांची ?<br><br>
+    उद्या तुमच्या आई, बहीण,बायको सोबत अस झालं तर काय तुम्ही त्या माणसाच्या बायको - मुली सोबत पण तेच करणार का ?<br><br>
+
+    कोणत्याही पुरुषावर विश्वास पण ठेवाता येवु नये याची मात्र खुप छान काळजी घेतली आहे बरं का तुम्ही ! I appreciate that.<br><br>
+    कधी घरातले काका तर कधी शेजारचा दादा. कधी College Professor तर कधी Office Boss. ओळखीचेच जर करु शकतात तर अनोळखींच तर बोलायलाच नको.<br><br>
+
+    आणि एवढीच जर मजा मारायची असेल, Porn बघुन बघुन निर्माण होणारी हवस पुर्ण करायची असेल तर जा ना कोठ्यावर. जबरदस्ती न करता तुमची ईच्छापुर्ती होईल .<br><br>
+    (I know, may be my this statement is not right. but you guys..... दुसरा कोणता choice च नाही सोडला. )<br><br>
+
+    ८ वर्षाची मुलगी .... ४० वर्ष पडुन राहिलेली ती नर्स ... अशा अनेक जणी... थोडी तरी माणुसकी ठेवा रे....<br><br>
+
+    मान्य आहे, सगळे नाहीत सारखे.<br><br>
+    पण म्हणणं फक्त एवढेच आहे की तुमचा तो Hurt होणारा Ego,<br><br>
+    So called मर्दांगी दाखवायची असेलच ना तर अशा ठिकाणी दाखवा जिथे कोणावर जबरदस्ती नाही करायला लागणार. कोणाची ईज्जत आणि जीव नाही जाणार.<br><br>
+    तेव्हा ठराल तुम्ही सच्चे मर्द !<br><br>
+    </p>
+  </div>
+</div>
+
+
+  <!-- JS -->
+  <script>
+  // Open modal
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Close modal
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+
+  // Close modal when clicking outside content
+  window.addEventListener('click', function(e) {
+    document.querySelectorAll('.modal').forEach(function(modal) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('flex');
+    mobileMenu.classList.add('hidden');
+  });
+</script>
+
+
+  <!-- Contact Footer -->
+    <footer class="bg-black text-white py-8 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">👤</div>
+                        <span class="text-white font-light">Pratiksha Kulkarni</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">📧</div>
+                        <a href="mailto:contact@pratikshakulkarni.in" class="text-white hover:text-gray-300 transition-colors font-light">contact@pratikshakulkarni.in</a>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">💼</div>
+                        <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="text-white hover:text-gray-300 transition-colors font-light">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="text-gray-400 text-sm font-light">
+                    © 2025 Pratiksha Kulkarni
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // This would typically navigate to different pages
+            // For demo purposes, we'll show an alert
+            if (pageId === 'home') {
+                return; // Already on home page
+            }
+            alert(`Navigating to ${pageId.charAt(0).toUpperCase() + pageId.slice(1)} page...`);
+        }
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Contact Form Handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Resume Download
+        function downloadResume() {
+            alert('Resume download would start here. This is a demo version.');
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.hover-lift, .floating-animation');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('backdrop-blur-lg');
+            } else {
+                nav.classList.remove('backdrop-blur-lg');
+            }
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('designModal');
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close if clicking outside the modal content
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Optional: Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+});
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96879892228a396c',t:'MTc1NDA3NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
