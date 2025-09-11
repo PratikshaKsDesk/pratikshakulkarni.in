@@ -101,33 +101,6 @@
     </div>
   </main>
 
-  <!-- Feature Popup -->
-  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
-      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
-      <div id="featurePopupContent"></div>
-    </div>
-  </div>
-
-  <script>
-    const featureContent = {
-      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
-      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
-      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
-    };
-
-    function openFeaturePopup(feature) {
-      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
-      document.getElementById('featurePopup').classList.remove('hidden');
-      document.getElementById('featurePopup').classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeFeaturePopup() {
-      document.getElementById('featurePopup').classList.add('hidden');
-      document.getElementById('featurePopup').classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    }
-  </script>
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
@@ -139,6 +112,7 @@
 
 </body>
 </html>
+
 
 
 
