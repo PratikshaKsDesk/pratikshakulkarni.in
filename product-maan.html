@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maan India – Empowering Women Artisans with Digital Commerce</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Navigation -->
+  <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+          Pratiksha Kulkarni
+        </a>
+        <div class="hidden md:flex flex-row space-x-1">
+          <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+          <a href="product.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Products</a>
+          <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+          <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
+          <a href="justasaying.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Just A Saying</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold text-pink-600 mb-8">Maan India – Empowering Women Artisans with Digital Commerce</h1>
+
+    <div class="space-y-12 text-gray-700 leading-relaxed">
+
+      <!-- Context -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Context</h2>
+        <p>
+          Many women artisans in India have exceptional skills — designing, jewelry making, stitching, handicrafts — but lack: 
+          - A structured platform to showcase their products 
+          - Market access beyond their local communities 
+          - Operational support for cataloging, marketing, payments, and logistics 
+          As a result, their earning potential remains untapped, and their businesses struggle to grow.
+        </p>
+      </section>
+
+      <!-- Solution -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Solution</h2>
+        <p>
+          We conceptualized Maan India as a simple yet powerful platform enabling artisans to create digital catalogs, manage orders, and connect with buyers directly. 
+          The focus was on accessibility, ease of use, and integrated operational support.
+        </p>
+      </section>
+
+      <!-- About Product -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">About Product</h2>
+        <p>
+          Maan India is more than an online marketplace — it’s a livelihood enabler for women artisans. 
+          By blending e-commerce, logistics, and simple UX, it helps women scale businesses beyond local markets and reach national and global buyers.
+        </p>
+      </section>
+
+      <!-- ✅ Features Row -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature1')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 1</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature2')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 2</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature3')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 3</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Contribution -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">My Contribution</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Research & Discovery – Conducted surveys, focus groups, and interviews with 40+ women artisans</li>
+          <li>Product Concept & Strategy – Defined platform vision, features, and flows for low-tech users</li>
+          <li>UX & UI Design – Designed onboarding journeys, wireframes, and prototypes</li>
+          <li>Business Model Planning – Outlined cataloging, order management, logistics, and promotions</li>
+          <li>Execution Readiness – Coordinated with developers, marketers, and logistics providers for MVP roadmap</li>
+        </ul>
+      </section>
+
+      <!-- Current State -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Current State</h2>
+        <p>
+          Currently in development, Maan India aims to be a scalable e-commerce platform helping women artisans grow sustainable livelihoods through digital empowerment and global reach.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Feature Popup -->
+  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
+      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+      <div id="featurePopupContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const featureContent = {
+      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
+      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
+      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
+    };
+
+    function openFeaturePopup(feature) {
+      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+      document.getElementById('featurePopup').classList.remove('hidden');
+      document.getElementById('featurePopup').classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeFeaturePopup() {
+      document.getElementById('featurePopup').classList.add('hidden');
+      document.getElementById('featurePopup').classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span>© 2025 Pratiksha Kulkarni</span>
+      <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-gray-300">contact@pratikshakulkarni.in</a>
+    </div>
+  </footer>
+
+</body>
+</html>

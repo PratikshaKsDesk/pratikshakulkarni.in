@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Parayan – Digital Spiritual Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Navigation -->
+  <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+          Pratiksha Kulkarni
+        </a>
+        <div class="hidden md:flex flex-row space-x-1">
+          <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+          <a href="product.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Products</a>
+          <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+          <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
+          <a href="justasaying.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Just A Saying</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold text-pink-600 mb-8">Online Parayan – Digital Spiritual Community</h1>
+
+    <div class="space-y-12 text-gray-700 leading-relaxed">
+
+      <!-- Context -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Context</h2>
+        <p>
+          Thousands of devotees deeply value spiritual texts like the Dnyaneshwari (commentary on the Bhagavad Gita) but face key challenges: 
+          • Time constraints: Busy professionals can’t commit to daily reading. 
+          • Complexity: Many find the language hard to read and understand. 
+          • Lack of accessibility: No simple, structured way to consume the text regularly. 
+          The goal: Make spiritual learning simple, accessible, and routine-friendly for modern devotees.
+        </p>
+      </section>
+
+      <!-- Solution -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Solution</h2>
+        <p>
+          We launched Online Parayan with structured audio-video formats delivered via WhatsApp groups. 
+          The design allowed devotees to choose their own pace and created daily reminders for spiritual connection, 
+          without requiring new apps or complex setups.
+        </p>
+      </section>
+
+      <!-- About Product -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">About Product</h2>
+        <p>
+          Part of the Swayampoorna Foundation’s mission, Online Parayan was built to combine tradition with technology — 
+          making devotion accessible for youth, working professionals, and elderly followers alike, 
+          while fostering an engaged spiritual community.
+        </p>
+      </section>
+
+      <!-- ✅ Features Row -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature1')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 1</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature2')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 2</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature3')">
+            <h3 class="text-lg font-semibold text-gray-900">Feature 3</h3>
+            <p class="text-gray-600 text-sm mt-2">Click to view details</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Contribution -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">My Contribution</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Project Management – Led end-to-end planning, from MVP concept to community scale-up</li>
+          <li>User Research – Conducted interviews & surveys with devotees to understand needs and constraints</li>
+          <li>Content Strategy – Structured audio-video formats for easy listening and flexible schedules</li>
+          <li>Execution – Designed WhatsApp-first delivery model for accessibility and adoption</li>
+          <li>Community Growth – Built and managed participant engagement across multiple batches</li>
+        </ul>
+      </section>
+
+      <!-- Impact & Metrics -->
+      <section>
+        <h2 class="text-3xl font-bold mb-4">Impact & Metrics</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>7,800+ participants joined across batches</li>
+          <li>High adoption among working professionals, youth, and even global participants</li>
+          <li>Increased engagement in 14–36 age group via WhatsApp-first approach</li>
+          <li>Contributed significantly to Swayampoorna Foundation’s community growth</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Feature Popup -->
+  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
+      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+      <div id="featurePopupContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const featureContent = {
+      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
+      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
+      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
+    };
+
+    function openFeaturePopup(feature) {
+      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+      document.getElementById('featurePopup').classList.remove('hidden');
+      document.getElementById('featurePopup').classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeFeaturePopup() {
+      document.getElementById('featurePopup').classList.add('hidden');
+      document.getElementById('featurePopup').classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span>© 2025 Pratiksha Kulkarni</span>
+      <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-gray-300">contact@pratikshakulkarni.in</a>
+    </div>
+  </footer>
+
+</body>
+</html>

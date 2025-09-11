@@ -1,955 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
-        flex: 1;
-    }
-
-
-    .hover-lift:hover {
-        transform: translateY(-2px);
-    }
-
-    .image-placeholder {
-        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #6b7280;
-        font-size: 0.875rem;
-        text-align: center;
-        border: 2px dashed #d1d5db;
-    }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products – Pratiksha Kulkarni</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans">
-        <!-- Navigation --> 
-        <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-            <!-- Logo -->
-            <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
-                Pratiksha Kulkarni
-            </a>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
 
-            <!-- Mobile menu button -->
-            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
-                ☰
-            </button>
-
-            <!-- Desktop Links -->
-            <div class="hidden md:flex flex-row space-x-1">
-                <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
-                <a href="product.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
-                <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
-                <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
-                <a href="justasaying.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Just A Saying</a>
-            </div>
-            </div>
+  <!-- Navigation -->
+  <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+          Pratiksha Kulkarni
+        </a>
+        <div class="hidden md:flex flex-row space-x-1">
+          <a href="index.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Home</a>
+          <a href="product.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Products</a>
+          <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+          <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
+          <a href="justasaying.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Just A Saying</a>
         </div>
-        </nav>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 hidden flex-col justify-center items-center space-y-8 z-50">
-        <a href="index.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Home</a>
-        <a href="product.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Products</a>
-        <a href="creatives.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Creatives</a>
-        <a href="blog.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Blog</a>
-        <a href="justasaying.html" class="text-white text-2xl font-bold hover:text-gray-300 transition">Just A Saying</a>
-        <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
-        </div>
-
-        <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('flex');
-            mobileMenu.classList.add('hidden');
-        });
-        </script>
-
-        <style>
-        /* Mobile menu fade + slide animation */
-        #mobileMenu {
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        #mobileMenu.flex {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        </style>
-
-
-    <!-- Products Page -->
-    <main class="flex-grow">
-        <div class="max-w-7xl mx-auto px-4 py-16">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-black mb-6 tracking-wide">From Concept to Launch and Beyond</h1>
-                <p class="text-2xl text-gray-700 font-light">I've worked on apps, communities, and social initiatives, leading them from research and design to launch, growth, and adoption. In small, fast-moving teams, I've taken on multiple roles across product, UX, marketing, and QA. This experience shaped my ability to align user needs with business goals and deliver products that truly work in the real world.</p>
-            </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product1')">
-
-                <div class="h-w-full overflow-hidden">
-                    <img src="images/design/mobile_app_product_Myma.webp" alt="Myma" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Myma<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Myma</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A mobile app enabling homemakers to start their food businesses from home and individuals to order fresh, home-cooked meals.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">MOBILE APP</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Homefood Business</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product2')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\swayampoorna_social_foundation.webp" alt="Swayampoorna Foundation" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Swayampoorna Foundation<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Swayampoorna Foundation</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A social initiative aimed at motivating, educating, and providing opportunities for women to realize their potential and build their own identities.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Community</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Social Foundation</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product3')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\mobile_app_product_pms.webp" alt="Pavanraje Multistate" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Pavanraje Multistate<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Pavanraje BMS</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A SaaS product designed for multistate businesses, enabling seamless management of everything from daily attendance to customer loan applications.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">SAAS Product</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Banking Sector</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product4')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\mobile_app_product_godocs_services.webp" alt="GoDocs Services" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">GoDocs Services<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">GoDocs Services</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A product that simplifies obtaining government documents (FSSAI License, Udyam, Shop Act, etc) at minimal cost via mobile.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Mobile App</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Documentation Service</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product5')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\community_product_online_parayan.webp" alt="Online Parayan" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Online Parayan<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Online Parayan</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">Swayampoorna Foundation built a community for followers of Saint Dnyaneshwar, Saint Tukaram, Lord Vitthala, and others. </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Community</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Spiritual</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product6')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\product_aarogya_club.webp" alt="Aarogya Club" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Aarogya Club<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Aarogya Club</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">A community initiative by Swayampoorna Foundation offering online yoga classes, primarily targeting women.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Community</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">Fitness</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product7')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\mobile_app_product_ecommerce_Maan.webp" alt="Maan India" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Maan India<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Maan India</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">Initiative aimed at empowering women with diverse skills. The platform connects artisans to buyers seeking local, handcrafted products. </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Mobile App</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">E-commerce</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product8')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\mobile_app_product_elearning.webp" alt="E-Learning App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">E-Learning App<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">E-Learning App</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">This project aims to bridge the gap between knowledge seekers and subject matter experts.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Mobile App</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">EduTech</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 9 -->
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer border border-gray-200 hover:border-black transition-all duration-300 hover-lift" onclick="showProductDetail('product9')">
-                <div class="h-w-full overflow-hidden">
-                    <img src="\images\design\mobile_app_product_Storytelling.webp" alt="Storytelling App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder w-full h-full" style="display: none;">Storytelling App<br>400x300px</div>
-                </div>
-                <div class="p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Storytelling App</h3>
-                        <p class="text-gray-600 mb-3 font-light leading-relaxed text-sm">This app connects children with elderly storytellers, fostering intergenerational bonding through storytelling.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-black text-white rounded-none text-xs font-light">Mobile App</span>
-                        <span class="px-2 py-1 bg-gray-200 text-black rounded-none text-xs font-light">EduTech & Entertainment</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <!-- Product Detail Modal -->
-    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 id="productTitle" class="text-3xl font-bold text-gray-900"></h2>
-                    <button onclick="closeProductDetail()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-                </div>
-                <div id="productContent"></div>
-            </div>
-        </div>
+      </div>
     </div>
+  </nav>
 
-    <script>
-        // Product Detail Modal
-        function showProductDetail(productId) {
-            const modal = document.getElementById('productModal');
-            const title = document.getElementById('productTitle');
-            const content = document.getElementById('productContent');
-            
-            const productData = {
-                product1: {
-                title: 'Myma - A Platform for Homemakers & Home-Cooked Meals',
-                description: 'A livelihood-enabling platform helping homemakers turn cooking skills into businesses while giving working individuals access to healthy, home-style meals.',
-                problem:
-                `Indian homemakers have exceptional cooking skills but lack platforms, trust, and resources to turn them into businesses. 
-                On the other side, working individuals, especially those living away from home, struggle to find fresh, healthy, home-style meals and rely on unhealthy alternatives.`,
-                solution: 'We built Myma as a community-driven food platform connecting homemakers with customers. It simplified onboarding, enabled subscriptions, and built trust through social campaigns and community marketing, while automating operations for scale.',
-                about: 'Myma is more than a food app — it’s a livelihood enabler and trust-based marketplace for authentic home-cooked food. It empowers homemakers to build businesses while offering customers reliable access to fresh, regional meals.',
-                whatIDid: [
-                    'Research & Concept Development - Led 80+ user interviews, surveys, focus groups, and usability testing',
-                    'UX & Product Design - Designed onboarding flows, order journeys, marketplace features, wireframes & prototypes',
-                    'Business Analysis - Defined pricing models, subscription tiers, and marketplace strategy',
-                    'Product Development & QA - Coordinated with developers; led manual, functional, usability, and smoke testing',
-                    'Growth & Marketing - Ran community-led campaigns, partnered with Madhura’s Recipe, and led storytelling-driven campaigns',
-                    'Automation & Ops - Implemented WhatsApp chatbot for subscriptions and customer support, reducing ops cost'
-                ],
-                hideResults: true,
-                results: 'Myma rapidly grew into a trusted platform that boosted homemakers’ confidence and gave customers healthier meal options.',
-                kpis: [
-                    '100K+ app downloads',
-                    '47K+ subscribed home chefs onboarded',
-                    'Registrations grew from 45/day → 320/day after onboarding fixes',
-                    'Orders grew from 35 → 180+ per month',
-                    'Subscriptions increased 48% with festival-specific plans',
-                    '72+ new subscribers/month via WhatsApp automation',
-                    '24% reduction in ops costs with chatbot automation',
-                    '4,580+ users acquired in 8 days via Facebook Group campaigns'
-                ],
-                    images: [
-                        '/images/design/myma_app_screens_1.webp',
-                        '/images/design/myma_app_screens_2.webp',
-                        '/images/design/myma_app_screens_3.webp',
-                        '/images/design/myma_app_screens_4.webp',
-                        '/images/design/myma_app_screens_5.webp'
-                    ],
-                    links: [
-                    { label: "Website", url: "https://myma.in/" },
-                    { label: "Instagram", url: "https://www.instagram.com/mymaindia_official/" },
-                    { label: "Facebook", url: "https://www.facebook.com/officialmyma" },
-                    { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.mymameals.mainapp&hl=en_IN&gl=US" },
-                    { label: "App Store", url: "https://apps.apple.com/in/app/myma-home-cooked-food/id1497424909?platform=iphone" },
-                    ],
-                    videos: [
-                    { 
-                    label: "Promotion Video", 
-                    videoId: "SWmy1tiVfSI", 
-                    url: "https://youtu.be/SWmy1tiVfSI?si=FWirQliMxHR68_HD" 
-                    },
+  <!-- Main Section -->
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold text-pink-600 mb-12">Products</h1>
 
-                    { 
-                    label: "News", 
-                    videoId: "VZZndO-2VRs", 
-                    url: "https://youtu.be/VZZndO-2VRs?si=lWcOQSjpP3EiUHNj" 
-                    },
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                    { 
-                    label: "Mera Kitchen, Mera Business Campaign", 
-                    videoId: "THinTp50Wpc", 
-                    url: "https://youtu.be/THinTp50Wpc?si=qxlvT_eR7o76D2HS" 
-                    },
-
-                    { 
-                    label: "Business Explainatory Video", 
-                    videoId: "HHJQYlffvAY", 
-                    url: "https://youtu.be/HHJQYlffvAY?si=c6rmnScQHb_Id2Xn" 
-                    },
-
-                    { 
-                    label: "Business Explainatory Video", 
-                    videoId: "_0zmf5TPhWM", 
-                    url: "https://youtu.be/_0zmf5TPhWM?si=pgpE6Vys7U4ds5vO" 
-                    },
-                    ]
-                },
-
-                product2: {
-                title: 'Swayampoorna – Empowering Women Through Community & Opportunity',
-                description: 'A social initiative focused on motivating, educating, and creating real opportunities for women to build confidence and financial independence.',
-                problem:
-                `Many women in India have skills and potential but lack confidence, guidance, and opportunities to build financial independence. 
-                Barriers ranged from social norms, health issues, and family opposition to low awareness, trust gaps, and limited exposure.
-
-                Our goal was to understand these challenges deeply and create a platform that educates, motivates, and connects women to real opportunities.`,
-                solution: 'We launched Swayampoorna Foundation as a women-first initiative combining research, motivational storytelling, education, and opportunity creation. By building trust and enabling communities, we connected women to earning platforms and inspired them to step into independence.',
-                about: 'Swayampoorna is more than a foundation — it is a growing ecosystem that helps women feel seen, supported, and enabled. Through storytelling, campaigns, and opportunities, we turned confidence into action, bridging women’s skills with real-world platforms.',
-                whatIDid: [
-                    'Research & Concept Development – Led user interviews, surveys, contextual inquiries, and focus groups',
-                    'Persona Development – Created personas & insights to guide campaigns and content strategy',
-                    'Content & Campaigns – Designed storytelling-led campaigns like "Common Women, Uncommon Stories"',
-                    'Community Building – Launched Facebook & WhatsApp groups for education and inspiration',
-                    'Opportunity Enablement – Connected women to earning platforms like Myma, Maan India, Storytelling App, and E-learning',
-                    'Design & Communication – Created campaign creatives, wrote stories, and planned outreach strategy'
-                ],
-                hideResults: true,
-                results: 'Swayampoorna quickly gained traction, building confidence and community while opening real opportunities for women across India.',
-                kpis: [
-                    '10,000+ women reached via campaigns and communities',
-                    'Multiple earning platforms launched for women entrepreneurs',
-                    'Significant boost in confidence & participation through education and storytelling',
-                    'Thousands engaged through Facebook groups & WhatsApp in under 3 months',
-                    'Volunteer network expanded into local outreach & offline events'
-                ],
-                hideCurrentState: true, 
-                currentState: 'Outcome: Swayampoorna became a supportive ecosystem for women — offering motivation, education, and opportunities. By blending community-driven engagement with digital platforms, we enabled women to take their first steps toward independence with confidence.',
-                images: [],
-                links: [
-                    { label: "Website", url: "https://swayampoorna.com/" },
-                    { label: "Instagram", url: "https://www.instagram.com/swayampoorna_foundation/?hl=en" },
-                    { label: "Facebook", url: "https://www.facebook.com/meswayampoorna" },
-                    ],
-                    videos: [
-                    { 
-                    label: "तुमच्या आमच्यातली 'ती'", 
-                    videoId: "KTrZSXp5VAs", 
-                    url: "https://youtu.be/KTrZSXp5VAs?si=DAuBEXDaZtzaZ-HQ" 
-                    },
-
-                    { 
-                    label: "प्रत्येक आईसाठी एक प्रश्न...", 
-                    videoId: "JayehX1_UII", 
-                    url: "https://youtu.be/JayehX1_UII?si=7cF8kArSi9TVyIp7" 
-                    },
-
-                    { 
-                    label: "Let's Appreciate Her", 
-                    videoId: "3c_lfNcpk-w", 
-                    url: "https://youtu.be/3c_lfNcpk-w?si=PhD7VaMetCKpPDD9" 
-                    },
-
-                    { 
-                    label: "Let's Appreciate Her", 
-                    videoId: "mYm25k7nHVc", 
-                    url: "https://youtu.be/mYm25k7nHVc?si=HTR7y18sIUyt5kf7" 
-                    },
-
-                    { 
-                    label: "Let's Appreciate Her", 
-                    videoId: "AEc0jZxkU4Y", 
-                    url: "https://youtu.be/AEc0jZxkU4Y?si=XLiUqWdO-5xIrugH" 
-                    },
-
-                    { 
-                    label: "Let's Appreciate Her", 
-                    videoId: "LL2EDkfqge4", 
-                    url: "https://youtu.be/LL2EDkfqge4?si=NRF4l4n_sxc28GR6" 
-                    },
-                    ]
-                },
-
-
-                product3: {
-                title: 'Pavanraje BMS – SaaS for Multistate Business Operations',
-                description: 'A mobile-first SaaS product enabling multistate businesses to digitize daily operations with simple, intuitive workflows.',
-                problem:
-                `Managing daily attendance, late marks, expenses, and customer loan applications was highly manual for multistate businesses, consuming significant time, effort, and cost. 
-                Additionally, many employees had low technical literacy, making existing CMS portals complex and underused.
-
-                The goal was to create a simplified, mobile-first solution for smoother business operations and better user adoption.`,
-                solution: 'We built Pavanraje BMS as a user-friendly SaaS product, designed around real workflows and mobile-first adoption. The pilot app simplified attendance, expense management, and loan tracking, making operations faster and easier for staff with limited technical experience.',
-                about: 'Developed for Pavanraje Multistate and Aalekkh Studio, this product is a purpose-built SaaS platform tailored for cooperative institutions. It helped businesses transition from manual processes to automated, mobile-based workflows while remaining accessible to low-tech users.',
-                whatIDid: [
-                    'Competitor Research – Mapped existing SaaS solutions to identify usability gaps',
-                    'UX Research – Conducted interviews, surveys, and contextual inquiries with employees & admins',
-                    'Design – Created wireframes, prototypes, and user flows for intuitive mobile UX',
-                    'Client & Stakeholder Management – Coordinated requirements with Pavanraje Multistate & Aalekkh Studio',
-                    'QA Testing – Led manual, functional, usability, and sanity testing',
-                    'Collaboration – Worked closely with developers, designers, and operations teams to deliver the pilot'
-                ],
-                hideResults: true,
-                results: 'The pilot rollout validated the product’s potential, showing strong adoption and operational improvements among staff.',
-                kpis: [
-                    '40% reduction in manual work for attendance & expense tracking',
-                    'Higher user adoption due to simplified design',
-                    'Operational time savings via automation features',
-                    'Scalability roadmap created for 4,500+ multistate institutions across India'
-                ],
-                hideCurrentState: true, 
-                currentState: 'Outcome: Delivered a custom SaaS app enabling businesses to digitize daily operations while remaining simple for non-technical users. The system is now being redeveloped with updated tech for nationwide scale and advanced automation.',
-                    images: [
-                        '/images/design/pms_saas_mobile_app_1.webp',
-                        '/images/design/pms_saas_mobile_app_2.webp',
-                        '/images/design/pms_saas_mobile_app_3.webp',
-                        '/images/design/pms_saas_mobile_app_4.webp',
-                        '/images/design/pms_saas_mobile_app_5.webp'
-                    ]
-                },
-
-                product4: {
-                title: 'GoDocs – Simplifying Government Documentation',
-                description: 'A WhatsApp-first documentation service that made government licensing fast, affordable, and trustworthy for small businesses in Tier 2 & 3 India.',
-                problem:
-                `Small business owners across Tier 2 & Tier 3 India were paying ₹2000–₹12000 to agents for documents like FSSAI, GST, MSME licenses that officially cost only ₹100–₹500. 
-                The government process was complex, while existing service providers exploited the lack of awareness, charging exorbitant fees.
-
-                The goal: Make documentation fast, affordable, and trustworthy for every entrepreneur.`,
-                solution: 'We built GoDocs as a WhatsApp-first service, validating real needs before investing in a mobile app. While the app was developed with features like uploads, payments, and tracking, user behavior revealed a preference for personal support via WhatsApp and calls — leading us to pivot away from app-first.',
-                about: 'GoDocs started as an MVP experiment under Swayampoorna Foundation. It quickly evolved into a people-first documentation service that reduced costs, built trust, and improved turnaround times for small entrepreneurs. Instead of sleek UI, it focused on meeting users where they already were — on WhatsApp.',
-                whatIDid: [
-                    'Product Strategy – Scoped MVP approach using WhatsApp-first workflows before app development',
-                    'Research & Validation – Conducted user interviews, online surveys, and usability testing',
-                    'App Development – Designed & managed MVP mobile app for license applications (FSSAI focus)',
-                    'GTM & Marketing – Led Facebook lead-gen campaigns; optimized from form-based to call-based ads',
-                    'Operations – Built automation workflows for lead handling via WhatsApp and phone',
-                    'Analytics – Tracked conversion funnel, engagement, and CPA to inform product pivots'
-                ],
-                hideResults: true,
-                results: 'The service succeeded even though the app failed, proving that adoption depends on trust and accessibility more than sleek interfaces.',
-                kpis: [
-                    '12X increase in daily lead conversion post marketing optimization',
-                    'Reduced document procurement costs for users by up to 90% compared to agents',
-                    'Zero drop-offs in engagement after pivoting to WhatsApp-first model',
-                    'Faster turnaround times vs. traditional processes'
-                ],
-                hideCurrentState: true, 
-                currentState: 'Outcome & Key Learnings: The app failed, but the service thrived. Trust, simplicity, and accessibility mattered more than UI for this audience. WhatsApp-first > App-first for Tier 2 & 3 India. Realized: the platform is not the product — the experience is. Today, GoDocs continues to serve entrepreneurs successfully without an app, growing because it met users where they already were.',
-                images: []
-                },
-
-
-                product5: {
-                title: 'Online Parayan – Digital Spiritual Community',
-                description: 'A WhatsApp-first initiative making spiritual learning simple, accessible, and routine-friendly for modern devotees.',
-                problem:
-                `Thousands of devotees deeply value spiritual texts like the Dnyaneshwari (commentary on the Bhagavad Gita) but face key challenges:
-
-                • Time constraints: Busy professionals can’t commit to daily reading.
-                • Complexity: Many find the language hard to read and understand.
-                • Lack of accessibility: No simple, structured way to consume the text regularly.
-
-                The goal: Make spiritual learning simple, accessible, and routine-friendly for modern devotees.`,
-                solution: 'We launched Online Parayan with structured audio-video formats delivered via WhatsApp groups. The design allowed devotees to choose their own pace and created daily reminders for spiritual connection, without requiring new apps or complex setups.',
-                about: 'Part of the Swayampoorna Foundation’s mission, Online Parayan was built to combine tradition with technology — making devotion accessible for youth, working professionals, and elderly followers alike, while fostering an engaged spiritual community.',
-                whatIDid: [
-                    'Project Management – Led end-to-end planning, from MVP concept to community scale-up',
-                    'User Research – Conducted interviews & surveys with devotees to understand needs and constraints',
-                    'Content Strategy – Structured audio-video formats for easy listening and flexible schedules',
-                    'Execution – Designed WhatsApp-first delivery model for accessibility and adoption',
-                    'Community Growth – Built and managed participant engagement across multiple batches'
-                ],
-                hideResults: true,
-                results: 'The program saw strong adoption across demographics and became a recurring spiritual habit for thousands of participants.',
-                kpis: [
-                    '7,800+ participants joined across batches',
-                    'High adoption among working professionals, youth, and even global participants',
-                    'Increased engagement in 14–36 age group via WhatsApp-first approach',
-                    'Contributed significantly to Swayampoorna Foundation’s community growth'
-                ],
-                hideCurrentState: true, 
-                currentState: 'Outcome & Learnings: Simplicity drives adoption — familiar tools like WhatsApp beat custom apps for accessibility. Faith is personal — technology should enable, not overshadow, spiritual experience. Flexibility increases participation — multiple schedule options reduced barriers to entry.\n\nResult: A thriving spiritual community connecting tradition with technology, making devotion part of everyday life.',
-                images: []
-                },
-
-
-                product6: {
-                title: 'Aarogya Club – Online Yoga Community',
-                description: 'A WhatsApp-first online yoga community designed to make wellness simple, accessible, and community-driven for women with minimal tech barriers.',
-                problem: 'Many women were eager to practice yoga for health and wellness but faced barriers:\n\n• Lack of access to in-person classes due to location or time constraints.\n• Difficulty using complex apps or YouTube tutorials because of low technical literacy.\n• Limited motivation without a sense of community or personal guidance.\n\nGoal: Make yoga simple, accessible, and community-driven for women with minimal tech barriers.',
-                solution: 'We launched Aarogya Club, a community-driven yoga program using WhatsApp groups to share daily live class links, reminders, and motivational content. This simplified access, reduced technical hurdles, and gave participants a sense of belonging and support.',
-                about: 'Built under the Swayampoorna Foundation’s wellness initiative, Aarogya Club focused on habit-building, accessibility, and inclusion. It not only promoted health but also served as a gateway to other women-focused initiatives like Myma.',
-                whatIDid: [
-                    'GTM Strategy – Designed launch and growth campaigns to reach target audiences',
-                    'Community Building – Formed and managed WhatsApp-based yoga groups',
-                    'Creative Strategy – Developed engaging content for social media to drive awareness',
-                    'Execution – Coordinated class schedules, instructor sessions, and live link delivery',
-                    'Growth Tracking – Monitored participation and transitions into other initiatives'
-                ],
-                hideResults: true,
-                results: 'The initiative saw strong growth and impact, especially among first-time digital users. It became a daily wellness habit and fostered confidence among participants.',
-                kpis: [
-                    'Built a community of 1,450+ women within months',
-                    '22 active daily participants in regular live sessions',
-                    'Many participants transitioned into Myma and other Swayampoorna initiatives',
-                    'Created consistent engagement without requiring a separate app'
-                ],
-                hideCurrentState: true, 
-                currentState: 'The Aarogya Club continues to thrive on WhatsApp, running regular yoga sessions, festival specials, and serving as part of Swayampoorna’s larger health, livelihood, and learning ecosystem.',
-                images: []
-            },
-
-                product7: {
-                title: 'Maan India – Empowering Women Artisans with Digital Commerce',
-                description: 'An e-commerce platform designed to empower women artisans by giving them digital access to markets, cataloging, payments, and logistics support.',
-                problem:
-                `Many women artisans in India have exceptional skills — designing, jewelry making, stitching, handicrafts — but lack:
-                - A structured platform to showcase their products
-                - Market access beyond their local communities
-                - Operational support for cataloging, marketing, payments, and logistics
-
-                As a result, their earning potential remains untapped, and their businesses struggle to grow.`,
-                solution: 'We conceptualized Maan India as a simple yet powerful platform enabling artisans to create digital catalogs, manage orders, and connect with buyers directly. The focus was on accessibility, ease of use, and integrated operational support.',
-                about: 'Maan India is more than an online marketplace — it’s a livelihood enabler for women artisans. By blending e-commerce, logistics, and simple UX, it helps women scale businesses beyond local markets and reach national and global buyers.',
-                whatIDid: [
-                    'Research & Discovery – Conducted surveys, focus groups, and interviews with 40+ women artisans',
-                    'Product Concept & Strategy – Defined platform vision, features, and flows for low-tech users',
-                    'UX & UI Design – Designed onboarding journeys, wireframes, and prototypes',
-                    'Business Model Planning – Outlined cataloging, order management, logistics, and promotions',
-                    'Execution Readiness – Coordinated with developers, marketers, and logistics providers for MVP roadmap'
-                ],
-                hideResults: true,
-                results: 'The platform is still in development, but early usability testing showed strong adoption intent from artisans eager for wider market reach.',
-                hidekpis: true [
-                    'Projected onboarding of 1,000+ artisans in the first year',
-                    'Enable direct-to-consumer sales with minimal operational overhead',
-                    'Reduce go-to-market time for artisans by 60% with catalog automation & logistics integration'
-                ],
-                currentState: 'Currently in development, Maan India aims to be a scalable e-commerce platform helping women artisans grow sustainable livelihoods through digital empowerment and global reach.',
-                images: []
-                },
-
-                product8: {
-                title: 'E-Learning App – Connecting Learners with Experts Beyond Traditional Classrooms',
-                description: 'A scalable platform designed to connect learners with subject-matter experts through video lessons, live classes, and Q&A interactions.',
-                problem:
-                `Many people want to learn specific skills and niche topics outside standard curriculums but struggle to find accessible, credible platforms or mentors. 
-                On the other side, subject-matter experts lack a centralized platform to share knowledge, host classes, and monetize their expertise effectively.`,
-                solution: 'We scoped and designed an E-Learning platform to bridge this gap. The app provides structured video lessons, live classes, notes, and Q&A features, ensuring learners get personalized experiences while experts gain tools to monetize and scale their teaching.',
-                about: 'This app aims to democratize learning beyond classrooms. It creates a curated, credible space where learners discover experts easily and experts host and monetize classes seamlessly.',
-                whatIDid: [
-                    'Research & Discovery – Conducted surveys, interviews, and competitor analysis',
-                    'Product Strategy – Defined MVP scope, user personas, and growth roadmap',
-                    'UX & UI Design – Created wireframes, onboarding flows, and dashboards for learners & instructors',
-                    'Monetization & Engagement – Outlined subscriptions, Q&A, and scheduling features',
-                    'Collaboration – Worked with dev & marketing teams on feasibility and go-to-market planning'
-                ],
-                hideResults: true,
-                results: 'The project is still in development with strong validation from learners and experts during research phases.',
-                hidekpis: true [
-                    'Projected onboarding of 500+ experts in the first year',
-                    'Target to reach 5,000+ learners in year one',
-                    'Reduce expert discovery time by 70% with curated profiles & ratings'
-                ],
-                currentState: 'The app is currently in early development. The vision is to create a scalable, user-friendly platform that bridges learners and experts beyond traditional classrooms.',
-                images: []
-                },
-
-                product9: {
-                title: 'Storytelling App – Bringing Generations Together Through Stories',
-                description: 'A child-friendly app designed to connect families by enabling elderly storytellers to share cultural and moral stories with children through secure, interactive experiences.',
-                problem:
-                `Modern families often lack the time for traditional storytelling, a practice crucial for child development, imagination, and cultural values. 
-                At the same time, many elderly individuals have a rich treasure of moral and cultural stories but limited opportunities to share them meaningfully with younger generations.`,
-                solution: 'We designed a secure, interactive app that enables elderly storytellers to share stories with children through video calls, personalized recommendations, and replay features. The product bridges generational gaps while keeping safety and simplicity at the core.',
-                about: 'The Storytelling App creates a meaningful bridge between generations. It empowers seniors to share their wisdom, while giving kids safe access to cultural and moral stories in engaging, interactive ways.',
-                whatIDid: [
-                    'User Research – Conducted interviews with parents, kids, and elderly storytellers',
-                    'Product Strategy – Defined MVP scope focusing on video calls, story libraries, and personalized sessions',
-                    'UX & UI Design – Designed child-friendly interfaces, parent dashboards, and storyteller profiles',
-                    'Feature Planning – Proposed auto-record functionality and personalized recommendations',
-                    'Collaboration – Worked with developers to ensure safety and security features for children'
-                ],
-                hideResults: true,
-                results: 'The app is currently under development with strong validation of user need and early feature testing.',
-                hidekpis: true [
-                    'Projected engagement of 1,000+ families in first 6 months',
-                    'Enable elderly storytellers to share 5,000+ stories annually',
-                    'Increase child engagement with cultural stories by 60% compared to traditional formats'
-                ],
-                currentState: 'A secure, child-friendly storytelling platform is in development. The focus is on making storytelling convenient, interactive, and emotionally engaging — helping children learn cultural values while giving elderly storytellers a sense of purpose.',
-                images: []
-                },
-            };
-            
-            if (productData[productId]) {
-                const data = productData[productId];
-                title.textContent = data.title;
-                content.innerHTML = generateProductContent(data);
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-            }
-            if (data.links && data.links.length > 0) 
-            {
-            const linksHtml = `
-                <div class="mt-6">
-                    <h3 class="text-xl font-semibold mb-3">Online Presence</h3>
-                    <div class="flex flex-wrap gap-3">
-                        ${data.links.map(l => `
-                            <a href="${l.url}" target="_blank" 
-                            class="px-4 py-2 bg-black text-white rounded-lg text-sm hover:bg-gray-800 transition">
-                            ${l.label}
-                            </a>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-            content.innerHTML += linksHtml;
-        }
-        }
-
-        function generateProductContent(data) {
-        return `
-            <div class="space-y-10 text-gray-700 leading-relaxed">
-
-                <h3 class="text-2xl font-semibold text-red-600">Context</h3>
-                <p>${data.problem}</p>
-
-                <h3 class="text-2xl font-semibold text-green-600">Solution</h3>
-                <p>${data.solution}</p>
-
-                <h3 class="text-2xl font-semibold text-blue-600">About Product</h3>
-                <p>${data.about}</p>
-
-                <h3 class="text-2xl font-semibold text-purple-600">My Contribution</h3>
-                <ul class="space-y-2">
-                    ${data.whatIDid.map(item => `<li>• ${item}</li>`).join('')}
-                </ul>
-
-                ${(!data.hideResults && data.results) ? `
-                    <h3 class="text-2xl font-semibold text-orange-600">Results</h3>
-                    <p>${data.results}</p>
-                ` : ''}
-
-                ${(!data.hideKpis && data.kpis) ? `
-                    <h3 class="text-2xl font-semibold text-indigo-600">Impact & Metrics</h3>
-                    <ul class="space-y-2">
-                        ${data.kpis.map(kpi => `<li>• ${kpi}</li>`).join('')}
-                    </ul>
-                ` : ''}
-
-                ${(!data.hideCurrentState && data.currentState) ? `
-                    <h3 class="text-2xl font-semibold text-teal-600">Current State</h3>
-                    <p>${data.currentState}</p>
-                ` : ''}
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    ${data.images.map((img, index) => `
-                        <div class="overflow-hidden rounded-lg border shadow-md">
-                            <img src="${img}" alt="Screenshot ${index + 1}" 
-                                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" 
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-placeholder w-full h-full" style="display: none;">
-                                Screen ${index + 1}<br>300x200px
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-
-                ${data.links && data.links.length > 0 ? `
-                    <div class="mt-10">
-                        <h3 class="text-2xl font-semibold text-pink-600">Digital Presence</h3>
-                        <div class="flex flex-wrap gap-3 mt-4">
-                            ${data.links.map(l => `
-                                <a href="${l.url}" target="_blank" 
-                                class="px-4 py-2 bg-black text-white rounded-lg text-sm hover:bg-gray-800 transition">
-                                ${l.label}
-                                </a>
-                            `).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-
-                ${data.videos && data.videos.length > 0 ? `
-                    <div class="mt-10">
-                        <h3 class="text-2xl font-semibold text-red-500">Videos</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-                            ${data.videos.map(v => `
-                                <a href="${v.url}" target="_blank" class="relative group">
-                                    <img src="https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg" 
-                                        alt="${v.label}" 
-                                        class="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition">
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <span class="bg-black bg-opacity-60 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition">
-                                            ▶ ${v.label}
-                                        </span>
-                                    </div>
-                                </a>
-                            `).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-
-            </div>
-        `;
-    }
-
-
-        function closeProductDetail() {
-            const modal = document.getElementById('productModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Utility Functions
-        function shareArticle(title) {
-            alert(`Sharing article: "${title}"`);
-        }
-
-        function saveArticle(title) {
-            alert(`Article "${title}" saved to reading list!`);
-        }
-
-        function printArticle() {
-            window.print();
-        }
-
-        function subscribeNewsletter() {
-            alert('Thank you for subscribing to our newsletter!');
-        }
-
-        // Close modals when clicking outside
-        document.getElementById('blogModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeBlogDetail();
-            }
-        });
-
-        document.getElementById('fullBlogModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeFullBlog();
-            }
-        });
-
-        document.getElementById('youtubeModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeYouTubeVideo();
-            }
-        });
-    
-    // Page Navigation
-        function showPage(pageId) {
-            if (pageId === 'blog') {
-                return; // Already on blog page
-            }
-            alert(`Navigating to ${pageId.charAt(0).toUpperCase() + pageId.slice(1)} page...`);
-        }
-</script>
-    </div>
-</main>
-
-        <!-- About Section -->
-            <div class="bg-white rounded-none shadow-2xl p-12 mb-16 border border-gray-200 hover-lift">
-                <div class="grid md:grid-cols-1 gap-12">
-                    <div>
-                        <p class="text-gray-700 leading-relaxed text-2xl font-light">
-                            "Great products are built on insights, strategy, and teamwork. I bring all three - turning concepts into successful launches that grow user bases and market share."
-                        </p>
-                    </div>
-                </div>
-            </div>    
-    </main>
-
-        <!-- Contact Footer -->
-    <footer class="bg-black text-white py-8 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-wrap justify-between items-center">
-                <div class="flex flex-wrap items-center space-x-6 mb-4 sm:mb-0">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-6 h-6 rounded-full text-white">👤</div>
-                        <span class="text-white font-light">Pratiksha Kulkarni</span>
-                    </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-6 h-6 rounded-full text-white">📧</div>
-                    <a href="mailto:contact@pratikshakulkarni.in" class="text-white hover:text-gray-300 transition-colors font-light">contact@pratikshakulkarni.in</a>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-6 h-6 rounded-full text-white">💼</div>
-                    <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="text-white hover:text-gray-300 transition-colors font-light">LinkedIn</a>
-                </div>
-            </div>
-            <div class="text-gray-400 text-sm font-light text-center sm:text-right w-full sm:w-auto">© 2025 Pratiksha Kulkarni
-            </div>
+      <!-- Product 1: Myma -->
+      <a href="product-myma.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/myma.webp" alt="Myma" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Myma</h3>
+          <p class="text-gray-600 mb-3 text-sm">A financial literacy app for women, helping them achieve independence and confidence.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">FinTech</span>
         </div>
+      </a>
+
+      <!-- Product 2: Swayampoorna -->
+      <a href="product-swayampoorna.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/swayampoorna_social_foundation.webp" alt="Swayampoorna Foundation" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Swayampoorna Foundation</h3>
+          <p class="text-gray-600 mb-3 text-sm">A women-first initiative empowering women through education, campaigns, and opportunities.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">Community</span>
+        </div>
+      </a>
+
+      <!-- Product 3: Pavanraje BMS -->
+      <a href="product-pavanraje-bms.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/pms.webp" alt="Pavanraje BMS" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Pavanraje BMS</h3>
+          <p class="text-gray-600 mb-3 text-sm">A SaaS solution for cooperative institutions, simplifying daily workflows and operations.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">SaaS</span>
+        </div>
+      </a>
+
+      <!-- Product 4: GoDocs -->
+      <a href="product-godocs.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/godocs.webp" alt="GoDocs" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">GoDocs</h3>
+          <p class="text-gray-600 mb-3 text-sm">Simplifying government documentation for entrepreneurs with affordable, WhatsApp-first service.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">GovTech</span>
+        </div>
+      </a>
+
+      <!-- Product 5: Online Parayan -->
+      <a href="product-online-parayan.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/parayan.webp" alt="Online Parayan" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Online Parayan</h3>
+          <p class="text-gray-600 mb-3 text-sm">Digital spiritual community making scriptures accessible through audio-video formats.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">Spiritual</span>
+        </div>
+      </a>
+
+      <!-- Product 6: Aarogya Club -->
+      <a href="product-aarogya.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/aarogya.webp" alt="Aarogya Club" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Aarogya Club</h3>
+          <p class="text-gray-600 mb-3 text-sm">Online yoga community designed for accessibility, motivation, and habit-building.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">Wellness</span>
+        </div>
+      </a>
+
+      <!-- Product 7: Maan India -->
+      <a href="product-maan.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/maan.webp" alt="Maan India" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Maan India</h3>
+          <p class="text-gray-600 mb-3 text-sm">Empowering women artisans with digital catalogs, logistics, and e-commerce support.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">E-commerce</span>
+        </div>
+      </a>
+
+      <!-- Product 8: E-Learning App -->
+      <a href="product-elearning.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/elearning.webp" alt="E-Learning App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">E-Learning App</h3>
+          <p class="text-gray-600 mb-3 text-sm">Connecting learners with experts via structured video lessons, Q&A, and live classes.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">EdTech</span>
+        </div>
+      </a>
+
+      <!-- Product 9: Storytelling App -->
+      <a href="product-storytelling.html" class="block bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 hover-lift">
+        <img src="images/design/storytelling.webp" alt="Storytelling App" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-black mb-2 tracking-wide">Storytelling App</h3>
+          <p class="text-gray-600 mb-3 text-sm">Interactive storytelling platform connecting kids with seniors through secure video calls.</p>
+          <span class="px-2 py-1 bg-black text-white text-xs font-light">Community</span>
+        </div>
+      </a>
+
     </div>
-    </footer>
-    
-<script>    
-        // Page Navigation
-        function showPage(pageId) {
-            // This would typically navigate to different pages
-            // For demo purposes, we'll show an alert
-            if (pageId === 'home') {
-                return; // Already on home page
-            }
-            alert(`Navigating to ${pageId.charAt(0).toUpperCase() + pageId.slice(1)} page...`);
-        }
+  </main>
 
-        // Smooth Scrolling
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span>© 2025 Pratiksha Kulkarni</span>
+      <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-gray-300">contact@pratikshakulkarni.in</a>
+    </div>
+  </footer>
 
-        // Contact Form Handler
-        function handleContactForm(event) {
-            event.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            event.target.reset();
-        }
-
-        // Resume Download
-        function downloadResume() {
-            alert('Resume download would start here. This is a demo version.');
-        }
-
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('.hover-lift, .floating-animation');
-            animateElements.forEach(el => observer.observe(el));
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('backdrop-blur-lg');
-            } else {
-                nav.classList.remove('backdrop-blur-lg');
-            }
-        });
-    </script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('productModal');
-
-  function closeModal() {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = 'auto';
-  }
-
-  // Close if clicking outside the modal content
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  // Optional: Close on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
-    }
-  });
-});
-</script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96879892228a396c',t:'MTc1NDA3NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
