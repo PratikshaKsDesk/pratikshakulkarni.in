@@ -34,6 +34,46 @@
         </div>
         </nav>
 
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 hidden flex-col justify-center items-center space-y-8 z-50">
+        <a href="index.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Home</a>
+        <a href="product.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Products</a>
+        <a href="creatives.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Creatives</a>
+        <a href="blog.html" class="text-white text-2xl font-bold hover:text-gray-300 transition">Blog</a>
+        <a href="justasaying.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Just A Saying</a>
+        <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+        </div>
+
+        <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('flex');
+            mobileMenu.classList.add('hidden');
+        });
+        </script>
+
+        <style>
+        /* Mobile menu fade + slide animation */
+        #mobileMenu {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #mobileMenu.flex {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        </style>
+
   <!-- Products Page -->
     <main class="flex-grow">
         <div class="max-w-7xl mx-auto px-4 py-16">
