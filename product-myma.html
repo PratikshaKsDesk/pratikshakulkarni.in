@@ -50,6 +50,75 @@
         <p>Myma is more than a food app — it’s a livelihood enabler and trust-based marketplace for authentic home-cooked food. It empowers homemakers to build businesses while offering customers reliable access to fresh, regional meals.</p>
       </section>
 
+      <!-- ✅ New Features Row -->
+      <section>
+      <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature1')">
+          <h3 class="text-lg font-semibold text-gray-900">Onboarding</h3>
+          <p class="text-gray-600 text-sm mt-2">Simplify onboarding to reduce user confusion.</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature2')">
+          <h3 class="text-lg font-semibold text-gray-900">Ordering</h3>
+          <p class="text-gray-600 text-sm mt-2">Diners placing orders</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature3')">
+          <h3 class="text-lg font-semibold text-gray-900">Subscription</h3>
+          <p class="text-gray-600 text-sm mt-2">Feature-tiered Subscriptions</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature4')">
+          <h3 class="text-lg font-semibold text-gray-900">High Operational Costs</h3>
+          <p class="text-gray-600 text-sm mt-2">Automating User Interactions on WhatsApp</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature5')">
+          <h3 class="text-lg font-semibold text-gray-900">Building Trust with Homemakers</h3>
+          <p class="text-gray-600 text-sm mt-2">Empowering Platform for Homemakers</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature6')">
+          <h3 class="text-lg font-semibold text-gray-900">Driving Orders Through User-Generated Content</h3>
+          <p class="text-gray-600 text-sm mt-2">Community-driven Food Experience</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature7')">
+          <h3 class="text-lg font-semibold text-gray-900">‘Marketplace’ Expansion</h3>
+          <p class="text-gray-600 text-sm mt-2">Niche Food Businesses</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+            onclick="openFeaturePopup('feature8')">
+          <h3 class="text-lg font-semibold text-gray-900">Community Marketing</h3>
+          <p class="text-gray-600 text-sm mt-2">Community-led Growth Experiment</p>
+          <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+        </div>
+      </div>
+    </section>
 
       <!-- Contribution -->
       <section>
@@ -131,24 +200,562 @@
   </div>
 
   <script>
-    const featureContent = {
-      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
-      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
-      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
-    };
+  const featureContent = {
+    feature1: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Onboarding</h2>
+<div class="space-y-6 text-gray-700 text-sm leading-relaxed">
 
-    function openFeaturePopup(feature) {
-      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
-      document.getElementById('featurePopup').classList.remove('hidden');
-      document.getElementById('featurePopup').classList.add('flex');
-      document.body.style.overflow = 'hidden';
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+    <p>Primary: New users signing up on the Myma app (home chefs & diners).</p>
+    <p>Secondary: Internal support team handling onboarding queries.</p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+    <p>During onboarding, users were asked to choose between “Myma” (chef) and “Diner” (customer).</p>
+    <p>Many first-time users didn’t understand the terminology and dropped off at signup.</p>
+    <p>This friction limited app adoption and reduced trust for non-tech-savvy users.</p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+    <p>Simplify onboarding to reduce user confusion.</p>
+    <p>Increase daily registrations from ~45/day to at least 200/day.</p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+    <p>Reframed role selection copy to plain, action-driven language:</p>
+    <ul class="list-disc list-inside mt-2">
+      <li>“I want to serve food” (home chefs).</li>
+      <li>“I want to order food” (diners).</li>
+    </ul>
+    <p class="mt-2">Enrolled all users as customers by default post-login, so they could explore first and then upgrade if needed.</p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+    <ul class="list-disc list-inside">
+      <li>Conducted usability testing with first-time users to validate confusion.</li>
+      <li>Collaborated with design to simplify copywriting into action statements.</li>
+      <li>Worked with developers to restructure backend logic so all users defaulted to “customer” role at login.</li>
+      <li>Coordinated with support to track onboarding drop-off after rollout.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+    <ul class="list-disc list-inside">
+      <li>Registrations jumped from 45/day → 320/day within weeks.</li>
+      <li>Drop-off during signup reduced by ~70%.</li>
+      <li>Support tickets related to onboarding confusion decreased significantly.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+    <p>Clear, simple, and action-oriented language resonates more with users than brand-centric labels.</p>
+    <p>Since then, I’ve prioritized plain language + role flexibility as a core onboarding principle in all product work.</p>
+  </div>
+
+</div>
+    `,
+  
+  feature2: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Ordering</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+        <p>Primary: Diners (end-users placing orders).</p>
+        <p>Secondary: Home chefs (receiving and fulfilling orders).</p>
+        <p>System Actor: Order management system (processing requests, payments, confirmations).</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>The original order flow had too many steps (extra confirmations, redundant fields).</p>
+        <p>Customers found the process slow and dropped off before completing transactions.</p>
+        <p>This directly impacted daily active orders and revenue.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Reduce friction in the ordering process.</p>
+        <p>Increase average daily orders from 3 to 10+.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <p>Redesigned the order flow by:</p>
+        <ul class="list-disc list-inside mt-2">
+          <li>Removing unnecessary steps.</li>
+          <li>Pre-filling repeated details (address, contact info).</li>
+          <li>Introducing a “Quick Order” option for repeat diners.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Conducted usability testing with early diners to pinpoint exact drop-off points.</li>
+          <li>Benchmarked against leading food apps (Swiggy, Zomato) to identify best practices.</li>
+          <li>Collaborated with design & dev teams to ship a simplified, 3-step flow (Browse → Add → Pay).</li>
+          <li>Released iteratively, monitored order funnel metrics in real-time.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Daily orders increased from 3 to 11 orders/day (266% growth).</li>
+          <li>Average order completion time reduced by 40%.</li>
+          <li>Improved satisfaction scores from both diners and chefs.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature3: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Subscription</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+        <p>Our focus was on budget-conscious homemakers who joined Myma as homechefs but hesitated at the subscription step.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Although adoption of the app was strong, many homemakers stalled when asked to subscribe.</p>
+        <p>User interviews revealed price sensitivity, uncertainty about ROI, and lack of perceived value as key blockers.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Our growth target was to lift homemaker subscription adoption by 40% within one quarter — improving retention, reducing churn, and unlocking recurring revenue.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Experiment</h3>
+        <p>We hypothesized that festival-specific plans and feature-tiered subscriptions would ease affordability concerns, build urgency, and allow homemakers to choose based on comfort and capacity.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Introduced limited-time festival offers (e.g., Diwali, Ganeshotsav specials).</li>
+          <li>Launched tiered subscription plans (basic vs. premium with added perks).</li>
+          <li>Ran A/B experiments across homemaker cohorts: active sellers, festival-only sellers, and inactive users.</li>
+          <li>Collaborated with marketing to frame campaigns in regional language + cultural context to build trust.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Subscription adoption grew 48%.</li>
+          <li>Active subscriber homemakers showed 23% higher retention vs non-subscribers.</li>
+          <li>CAC for subscribers dropped 15%, boosting overall LTV.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>We learned that festivals created strong acquisition spikes, while tiered feature plans sustained adoption.</p>
+        <p>Next, we planned bundles for different needs (student cooks, family kitchens, senior homechefs) to drive deeper long-term subscription growth.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature4: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">High Operational Costs</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+        <p>Our primary users were diners considering subscriptions, while internally, our sales/support teams were spending hours manually handling queries and conversions.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Subscription conversions were dependent on manual calls and follow-ups by the sales team.</p>
+        <p>This was costly, time-intensive, and didn’t scale — limiting growth.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Our target was to reduce sales dependency by 50% while maintaining or improving monthly subscription growth.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Hypothesis</h3>
+        <p>We hypothesized that automating user interactions on WhatsApp — their most familiar platform — would cut operational effort and improve conversions by reducing response lag.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution / Process (HOW)</h3>
+        <ul class="list-disc list-inside">
+          <li>Deployed a WhatsApp chatbot integrated with subscription flows.</li>
+          <li>Automated FAQs, plan details, and payment links for a self-serve experience.</li>
+          <li>Ran a controlled rollout comparing manual vs. chatbot-assisted cohorts.</li>
+          <li>Tracked conversion time, sales team hours, and subscription volumes.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact / Results (OUTCOME)</h3>
+        <ul class="list-disc list-inside">
+          <li>Achieved 72+ new subscriptions/month via chatbot alone.</li>
+          <li>Reduced sales team effort by 60%, freeing resources for higher-value tasks.</li>
+          <li>Conversion speed improved by 35% (faster query → payment cycle).</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning </h3>
+        <p>We learned users preferred the instant, self-serve WhatsApp flow over waiting for callbacks.</p>
+        <p>Going forward, we planned to scale chatbot automation to handle renewals, upsells, and cross-sells, further boosting LTV while keeping costs low.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature5: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Building Trust with Homemakers</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Market</h3>
+        <p>Our focus was homemakers who had the skills and desire to start food businesses but were hesitant to adopt a new app due to low awareness and trust.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Despite interest, many homemakers were reluctant to try Myma because they had never engaged with a digital business platform before.</p>
+        <p>The barrier wasn’t capability, it was awareness + credibility.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Our objective was to build trust and awareness among homemakers and onboard them onto the platform at scale.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Strategy</h3>
+        <p>We positioned Myma as a safe, empowering platform for homemakers. To validate this, we leveraged trusted voices in the cooking community to reassure and inspire adoption.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Partnered with Madhura’s Recipe, one of the most popular Marathi YouTube cooking channels.</li>
+          <li>Co-created promotional content + video storytelling showing how homemakers could start a business from their kitchens.</li>
+          <li>Distributed content across social platforms + in-app onboarding journeys for visibility.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Acquired 35,800+ homemakers through the campaign.</li>
+          <li>Achieved a large awareness lift in Tier-2/Tier-3 regions where Madhura’s Recipe had strong brand recall.</li>
+          <li>Created long-term credibility + trust loops for the brand.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>Authenticity matters more than broad advertising. Partnerships with trusted community figures accelerated adoption far faster than generic ads.</p>
+        <p>We made influencer-driven trust campaigns a core part of our GTM strategy.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature6: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Driving Orders Through User-Generated Content</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Market</h3>
+        <p>Our audience was working professionals and families looking for affordable, homely food options but not actively engaging with the app.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Although we had a strong supply of homechefs, order volume was very low (only ~35 monthly orders).</p>
+        <p>The gap wasn’t supply — it was demand generation + visibility.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Our target was to increase monthly orders and active diners by driving awareness and credibility.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Strategy</h3>
+        <p>We positioned Myma as a community-driven food experience, highlighting real homemakers and their stories instead of generic product ads.</p>
+        <p>The message: <em>“Food made with love, from real kitchens near you.”</em></p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Collected user-generated content (UGC) from homemakers — photos, videos, testimonials.</li>
+          <li>Showcased dishes and chef stories across Facebook, Instagram, and WhatsApp groups where target users already spent time.</li>
+          <li>Designed campaigns around authenticity and relatability rather than polished ads.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Monthly orders increased from 35 → 180.</li>
+          <li>Boosted engagement and trust in the product by letting customers see the faces behind the food.</li>
+          <li>Strengthened the UGC playbook for future campaigns, proving it as a high-ROI channel.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>Authentic user stories resonate stronger than brand-driven ads.</p>
+        <p>We scaled UGC into an ongoing marketing pillar and began experimenting with referral-based campaigns tied to chef promotions.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature6: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Driving Orders Through User-Generated Content</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Market</h3>
+        <p>Our audience was working professionals and families looking for affordable, homely food options but not actively engaging with the app.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Although we had a strong supply of homechefs, order volume was very low (only ~35 monthly orders).</p>
+        <p>The gap wasn’t supply — it was demand generation + visibility.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <p>Our target was to increase monthly orders and active diners by driving awareness and credibility.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Strategy</h3>
+        <p>We positioned Myma as a community-driven food experience, highlighting real homemakers and their stories instead of generic product ads.</p>
+        <p>The message: <em>“Food made with love, from real kitchens near you.”</em></p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Collected user-generated content (UGC) from homemakers — photos, videos, testimonials.</li>
+          <li>Showcased dishes and chef stories across Facebook, Instagram, and WhatsApp groups where target users already spent time.</li>
+          <li>Designed campaigns around authenticity and relatability rather than polished ads.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Monthly orders increased from 35 → 180.</li>
+          <li>Boosted engagement and trust in the product by letting customers see the faces behind the food.</li>
+          <li>Strengthened the UGC playbook for future campaigns, proving it as a high-ROI channel.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>Authentic user stories resonate stronger than brand-driven ads.</p>
+        <p>We scaled UGC into an ongoing marketing pillar and began experimenting with referral-based campaigns tied to chef promotions.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature7: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">‘Marketplace’ Expansion</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+        <p>Primary Users: Homemakers pivoting to niche food businesses (festive sweets, bulk catering, regional delicacies).</p>
+        <p>Secondary Users: Consumers looking for authentic, seasonal, or regional dishes beyond their local reach.</p>
+        <p>System Actors: Marketplace platform, logistics partners, and payment integrations.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>Post-pandemic, homemakers wanted to scale beyond one-time local orders, but lacked visibility and infrastructure to sell regionally or globally.</p>
+        <p>At the same time, consumers increasingly sought authentic, unique food options but couldn’t easily access them.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <ul class="list-disc list-inside">
+          <li>Enable homemakers to expand from local to regional/global markets.</li>
+          <li>Increase average revenue per homechef by 30%+.</li>
+          <li>Drive higher engagement and repeat orders for Myma.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <p>We launched the Marketplace feature where homemakers could list products, run seasonal offers, and cater to bulk or niche orders — opening them to new customer segments and broader demand.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Conducted research on festive food demand patterns + homemaker supply capacity.</li>
+          <li>Designed simple catalog & listing tools to make it easy for non-tech-savvy homemakers.</li>
+          <li>Partnered with delivery/logistics providers to handle bulk/long-distance orders.</li>
+          <li>Ran pilot campaigns during festive seasons (Diwali, Ganesh Chaturthi) to validate adoption.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Significantly boosted homemaker income potential — many scaled from daily meals to profitable niche businesses.</li>
+          <li>Increased Myma’s appeal beyond daily orders → positioned as a marketplace for authentic regional food experiences.</li>
+          <li>Improved retention by creating seasonal demand spikes, driving repeat engagement.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>We learned homemakers respond strongly to opportunities tied to cultural/festive events.</p>
+        <p>Based on this, we built a seasonal calendar of marketplace campaigns to keep supply fresh and demand high.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+feature8: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+    <h2 class="text-2xl font-bold mb-4">Community Marketing on Facebook Groups</h2>
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+        <p>Primary Users: Homemakers already active in Facebook food-order groups.</p>
+        <p>Secondary Users: Group members (customers) seeking home-style meals.</p>
+        <p>System Actor: Facebook groups as discovery & engagement channels.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+        <p>While homemakers had cooking skills and customers were already searching for food in Facebook groups, Myma lacked direct visibility and trust in these existing communities.</p>
+        <p>We needed a way to meet users where they already were, instead of forcing them into new channels.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+        <ul class="list-disc list-inside">
+          <li>Drive low-cost user acquisition via organic channels.</li>
+          <li>Build trust & relatability by communicating in homemakers’ tone and language.</li>
+          <li>Acquire 4,000+ users within 2 weeks at minimal CAC.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <p>We launched a community-led growth experiment by engaging homemakers directly in Facebook groups — using personalized language, highlighting real dishes, and showcasing Myma as their business enabler.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Identified top-performing Facebook food groups with 10K–50K members.</li>
+          <li>Designed posts around homemakers’ stories & dishes instead of app promotions.</li>
+          <li>Used conversational, regional language (Marathi/Hindi/English) to build relatability.</li>
+          <li>Monitored responses & quickly addressed queries in real-time.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+        <ul class="list-disc list-inside">
+          <li>Acquired 4,580+ users in just 8 days.</li>
+          <li>Boosted homemaker trust by showing “we speak their language.”</li>
+          <li>Established Facebook groups as a repeatable acquisition engine with near-zero spend.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>We learned trust-building in existing communities outperformed paid ads for this segment.</p>
+        <p>This shaped our strategy to invest in community-first growth loops before scaling performance marketing.</p>
+      </div>
+
+    </div>
+  </div>
+`,
+
+
+  };
+
+  function openFeaturePopup(feature) {
+    // safe fallback if feature key is missing
+    const content = featureContent[feature] || `<h2 class="text-2xl font-bold mb-4">Content not available</h2><p class="text-gray-700">We don't have details for this feature yet.</p>`;
+    document.getElementById('featurePopupContent').innerHTML = content;
+
+    const popup = document.getElementById('featurePopup');
+    popup.classList.remove('hidden');
+    popup.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeaturePopup() {
+    const popup = document.getElementById('featurePopup');
+    if (!popup) return;
+    popup.classList.add('hidden');
+    popup.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+
+  // close when clicking the overlay (but not when clicking inside the modal)
+  const popupElement = document.getElementById('featurePopup');
+  if (popupElement) {
+    popupElement.addEventListener('click', function (e) {
+      if (e.target === popupElement) closeFeaturePopup();
+    });
+  }
+
+  // close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const popup = document.getElementById('featurePopup');
+      if (popup && !popup.classList.contains('hidden')) closeFeaturePopup();
     }
-    function closeFeaturePopup() {
-      document.getElementById('featurePopup').classList.add('hidden');
-      document.getElementById('featurePopup').classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    }
-  </script>
+  });
+</script>
+
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
@@ -160,6 +767,4 @@
 
 </body>
 </html>
-
-
 
