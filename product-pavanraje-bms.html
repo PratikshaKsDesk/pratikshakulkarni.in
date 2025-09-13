@@ -62,6 +62,37 @@
         </p>
       </section>
 
+      <!-- ✅ Features Row -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature1')">
+            <h3 class="text-lg font-semibold text-gray-900">Onboarding</h3>
+            <p class="text-gray-600 text-sm mt-2">Company, Branch and Employee</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature2')">
+            <h3 class="text-lg font-semibold text-gray-900">Attendance</h3>
+            <p class="text-gray-600 text-sm mt-2">Selfie Attendance</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature3')">
+            <h3 class="text-lg font-semibold text-gray-900">Leave Management</h3>
+            <p class="text-gray-600 text-sm mt-2">Employees Applying for Leave</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature4')">
+            <h3 class="text-lg font-semibold text-gray-900">Task Assignment</h3>
+            <p class="text-gray-600 text-sm mt-2">Centralize Task Assignment</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+        </div>
+      </section>
+
       <!-- My Contribution -->
       <section>
         <h2 class="text-3xl font-bold mb-4">My Contribution</h2>
@@ -90,16 +121,255 @@
       <section>
         <h2 class="text-3xl font-bold mb-4">Screenshots</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <img src="images/design/pms_saas_mobile_app_1.webp">
-          <img src="images/design/pms_saas_mobile_app_2.webp">
-          <img src="images/design/pms_saas_mobile_app_3.webp">
-          <img src="images/design/pms_saas_mobile_app_4.webp">
-          <img src="images/design/pms_saas_mobile_app_5.webp">
+          <img src="images/design/pms_1.webp" class="rounded-lg shadow-md" alt="Screenshot 1">
+          <img src="images/design/pms_2.webp" class="rounded-lg shadow-md" alt="Screenshot 2">
+          <img src="images/design/pms_3.webp" class="rounded-lg shadow-md" alt="Screenshot 3">
+          <img src="images/design/pms_4.webp" class="rounded-lg shadow-md" alt="Screenshot 4">
+          <img src="images/design/pms_5.webp" class="rounded-lg shadow-md" alt="Screenshot 5">
         </div>
       </section>
 
     </div>
   </main>
+
+  <!-- Feature Popup -->
+  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
+      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+      <div id="featurePopupContent"></div>
+    </div>
+  </div>
+
+  <script>
+  const featureContent = {
+    feature1: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Onboarding – Company, Branch, Employee</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+            <p>HR/Admins setting up company accounts</p>
+            <p>Employees receiving app access</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Manual onboarding was slow and error-prone. HR teams struggled with scattered data and employees were often delayed in accessing the app. This caused productivity loss during the first week of joining.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Reduce onboarding time from days to hours, ensure employees get access on Day 1.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+            <p>Built a digital onboarding flow where HR adds company, branch, and employee accounts → sends app link → employee completes profile → HR verifies → instant access.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Designed intuitive employee self-profile completion</li>
+              <li>Added verification + rejection with remarks for accuracy</li>
+              <li>Streamlined approval process with notifications</li>
+              <li>Supported low-tech users with simple copy and prompts</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Onboarding completion time reduced by 65%</li>
+              <li>First-day access ensured for 90%+ employees</li>
+              <li>HR manual effort reduced significantly</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Users preferred structured prompts over free text — leading us to design guided forms for faster completion.</p>
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    feature2: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Attendance – Photo Login/Logout</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+            <p>Employees logging in/out daily</p>
+            <p>HR/Admins monitoring attendance</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Paper-based registers and manual logs led to errors, fake entries, and delays in salary calculations.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Enable reliable, transparent, and quick attendance marking that works even for low-tech users.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+            <p>Implemented photo-based login/logout with timestamp and geo-verification.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Employee takes photo at login/logout → data sent to HR</li>
+              <li>HR verifies and approves/rejects anomalies</li>
+              <li>Built rejection loop (with remarks) for correction</li>
+              <li>Integrated attendance data with payroll & reports</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>40% reduction in attendance fraud/errors</li>
+              <li>Payroll processing became 2x faster</li>
+              <li>Employee trust increased with transparent logs</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Employees valued simple one-tap photo check-in, proving that low-friction design drives adoption.</p>
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    feature3: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Leave Management</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+            <p>Employees applying for leave</p>
+            <p>Approvers (managers/HR) reviewing requests</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Leave approvals were chaotic — manual tracking caused missed requests, disputes, and lack of transparency.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Create a clear, structured, and multi-level leave approval system.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+            <p>Designed a digital leave request flow: Employee applies → approvers (set by system) review → accept/reject with edits → employee notified instantly.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Multi-level approval chain (max 3 approvers)</li>
+              <li>Option for approvers to forward requests</li>
+              <li>Employees can edit/cancel until final decision</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Approval time reduced by 55%</li>
+              <li>Disputes decreased significantly due to transparent logs</li>
+              <li>Employee satisfaction improved (feedback scores +18%)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Flexibility mattered — giving employees ability to edit/cancel requests boosted adoption.</p>
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    feature4: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Task Assignment</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Users</h3>
+            <p>Assigners (managers/HR)</p>
+            <p>Completers (employees executing work)</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Special assignments beyond routine tasks were hard to track. Work got lost in WhatsApp messages and follow-ups.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Centralize task assignment, tracking, and accountability in one place.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+            <p>Introduced “Special Work” module: assign work → completer accepts/rejects/forwards → submits with proof → approver verifies/reworks.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Manual employee selection for assignment</li>
+              <li>Task can be accepted, rejected, or reassigned</li>
+              <li>Status updates (done, rework) with attached files</li>
+              <li>Approver verifies, with clear accountability logs</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>80% tasks completed on time vs 45% earlier</li>
+              <li>Reduced miscommunication (no lost WhatsApp messages)</li>
+              <li>Improved accountability & tracking</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Adding file attachment & proof upload gave managers higher confidence, leading to wider adoption of the feature.</p>
+          </div>
+
+        </div>
+      </div>
+    `
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
 
 
   <!-- Footer -->
@@ -112,8 +382,4 @@
 
 </body>
 </html>
-
-
-
-
 
