@@ -60,6 +60,43 @@
         </p>
       </section>
 
+      <!-- ✅ Features Row -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature1')">
+            <h3 class="text-lg font-semibold text-gray-900">Skill Recognition & Motivation Campaign</h3>
+            <p class="text-gray-600 text-sm mt-2">“Common Women, Uncommon Stories”</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature2')">
+            <h3 class="text-lg font-semibold text-gray-900">Education & Support</h3>
+            <p class="text-gray-600 text-sm mt-2">Building Community through Facebook and WhatsApp</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature3')">
+            <h3 class="text-lg font-semibold text-gray-900">Opportunities & Exposure</h3>
+            <p class="text-gray-600 text-sm mt-2">Myma, Storytelling, E-learning, Maan India</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature4')">
+            <h3 class="text-lg font-semibold text-gray-900">Community Building</h3>
+            <p class="text-gray-600 text-sm mt-2">Online & Offline</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature5')">
+            <h3 class="text-lg font-semibold text-gray-900">Street Interviews Campaign</h3>
+            <p class="text-gray-600 text-sm mt-2">“Let’s Appreciate Her” </p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+        </div>
+      </section>
+
       <!-- My Contribution -->
       <section>
         <h2 class="text-3xl font-bold mb-4">My Contribution</h2>
@@ -128,33 +165,293 @@
     </div>
   </main>
 
-  <!-- Feature Popup -->
-  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
-      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
-      <div id="featurePopupContent"></div>
-    </div>
-  </div>
-
   <script>
-    const featureContent = {
-      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
-      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
-      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
-    };
+  const featureContent = {
+    feature1: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Skill Recognition & Motivation Campaign – “Common Women, Uncommon Stories”</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
 
-    function openFeaturePopup(feature) {
-      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
-      document.getElementById('featurePopup').classList.remove('hidden');
-      document.getElementById('featurePopup').classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeFeaturePopup() {
-      document.getElementById('featurePopup').classList.add('hidden');
-      document.getElementById('featurePopup').classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    }
-  </script>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Audience</h3>
+            <p>Homemakers unsure of their abilities but curious about self-identity.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Most homemakers underestimated their own talents and lacked external validation, creating a psychological barrier to entrepreneurship.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Motivate women to recognize their hidden skills → target: 10k story engagements in first 3 months.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Growth Solution</h3>
+            <p>Created an online storytelling campaign showcasing real homemaker success stories.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Collected authentic user stories, published on FB & WhatsApp</li>
+              <li>Designed emotional-first video + text content</li>
+              <li>Partnered with micro-influencers for amplification</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Reached 18k+ women organically</li>
+              <li>Increased registrations for programs by 27%</li>
+              <li>Stories triggered strong word-of-mouth shares</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Emotional relatability > aspirational branding for this audience.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    feature2: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Education & Support via Facebook and WhatsApp</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Audience</h3>
+            <p>Women eager to learn “how” to start, but lacking access to structured content.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>High curiosity but no trusted resource hub for step-by-step guidance.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Boost skill-to-business conversion by providing free education → goal: 25% uplift in engagement-to-action ratio.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Growth Solution</h3>
+            <p>Created bite-sized learning modules, motivational posts, FAQs, and tutorials across WhatsApp groups & FB pages.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Daily WhatsApp tips on marketing, pricing, sales</li>
+              <li>Facebook Lives with experts & successful women</li>
+              <li>FAQs designed in Marathi, Hindi, English for accessibility</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Built 60+ WhatsApp communities, 35k+ active members</li>
+              <li>Content CTR averaged 42% (vs &lt;20% on typical NGO campaigns)</li>
+              <li>Many women launched pilot businesses after consuming content</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Trust came from vernacular content + peer support loops.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    feature3: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Opportunities & Exposure (Myma, Storytelling, E-learning, Maan India)</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Audience</h3>
+            <p>Homemakers who recognized their skills but lacked monetization channels.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Even motivated women struggled to convert skills into structured earning.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Provide ready-made platforms where women can start earning with low cost and minimal setup.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Growth Solution</h3>
+            <p>Launched 4 apps/products as direct opportunities: Myma (Food), Storytelling App, Maan India (E-comm), E-learning App.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Researched pain points (home chefs, storytellers, teachers, artisans)</li>
+              <li>Built lightweight MVPs focused on ease of use</li>
+              <li>Ran targeted campaigns in local languages to onboard first users</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Enabled 10k+ women to pilot businesses</li>
+              <li>Myma scaled to 100k+ downloads, 47k+ paid chefs</li>
+              <li>Foundation seen as “action enabler” vs “knowledge sharer”</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Opportunities &gt; inspiration → access to real earning tools was the ultimate motivator.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    feature4: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Community Building – Online & Offline</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Audience</h3>
+            <p>Women entrepreneurs & volunteers seeking belonging and recognition.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem</h3>
+            <p>Women often felt isolated in their journey → no community = high dropout risk.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Build a supportive ecosystem to sustain long-term participation.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Growth Solution</h3>
+            <p>Created online groups + offline meetups to foster peer-to-peer learning and motivation.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>WhatsApp communities for skill-based clusters</li>
+              <li>Offline workshops, meetups, exhibitions</li>
+              <li>Volunteer-driven mentoring support</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Built community of 1.2 lakh+ women</li>
+              <li>Drop-off rate reduced by 35% among engaged members</li>
+              <li>Volunteer base grew to 2,000+ across India</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Retention thrives when users feel they’re part of a movement, not just a program.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    feature5: `
+      <div class="max-h-[70vh] overflow-y-auto pr-2">
+        <h2 class="text-2xl font-bold mb-4">Street Interviews Campaign – “Let’s Appreciate Her”</h2>
+        <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Audience</h3>
+            <p>General public + women watching online.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Problem (WHY)</h3>
+            <p>Cultural silence around appreciating women’s work → women undervalue themselves.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Goal</h3>
+            <p>Spark public appreciation → increase awareness + trigger self-worth among homemakers.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Growth Solution</h3>
+            <p>Launched Navratri street interview campaign asking people to appreciate women in their lives.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+            <ul class="list-disc list-inside">
+              <li>Vox-pop style video interviews on streets</li>
+              <li>Shared clips on YouTube, Facebook, Instagram</li>
+              <li>Integrated festive, cultural storytelling to boost relatability</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+            <ul class="list-disc list-inside">
+              <li>Campaign went semi-viral → 35,800+ new women joined Foundation</li>
+              <li>Videos achieved 400k+ views organically</li>
+              <li>Boosted inbound requests for participation by 48%</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+            <p>Public validation was a powerful social trigger → external appreciation built internal confidence.</p>
+          </div>
+        </div>
+      </div>
+    `
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+<!-- Feature Popup -->
+<div id="featurePopup" 
+     class="hidden fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-6">
+  <div class="bg-white rounded-lg shadow-2xl max-w-3xl w-full p-6 relative">
+
+    <!-- Close Button -->
+    <button onclick="closeFeaturePopup()" 
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+      ✕
+    </button>
+
+    <!-- Dynamic Content Goes Here -->
+    <div id="featurePopupContent"></div>
+
+  </div>
+</div>
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
@@ -166,6 +463,4 @@
 
 </body>
 </html>
-
-
 
