@@ -62,6 +62,30 @@
         </p>
       </section>
 
+      <!-- ✅ Features Row -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature1')">
+            <h3 class="text-lg font-semibold text-gray-900">Businesswomen Registration</h3>
+            <p class="text-gray-600 text-sm mt-2">Step-by-step Registration Flow</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature2')">
+            <h3 class="text-lg font-semibold text-gray-900">Order Management</h3>
+            <p class="text-gray-600 text-sm mt-2">Businesswomen Publishing Items & Order Management</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+               onclick="openFeaturePopup('feature3')">
+            <h3 class="text-lg font-semibold text-gray-900">Buyer Flow</h3>
+            <p class="text-gray-600 text-sm mt-2">Account Creation & Ordering</p>
+            <span class="text-blue-600 text-sm mt-3 inline-block">Read More →</span>
+          </div>
+        </div>
+      </section>
 
       <!-- My Contribution -->
       <section>
@@ -87,32 +111,159 @@
   </main>
 
   <!-- Feature Popup -->
-  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
-      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
-      <div id="featurePopupContent"></div>
-    </div>
+<div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl overflow-y-auto max-h-[80vh]">
+    <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+    <div id="featurePopupContent"></div>
   </div>
+</div>
 
-  <script>
-    const featureContent = {
-      feature1: `<h2 class="text-2xl font-bold mb-4">Feature 1</h2><p class="text-gray-700">Details about feature 1...</p>`,
-      feature2: `<h2 class="text-2xl font-bold mb-4">Feature 2</h2><p class="text-gray-700">Details about feature 2...</p>`,
-      feature3: `<h2 class="text-2xl font-bold mb-4">Feature 3</h2><p class="text-gray-700">Details about feature 3...</p>`
-    };
+<!-- Feature Popup -->
+<div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-xl max-w-4xl w-full p-8 relative shadow-2xl overflow-y-auto max-h-[85vh]">
+    <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+    <div id="featurePopupContent"></div>
+  </div>
+</div>
 
-    function openFeaturePopup(feature) {
-      document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
-      document.getElementById('featurePopup').classList.remove('hidden');
-      document.getElementById('featurePopup').classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeFeaturePopup() {
-      document.getElementById('featurePopup').classList.add('hidden');
-      document.getElementById('featurePopup').classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    }
-  </script>
+<script>
+  const featureContent = {
+    feature1: `
+      <h2 class="text-2xl font-bold mb-4">Businesswomen Registration (Maan Platform)</h2>
+      <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+        <div>
+          <h3 class="font-semibold text-gray-900">Users</h3>
+          <p>Primary: Women artisans with limited digital literacy.<br>
+          Secondary: Platform admins verifying artisan authenticity and onboarding legitimacy.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Problem</h3>
+          <p>Women artisans lacked a simple, trustworthy way to register on digital platforms. Complex e-commerce sign-up forms, documentation requirements, and multiple steps often overwhelmed low-tech users. As a result, most artisans abandoned the process before completion, leaving their talents undiscovered.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Goal</h3>
+          <p>Create a streamlined registration process that could be completed in under 3 minutes while maintaining authenticity and trust. The aim was to reduce drop-offs, encourage first-time digital artisans to join, and build early confidence in the platform.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Solution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Step-by-step guided registration with only essential fields: name, mobile, location.</li>
+            <li>Skill/product category selection (e.g., jewelry, stitching, home décor).</li>
+            <li>Simplified ID verification by allowing WhatsApp upload instead of complex digital submissions.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Execution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Progressive onboarding reduced cognitive load by showing one step at a time.</li>
+            <li>Interface localized in Marathi, Hindi, and English to ensure accessibility.</li>
+            <li>Fallback option for WhatsApp-based registration to accommodate users struggling with the app flow.</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    feature2: `
+      <h2 class="text-2xl font-bold mb-4">Businesswomen Publishing Items & Order Management</h2>
+      <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+        <div>
+          <h3 class="font-semibold text-gray-900">Users</h3>
+          <p>Primary: Women artisans showcasing and selling their products.<br>
+          Secondary: Buyers purchasing items, logistics teams ensuring delivery, and platform admins monitoring operations.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Problem</h3>
+          <p>Artisans faced difficulties creating digital catalogs. Tasks like product photography, writing descriptions, setting prices, and managing stock were complicated for non-technical sellers. Similarly, managing orders — from accepting/rejecting to updating status — was confusing and error-prone, leading to poor buyer experiences and trust issues.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Goal</h3>
+          <p>Enable artisans to create product listings quickly, manage inventory efficiently, and confidently handle order workflows, while maintaining a simple and intuitive process.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Solution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Catalog builder allowing quick photo uploads directly from the phone gallery.</li>
+            <li>Pre-set product templates (auto-fill name, price ranges, description suggestions).</li>
+            <li>Simple 1-tap order acceptance or rejection with automated buyer notifications for every action.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Execution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Step-by-step tutorial screens provided in local languages for easy learning.</li>
+            <li>Pre-written suggestions reduced the burden of writing descriptions from scratch.</li>
+            <li>Buyer and artisan received real-time status updates (order received → accepted → dispatched → delivered).</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    feature3: `
+      <h2 class="text-2xl font-bold mb-4">Buyer Flow – Account Creation & Ordering</h2>
+      <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+        <div>
+          <h3 class="font-semibold text-gray-900">Users</h3>
+          <p><strong>Primary:</strong> Domestic and global buyers seeking authentic artisan products.<br>
+          <strong>Secondary:</strong> Artisans supplying goods.<br>
+          <strong>System:</strong> Integrated payment gateways and logistics providers enabling transactions and deliveries.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Problem</h3>
+          <p>Buyers looking for authentic handmade products faced fragmented buying journeys. Discoverability of artisans was low, payments lacked trust, and delivery logistics were unreliable. This discouraged new buyers and limited artisan reach beyond local circles.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Goal</h3>
+          <p>Create a transparent, reliable, and seamless buyer flow where customers could browse, place orders, and track deliveries easily — boosting buyer trust and enabling artisans to expand to national and global markets.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Solution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Quick account creation with OTP or social login for frictionless access.</li>
+            <li>Browse artisans by skill, product category, or region with advanced filters.</li>
+            <li>Cart + checkout with multiple payment options (UPI, wallets, COD).</li>
+            <li>Real-time tracking integrated with logistics APIs for accurate delivery status.</li>
+            <li>Trust-building through verified artisan badges and ratings/reviews.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Execution</h3>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>Introduced intuitive search filters (e.g., "Festive Décor," "Maharashtrian Jewelry").</li>
+            <li>Partnered with logistics APIs for automated delivery updates visible to buyers.</li>
+            <li>Launched seller rating system for accountability and transparency.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8 border-t border-gray-800 mt-16">
@@ -124,6 +275,4 @@
 
 </body>
 </html>
-
-
 
