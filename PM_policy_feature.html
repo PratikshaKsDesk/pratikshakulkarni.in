@@ -375,6 +375,157 @@
         `;
     }
 
+    // -----------------------------
+// ADD THIS: missing screens for Add New + Policy Shift
+// Paste this right AFTER your showHRAdminDashboard() function and BEFORE
+// the "// Policy type configurations" line where policySubtypes is declared.
+// -----------------------------
+
+function showAddNewPolicy() {
+    currentView = 'addNew';
+    const container = document.getElementById('roleOptions');
+    container.innerHTML = `
+        <div class="col-span-full">
+            <button onclick="showHRAdminDashboard()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <span>←</span> Back to Dashboard
+            </button>
+
+            <div class="bg-white rounded-lg border border-gray-200 p-6 max-w-2xl mx-auto">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Add New Policy</h3>
+                    <p class="text-sm text-gray-600">Select the policy type and subtype to get started</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Policy Type</label>
+                        <select id="policyType" onchange="updateSubtypes()" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-lg">
+                            <option value="">Select Policy Type</option>
+                        </select>
+                    </div>
+
+                    <div id="subtypeSection" class="hidden">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Policy Subtype</label>
+                        <select id="policySubtype" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-lg">
+                            <option value="">Select Policy Subtype</option>
+                        </select>
+                    </div>
+
+                    <div id="continueSection" class="hidden text-right">
+                        <button onclick="proceedToPolicyForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium">
+                            Continue to Policy Details →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // populate Policy Type dropdown from policySubtypes if available (safe fallback)
+    const typeSelect = document.getElementById('policyType');
+    typeSelect.innerHTML = '<option value="">Select Policy Type</option>';
+
+    if (typeof policySubtypes !== 'undefined' && policySubtypes) {
+        Object.keys(policySubtypes).forEach(type => {
+            const opt = document.createElement('option');
+            opt.value = type;
+            opt.textContent = type;
+            typeSelect.appendChild(opt);
+        });
+    } else {
+        // fallback list (keeps UI functional if for some reason policySubtypes isn't loaded yet)
+        const fallbackTypes = [
+            'Employment & Onboarding',
+            'Attendance & Leave',
+            'Compensation & Benefits',
+            'Performance & Career',
+            'Workplace Conduct & Compliance',
+            'Health, Safety & Security',
+            'Exit & Separation',
+            'Compliance & Legal'
+        ];
+        fallbackTypes.forEach(type => {
+            const opt = document.createElement('option');
+            opt.value = type;
+            opt.textContent = type;
+            typeSelect.appendChild(opt);
+        });
+    }
+
+    // ensure UI starts hidden until a subtype selected
+    document.getElementById('subtypeSection').classList.add('hidden');
+    document.getElementById('continueSection').classList.add('hidden');
+
+    console.log('showAddNewPolicy loaded');
+}
+
+function showPolicyShift() {
+    currentView = 'policyShift';
+    const container = document.getElementById('roleOptions');
+    container.innerHTML = `
+        <div class="col-span-full">
+            <button onclick="showHRAdminDashboard()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <span>←</span> Back to Dashboard
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div onclick="showSingleUpdate()" class="cursor-pointer border border-gray-200 rounded-lg p-6 text-center hover:shadow-sm">
+                    <div class="text-3xl mb-3">👤</div>
+                    <h4 class="font-semibold text-gray-800">Single Update</h4>
+                    <p class="text-sm text-gray-600 mt-2">Update policies for individual employees</p>
+                </div>
+
+                <div onclick="showBulkUpdate()" class="cursor-pointer border border-gray-200 rounded-lg p-6 text-center hover:shadow-sm">
+                    <div class="text-3xl mb-3">📁</div>
+                    <h4 class="font-semibold text-gray-800">Bulk Update</h4>
+                    <p class="text-sm text-gray-600 mt-2">Import CSV and update multiple employees</p>
+                </div>
+            </div>
+        </div>
+    `;
+    console.log('showPolicyShift loaded');
+}
+// -----------------------------
+// End added functions
+// -----------------------------
+
+// -----------------------------
+// Manager / Reporting Heads Dashboard
+// -----------------------------
+function showManagerDashboard() {
+    currentView = 'manager';
+    const container = document.getElementById('roleOptions');
+    container.innerHTML = `
+        <div class="col-span-full mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Manager / Reporting Head</h2>
+
+            <!-- Manager Tools in 4-column layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+
+                <button onclick="alert('Pending Approval Tasks screen coming soon')" 
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                    ✅ <br/> Pending Approvals
+                </button>
+
+                <button onclick="alert('Impact Dashboard coming soon')" 
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                    📊 <br/> Impact Dashboard
+                </button>
+
+                <button onclick="alert('Exception Requests screen coming soon')" 
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                    ⚖ <br/> Exception Requests
+                </button>
+
+                <button onclick="alert('Notifications screen coming soon')" 
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                    🔔 <br/> Notifications
+                </button>
+
+            </div>
+        </div>
+    `;
+}
 
 
 
