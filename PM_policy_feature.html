@@ -147,64 +147,111 @@
 
     <script>
         const roleOptions = {
-            'HR Admin': [],
-            'Managers': [
-                { title: 'Team Policies', icon: '👥', description: 'View policies relevant to your team' },
-                { title: 'Approval Queue', icon: '⏳', description: 'Review and approve policy requests' },
-                { title: 'Policy Updates', icon: '🔔', description: 'Stay informed about policy changes' },
-                { title: 'Team Compliance', icon: '✓', description: 'Monitor team policy compliance' },
-                { title: 'Request Policy', icon: '📤', description: 'Request new policies or changes' },
-                { title: 'Training Materials', icon: '🎓', description: 'Access policy training resources' }
+        'HR Admin': {
+            features: [
+                { title: 'Create/Edit Policy Wizard', icon: '📝', description: 'Policy Details → Applicability → Impact Analysis → Exceptions → Submit' },
+                { title: 'Bulk Upload', icon: '📁', description: 'Upload CSV/Excel for multiple policies/users' },
+                { title: 'Run Impact Analysis', icon: '📊', description: 'Preview impact before publishing' },
+                { title: 'Exception Management', icon: '⚠️', description: 'View, approve, reject overrides' },
+                { title: 'Audit & History', icon: '📜', description: 'Track who changed what, versioning' }
             ],
-            'Employees': [
-                { title: 'Company Handbook', icon: '📚', description: 'Browse the complete employee handbook' },
-                { title: 'Policy Search', icon: '🔍', description: 'Find specific policies quickly' },
-                { title: 'Recent Updates', icon: '🆕', description: 'View latest policy changes' },
-                { title: 'Policy Quiz', icon: '❓', description: 'Test your policy knowledge' },
-                { title: 'Ask Questions', icon: '💬', description: 'Get clarification on policies' },
-                { title: 'Acknowledgments', icon: '✍️', description: 'Sign off on required policies' }
-            ],
-            'Finance': [
-                { title: 'Financial Policies', icon: '💼', description: 'Access all finance-related policies' },
-                { title: 'Expense Guidelines', icon: '💳', description: 'Review expense and reimbursement rules' },
-                { title: 'Budget Procedures', icon: '📊', description: 'Budget planning and approval processes' },
-                { title: 'Audit Policies', icon: '🔍', description: 'Internal and external audit procedures' },
-                { title: 'Procurement Rules', icon: '🛒', description: 'Vendor and purchasing guidelines' },
-                { title: 'Financial Reporting', icon: '📋', description: 'Reporting standards and procedures' }
-            ],
-            'Compliance': [
-                { title: 'Regulatory Framework', icon: '⚖️', description: 'View all regulatory compliance policies' },
-                { title: 'Audit Management', icon: '🔍', description: 'Manage compliance audits and reviews' },
-                { title: 'Risk Assessment', icon: '⚠️', description: 'Policy risk evaluation tools' },
-                { title: 'Compliance Reports', icon: '📊', description: 'Generate compliance status reports' },
-                { title: 'Policy Violations', icon: '🚨', description: 'Track and manage policy violations' },
-                { title: 'Training Compliance', icon: '🎯', description: 'Monitor mandatory training completion' }
-            ],
-            'IT': [
-                { title: 'Security Policies', icon: '🔒', description: 'Information security and data protection' },
-                { title: 'IT Procedures', icon: '⚙️', description: 'Technical procedures and guidelines' },
-                { title: 'Access Management', icon: '🔑', description: 'User access and permission policies' },
-                { title: 'Data Governance', icon: '🗄️', description: 'Data handling and storage policies' },
-                { title: 'Incident Response', icon: '🚨', description: 'Security incident response procedures' },
-                { title: 'Technology Standards', icon: '💻', description: 'Hardware and software standards' }
-            ],
-            'L&D': [
-                { title: 'Training Policies', icon: '🎓', description: 'Learning and development guidelines' },
-                { title: 'Course Catalog', icon: '📚', description: 'Available training programs and courses' },
-                { title: 'Certification Tracking', icon: '🏆', description: 'Monitor employee certifications' },
-                { title: 'Learning Paths', icon: '🛤️', description: 'Structured learning progressions' },
-                { title: 'Training Calendar', icon: '📅', description: 'Schedule and manage training sessions' },
-                { title: 'Skills Assessment', icon: '📊', description: 'Evaluate training effectiveness' }
-            ],
-            'CXO': [
-                { title: 'Strategic Policies', icon: '🎯', description: 'High-level strategic and governance policies' },
-                { title: 'Executive Dashboard', icon: '📊', description: 'Policy metrics and organizational insights' },
-                { title: 'Policy Governance', icon: '👑', description: 'Oversee policy creation and approval' },
-                { title: 'Risk Management', icon: '⚠️', description: 'Enterprise risk and policy alignment' },
-                { title: 'Board Reports', icon: '📋', description: 'Policy compliance reports for board' },
-                { title: 'Culture & Values', icon: '💫', description: 'Organizational culture and values policies' }
+            remove: [
+                'Policy Acknowledgment',
+                'Payroll recalculation details',
+                'Compliance risk scoring'
             ]
-        };
+        },
+        'Managers': {
+            features: [
+                { title: 'Approval Dashboard', icon: '⏳', description: 'Pending approvals for team policies' },
+                { title: 'Exception Requests', icon: '⚠️', description: 'Approve/Reject exceptions raised by team' },
+                { title: 'Team Impact View', icon: '👥', description: 'See employees affected by policies' },
+                { title: 'Comments/Feedback', icon: '💬', description: 'Provide notes before approving' }
+            ],
+            remove: [
+                'Create/Edit Policy',
+                'Bulk Upload tools',
+                'Legal/Compliance checks'
+            ]
+        },
+        'Employees': {
+            features: [
+                { title: 'My Policies', icon: '📄', description: 'View active policies assigned to you' },
+                { title: 'Acknowledge Button', icon: '✍️', description: 'Checkbox / digital signature' },
+                { title: 'Request Exception Form', icon: '📤', description: 'Submit reason, duration, supporting doc' },
+                { title: 'Notifications Feed', icon: '🔔', description: 'See relevant policy updates' }
+            ],
+            remove: [
+                'Approvals for others',
+                'Editing policies',
+                'Audit/Reports',
+                'Payroll-level details'
+            ]
+        },
+        'Finance': {
+            features: [
+                { title: 'Payroll Impact Preview', icon: '💰', description: 'See which payslips need recalculation' },
+                { title: 'Approval Screen', icon: '✅', description: 'Approve/recalculate payroll before policy activates' },
+                { title: 'Reimbursement Policy Exceptions', icon: '💳', description: 'Approve expense claims beyond limits' },
+                { title: 'Notifications', icon: '🔔', description: 'Alerts on payroll-related changes' }
+            ],
+            remove: [
+                'HR creation wizard',
+                'Employee acknowledgment screen',
+                'L&D / training screens'
+            ]
+        },
+        'Compliance': {
+            features: [
+                { title: 'Compliance Validation Screen', icon: '⚖️', description: 'Mark policy as Compliant / Needs Change' },
+                { title: 'Upload Legal References', icon: '📄', description: 'Add law docs, jurisdiction details' },
+                { title: 'Exception Review', icon: '⚠️', description: 'Flag non-compliant overrides' },
+                { title: 'Compliance Dashboard', icon: '📊', description: 'See all active legal policies & risks' }
+            ],
+            remove: [
+                'Employee acknowledgment',
+                'Payroll recalculations',
+                'Training assignments'
+            ]
+        },
+        'IT': {
+            features: [
+                { title: 'Security & Access Impact', icon: '🔒', description: 'Which roles/systems are affected' },
+                { title: 'Approval for IT Exceptions', icon: '⚠️', description: 'Approve special access requests' },
+                { title: 'Notifications', icon: '🔔', description: 'Policy changes requiring system updates' }
+            ],
+            remove: [
+                'Leave, payroll, reimbursement details',
+                'Training/L&D screens',
+                'Policy creation'
+            ]
+        },
+        'L&D': {
+            features: [
+                { title: 'Training Assignment Option', icon: '🎓', description: 'Attach mandatory training to a policy' },
+                { title: 'Approval Screen', icon: '✅', description: 'Training reimbursement approvals' },
+                { title: 'Impact View', icon: '📊', description: 'See employees required to complete training' }
+            ],
+            remove: [
+                'Payroll recalculations',
+                'Compliance validations',
+                'Core policy editing'
+            ]
+        },
+        'CXO': {
+            features: [
+                { title: 'Final Approval Screen', icon: '✅', description: 'Org-wide/high-impact policies approval' },
+                { title: 'Global Impact Summary', icon: '🌐', description: 'Company-wide #employees affected & risks' },
+                { title: 'Comment/Condition Field', icon: '💬', description: 'Add notes before approval' }
+            ],
+            remove: [
+                'Editing screens',
+                'Exception requests (day-to-day)',
+                'Training assignments',
+                'Detailed payroll-level tasks'
+            ]
+        }
+    };
 
         const roleIcons = {
             'HR Admin': { icon: '👥', bg: 'bg-blue-100' },
@@ -237,22 +284,25 @@
             if (role === 'HR Admin') {
                 showHRAdminDashboard();
             } else {
-                roleOptions[role].forEach(option => {
-                    const optionCard = document.createElement('div');
-                    optionCard.className = 'bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 hover:shadow-lg cursor-pointer transition-all duration-300 border border-gray-200 hover:border-blue-300';
-                    optionCard.innerHTML = `
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-xl">${option.icon}</span>
-                            </div>
-                            <h4 class="font-semibold text-gray-800 mb-2">${option.title}</h4>
-                            <p class="text-sm text-gray-600">${option.description}</p>
+            const roleData = roleOptions[role]; // object with features & remove
+            if (!roleData || !roleData.features) return;
+
+            roleData.features.forEach(option => {
+                const optionCard = document.createElement('div');
+                optionCard.className = 'bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 hover:shadow-lg cursor-pointer transition-all duration-300 border border-gray-200 hover:border-blue-300';
+                optionCard.innerHTML = `
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-xl">${option.icon}</span>
                         </div>
-                    `;
-                    optionCard.onclick = () => accessFeature(option.title, role);
-                    optionsContainer.appendChild(optionCard);
-                });
-            }
+                        <h4 class="font-semibold text-gray-800 mb-2">${option.title}</h4>
+                        <p class="text-sm text-gray-600">${option.description}</p>
+                    </div>
+                `;
+                optionCard.onclick = () => accessFeature(option.title, role);
+                optionsContainer.appendChild(optionCard);
+            });
+        }
 
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
