@@ -1500,6 +1500,10 @@ function showManagerDashboard() {
                                 <button onclick="document.getElementById('csvFile').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
                                     Choose File
                                 </button>
+                                <button onclick="mockBulk_showBulkUpload()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg ml-2">
+                                    Mock Check
+                                </button>
+
                                 <p class="text-xs text-gray-500 mt-2">
                                     <a href="#" onclick="downloadTemplate()" class="text-blue-600 hover:underline">Download CSV template</a>
                                 </p>
@@ -1543,6 +1547,177 @@ function showManagerDashboard() {
                 </div>
             `;
         }
+
+        // ===== MOCK BULK UPLOAD FLOW =====
+        function mockBulk_showBulkUpload() {
+            const container = document.getElementById('roleOptions'); // same container as Bulk Upload
+            container.innerHTML = `
+                <button onclick="showBulkUpdate()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                    <span>←</span> Back to Bulk Employee Update
+                </button>
+                <div class="bg-white rounded-lg border border-gray-200 p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Bulk Upload Mock Preview</h3>
+                    
+                    <div id="mockStep1">
+                        <h4 class="text-lg font-medium text-gray-800 mb-4">Step 1: CSV Uploaded</h4>
+                        <p class="text-gray-600 mb-4">Showing mock data instead of real CSV.</p>
+                        <button onclick="mockBulk_showPreview()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">Next: Preview Data</button>
+                    </div>
+
+                    <div id="mockStep2" class="hidden">
+                        <h4 class="text-lg font-medium text-gray-800 mb-4">Step 2: Preview Uploaded Policies</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border border-gray-200 rounded-lg">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Employee</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Change Type</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">From</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">To</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">HR Attention</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mockPreviewBody" class="divide-y divide-gray-200"></tbody>
+                            </table>
+                        </div>
+                        <div class="flex gap-4 mt-6">
+                            <button onclick="mockBulk_handleExceptions()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg">Handle Exceptions</button>
+                            <button onclick="mockBulk_goBackStep1()" class="bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="mockStep3" class="hidden mt-6">
+                    <h4 class="text-lg font-medium text-gray-800 mb-4">Step 3: Exceptions Detected (Manual HR Check)</h4>
+                    <p class="text-gray-600 mb-4">HR must check and edit the exception items below before confirming.</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full border border-gray-200 rounded-lg">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Employee</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Change Type</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">From</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">To</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mockExceptionEditBody" class="divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex gap-4 mt-4">
+                        <button onclick="mockBulk_finishBulkUpload()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+                            Confirm & Finish
+                        </button>
+                        <button onclick="mockBulk_goBackStep2()" class="bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg">
+                            Back
+                        </button>
+                    </div>
+                </div>
+
+
+                    <div id="mockStep4" class="hidden mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-green-800 mb-2">Bulk Upload Completed!</h4>
+                        <p>All policies processed. Exceptions resolved.</p>
+                        <button onclick="mockBulk_showBulkUpload()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg mt-2">Upload Again</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== MOCK DATA =====
+        const mockPolicies = [
+            {employee: "John Doe", changeType: "Leave Balance", from: 10, to: 12, status: "OK", hr: ""},
+            {employee: "Jane Smith", changeType: "Overtime", from: 5, to: "--", status: "Exception", hr: "Requires HR review"},
+            {employee: "Alice Johnson", changeType: "Sick Leave", from: 8, to: 8, status: "OK", hr: ""},
+            {employee: "Bob Lee", changeType: "Work From Home", from: 2, to: "--", status: "Exception", hr: "Requires HR review"},
+            {employee: "Mark Davis", changeType: "Leave Balance", from: 3, to: "--", status: "Exception", hr: "Check limits"}
+        ];
+
+
+        // ===== MOCK FUNCTIONS =====
+        function mockBulk_showPreview() {
+            document.getElementById('mockStep1').classList.add('hidden');
+            document.getElementById('mockStep2').classList.remove('hidden');
+            const tbody = document.getElementById('mockPreviewBody');
+            tbody.innerHTML = '';
+            mockPolicies.forEach(p => {
+                tbody.innerHTML += `<tr>
+                    <td class="px-4 py-2">${p.employee}</td>
+                    <td class="px-4 py-2">${p.changeType}</td>
+                    <td class="px-4 py-2">${p.from}</td>
+                    <td class="px-4 py-2">${p.to}</td>
+                    <td class="px-4 py-2" style="color:${p.status==="Exception"?"red":"green"}">${p.status}</td>
+                    <td class="px-4 py-2">${p.hr}</td>
+                </tr>`;
+            });
+        }
+
+        function mockBulk_handleExceptions() {
+        // Hide Step 2 and show Step 3
+        document.getElementById('mockStep2').classList.add('hidden');
+        document.getElementById('mockStep3').classList.remove('hidden');
+
+        const tbody = document.getElementById('mockExceptionEditBody');
+        tbody.innerHTML = '';
+
+        // Populate only exceptions for manual HR editing
+        mockPolicies.filter(p => p.status === "Exception").forEach((p, index) => {
+            tbody.innerHTML += `<tr>
+                <td class="px-4 py-2">${p.employee}</td>
+                <td class="px-4 py-2">${p.changeType}</td>
+                <td class="px-4 py-2">${p.from}</td>
+                <td class="px-4 py-2">
+                    <input type="text" value="${p.to}" class="border border-gray-300 rounded px-2 py-1 w-full"
+                        onchange="mockBulk_updateToValue(${index}, this.value)">
+                </td>
+            </tr>`;
+        });
+    }
+
+
+
+        function mockBulk_finishBulkUpload() {
+            document.getElementById('mockStep3').classList.add('hidden');
+            document.getElementById('mockStep4').classList.remove('hidden');
+        }
+
+        function mockBulk_goBackStep1() {
+            document.getElementById('mockStep2').classList.add('hidden');
+            document.getElementById('mockStep1').classList.remove('hidden');
+        }
+
+        function mockBulk_goBackStep2() {
+            document.getElementById('mockStep3').classList.add('hidden');
+            document.getElementById('mockStep2').classList.remove('hidden');
+        }
+
+
+        function mockBulk_handleExceptions() {
+            document.getElementById('mockStep2').style.display = 'none';
+            document.getElementById('mockStep3').style.display = 'block';
+            const list = document.getElementById('mockExceptionList');
+            list.innerHTML = '';
+            mockPolicies.filter(p => p.status === "Exception").forEach(p => {
+                list.innerHTML += `<li>${p.name} has invalid balance. Requires admin action.</li>`;
+            });
+        }
+
+        function mockBulk_finishBulkUpload() {
+            document.getElementById('mockStep3').style.display = 'none';
+            document.getElementById('mockStep4').style.display = 'block';
+        }
+
+        function mockBulk_goBackStep1() {
+            document.getElementById('mockStep2').style.display = 'none';
+            document.getElementById('mockStep1').style.display = 'block';
+        }
+
+        function mockBulk_goBackStep2() {
+            document.getElementById('mockStep3').style.display = 'none';
+            document.getElementById('mockStep2').style.display = 'block';
+        }
+
 
         // Helper functions for policy management
         function editPolicy(id) {
@@ -1772,5 +1947,6 @@ function showManagerDashboard() {
             alert(`Accessing ${feature} for ${role}.\n\nThis would typically navigate to the specific feature page or open a modal with the relevant functionality.`);
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98617327515e1262',t:'MTc1OTA0MzcyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98617327515e1262',t:'MTc1OTA0MzcyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
 </html>
