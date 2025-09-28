@@ -1654,26 +1654,32 @@ function showManagerDashboard() {
         }
 
         function mockBulk_handleExceptions() {
-        // Hide Step 2 and show Step 3
-        document.getElementById('mockStep2').classList.add('hidden');
-        document.getElementById('mockStep3').classList.remove('hidden');
+            // Hide Step 2 and show Step 3
+            document.getElementById('mockStep2').classList.add('hidden');
+            document.getElementById('mockStep3').classList.remove('hidden');
 
-        const tbody = document.getElementById('mockExceptionEditBody');
-        tbody.innerHTML = '';
+            const tbody = document.getElementById('mockExceptionEditBody');
+            tbody.innerHTML = '';
 
-        // Populate only exceptions for manual HR editing
-        mockPolicies.filter(p => p.status === "Exception").forEach((p, index) => {
-            tbody.innerHTML += `<tr>
-                <td class="px-4 py-2">${p.employee}</td>
-                <td class="px-4 py-2">${p.changeType}</td>
-                <td class="px-4 py-2">${p.from}</td>
-                <td class="px-4 py-2">
-                    <input type="text" value="${p.to}" class="border border-gray-300 rounded px-2 py-1 w-full"
-                        onchange="mockBulk_updateToValue(${index}, this.value)">
-                </td>
-            </tr>`;
-        });
-    }
+            // Populate only exceptions for manual HR editing
+            mockPolicies.forEach((p, index) => {
+                if (p.status === "Exception") {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td class="px-4 py-2">${p.employee}</td>
+                            <td class="px-4 py-2">${p.changeType}</td>
+                            <td class="px-4 py-2">${p.from}</td>
+                            <td class="px-4 py-2">
+                                <input type="text" value="${p.to}" 
+                                    class="border border-gray-300 rounded px-2 py-1 w-full"
+                                    onchange="mockBulk_updateToValue(${index}, this.value)">
+                            </td>
+                        </tr>
+                    `;
+                }
+            });
+        }
+
 
 
 
@@ -1694,14 +1700,35 @@ function showManagerDashboard() {
 
 
         function mockBulk_handleExceptions() {
-            document.getElementById('mockStep2').style.display = 'none';
-            document.getElementById('mockStep3').style.display = 'block';
-            const list = document.getElementById('mockExceptionList');
-            list.innerHTML = '';
-            mockPolicies.filter(p => p.status === "Exception").forEach(p => {
-                list.innerHTML += `<li>${p.name} has invalid balance. Requires admin action.</li>`;
+            // Hide Step 2 and show Step 3
+            document.getElementById('mockStep2').classList.add('hidden');
+            document.getElementById('mockStep3').classList.remove('hidden');
+
+            // Find the exceptions table body
+            const tbody = document.getElementById('mockExceptionEditBody');
+            tbody.innerHTML = '';
+
+            console.log("Exceptions found:", mockPolicies.filter(p => p.status === "Exception")); // Debug
+
+            // Loop through policies and show only exceptions
+            mockPolicies.forEach((p, index) => {
+                if (p.status === "Exception") {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td class="px-4 py-2">${p.employee}</td>
+                            <td class="px-4 py-2">${p.changeType}</td>
+                            <td class="px-4 py-2">${p.from}</td>
+                            <td class="px-4 py-2">
+                                <input type="text" value="${p.to}" 
+                                    class="border border-gray-300 rounded px-2 py-1 w-full"
+                                    onchange="mockBulk_updateToValue(${index}, this.value)">
+                            </td>
+                        </tr>
+                    `;
+                }
             });
         }
+
 
         function mockBulk_finishBulkUpload() {
             document.getElementById('mockStep3').style.display = 'none';
