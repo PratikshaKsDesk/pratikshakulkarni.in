@@ -44,8 +44,8 @@
                     </div>
                 </div>
 
-                <!-- Managers -->
-                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Managers')">
+               <!-- Managers Role Card -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300 transition-transform transform hover:scale-105" onclick="selectRole('Managers')">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl">🎯</span>
@@ -54,6 +54,7 @@
                         <p class="text-gray-600 text-sm">Access team policies, approval workflows, and management guidelines</p>
                     </div>
                 </div>
+
 
                 <!-- Employees -->
                 <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Employees')">
@@ -145,168 +146,1012 @@
         </div>
     </div>
 
+    <!-- HR Admin Feature Screens -->
+        <div id="hrCreatePolicy" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Create/Edit Policy Wizard</h3>
+            <p>Form and steps to add or edit a policy (Details → Applicability → Impact Analysis → Exceptions → Submit)</p>
+        </div>
+        <div id="hrBulkUpload" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Bulk Upload</h3>
+            <p>Upload CSV/Excel for multiple policies/users</p>
+        </div>
+        <div id="hrImpactAnalysis" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Run Impact Analysis</h3>
+            <p>Preview impact on employees and roles before publishing</p>
+        </div>
+        <div id="hrExceptions" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Exception Management</h3>
+            <p>View, approve, reject policy exceptions</p>
+        </div>
+        <div id="hrAudit" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Audit & History</h3>
+            <p>Track who changed what, versioning, and logs</p>
+        </div>
+
+        <!-- Managers Feature Screens -->
+            <div id="mgrApprovalDashboard" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Approval Dashboard</h3>
+                
+                <!-- Filter / Search -->
+                <div class="mb-4 flex gap-4 flex-wrap">
+                    <select class="border rounded p-2">
+                        <option value="">All Policy Types</option>
+                        <option value="Attendance">Attendance</option>
+                        <option value="Leave">Leave</option>
+                        <option value="Payroll">Payroll</option>
+                        <option value="Training">Training</option>
+                    </select>
+                    <select class="border rounded p-2">
+                        <option value="">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <input type="date" class="border rounded p-2" />
+                </div>
+
+                <!-- Main Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Policy Name</th>
+                            <th class="border p-2">Effective Date</th>
+                            <th class="border p-2">Team Members</th>
+                            <th class="border p-2">Status</th>
+                            <th class="border p-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Attendance Policy</td>
+                            <td class="border p-2">01-Oct-2025</td>
+                            <td class="border p-2">5</td>
+                            <td class="border p-2">Pending</td>
+                            <td class="border p-2">
+                                <button class="bg-green-500 text-white px-2 py-1 rounded">Approve</button>
+                                <button class="bg-red-500 text-white px-2 py-1 rounded">Reject</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="mgrExceptionRequests" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Exception Requests</h3>
+                <p>Review and approve/reject exception requests from team members.</p>
+                <!-- Example Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Policy</th>
+                            <th class="border p-2">Reason</th>
+                            <th class="border p-2">Duration</th>
+                            <th class="border p-2">Status</th>
+                            <th class="border p-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">John Doe</td>
+                            <td class="border p-2">Leave Policy</td>
+                            <td class="border p-2">Family emergency</td>
+                            <td class="border p-2">2 days</td>
+                            <td class="border p-2">Pending</td>
+                            <td class="border p-2">
+                                <button class="bg-green-500 text-white px-2 py-1 rounded">Approve</button>
+                                <button class="bg-red-500 text-white px-2 py-1 rounded">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="mgrTeamImpactView" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Team Impact View</h3>
+                <p>See which employees are impacted by a selected policy.</p>
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Department</th>
+                            <th class="border p-2">Impact Type</th>
+                            <th class="border p-2">Impact Details</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Jane Smith</td>
+                            <td class="border p-2">Finance</td>
+                            <td class="border p-2">Payroll Adjustment</td>
+                            <td class="border p-2">Bonus recalculation</td>
+                            <td class="border p-2">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="mgrComments" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Comments / Feedback</h3>
+                <p>Provide notes or suggestions on policies or requests.</p>
+                <div class="mb-4">
+                    <textarea class="w-full border rounded p-2" rows="4" placeholder="Add your comment here..."></textarea>
+                    <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Submit Comment</button>
+                </div>
+                <div class="commentsList border-t pt-4">
+                    <!-- Existing comments -->
+                    <div class="mb-2">
+                        <strong>Manager A:</strong> Please review this policy for compliance.
+                    </div>
+                    <div class="mb-2">
+                        <strong>Manager B:</strong> Consider updating the leave duration.
+                    </div>
+                </div>
+            </div>
+
+        
+
+        <!-- Employees Feature Screens -->
+
+            <!-- 1. My Policies -->
+            <div id="empMyPolicies" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">My Policies</h3>
+                <p class="text-gray-600 mb-4">List of all policies assigned to you.</p>
+
+                <!-- Filters -->
+                <div class="flex gap-4 mb-4 flex-wrap">
+                    <select class="border rounded p-2">
+                        <option value="">All Types</option>
+                        <option value="Leave">Leave</option>
+                        <option value="Attendance">Attendance</option>
+                        <option value="Payroll">Payroll</option>
+                        <option value="Code of Conduct">Code of Conduct</option>
+                    </select>
+                    <select class="border rounded p-2">
+                        <option value="">All Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Acknowledged">Acknowledged</option>
+                    </select>
+                </div>
+
+                <!-- Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Policy Name</th>
+                            <th class="border p-2">Type</th>
+                            <th class="border p-2">Status</th>
+                            <th class="border p-2">Last Updated</th>
+                            <th class="border p-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Leave Policy</td>
+                            <td class="border p-2">Leave</td>
+                            <td class="border p-2">Active</td>
+                            <td class="border p-2">20-Sep-2025</td>
+                            <td class="border p-2">
+                                <button class="bg-blue-500 text-white px-2 py-1 rounded">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Attendance Policy</td>
+                            <td class="border p-2">Attendance</td>
+                            <td class="border p-2">Pending</td>
+                            <td class="border p-2">15-Sep-2025</td>
+                            <td class="border p-2">
+                                <button class="bg-blue-500 text-white px-2 py-1 rounded">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 2. Acknowledge Button -->
+            <div id="empAcknowledge" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Acknowledge Policies</h3>
+                <p class="text-gray-600 mb-4">Click "Acknowledge" after reading each policy.</p>
+
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Policy</th>
+                            <th class="border p-2">Acknowledgment Status</th>
+                            <th class="border p-2">Timestamp</th>
+                            <th class="border p-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Leave Policy</td>
+                            <td class="border p-2 text-red-600">Not Acknowledged</td>
+                            <td class="border p-2">-</td>
+                            <td class="border p-2">
+                                <button class="bg-green-500 text-white px-3 py-1 rounded">Acknowledge</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Attendance Policy</td>
+                            <td class="border p-2 text-green-600">Acknowledged</td>
+                            <td class="border p-2">25-Sep-2025 10:30 AM</td>
+                            <td class="border p-2">✔️</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. Request Exception Form -->
+            <div id="empRequestException" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Request Exception Form</h3>
+                <p class="text-gray-600 mb-4">Submit a request for an exception to policy rules.</p>
+
+                <form class="space-y-4 max-w-2xl">
+                    <div>
+                        <label class="block text-sm font-medium">Policy</label>
+                        <select class="w-full border rounded p-2">
+                            <option>Leave Policy</option>
+                            <option>Attendance Policy</option>
+                            <option>Payroll Policy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Reason</label>
+                        <textarea class="w-full border rounded p-2" rows="3" placeholder="Explain your reason..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium">Duration (From)</label>
+                            <input type="date" class="w-full border rounded p-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Duration (To)</label>
+                            <input type="date" class="w-full border rounded p-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Attachments</label>
+                        <input type="file" class="w-full border rounded p-2">
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Submit Request</button>
+                </form>
+            </div>
+
+            <!-- 4. Notifications Feed -->
+            <div id="empNotifications" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Notifications Feed</h3>
+                <p class="text-gray-600 mb-4">Stay updated with new policies and reminders.</p>
+
+                <!-- Filters -->
+                <div class="flex gap-4 mb-4 flex-wrap">
+                    <select class="border rounded p-2">
+                        <option value="">All Types</option>
+                        <option value="Policy Update">Policy Update</option>
+                        <option value="Acknowledgment Reminder">Acknowledgment Reminder</option>
+                        <option value="Exception Update">Exception Update</option>
+                    </select>
+                    <input type="date" class="border rounded p-2">
+                </div>
+
+                <!-- Feed List -->
+                <ul class="space-y-3">
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Policy Update:</strong> New Leave Policy v2.0 published. <span class="text-sm text-gray-500">28-Sep-2025</span>
+                    </li>
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Acknowledgment Reminder:</strong> Attendance Policy pending acknowledgment. <span class="text-sm text-gray-500">27-Sep-2025</span>
+                    </li>
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Exception Update:</strong> Your exception request for Leave Policy approved. <span class="text-sm text-gray-500">26-Sep-2025</span>
+                    </li>
+                </ul>
+            </div>
+
+        <!-- Finance Feature Screens -->
+
+            <!-- 1. Payroll Impact Preview -->
+            <div id="finPayrollImpact" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Payroll Impact Preview</h3>
+                <p class="text-gray-600 mb-4">Review salary impact of policies before approval.</p>
+
+                <!-- Filters -->
+                <div class="flex gap-4 mb-4 flex-wrap">
+                    <select class="border rounded p-2">
+                        <option value="">All Departments</option>
+                        <option value="HR">HR</option>
+                        <option value="IT">IT</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Sales">Sales</option>
+                    </select>
+                    <select class="border rounded p-2">
+                        <option value="">All Policy Types</option>
+                        <option value="Leave">Leave</option>
+                        <option value="Reimbursement">Reimbursement</option>
+                        <option value="Attendance">Attendance</option>
+                    </select>
+                </div>
+
+                <!-- Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Department</th>
+                            <th class="border p-2">Policy</th>
+                            <th class="border p-2">Salary Component</th>
+                            <th class="border p-2">Projected Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Amit Sharma</td>
+                            <td class="border p-2">IT</td>
+                            <td class="border p-2">Leave Policy</td>
+                            <td class="border p-2">Basic Pay</td>
+                            <td class="border p-2 text-red-600">- ₹2,000</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Neha Gupta</td>
+                            <td class="border p-2">HR</td>
+                            <td class="border p-2">Reimbursement Policy</td>
+                            <td class="border p-2">Allowance</td>
+                            <td class="border p-2 text-green-600">+ ₹1,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 2. Approval Screen -->
+            <div id="finApproval" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Finance Approvals</h3>
+                <p class="text-gray-600 mb-4">Approve or reject exceptions and policy changes.</p>
+
+                <!-- List -->
+                <div class="space-y-4">
+                    <div class="p-4 border rounded bg-gray-50 flex justify-between items-center">
+                        <div>
+                            <strong>Exception Request:</strong> Leave Policy exception for Rohan <br>
+                            <span class="text-sm text-gray-500">Reason: Extended Leave, Duration: 5 days</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded bg-gray-50 flex justify-between items-center">
+                        <div>
+                            <strong>Policy Update:</strong> New Travel Reimbursement Policy <br>
+                            <span class="text-sm text-gray-500">Effective: 01-Oct-2025</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Reimbursement Policy Exceptions -->
+            <div id="finReimbursement" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Reimbursement Policy Exceptions</h3>
+                <p class="text-gray-600 mb-4">Track reimbursement exception requests.</p>
+
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Reason</th>
+                            <th class="border p-2">Amount</th>
+                            <th class="border p-2">Supporting Docs</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Vikram Rao</td>
+                            <td class="border p-2">Client Travel beyond limit</td>
+                            <td class="border p-2">₹5,000</td>
+                            <td class="border p-2"><a href="#" class="text-blue-600">View</a></td>
+                            <td class="border p-2 text-yellow-600">Pending</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Priya Iyer</td>
+                            <td class="border p-2">Medical expense exception</td>
+                            <td class="border p-2">₹12,000</td>
+                            <td class="border p-2"><a href="#" class="text-blue-600">View</a></td>
+                            <td class="border p-2 text-green-600">Approved</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 4. Finance Notifications -->
+            <div id="finNotifications" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Finance Notifications</h3>
+                <p class="text-gray-600 mb-4">Stay updated on approvals and payroll alerts.</p>
+
+                <!-- Feed -->
+                <ul class="space-y-3">
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Approval Pending:</strong> 3 new exception requests <span class="text-sm text-gray-500">28-Sep-2025</span>
+                    </li>
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Payroll Impact:</strong> Salary adjustments affecting 12 employees <span class="text-sm text-gray-500">27-Sep-2025</span>
+                    </li>
+                    <li class="p-3 border rounded bg-gray-50">
+                        <strong>Reimbursement Update:</strong> Priya Iyer’s exception approved <span class="text-sm text-gray-500">26-Sep-2025</span>
+                    </li>
+                </ul>
+            </div>
+
+
+        <!-- Compliance Feature Screens -->
+
+            <!-- 1. Compliance Validation Screen -->
+            <div id="compValidation" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Compliance Validation</h3>
+                <p class="text-gray-600 mb-4">Check policies against legal requirements.</p>
+
+                <!-- Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Policy</th>
+                            <th class="border p-2">Compliant?</th>
+                            <th class="border p-2">Comments</th>
+                            <th class="border p-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Leave Policy</td>
+                            <td class="border p-2 text-green-600">Yes</td>
+                            <td class="border p-2">Aligned with labor laws</td>
+                            <td class="border p-2">
+                                <button class="bg-yellow-500 text-white px-2 py-1 rounded">Mark Non-Compliant</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Attendance Policy</td>
+                            <td class="border p-2 text-red-600">No</td>
+                            <td class="border p-2">Weekly off days missing</td>
+                            <td class="border p-2">
+                                <button class="bg-green-500 text-white px-2 py-1 rounded">Mark Compliant</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 2. Upload Legal References -->
+            <div id="compUpload" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Upload Legal References</h3>
+                <p class="text-gray-600 mb-4">Attach legal documents for compliance tracking.</p>
+
+                <form class="space-y-4 max-w-lg">
+                    <div>
+                        <label class="block text-sm font-medium">Policy</label>
+                        <select class="w-full border rounded p-2">
+                            <option>Leave Policy</option>
+                            <option>Attendance Policy</option>
+                            <option>Payroll Policy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Upload Document</label>
+                        <input type="file" class="w-full border rounded p-2">
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Upload</button>
+                </form>
+            </div>
+
+            <!-- 3. Exception Review -->
+            <div id="compExceptionReview" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Compliance Exception Review</h3>
+                <p class="text-gray-600 mb-4">Review exceptions flagged for legal validation.</p>
+
+                <div class="space-y-4">
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Exception:</strong> Overtime beyond legal limits <br>
+                        <span class="text-sm text-gray-500">Employee: Ramesh | Policy: Attendance</span>
+                        <div class="mt-2 flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Exception:</strong> Extended probation beyond 6 months <br>
+                        <span class="text-sm text-gray-500">Employee: Meera | Policy: Employment Terms</span>
+                        <div class="mt-2 flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Compliance Dashboard -->
+            <div id="compDashboard" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Compliance Dashboard</h3>
+                <p class="text-gray-600 mb-4">Overview of compliance health across policies.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-6 border rounded bg-green-50">
+                        <h4 class="text-lg font-bold text-green-700">12</h4>
+                        <p class="text-gray-700">Compliant Policies</p>
+                    </div>
+                    <div class="p-6 border rounded bg-red-50">
+                        <h4 class="text-lg font-bold text-red-700">3</h4>
+                        <p class="text-gray-700">Non-Compliant Policies</p>
+                    </div>
+                    <div class="p-6 border rounded bg-yellow-50">
+                        <h4 class="text-lg font-bold text-yellow-700">5</h4>
+                        <p class="text-gray-700">Exceptions Pending Review</p>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="mt-6">
+                    <h4 class="text-md font-semibold mb-2">Recent Alerts</h4>
+                    <ul class="space-y-2">
+                        <li class="p-2 border rounded bg-gray-50">⚠️ Attendance Policy flagged as Non-Compliant (28-Sep-2025)</li>
+                        <li class="p-2 border rounded bg-gray-50">✅ Leave Policy validated and marked compliant (27-Sep-2025)</li>
+                        <li class="p-2 border rounded bg-gray-50">⚠️ 2 pending exception reviews (26-Sep-2025)</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        <!-- IT Feature Screens -->
+
+        <!-- 1. Security & Access Impact -->
+        <div id="itSecurity" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">Security & Access Impact</h3>
+            <p class="text-gray-600 mb-4">View systems and users impacted by policy changes.</p>
+
+            <!-- Table -->
+            <table class="w-full border-collapse border border-gray-200">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border p-2">System / Resource</th>
+                        <th class="border p-2">Affected Policy</th>
+                        <th class="border p-2">User</th>
+                        <th class="border p-2">Role</th>
+                        <th class="border p-2">Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border p-2">HRMS Portal</td>
+                        <td class="border p-2">Leave Policy</td>
+                        <td class="border p-2">Amit Sharma</td>
+                        <td class="border p-2">Employee</td>
+                        <td class="border p-2 text-red-600">Access Restricted</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">Finance ERP</td>
+                        <td class="border p-2">Reimbursement Policy</td>
+                        <td class="border p-2">Neha Gupta</td>
+                        <td class="border p-2">Finance Manager</td>
+                        <td class="border p-2 text-green-600">Extended Access</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. Approval for IT Exceptions -->
+        <div id="itApproval" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">IT Exception Approvals</h3>
+            <p class="text-gray-600 mb-4">Approve or reject IT-related exception requests.</p>
+
+            <div class="space-y-4">
+                <div class="p-4 border rounded bg-gray-50">
+                    <strong>Request:</strong> Extra VPN access <br>
+                    <span class="text-sm text-gray-500">Employee: Ramesh | Reason: Remote Project</span>
+                    <div class="mt-2 flex gap-2">
+                        <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                    </div>
+                </div>
+                <div class="p-4 border rounded bg-gray-50">
+                    <strong>Request:</strong> Temporary admin access to Finance ERP <br>
+                    <span class="text-sm text-gray-500">Employee: Priya | Reason: Audit support</span>
+                    <div class="mt-2 flex gap-2">
+                        <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. IT Notifications -->
+        <div id="itNotifications" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+            <h3 class="text-xl font-bold mb-4">IT Notifications</h3>
+            <p class="text-gray-600 mb-4">Stay updated on IT-related policy changes.</p>
+
+            <ul class="space-y-3">
+                <li class="p-3 border rounded bg-gray-50">
+                    <strong>New Exception Request:</strong> VPN access for Ramesh <span class="text-sm text-gray-500">28-Sep-2025</span>
+                </li>
+                <li class="p-3 border rounded bg-gray-50">
+                    <strong>Access Policy Update:</strong> HRMS portal leave policy access changed <span class="text-sm text-gray-500">27-Sep-2025</span>
+                </li>
+                <li class="p-3 border rounded bg-gray-50">
+                    <strong>Approval Reminder:</strong> Finance ERP admin request pending <span class="text-sm text-gray-500">26-Sep-2025</span>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- L&D Feature Screens -->
+
+            <!-- 1. Training Assignment Option -->
+            <div id="ldTraining" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Training Assignment</h3>
+                <p class="text-gray-600 mb-4">Assign mandatory or optional trainings to employees.</p>
+
+                <!-- Assignment Form -->
+                <form class="space-y-4 max-w-2xl mb-6">
+                    <div>
+                        <label class="block text-sm font-medium">Select Employee</label>
+                        <select class="w-full border rounded p-2">
+                            <option>Amit Sharma</option>
+                            <option>Neha Gupta</option>
+                            <option>Ramesh Kumar</option>
+                            <option>Priya Iyer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Training Module</label>
+                        <select class="w-full border rounded p-2">
+                            <option>Workplace Safety</option>
+                            <option>Data Security & Privacy</option>
+                            <option>Attendance & Leave Policy</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium">Due Date</label>
+                            <input type="date" class="w-full border rounded p-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Type</label>
+                            <select class="w-full border rounded p-2">
+                                <option>Mandatory</option>
+                                <option>Optional</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Assign Training</button>
+                </form>
+
+                <!-- Training Status Table -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Training</th>
+                            <th class="border p-2">Due Date</th>
+                            <th class="border p-2">Type</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Amit Sharma</td>
+                            <td class="border p-2">Data Security & Privacy</td>
+                            <td class="border p-2">05-Oct-2025</td>
+                            <td class="border p-2">Mandatory</td>
+                            <td class="border p-2 text-yellow-600">Pending</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Neha Gupta</td>
+                            <td class="border p-2">Workplace Safety</td>
+                            <td class="border p-2">10-Oct-2025</td>
+                            <td class="border p-2">Optional</td>
+                            <td class="border p-2 text-green-600">Completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 2. Approval Screen -->
+            <div id="ldApproval" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Training Exception Approvals</h3>
+                <p class="text-gray-600 mb-4">Approve or reject training reschedule/waiver requests.</p>
+
+                <div class="space-y-4">
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Request:</strong> Reschedule Workplace Safety Training <br>
+                        <span class="text-sm text-gray-500">Employee: Ramesh | Reason: Client project clash</span>
+                        <div class="mt-2 flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Request:</strong> Waiver for Attendance Policy Training <br>
+                        <span class="text-sm text-gray-500">Employee: Priya | Reason: Already trained in previous role</span>
+                        <div class="mt-2 flex gap-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Impact View -->
+            <div id="ldImpact" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Training Impact View</h3>
+                <p class="text-gray-600 mb-4">Track employees impacted by trainings and completion rates.</p>
+
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Employee</th>
+                            <th class="border p-2">Training</th>
+                            <th class="border p-2">Type</th>
+                            <th class="border p-2">Completion Status</th>
+                            <th class="border p-2">Completion Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Amit Sharma</td>
+                            <td class="border p-2">Data Security & Privacy</td>
+                            <td class="border p-2">Mandatory</td>
+                            <td class="border p-2 text-yellow-600">In Progress</td>
+                            <td class="border p-2">-</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Neha Gupta</td>
+                            <td class="border p-2">Workplace Safety</td>
+                            <td class="border p-2">Optional</td>
+                            <td class="border p-2 text-green-600">Completed</td>
+                            <td class="border p-2">20-Sep-2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- CXO Feature Screens -->
+
+            <!-- 1. Final Approval Screen -->
+            <div id="cxoFinalApproval" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">CXO Final Approvals</h3>
+                <p class="text-gray-600 mb-4">Review and approve/reject policies before rollout. Comments required for accountability.</p>
+
+                <div class="space-y-4">
+                    <!-- Example 1 -->
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Policy:</strong> Revised Leave Policy <br>
+                        <span class="text-sm text-gray-500">Effective: 01-Oct-2025 | Impact: 120 employees</span>
+                        <div class="mt-2">
+                            <textarea class="w-full border rounded p-2 mb-2" placeholder="Enter comments/conditions before decision..."></textarea>
+                            <div class="flex gap-2">
+                                <button class="bg-green-600 text-white px-3 py-1 rounded">Approve</button>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example 2 -->
+                    <div class="p-4 border rounded bg-gray-50">
+                        <strong>Policy:</strong> New Reimbursement Policy <br>
+                        <span class="text-sm text-gray-500">Effective: 10-Oct-2025 | Impact: Finance & Sales teams</span>
+                        <div class="mt-2">
+                            <textarea class="w-full border rounded p-2 mb-2" placeholder="Enter comments/conditions before decision..."></textarea>
+                            <div class="flex gap-2">
+                                <button class="bg-green-600 text-white px-3 py-1 rounded">Approve</button>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Global Impact Summary -->
+            <div id="cxoGlobalImpact" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">Global Impact Summary</h3>
+                <p class="text-gray-600 mb-4">Organization-wide impact of policy changes.</p>
+
+                <!-- Grid of summaries -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-6">
+                    <div class="p-6 border rounded bg-blue-50">
+                        <h4 class="text-lg font-bold text-blue-700">120</h4>
+                        <p class="text-gray-700">Employees Affected</p>
+                    </div>
+                    <div class="p-6 border rounded bg-green-50">
+                        <h4 class="text-lg font-bold text-green-700">5</h4>
+                        <p class="text-gray-700">Departments Impacted</p>
+                    </div>
+                    <div class="p-6 border rounded bg-purple-50">
+                        <h4 class="text-lg font-bold text-purple-700">₹8,50,000</h4>
+                        <p class="text-gray-700">Projected Budget Shift</p>
+                    </div>
+                </div>
+
+                <!-- Breakdown by department -->
+                <table class="w-full border-collapse border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Department</th>
+                            <th class="border p-2">Employees Affected</th>
+                            <th class="border p-2">Key Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">HR</td>
+                            <td class="border p-2">25</td>
+                            <td class="border p-2">Leave Policy Update</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Finance</td>
+                            <td class="border p-2">30</td>
+                            <td class="border p-2">Reimbursement Policy Revision</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">IT</td>
+                            <td class="border p-2">15</td>
+                            <td class="border p-2">Access Control Changes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. Comment / Condition Field -->
+            <div id="cxoComments" class="featureScreen hidden p-6 border rounded-lg mb-4 bg-white">
+                <h3 class="text-xl font-bold mb-4">CXO Comments & Conditional Approval</h3>
+                <p class="text-gray-600 mb-4">Add notes or conditions for policy rollouts.</p>
+
+                <form class="space-y-4 max-w-2xl">
+                    <div>
+                        <label class="block text-sm font-medium">Select Policy</label>
+                        <select class="w-full border rounded p-2">
+                            <option>Leave Policy</option>
+                            <option>Attendance Policy</option>
+                            <option>Reimbursement Policy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Comments / Conditions</label>
+                        <textarea class="w-full border rounded p-2" rows="4" placeholder="e.g., Approve if payroll adjusted"></textarea>
+                    </div>
+                    <div class="flex gap-2">
+                        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded">Approve with Conditions</button>
+                        <button type="button" class="bg-red-600 text-white px-6 py-2 rounded">Reject</button>
+                    </div>
+                </form>
+            </div>
+
+
     <script>
         const roleOptions = {
-        'HR Admin': {
-            features: [
-                { title: 'Create/Edit Policy Wizard', icon: '📝', description: 'Policy Details → Applicability → Impact Analysis → Exceptions → Submit' },
-                { title: 'Bulk Upload', icon: '📁', description: 'Upload CSV/Excel for multiple policies/users' },
-                { title: 'Run Impact Analysis', icon: '📊', description: 'Preview impact before publishing' },
-                { title: 'Exception Management', icon: '⚠️', description: 'View, approve, reject overrides' },
-                { title: 'Audit & History', icon: '📜', description: 'Track who changed what, versioning' }
-            ],
-            remove: [
-                'Policy Acknowledgment',
-                'Payroll recalculation details',
-                'Compliance risk scoring'
-            ]
-        },
-        'Managers': {
-            features: [
-                { title: 'Approval Dashboard', icon: '⏳', description: 'Pending approvals for team policies' },
-                { title: 'Exception Requests', icon: '⚠️', description: 'Approve/Reject exceptions raised by team' },
-                { title: 'Team Impact View', icon: '👥', description: 'See employees affected by policies' },
-                { title: 'Comments/Feedback', icon: '💬', description: 'Provide notes before approving' }
-            ],
-            remove: [
-                'Create/Edit Policy',
-                'Bulk Upload tools',
-                'Legal/Compliance checks'
-            ]
-        },
-        'Employees': {
-            features: [
-                { title: 'My Policies', icon: '📄', description: 'View active policies assigned to you' },
-                { title: 'Acknowledge Button', icon: '✍️', description: 'Checkbox / digital signature' },
-                { title: 'Request Exception Form', icon: '📤', description: 'Submit reason, duration, supporting doc' },
-                { title: 'Notifications Feed', icon: '🔔', description: 'See relevant policy updates' }
-            ],
-            remove: [
-                'Approvals for others',
-                'Editing policies',
-                'Audit/Reports',
-                'Payroll-level details'
-            ]
-        },
-        'Finance': {
-            features: [
-                { title: 'Payroll Impact Preview', icon: '💰', description: 'See which payslips need recalculation' },
-                { title: 'Approval Screen', icon: '✅', description: 'Approve/recalculate payroll before policy activates' },
-                { title: 'Reimbursement Policy Exceptions', icon: '💳', description: 'Approve expense claims beyond limits' },
-                { title: 'Notifications', icon: '🔔', description: 'Alerts on payroll-related changes' }
-            ],
-            remove: [
-                'HR creation wizard',
-                'Employee acknowledgment screen',
-                'L&D / training screens'
-            ]
-        },
-        'Compliance': {
-            features: [
-                { title: 'Compliance Validation Screen', icon: '⚖️', description: 'Mark policy as Compliant / Needs Change' },
-                { title: 'Upload Legal References', icon: '📄', description: 'Add law docs, jurisdiction details' },
-                { title: 'Exception Review', icon: '⚠️', description: 'Flag non-compliant overrides' },
-                { title: 'Compliance Dashboard', icon: '📊', description: 'See all active legal policies & risks' }
-            ],
-            remove: [
-                'Employee acknowledgment',
-                'Payroll recalculations',
-                'Training assignments'
-            ]
-        },
-        'IT': {
-            features: [
-                { title: 'Security & Access Impact', icon: '🔒', description: 'Which roles/systems are affected' },
-                { title: 'Approval for IT Exceptions', icon: '⚠️', description: 'Approve special access requests' },
-                { title: 'Notifications', icon: '🔔', description: 'Policy changes requiring system updates' }
-            ],
-            remove: [
-                'Leave, payroll, reimbursement details',
-                'Training/L&D screens',
-                'Policy creation'
-            ]
-        },
-        'L&D': {
-            features: [
-                { title: 'Training Assignment Option', icon: '🎓', description: 'Attach mandatory training to a policy' },
-                { title: 'Approval Screen', icon: '✅', description: 'Training reimbursement approvals' },
-                { title: 'Impact View', icon: '📊', description: 'See employees required to complete training' }
-            ],
-            remove: [
-                'Payroll recalculations',
-                'Compliance validations',
-                'Core policy editing'
-            ]
-        },
-        'CXO': {
-            features: [
-                { title: 'Final Approval Screen', icon: '✅', description: 'Org-wide/high-impact policies approval' },
-                { title: 'Global Impact Summary', icon: '🌐', description: 'Company-wide #employees affected & risks' },
-                { title: 'Comment/Condition Field', icon: '💬', description: 'Add notes before approval' }
-            ],
-            remove: [
-                'Editing screens',
-                'Exception requests (day-to-day)',
-                'Training assignments',
-                'Detailed payroll-level tasks'
-            ]
-        }
-    };
+    'HR Admin': {
+        features: [
+            { title: 'Create/Edit Policy Wizard', icon: '📝', description: 'Policy Details → Applicability → Impact Analysis → Exceptions → Submit' },
+            { title: 'Bulk Upload', icon: '📁', description: 'Upload CSV/Excel for multiple policies/users' },
+            { title: 'Run Impact Analysis', icon: '📊', description: 'Preview impact before publishing' },
+            { title: 'Exception Management', icon: '⚠️', description: 'View, approve, reject overrides' },
+            { title: 'Audit & History', icon: '📜', description: 'Track who changed what, versioning' }
+        ]
+    },
+    'Managers': {
+        features: [
+            { title: 'Approval Dashboard', icon: '⏳', description: 'Pending approvals for team policies' },
+            { title: 'Exception Requests', icon: '⚠️', description: 'Approve/Reject exceptions raised by team' },
+            { title: 'Team Impact View', icon: '👥', description: 'See employees affected by policies' },
+            { title: 'Comments/Feedback', icon: '💬', description: 'Provide notes before approving' }
+        ]
+    },
+    'Employees': {
+        features: [
+            { title: 'My Policies', icon: '📄', description: 'View active policies assigned to you' },
+            { title: 'Acknowledge Button', icon: '✍️', description: 'Checkbox / digital signature' },
+            { title: 'Request Exception Form', icon: '📤', description: 'Submit reason, duration, supporting doc' },
+            { title: 'Notifications Feed', icon: '🔔', description: 'See relevant policy updates' }
+        ]
+    },
+    'Finance': {
+        features: [
+            { title: 'Payroll Impact Preview', icon: '💰', description: 'See which payslips need recalculation' },
+            { title: 'Approval Screen', icon: '✅', description: 'Approve/recalculate payroll before policy activates' },
+            { title: 'Reimbursement Policy Exceptions', icon: '💳', description: 'Approve expense claims beyond limits' },
+            { title: 'Notifications', icon: '🔔', description: 'Alerts on payroll-related changes' }
+        ]
+    },
+    'Compliance': {
+        features: [
+            { title: 'Compliance Validation Screen', icon: '⚖️', description: 'Mark policy as Compliant / Needs Change' },
+            { title: 'Upload Legal References', icon: '📄', description: 'Add law docs, jurisdiction details' },
+            { title: 'Exception Review', icon: '⚠️', description: 'Flag non-compliant overrides' },
+            { title: 'Compliance Dashboard', icon: '📊', description: 'See all active legal policies & risks' }
+        ]
+    },
+    'IT': {
+        features: [
+            { title: 'Security & Access Impact', icon: '🔒', description: 'Which roles/systems are affected' },
+            { title: 'Approval for IT Exceptions', icon: '⚠️', description: 'Approve special access requests' },
+            { title: 'Notifications', icon: '🔔', description: 'Policy changes requiring system updates' }
+        ]
+    },
+    'L&D': {
+        features: [
+            { title: 'Training Assignment Option', icon: '🎓', description: 'Attach mandatory training to a policy' },
+            { title: 'Approval Screen', icon: '✅', description: 'Training reimbursement approvals' },
+            { title: 'Impact View', icon: '📊', description: 'See employees required to complete training' }
+        ]
+    },
+    'CXO': {
+        features: [
+            { title: 'Final Approval Screen', icon: '✅', description: 'Org-wide/high-impact policies approval' },
+            { title: 'Global Impact Summary', icon: '🌐', description: 'Company-wide #employees affected & risks' },
+            { title: 'Comment/Condition Field', icon: '💬', description: 'Add notes before approval' }
+        ]
+    }
+};
 
-        const roleIcons = {
-            'HR Admin': { icon: '👥', bg: 'bg-blue-100' },
-            'Managers': { icon: '🎯', bg: 'bg-green-100' },
-            'Employees': { icon: '👤', bg: 'bg-purple-100' },
-            'Finance': { icon: '💰', bg: 'bg-yellow-100' },
-            'Compliance': { icon: '⚖️', bg: 'bg-red-100' },
-            'IT': { icon: '💻', bg: 'bg-indigo-100' },
-            'L&D': { icon: '📚', bg: 'bg-teal-100' },
-            'CXO': { icon: '👑', bg: 'bg-orange-100' }
-        };
+const roleIcons = {
+    'HR Admin': { icon: '👥', bg: 'bg-blue-100' },
+    'Managers': { icon: '🎯', bg: 'bg-green-100' },
+    'Employees': { icon: '👤', bg: 'bg-purple-100' },
+    'Finance': { icon: '💰', bg: 'bg-yellow-100' },
+    'Compliance': { icon: '⚖️', bg: 'bg-red-100' },
+    'IT': { icon: '💻', bg: 'bg-indigo-100' },
+    'L&D': { icon: '📚', bg: 'bg-teal-100' },
+    'CXO': { icon: '👑', bg: 'bg-orange-100' }
+};
 
-        function selectRole(role) {
-            // Hide role selection screen
-            document.getElementById('roleSelectionScreen').classList.add('hidden');
-            
-            // Show role features screen
-            document.getElementById('roleFeaturesScreen').classList.remove('hidden');
-            
-            // Set role name and icon
-            document.getElementById('selectedRoleName').textContent = role;
-            const roleIconElement = document.getElementById('roleIcon');
-            roleIconElement.className = `w-20 h-20 ${roleIcons[role].bg} rounded-full flex items-center justify-center mx-auto mb-4`;
-            roleIconElement.innerHTML = `<span class="text-3xl">${roleIcons[role].icon}</span>`;
+function selectRole(role) {
+    // Hide role selection, show features screen
+    document.getElementById('roleSelectionScreen').classList.add('hidden');
+    document.getElementById('roleFeaturesScreen').classList.remove('hidden');
 
-            // Populate role-specific options
-            const optionsContainer = document.getElementById('roleOptions');
-            optionsContainer.innerHTML = '';
+    // Set role name + icon
+    document.getElementById('selectedRoleName').textContent = role;
+    const roleIconElement = document.getElementById('roleIcon');
+    roleIconElement.className = `w-20 h-20 ${roleIcons[role].bg} rounded-full flex items-center justify-center mx-auto mb-4`;
+    roleIconElement.innerHTML = `<span class="text-3xl">${roleIcons[role].icon}</span>`;
 
-            if (role === 'HR Admin') {
-                showHRAdminDashboard();
-            } else {
-            const roleData = roleOptions[role]; // object with features & remove
-            if (!roleData || !roleData.features) return;
+    // Clear + repopulate features
+    const optionsContainer = document.getElementById('roleOptions');
+    optionsContainer.innerHTML = '';
 
-            roleData.features.forEach(option => {
-                const optionCard = document.createElement('div');
-                optionCard.className = 'bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 hover:shadow-lg cursor-pointer transition-all duration-300 border border-gray-200 hover:border-blue-300';
-                optionCard.innerHTML = `
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-xl">${option.icon}</span>
-                        </div>
-                        <h4 class="font-semibold text-gray-800 mb-2">${option.title}</h4>
-                        <p class="text-sm text-gray-600">${option.description}</p>
-                    </div>
-                `;
-                optionCard.onclick = () => accessFeature(option.title, role);
-                optionsContainer.appendChild(optionCard);
-            });
-        }
+    const roleData = roleOptions[role];
+    if (!roleData || !roleData.features) return;
 
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    roleData.features.forEach(option => {
+        const optionCard = document.createElement('div');
+        optionCard.className =
+            'bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 hover:shadow-lg cursor-pointer transition-all duration-300 border border-gray-200 hover:border-blue-300';
+        optionCard.innerHTML = `
+            <div class="text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-xl">${option.icon}</span>
+                </div>
+                <h4 class="font-semibold text-gray-800 mb-2">${option.title}</h4>
+                <p class="text-sm text-gray-600">${option.description}</p>
+            </div>
+        `;
+        optionCard.onclick = () => accessFeature(option.title, role);
+        optionsContainer.appendChild(optionCard);
+    });
+
+    // Role-specific dashboards
+    if (role === 'HR Admin') {
+        showHRAdminDashboard();
+    } else if (role === 'Managers') {
+        showManagerDashboard();
+    }
+
+    // Scroll to top when switching role
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 
         function goBackToRoles() {
             // Hide role features screen
@@ -552,24 +1397,24 @@ function showManagerDashboard() {
             <!-- Manager Tools in 4-column layout -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
 
-                <button onclick="alert('Pending Approval Tasks screen coming soon')" 
+                <button onclick="accessFeature('Approval Dashboard', 'Managers')" 
                         class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
-                    ✅ <br/> Pending Approvals
+                    ✅ <br/> Approval Dashboard
                 </button>
 
-                <button onclick="alert('Impact Dashboard coming soon')" 
+                <button onclick="accessFeature('Team Impact View', 'Managers')" 
                         class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
-                    📊 <br/> Impact Dashboard
+                    📊 <br/> Team Impact View
                 </button>
 
-                <button onclick="alert('Exception Requests screen coming soon')" 
+                <button onclick="accessFeature('Exception Requests', 'Managers')" 
                         class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
                     ⚖ <br/> Exception Requests
                 </button>
 
-                <button onclick="alert('Notifications screen coming soon')" 
+                <button onclick="accessFeature('Comments/Feedback', 'Managers')" 
                         class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
-                    🔔 <br/> Notifications
+                    💬 <br/> Comments/Feedback
                 </button>
 
             </div>
@@ -2071,9 +2916,103 @@ function showManagerDashboard() {
             alert('Results exported successfully!');
         }
 
-        function accessFeature(feature, role) {
-            alert(`Accessing ${feature} for ${role}.\n\nThis would typically navigate to the specific feature page or open a modal with the relevant functionality.`);
+        function accessFeature(title, role) {
+    // Hide role dashboard container completely
+    document.getElementById('roleFeaturesScreen').classList.add('hidden');
+
+    // Hide all feature screens first
+    document.querySelectorAll('.featureScreen').forEach(div => div.classList.add('hidden'));
+
+    let featureId = '';
+
+    // HR Admin
+    if (role === 'HR Admin') {
+        if (title.includes('Create/Edit')) featureId = 'hrCreatePolicy';
+        else if (title.includes('Bulk Upload')) featureId = 'hrBulkUpload';
+        else if (title.includes('Impact Analysis')) featureId = 'hrImpactAnalysis';
+        else if (title.includes('Exception')) featureId = 'hrExceptions';
+        else if (title.includes('Audit')) featureId = 'hrAudit';
+    }
+
+    // Managers
+    if (role === 'Managers') {
+        if (title.includes('Approval Dashboard')) featureId = 'mgrApprovalDashboard';
+        else if (title.includes('Exception Requests')) featureId = 'mgrExceptionRequests';
+        else if (title.includes('Team Impact')) featureId = 'mgrTeamImpactView';
+        else if (title.includes('Comments')) featureId = 'mgrComments';
+    }
+
+    // Employees
+    if (role === 'Employees') {
+        if (title.includes('My Policies')) featureId = 'empMyPolicies';
+        else if (title.includes('Acknowledge')) featureId = 'empAcknowledge';
+        else if (title.includes('Request Exception')) featureId = 'empRequestException';
+        else if (title.includes('Notifications')) featureId = 'empNotifications';
+    }
+
+    // Finance
+    if (role === 'Finance') {
+        if (title.includes('Payroll')) featureId = 'finPayrollImpact';
+        else if (title.includes('Approval')) featureId = 'finApproval';
+        else if (title.includes('Reimbursement')) featureId = 'finReimbursement';
+        else if (title.includes('Notifications')) featureId = 'finNotifications';
+    }
+
+    // Compliance
+    if (role === 'Compliance') {
+        if (title.includes('Validation')) featureId = 'compValidation';
+        else if (title.includes('Upload')) featureId = 'compUpload';
+        else if (title.includes('Exception Review')) featureId = 'compExceptionReview';
+        else if (title.includes('Dashboard')) featureId = 'compDashboard';
+    }
+
+    // IT
+    if (role === 'IT') {
+        if (title.includes('Security')) featureId = 'itSecurity';
+        else if (title.includes('Approval')) featureId = 'itApproval';
+        else if (title.includes('Notifications')) featureId = 'itNotifications';
+    }
+
+    // L&D
+    if (role === 'L&D') {
+        if (title.includes('Training')) featureId = 'ldTraining';
+        else if (title.includes('Approval')) featureId = 'ldApproval';
+        else if (title.includes('Impact')) featureId = 'ldImpact';
+    }
+
+    // CXO
+    if (role === 'CXO') {
+        if (title.includes('Final Approval')) featureId = 'cxoFinalApproval';
+        else if (title.includes('Global Impact')) featureId = 'cxoGlobalImpact';
+        else if (title.includes('Comment')) featureId = 'cxoComments';
+    }
+
+    // Show selected feature screen as full page
+    if (featureId) {
+        const featureEl = document.getElementById(featureId);
+
+        // Inject a back button if not already
+        if (!featureEl.querySelector('.back-to-dashboard')) {
+            const backBtn = document.createElement('button');
+            backBtn.textContent = '← Back to Dashboard';
+            backBtn.className = 'back-to-dashboard mb-4 text-blue-600 hover:text-blue-800';
+            backBtn.onclick = () => {
+                featureEl.classList.add('hidden');
+                document.getElementById('roleFeaturesScreen').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            featureEl.insertBefore(backBtn, featureEl.firstChild);
         }
+
+        featureEl.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        alert('Feature not implemented yet: ' + title);
+    }
+}
+
+
+
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98617327515e1262',t:'MTc1OTA0MzcyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
