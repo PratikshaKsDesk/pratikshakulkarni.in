@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .role-card {
+            transition: all 0.3s ease;
+        }
+        .role-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .selected-role {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Policy Management System</h1>
+            <p class="text-lg text-gray-600">Select your role to access relevant policy features</p>
+        </div>
+
+        <!-- Role Selection Screen -->
+        <div id="roleSelectionScreen" class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- HR Admin -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('HR Admin')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">👥</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">HR Admin</h3>
+                        <p class="text-gray-600 text-sm">Manage employee policies, compliance, and HR procedures</p>
+                    </div>
+                </div>
+
+                <!-- Managers -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Managers')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Managers</h3>
+                        <p class="text-gray-600 text-sm">Access team policies, approval workflows, and management guidelines</p>
+                    </div>
+                </div>
+
+                <!-- Employees -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Employees')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">👤</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Employees</h3>
+                        <p class="text-gray-600 text-sm">View company policies, handbook, and employee guidelines</p>
+                    </div>
+                </div>
+
+                <!-- Finance -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Finance')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Finance</h3>
+                        <p class="text-gray-600 text-sm">Financial policies, expense guidelines, and budget procedures</p>
+                    </div>
+                </div>
+
+                <!-- Compliance -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('Compliance')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">⚖️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Compliance</h3>
+                        <p class="text-gray-600 text-sm">Regulatory policies, audit procedures, and compliance frameworks</p>
+                    </div>
+                </div>
+
+                <!-- IT -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('IT')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">💻</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">IT</h3>
+                        <p class="text-gray-600 text-sm">Technology policies, security guidelines, and IT procedures</p>
+                    </div>
+                </div>
+
+                <!-- L&D -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('L&D')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">L&D</h3>
+                        <p class="text-gray-600 text-sm">Learning policies, training procedures, and development guidelines</p>
+                    </div>
+                </div>
+
+                <!-- CXO -->
+                <div class="role-card bg-white rounded-xl p-6 shadow-lg cursor-pointer border-2 border-transparent hover:border-blue-300" onclick="selectRole('CXO')">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">👑</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">CXO</h3>
+                        <p class="text-gray-600 text-sm">Executive policies, strategic guidelines, and governance frameworks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Features Screen -->
+        <div id="roleFeaturesScreen" class="hidden max-w-6xl mx-auto">
+            <div class="mb-6">
+                <button onclick="goBackToRoles()" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                    <span class="mr-2">←</span> Back to Role Selection
+                </button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <div class="text-center mb-8">
+                    <div id="roleIcon" class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"></div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2"><span id="selectedRoleName"></span> Dashboard</h2>
+                    <p class="text-gray-600">Access your policy management tools and resources</p>
+                </div>
+                
+                <div id="roleOptions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Options will be populated based on selected role -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const roleOptions = {
+            'HR Admin': [],
+            'Managers': [
+                { title: 'Team Policies', icon: '👥', description: 'View policies relevant to your team' },
+                { title: 'Approval Queue', icon: '⏳', description: 'Review and approve policy requests' },
+                { title: 'Policy Updates', icon: '🔔', description: 'Stay informed about policy changes' },
+                { title: 'Team Compliance', icon: '✓', description: 'Monitor team policy compliance' },
+                { title: 'Request Policy', icon: '📤', description: 'Request new policies or changes' },
+                { title: 'Training Materials', icon: '🎓', description: 'Access policy training resources' }
+            ],
+            'Employees': [
+                { title: 'Company Handbook', icon: '📚', description: 'Browse the complete employee handbook' },
+                { title: 'Policy Search', icon: '🔍', description: 'Find specific policies quickly' },
+                { title: 'Recent Updates', icon: '🆕', description: 'View latest policy changes' },
+                { title: 'Policy Quiz', icon: '❓', description: 'Test your policy knowledge' },
+                { title: 'Ask Questions', icon: '💬', description: 'Get clarification on policies' },
+                { title: 'Acknowledgments', icon: '✍️', description: 'Sign off on required policies' }
+            ],
+            'Finance': [
+                { title: 'Financial Policies', icon: '💼', description: 'Access all finance-related policies' },
+                { title: 'Expense Guidelines', icon: '💳', description: 'Review expense and reimbursement rules' },
+                { title: 'Budget Procedures', icon: '📊', description: 'Budget planning and approval processes' },
+                { title: 'Audit Policies', icon: '🔍', description: 'Internal and external audit procedures' },
+                { title: 'Procurement Rules', icon: '🛒', description: 'Vendor and purchasing guidelines' },
+                { title: 'Financial Reporting', icon: '📋', description: 'Reporting standards and procedures' }
+            ],
+            'Compliance': [
+                { title: 'Regulatory Framework', icon: '⚖️', description: 'View all regulatory compliance policies' },
+                { title: 'Audit Management', icon: '🔍', description: 'Manage compliance audits and reviews' },
+                { title: 'Risk Assessment', icon: '⚠️', description: 'Policy risk evaluation tools' },
+                { title: 'Compliance Reports', icon: '📊', description: 'Generate compliance status reports' },
+                { title: 'Policy Violations', icon: '🚨', description: 'Track and manage policy violations' },
+                { title: 'Training Compliance', icon: '🎯', description: 'Monitor mandatory training completion' }
+            ],
+            'IT': [
+                { title: 'Security Policies', icon: '🔒', description: 'Information security and data protection' },
+                { title: 'IT Procedures', icon: '⚙️', description: 'Technical procedures and guidelines' },
+                { title: 'Access Management', icon: '🔑', description: 'User access and permission policies' },
+                { title: 'Data Governance', icon: '🗄️', description: 'Data handling and storage policies' },
+                { title: 'Incident Response', icon: '🚨', description: 'Security incident response procedures' },
+                { title: 'Technology Standards', icon: '💻', description: 'Hardware and software standards' }
+            ],
+            'L&D': [
+                { title: 'Training Policies', icon: '🎓', description: 'Learning and development guidelines' },
+                { title: 'Course Catalog', icon: '📚', description: 'Available training programs and courses' },
+                { title: 'Certification Tracking', icon: '🏆', description: 'Monitor employee certifications' },
+                { title: 'Learning Paths', icon: '🛤️', description: 'Structured learning progressions' },
+                { title: 'Training Calendar', icon: '📅', description: 'Schedule and manage training sessions' },
+                { title: 'Skills Assessment', icon: '📊', description: 'Evaluate training effectiveness' }
+            ],
+            'CXO': [
+                { title: 'Strategic Policies', icon: '🎯', description: 'High-level strategic and governance policies' },
+                { title: 'Executive Dashboard', icon: '📊', description: 'Policy metrics and organizational insights' },
+                { title: 'Policy Governance', icon: '👑', description: 'Oversee policy creation and approval' },
+                { title: 'Risk Management', icon: '⚠️', description: 'Enterprise risk and policy alignment' },
+                { title: 'Board Reports', icon: '📋', description: 'Policy compliance reports for board' },
+                { title: 'Culture & Values', icon: '💫', description: 'Organizational culture and values policies' }
+            ]
+        };
+
+        const roleIcons = {
+            'HR Admin': { icon: '👥', bg: 'bg-blue-100' },
+            'Managers': { icon: '🎯', bg: 'bg-green-100' },
+            'Employees': { icon: '👤', bg: 'bg-purple-100' },
+            'Finance': { icon: '💰', bg: 'bg-yellow-100' },
+            'Compliance': { icon: '⚖️', bg: 'bg-red-100' },
+            'IT': { icon: '💻', bg: 'bg-indigo-100' },
+            'L&D': { icon: '📚', bg: 'bg-teal-100' },
+            'CXO': { icon: '👑', bg: 'bg-orange-100' }
+        };
+
+        function selectRole(role) {
+            // Hide role selection screen
+            document.getElementById('roleSelectionScreen').classList.add('hidden');
+            
+            // Show role features screen
+            document.getElementById('roleFeaturesScreen').classList.remove('hidden');
+            
+            // Set role name and icon
+            document.getElementById('selectedRoleName').textContent = role;
+            const roleIconElement = document.getElementById('roleIcon');
+            roleIconElement.className = `w-20 h-20 ${roleIcons[role].bg} rounded-full flex items-center justify-center mx-auto mb-4`;
+            roleIconElement.innerHTML = `<span class="text-3xl">${roleIcons[role].icon}</span>`;
+
+            // Populate role-specific options
+            const optionsContainer = document.getElementById('roleOptions');
+            optionsContainer.innerHTML = '';
+
+            if (role === 'HR Admin') {
+                showHRAdminDashboard();
+            } else {
+                roleOptions[role].forEach(option => {
+                    const optionCard = document.createElement('div');
+                    optionCard.className = 'bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 hover:shadow-lg cursor-pointer transition-all duration-300 border border-gray-200 hover:border-blue-300';
+                    optionCard.innerHTML = `
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-xl">${option.icon}</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">${option.title}</h4>
+                            <p class="text-sm text-gray-600">${option.description}</p>
+                        </div>
+                    `;
+                    optionCard.onclick = () => accessFeature(option.title, role);
+                    optionsContainer.appendChild(optionCard);
+                });
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBackToRoles() {
+            // Hide role features screen
+            document.getElementById('roleFeaturesScreen').classList.add('hidden');
+            
+            // Show role selection screen
+            document.getElementById('roleSelectionScreen').classList.remove('hidden');
+            
+            // Remove any previous selections
+            document.querySelectorAll('.role-card').forEach(card => {
+                card.classList.remove('selected-role');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Sample policy data
+        let policies = [
+            { id: 1, title: 'Remote Work Policy', type: 'Work Arrangement', subtype: 'Flexible Work', status: 'Active', lastUpdated: '2024-01-15' },
+            { id: 2, title: 'Leave Management', type: 'Time Off', subtype: 'Annual Leave', status: 'Active', lastUpdated: '2024-01-10' },
+            { id: 3, title: 'Code of Conduct', type: 'Behavioral', subtype: 'Ethics', status: 'Active', lastUpdated: '2024-01-05' },
+            { id: 4, title: 'Performance Review', type: 'Performance', subtype: 'Evaluation', status: 'Draft', lastUpdated: '2024-01-20' }
+        ];
+
+        let currentView = 'dashboard';
+
+        function showHRAdminDashboard() {
+        currentView = 'dashboard';
+        const container = document.getElementById('roleOptions');
+        container.innerHTML = `
+            <div class="col-span-full mb-6">
+
+                <!-- ✅ Add New + Policy Shift in 2-column layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <button onclick="showAddNewPolicy()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-6 rounded-xl font-semibold text-lg shadow transition">
+                        ➕ Add New Policy
+                    </button>
+                    <button onclick="showPolicyShift()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-6 rounded-xl font-semibold text-lg shadow transition">
+                        🔄 Policy Shift
+                    </button>
+                </div>
+
+                <!-- ✅ HR Admin Tools in 3-column minimal style -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+                    <button onclick="alert('Run Impact Analysis coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        📊 <br/> Impact Analysis
+                    </button>
+                    <button onclick="alert('View/Edit Applicability coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        🗂 <br/> Applicability
+                    </button>
+                    <button onclick="alert('Manage Exceptions coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        ⚖ <br/> Exceptions
+                    </button>
+                    <button onclick="alert('Submit for Approval Workflow coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        ✅ <br/> Approval Flow
+                    </button>
+                    <button onclick="alert('Publish / Archive policies coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        📢 <br/> Publish / Archive
+                    </button>
+                    <button onclick="alert('Audit & Reports coming soon')" 
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-6 rounded-xl font-medium text-center shadow-sm transition">
+                        📑 <br/> Audit & Reports
+                    </button>
+                </div>
+
+                <!-- ✅ Policy Management Table -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800">Policy Management</h3>
+                        <p class="text-gray-600 mt-1">Manage all company policies and procedures</p>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy Title</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subtype</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                ${policies.map(policy => `
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">${policy.title}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${policy.type}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${policy.subtype}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${policy.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+                                                ${policy.status}
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${policy.lastUpdated}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <button onclick="editPolicy(${policy.id})" class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                            <button onclick="deletePolicy(${policy.id})" class="text-red-600 hover:text-red-900">Delete</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+
+
+
+        // Policy type configurations
+        const policySubtypes = {
+            'Employment & Onboarding': [
+                'Offer Letter & Appointment Policy',
+                'Probation & Confirmation Policy',
+                'Background Verification Policy',
+                'Employee Classification Policy (Full-time, Part-time, Intern, Contractual)',
+                'Transfer & Relocation Policy'
+            ],
+            'Attendance & Leave': [
+                'Attendance Policy (Shift, Flexi, Remote, Biometric)',
+                'Leave Policy (Sick, Casual, Earned, Maternity/Paternity, Bereavement, Study, Sabbatical)',
+                'Holiday Calendar & National Holiday Policy',
+                'Work from Home / Hybrid Work Policy',
+                'Overtime Policy'
+            ],
+            'Compensation & Benefits': [
+                'Payroll Policy (Salary components, cycle, deductions)',
+                'Reimbursement Policy (Travel, Food, Lodging, Client Entertainment)',
+                'Incentive & Bonus Policy',
+                'Gratuity & Retirement Benefits Policy',
+                'Insurance & Health Benefits Policy',
+                'Employee Stock Options (ESOP) Policy'
+            ],
+            'Performance & Career': [
+                'Performance Appraisal & Review Policy',
+                'Promotion & Increment Policy',
+                'Training & Development Policy',
+                'Career Progression / Internal Job Posting Policy',
+                'Disciplinary Action & Grievance Policy'
+            ],
+            'Workplace Conduct & Compliance': [
+                'Code of Conduct / Ethics Policy',
+                'Anti-Harassment & Anti-Discrimination Policy',
+                'Equal Opportunity Policy',
+                'Whistleblower Policy',
+                'IT Usage Policy (Email, Internet, Devices, BYOD)',
+                'Confidentiality & Data Protection Policy',
+                'Conflict of Interest Policy'
+            ],
+            'Health, Safety & Security': [
+                'Workplace Health & Safety Policy',
+                'Emergency & Evacuation Policy',
+                'Mental Health & Wellness Policy',
+                'Substance Abuse & Zero Tolerance Policy',
+                'Security & Access Control Policy'
+            ],
+            'Exit & Separation': [
+                'Resignation & Notice Period Policy',
+                'Exit Clearance / No Dues Policy',
+                'Final Settlement Policy',
+                'Rehire / Alumni Engagement Policy',
+                'Termination Policy (For Cause, Layoff, Redundancy)'
+            ],
+            'Compliance & Legal': [
+                'Labor Law Compliance Policy',
+                'GDPR / Data Privacy Compliance Policy',
+                'Anti-Bribery & Anti-Corruption Policy',
+                'Record Retention Policy',
+                'Vendor / Contractor Engagement Policy'
+            ]
+        };
+
+        function updateSubtypes() {
+            const typeSelect = document.getElementById('policyType');
+            const subtypeSelect = document.getElementById('policySubtype');
+            const subtypeSection = document.getElementById('subtypeSection');
+            const continueSection = document.getElementById('continueSection');
+            const selectedType = typeSelect.value;
+            
+            subtypeSelect.innerHTML = '<option value="">Select Policy Subtype</option>';
+            
+            if (selectedType && policySubtypes[selectedType]) {
+                subtypeSection.classList.remove('hidden');
+                policySubtypes[selectedType].forEach(subtype => {
+                    const option = document.createElement('option');
+                    option.value = subtype;
+                    option.textContent = subtype;
+                    subtypeSelect.appendChild(option);
+                });
+                
+                // Add event listener to subtype select
+                subtypeSelect.onchange = function() {
+                    if (this.value) {
+                        continueSection.classList.remove('hidden');
+                    } else {
+                        continueSection.classList.add('hidden');
+                    }
+                };
+            } else {
+                subtypeSection.classList.add('hidden');
+                continueSection.classList.add('hidden');
+            }
+        }
+
+        function proceedToPolicyForm() {
+            const policyType = document.getElementById('policyType').value;
+            const policySubtype = document.getElementById('policySubtype').value;
+            
+            if (!policyType || !policySubtype) {
+                alert('Please select both policy type and subtype');
+                return;
+            }
+            
+            // Store selected values for use in the form
+            window.selectedPolicyType = policyType;
+            window.selectedPolicySubtype = policySubtype;
+            
+            showPolicyDetailsForm();
+        }
+
+        function showPolicyDetailsForm() {
+            const container = document.getElementById('roleOptions');
+            container.innerHTML = `
+                <div class="col-span-full">
+                    <button onclick="showAddNewPolicy()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                        <span>←</span> Back to Policy Selection
+                    </button>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Policy Details</h3>
+                            <div class="text-sm text-gray-600">
+                                <span class="font-medium">Type:</span> ${window.selectedPolicyType} → 
+                                <span class="font-medium">Subtype:</span> ${window.selectedPolicySubtype}
+                            </div>
+                        </div>
+                        
+                        <form id="newPolicyForm" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Policy Title</label>
+                                <input type="text" id="policyTitle" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter policy title">
+                            </div>
+                            
+                            <!-- Common Policy Fields -->
+                            <div class="bg-gray-50 rounded-lg p-6 space-y-6">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Policy Details</h4>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Policy ID / Code</label>
+                                        <input type="text" id="policyCode" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Auto-generated (e.g., POL-2024-001)" readonly>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Owner Department</label>
+                                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                            <option value="">Select Department</option>
+                                            <option value="hr">Human Resources</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="it">Information Technology</option>
+                                            <option value="legal">Legal & Compliance</option>
+                                            <option value="operations">Operations</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Description / Objective</label>
+                                    <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe the purpose and objective of this policy..."></textarea>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Effective From Date</label>
+                                        <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Effective Till Date (Optional)</label>
+                                        <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                </div>
+                                
+                                <!-- Applicability Section -->
+                                <div class="border-t pt-6">
+                                    <h5 class="text-md font-medium text-gray-800 mb-4">Applicability / Scope</h5>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Roles</label>
+                                            <div class="space-y-2 max-h-32 overflow-y-auto border border-gray-200 rounded p-2">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> All Employees
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Managers
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Senior Management
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Team Leads
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Departments</label>
+                                            <div class="space-y-2 max-h-32 overflow-y-auto border border-gray-200 rounded p-2">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> All Departments
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Engineering
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Marketing
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Sales
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> HR
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Finance
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Locations</label>
+                                            <div class="space-y-2 max-h-32 overflow-y-auto border border-gray-200 rounded p-2">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> All Locations
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> New York
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> California
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Texas
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" onchange="updateImpactedCount()"> Remote
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Employee Levels</label>
+                                            <div class="flex flex-wrap gap-2">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Junior
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Mid-Level
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Senior
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Executive
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Employee Type</label>
+                                            <div class="flex flex-wrap gap-2">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Full-time
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Part-time
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Contract
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-1" onchange="updateImpactedCount()"> Intern
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm font-medium text-blue-800">Impacted People Count:</span>
+                                            <span id="impactedCount" class="text-lg font-bold text-blue-600">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Policy Controls -->
+                                <div class="border-t pt-6">
+                                    <h5 class="text-md font-medium text-gray-800 mb-4">Policy Controls</h5>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Approval Required?</label>
+                                            <div class="space-y-2">
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="approvalRequired" value="yes" onchange="toggleApprovalFlow()" class="mr-2"> Yes
+                                                </label>
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="approvalRequired" value="no" onchange="toggleApprovalFlow()" class="mr-2"> No
+                                                </label>
+                                            </div>
+                                            
+                                            <div id="approvalFlow" class="hidden mt-3">
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Approver Flow</label>
+                                                <select class="w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                                    <option>Direct Manager</option>
+                                                    <option>Department Head</option>
+                                                    <option>HR Manager</option>
+                                                    <option>Multi-level Approval</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Acknowledgment Required?</label>
+                                            <div class="space-y-2">
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="acknowledgmentRequired" value="yes" onchange="toggleAcknowledgment()" class="mr-2"> Yes
+                                                </label>
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="acknowledgmentRequired" value="no" onchange="toggleAcknowledgment()" class="mr-2"> No
+                                                </label>
+                                            </div>
+                                            
+                                            <div id="acknowledgmentOptions" class="hidden mt-3">
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Acknowledgment Type</label>
+                                                <select class="w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                                    <option>Digital Signature</option>
+                                                    <option>Checkbox Acceptance</option>
+                                                    <option>Quiz Completion</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Exceptions Allowed?</label>
+                                            <div class="space-y-2">
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="exceptionsAllowed" value="yes" onchange="toggleExceptions()" class="mr-2"> Yes
+                                                </label>
+                                                <label class="flex items-center">
+                                                    <input type="radio" name="exceptionsAllowed" value="no" onchange="toggleExceptions()" class="mr-2"> No
+                                                </label>
+                                            </div>
+                                            
+                                            <div id="exceptionOptions" class="hidden mt-3">
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Exception Approval</label>
+                                                <select class="w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                                    <option>HR Director</option>
+                                                    <option>Department Head</option>
+                                                    <option>C-Level Executive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="policyOptionsContainer">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Policy-Specific Configuration</h4>
+                                <div id="policyOptions"></div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <button type="button" onclick="savePolicyDraft()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg">Save as Draft</button>
+                                <button type="button" onclick="publishPolicy()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">Publish Policy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            // Generate policy code and load specific options
+            generatePolicyCode();
+            loadPolicySpecificOptions();
+        }
+
+        function loadPolicySpecificOptions() {
+    const optionsDiv = document.getElementById('policyOptions');
+    const subtype = window.selectedPolicySubtype;
+
+    let optionsHTML = '';
+
+    // =============================
+    // 1. Employment & Onboarding
+    // =============================
+    if (subtype === 'Offer Letter & Appointment Policy') {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div><label class="block text-sm font-medium">Templates</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Signatories</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Salary Structure Mapping</label><input type="text" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    } else if (subtype === 'Probation & Confirmation Policy') {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div><label class="block text-sm font-medium">Duration</label><input type="number" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Extension Rules</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Confirmation Workflow</label><input type="text" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    } else if (subtype === 'Background Verification Policy') {
+        optionsHTML = `
+            <div class="space-y-2">
+                <label class="block text-sm font-medium">Checks Required</label>
+                <div class="flex flex-wrap gap-3">
+                    <label><input type="checkbox" class="mr-1"> Education</label>
+                    <label><input type="checkbox" class="mr-1"> Employment</label>
+                    <label><input type="checkbox" class="mr-1"> Criminal</label>
+                </div>
+                <label class="block text-sm font-medium mt-3">Vendor Details</label>
+                <input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Employee Classification')) {
+        optionsHTML = `
+            <div>
+                <label class="block text-sm font-medium">Categories</label>
+                <div class="flex flex-wrap gap-3">
+                    <label><input type="checkbox" class="mr-1"> Full-time</label>
+                    <label><input type="checkbox" class="mr-1"> Part-time</label>
+                    <label><input type="checkbox" class="mr-1"> Intern</label>
+                    <label><input type="checkbox" class="mr-1"> Contractual</label>
+                </div>
+                <label class="block text-sm font-medium mt-3">Benefits Mapping</label>
+                <input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype === 'Transfer & Relocation Policy') {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div><label class="block text-sm font-medium">Eligible Roles</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Relocation Allowance</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Notice Period Applicability</label><input type="text" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    }
+
+    // =============================
+    // 2. Attendance & Leave
+    // =============================
+    else if (subtype.includes('Attendance Policy')) {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="block text-sm font-medium">Shift Timings</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Flexi Hours</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Grace Time</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Capture Method</label>
+                    <select class="w-full border rounded p-2"><option>Biometric</option><option>Geo</option><option>Web</option></select>
+                </div>
+            </div>
+        `;
+    } else if (subtype.includes('Leave Policy')) {
+        optionsHTML = `
+            <div class="space-y-4">
+                <div><label class="block text-sm font-medium">Types</label><input type="text" placeholder="Casual, Sick, Earned, etc." class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Eligibility</label><input type="text" placeholder="Probation vs Confirmed" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Accrual Rules</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Carry Forward</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Encashment Rules</label><input type="text" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    } else if (subtype.includes('Holiday Calendar')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label class="block text-sm font-medium">Regional Holidays</label><input type="text" class="w-full border rounded p-2">
+                <label class="block text-sm font-medium">Optional Holidays</label><input type="text" class="w-full border rounded p-2">
+                <label class="block text-sm font-medium">Auto-Publish per Location</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Work from Home / Hybrid Work Policy')) {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="block text-sm font-medium">Eligible Roles</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Max Days / Month</label><input type="number" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Approval Workflow</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Tracking Method</label><input type="text" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    } else if (subtype.includes('Overtime')) {
+        optionsHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="block text-sm font-medium">Calculation Unit</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Rate</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Approval Workflow</label><input type="text" class="w-full border rounded p-2"></div>
+                <div><label class="block text-sm font-medium">Max Overtime Allowed</label><input type="number" class="w-full border rounded p-2"></div>
+            </div>
+        `;
+    }
+
+    // =============================
+    // 3. Compensation & Benefits
+    // =============================
+    else if (subtype.includes('Payroll Policy')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Components (Basic, HRA, Allowances)</label><input type="text" class="w-full border rounded p-2">
+                <label>Deductions (PF, ESI, PT)</label><input type="text" class="w-full border rounded p-2">
+                <label>Pay Cycle</label><input type="text" class="w-full border rounded p-2">
+                <label>Mode of Payment</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Reimbursement Policy')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligible Expenses</label><input type="text" class="w-full border rounded p-2">
+                <label>Limits</label><input type="text" class="w-full border rounded p-2">
+                <label>Required Documents</label><input type="text" class="w-full border rounded p-2">
+                <label>Submission Timeline</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Incentive & Bonus')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligibility Criteria</label><input type="text" class="w-full border rounded p-2">
+                <label>Calculation Rules</label><input type="text" class="w-full border rounded p-2">
+                <label>Frequency</label><input type="text" class="w-full border rounded p-2">
+                <label>Approval Flow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Gratuity')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligibility Tenure</label><input type="text" class="w-full border rounded p-2">
+                <label>% Calculation</label><input type="text" class="w-full border rounded p-2">
+                <label>Vesting Rules</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Insurance & Health')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Coverage Type</label><input type="text" class="w-full border rounded p-2">
+                <label>Premium Contribution</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Employee Stock Options')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligible Roles</label><input type="text" class="w-full border rounded p-2">
+                <label>Vesting Schedule</label><input type="text" class="w-full border rounded p-2">
+                <label>Exercise Price</label><input type="text" class="w-full border rounded p-2">
+                <label>Tax Rules</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // 4. Performance & Career
+    // =============================
+    else if (subtype.includes('Performance Appraisal')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Cycle</label><input type="text" class="w-full border rounded p-2">
+                <label>Methodology</label><input type="text" class="w-full border rounded p-2">
+                <label>Approver Flow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Promotion & Increment')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligibility Criteria</label><input type="text" class="w-full border rounded p-2">
+                <label>% Increase Ranges</label><input type="text" class="w-full border rounded p-2">
+                <label>Approval Chain</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Training & Development')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Training Types</label><input type="text" class="w-full border rounded p-2">
+                <label>Cost-bearing Rules</label><input type="text" class="w-full border rounded p-2">
+                <label>Bond/Service Period</label><input type="text" class="w-full border rounded p-2">
+                <label>Feedback Capture</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Career Progression')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligible Roles</label><input type="text" class="w-full border rounded p-2">
+                <label>Application Process</label><input type="text" class="w-full border rounded p-2">
+                <label>Panel Selection</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Disciplinary Action')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Escalation Levels</label><input type="text" class="w-full border rounded p-2">
+                <label>Investigation Committee</label><input type="text" class="w-full border rounded p-2">
+                <label>Possible Actions</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // 5. Workplace Conduct & Compliance
+    // =============================
+    else if (subtype.includes('Code of Conduct')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Expected Behaviors</label><input type="text" class="w-full border rounded p-2">
+                <label>Do’s & Don’ts</label><input type="text" class="w-full border rounded p-2">
+                <label>Reporting Channel</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Anti-Harassment')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>POSH Compliance Details</label><input type="text" class="w-full border rounded p-2">
+                <label>Committee Info</label><input type="text" class="w-full border rounded p-2">
+                <label>Reporting Workflow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Equal Opportunity')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Applicability Scope</label><input type="text" class="w-full border rounded p-2">
+                <label>Audit Frequency</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Whistleblower')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Reporting Channel</label><input type="text" class="w-full border rounded p-2">
+                <label>Protection Guarantees</label><input type="text" class="w-full border rounded p-2">
+                <label>Escalation Flow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('IT Usage')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Allowed Devices</label><input type="text" class="w-full border rounded p-2">
+                <label>BYOD Rules</label><input type="text" class="w-full border rounded p-2">
+                <label>Monitoring Methods</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Confidentiality & Data')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>NDA Requirement</label><input type="text" class="w-full border rounded p-2">
+                <label>Information Classification</label><input type="text" class="w-full border rounded p-2">
+                <label>Penalties</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Conflict of Interest')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Disclosure Rules</label><input type="text" class="w-full border rounded p-2">
+                <label>Review Workflow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // 6. Health, Safety & Security
+    // =============================
+    else if (subtype.includes('Health & Safety')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Safety Gear Requirements</label><input type="text" class="w-full border rounded p-2">
+                <label>Emergency Drills</label><input type="text" class="w-full border rounded p-2">
+                <label>Compliance Officer</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Emergency & Evacuation')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Muster Points</label><input type="text" class="w-full border rounded p-2">
+                <label>Evacuation Routes</label><input type="text" class="w-full border rounded p-2">
+                <label>Drill Frequency</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Mental Health')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Programs Offered</label><input type="text" class="w-full border rounded p-2">
+                <label>Helplines</label><input type="text" class="w-full border rounded p-2">
+                <label>Confidentiality Rules</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Substance Abuse')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Prohibited Items</label><input type="text" class="w-full border rounded p-2">
+                <label>Zero Tolerance Consequences</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Security & Access')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>ID Cards</label><input type="text" class="w-full border rounded p-2">
+                <label>Visitor Policy</label><input type="text" class="w-full border rounded p-2">
+                <label>Restricted Zones</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // 7. Exit & Separation
+    // =============================
+    else if (subtype.includes('Resignation')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Notice Period Duration</label><input type="text" class="w-full border rounded p-2">
+                <label>Buyout Option</label><input type="text" class="w-full border rounded p-2">
+                <label>Relieving Letter Issuance</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Exit Clearance')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Departments Involved</label><input type="text" class="w-full border rounded p-2">
+                <label>Checklist Items</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Final Settlement')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Components</label><input type="text" class="w-full border rounded p-2">
+                <label>Timeline</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Rehire')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Eligibility Conditions</label><input type="text" class="w-full border rounded p-2">
+                <label>Cooling-off Period</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Termination')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Grounds</label><input type="text" class="w-full border rounded p-2">
+                <label>Severance Rules</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // 8. Compliance & Legal
+    // =============================
+    else if (subtype.includes('Labor Law')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>State-specific Applicability</label><input type="text" class="w-full border rounded p-2">
+                <label>Filing Frequency</label><input type="text" class="w-full border rounded p-2">
+                <label>Contribution %</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Data Privacy')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Data Subject Rights</label><input type="text" class="w-full border rounded p-2">
+                <label>Retention Period</label><input type="text" class="w-full border rounded p-2">
+                <label>Consent Rules</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Anti-Bribery')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Gift Policy</label><input type="text" class="w-full border rounded p-2">
+                <label>Reporting</label><input type="text" class="w-full border rounded p-2">
+                <label>Escalation Flow</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Record Retention')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Document Categories</label><input type="text" class="w-full border rounded p-2">
+                <label>Retention Period</label><input type="text" class="w-full border rounded p-2">
+                <label>Destruction Method</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    } else if (subtype.includes('Vendor / Contractor')) {
+        optionsHTML = `
+            <div class="space-y-3">
+                <label>Engagement Criteria</label><input type="text" class="w-full border rounded p-2">
+                <label>Contract Templates</label><input type="text" class="w-full border rounded p-2">
+                <label>Compliance Clauses</label><input type="text" class="w-full border rounded p-2">
+            </div>
+        `;
+    }
+
+    // =============================
+    // Default Fallback
+    // =============================
+    else {
+        optionsHTML = `
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Policy Description</label>
+                <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 h-32" placeholder="Enter policy details and requirements..."></textarea>
+            </div>
+        `;
+    }
+
+    optionsDiv.innerHTML = optionsHTML;
+}
+
+        function generatePolicyCode() {
+            const policyType = window.selectedPolicyType;
+            const policyCodeField = document.getElementById('policyCode');
+            
+            if (policyType) {
+                const typeAbbr = {
+                    'Employment & Onboarding': 'EMP',
+                    'Attendance & Leave': 'ATT',
+                    'Compensation & Benefits': 'COM',
+                    'Performance & Career': 'PER',
+                    'Workplace Conduct & Compliance': 'WCC',
+                    'Health, Safety & Security': 'HSS',
+                    'Exit & Separation': 'EXT',
+                    'Compliance & Legal': 'LEG'
+                };
+                
+                const year = new Date().getFullYear();
+                const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                const code = `POL-${typeAbbr[policyType]}-${year}-${randomNum}`;
+                
+                policyCodeField.value = code;
+            }
+        }
+
+        function updateImpactedCount() {
+            // Simulate calculation based on selected criteria
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let count = 0;
+            
+            // Simple calculation - in real app this would query actual employee data
+            checkboxes.forEach(checkbox => {
+                if (checkbox.parentElement.textContent.includes('All Employees')) count += 1250;
+                else if (checkbox.parentElement.textContent.includes('All Departments')) count += 1250;
+                else if (checkbox.parentElement.textContent.includes('All Locations')) count += 1250;
+                else if (checkbox.parentElement.textContent.includes('Engineering')) count += 350;
+                else if (checkbox.parentElement.textContent.includes('Marketing')) count += 120;
+                else if (checkbox.parentElement.textContent.includes('Sales')) count += 200;
+                else if (checkbox.parentElement.textContent.includes('HR')) count += 45;
+                else if (checkbox.parentElement.textContent.includes('Finance')) count += 80;
+                else if (checkbox.parentElement.textContent.includes('Managers')) count += 150;
+                else if (checkbox.parentElement.textContent.includes('Senior Management')) count += 25;
+                else count += 50; // Default for other selections
+            });
+            
+            // Avoid double counting - take the maximum if multiple "All" options are selected
+            if (count > 1250) count = 1250;
+            
+            document.getElementById('impactedCount').textContent = count.toLocaleString();
+        }
+
+        function toggleApprovalFlow() {
+            const approvalRequired = document.querySelector('input[name="approvalRequired"]:checked');
+            const approvalFlow = document.getElementById('approvalFlow');
+            
+            if (approvalRequired && approvalRequired.value === 'yes') {
+                approvalFlow.classList.remove('hidden');
+            } else {
+                approvalFlow.classList.add('hidden');
+            }
+        }
+
+        function toggleAcknowledgment() {
+            const acknowledgmentRequired = document.querySelector('input[name="acknowledgmentRequired"]:checked');
+            const acknowledgmentOptions = document.getElementById('acknowledgmentOptions');
+            
+            if (acknowledgmentRequired && acknowledgmentRequired.value === 'yes') {
+                acknowledgmentOptions.classList.remove('hidden');
+            } else {
+                acknowledgmentOptions.classList.add('hidden');
+            }
+        }
+
+        function toggleExceptions() {
+            const exceptionsAllowed = document.querySelector('input[name="exceptionsAllowed"]:checked');
+            const exceptionOptions = document.getElementById('exceptionOptions');
+            
+            if (exceptionsAllowed && exceptionsAllowed.value === 'yes') {
+                exceptionOptions.classList.remove('hidden');
+            } else {
+                exceptionOptions.classList.add('hidden');
+            }
+        }
+
+        function showSingleUpdate() {
+            const container = document.getElementById('roleOptions');
+            container.innerHTML = `
+                <div class="col-span-full">
+                    <button onclick="showPolicyShift()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                        <span>←</span> Back to Policy Shift
+                    </button>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Single Employee Update</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Employee</label>
+                                    <select id="employeeSelect" onchange="loadEmployeeDetails()" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="">Choose employee...</option>
+                                        <option value="john">John Smith - Software Engineer</option>
+                                        <option value="sarah">Sarah Johnson - Marketing Manager</option>
+                                        <option value="mike">Mike Davis - HR Specialist</option>
+                                        <option value="lisa">Lisa Chen - Finance Analyst</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Change Type</label>
+                                    <select id="changeType" onchange="showChangeOptions()" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="">Select change type...</option>
+                                        <option value="role">Role Change</option>
+                                        <option value="policy">Policy Assignment</option>
+                                        <option value="department">Department Transfer</option>
+                                        <option value="location">Location Change</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="employeeDetails" class="hidden bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-800 mb-2">Current Employee Details</h4>
+                                <div id="currentDetails"></div>
+                            </div>
+                            
+                            <div id="changeOptions" class="hidden">
+                                <h4 class="font-medium text-gray-800 mb-4">Change Configuration</h4>
+                                <div id="changeForm"></div>
+                            </div>
+                            
+                            <div id="impactAnalysis" class="hidden bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <h4 class="font-medium text-yellow-800 mb-2">⚠️ Impact Analysis</h4>
+                                <div id="impactDetails" class="text-sm text-yellow-700"></div>
+                                <div id="hrAttentionItems" class="mt-4"></div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <button id="updateBtn" onclick="processUpdate()" disabled class="bg-gray-400 text-white px-6 py-2 rounded-lg cursor-not-allowed">
+                                    Update Employee
+                                </button>
+                                <button onclick="previewChanges()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                                    Preview Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showBulkUpdate() {
+            const container = document.getElementById('roleOptions');
+            container.innerHTML = `
+                <div class="col-span-full">
+                    <button onclick="showPolicyShift()" class="mb-6 text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                        <span>←</span> Back to Policy Shift
+                    </button>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Bulk Employee Update</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                <div class="mb-4">
+                                    <span class="text-4xl">📁</span>
+                                </div>
+                                <h4 class="text-lg font-medium text-gray-800 mb-2">Upload CSV File</h4>
+                                <p class="text-gray-600 mb-4">Upload a CSV file with employee changes</p>
+                                <input type="file" id="csvFile" accept=".csv" onchange="processBulkCSV()" class="hidden">
+                                <button onclick="document.getElementById('csvFile').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                                    Choose File
+                                </button>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <a href="#" onclick="downloadTemplate()" class="text-blue-600 hover:underline">Download CSV template</a>
+                                </p>
+                            </div>
+                            
+                            <div id="bulkPreview" class="hidden">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Preview Changes</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border border-gray-200 rounded-lg">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Employee</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Change Type</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">From</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">To</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">HR Attention</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bulkPreviewBody" class="divide-y divide-gray-200">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div id="bulkHRAttention" class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4 hidden">
+                                    <h5 class="font-medium text-yellow-800 mb-2">⚠️ Items Requiring HR Attention</h5>
+                                    <div id="bulkAttentionList" class="space-y-2"></div>
+                                </div>
+                                
+                                <div class="flex gap-4 mt-6">
+                                    <button id="bulkUpdateBtn" onclick="processBulkUpdate()" disabled class="bg-gray-400 text-white px-6 py-2 rounded-lg cursor-not-allowed">
+                                        Process Bulk Update
+                                    </button>
+                                    <button onclick="exportResults()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+                                        Export Results
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Helper functions for policy management
+        function editPolicy(id) {
+            alert(`Editing policy with ID: ${id}`);
+        }
+
+        function deletePolicy(id) {
+            if (confirm('Are you sure you want to delete this policy?')) {
+                policies = policies.filter(p => p.id !== id);
+                showHRAdminDashboard();
+            }
+        }
+
+        function savePolicyDraft() {
+            alert('Policy saved as draft successfully!');
+        }
+
+        function publishPolicy() {
+            alert('Policy published successfully!');
+        }
+
+        function loadEmployeeDetails() {
+            const employee = document.getElementById('employeeSelect').value;
+            const detailsDiv = document.getElementById('employeeDetails');
+            const currentDetails = document.getElementById('currentDetails');
+            
+            if (employee) {
+                detailsDiv.classList.remove('hidden');
+                // Sample employee data
+                const employeeData = {
+                    john: { role: 'Software Engineer', department: 'Engineering', location: 'New York', policies: ['Remote Work', 'Standard Leave'] },
+                    sarah: { role: 'Marketing Manager', department: 'Marketing', location: 'California', policies: ['Hybrid Work', 'Manager Leave'] },
+                    mike: { role: 'HR Specialist', department: 'Human Resources', location: 'Texas', policies: ['Office Work', 'HR Policies'] },
+                    lisa: { role: 'Finance Analyst', department: 'Finance', location: 'New York', policies: ['Remote Work', 'Finance Policies'] }
+                };
+                
+                const data = employeeData[employee];
+                currentDetails.innerHTML = `
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div><strong>Role:</strong> ${data.role}</div>
+                        <div><strong>Department:</strong> ${data.department}</div>
+                        <div><strong>Location:</strong> ${data.location}</div>
+                        <div><strong>Policies:</strong> ${data.policies.join(', ')}</div>
+                    </div>
+                `;
+            } else {
+                detailsDiv.classList.add('hidden');
+            }
+        }
+
+        function showChangeOptions() {
+            const changeType = document.getElementById('changeType').value;
+            const optionsDiv = document.getElementById('changeOptions');
+            const formDiv = document.getElementById('changeForm');
+            
+            if (!changeType) {
+                optionsDiv.classList.add('hidden');
+                return;
+            }
+            
+            optionsDiv.classList.remove('hidden');
+            
+            let formHTML = '';
+            if (changeType === 'role') {
+                formHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">New Role</label>
+                            <select class="w-full border border-gray-300 rounded-lg px-3 py-2">
+                                <option>Senior Software Engineer</option>
+                                <option>Team Lead</option>
+                                <option>Principal Engineer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Effective Date</label>
+                            <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2">
+                        </div>
+                    </div>
+                `;
+            } else if (changeType === 'policy') {
+                formHTML = `
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Assign Policies</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2"> Executive Leave Policy
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2"> Manager Remote Work Policy
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2"> Leadership Training Policy
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            formDiv.innerHTML = formHTML;
+        }
+
+        function previewChanges() {
+            const impactDiv = document.getElementById('impactAnalysis');
+            const impactDetails = document.getElementById('impactDetails');
+            const hrItems = document.getElementById('hrAttentionItems');
+            
+            impactDiv.classList.remove('hidden');
+            impactDetails.innerHTML = `
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Salary band will change from Level 3 to Level 4</li>
+                    <li>New policies will be automatically assigned</li>
+                    <li>Manager approval workflow will be triggered</li>
+                    <li>Benefits package will be updated</li>
+                </ul>
+            `;
+            
+            hrItems.innerHTML = `
+                <h5 class="font-medium text-yellow-800 mb-2">HR Attention Required:</h5>
+                <div class="space-y-2">
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" onchange="checkHRItems()" class="mr-2 hr-item"> Salary adjustment approved
+                    </label>
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" onchange="checkHRItems()" class="mr-2 hr-item"> Benefits enrollment completed
+                    </label>
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" onchange="checkHRItems()" class="mr-2 hr-item"> Manager notification sent
+                    </label>
+                </div>
+            `;
+        }
+
+        function checkHRItems() {
+            const items = document.querySelectorAll('.hr-item');
+            const updateBtn = document.getElementById('updateBtn');
+            const allChecked = Array.from(items).every(item => item.checked);
+            
+            if (allChecked) {
+                updateBtn.disabled = false;
+                updateBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg cursor-pointer';
+            } else {
+                updateBtn.disabled = true;
+                updateBtn.className = 'bg-gray-400 text-white px-6 py-2 rounded-lg cursor-not-allowed';
+            }
+        }
+
+        function processUpdate() {
+            alert('Employee update processed successfully!');
+            showHRAdminDashboard();
+        }
+
+        function processBulkCSV() {
+            const previewDiv = document.getElementById('bulkPreview');
+            const tbody = document.getElementById('bulkPreviewBody');
+            
+            // Sample CSV data preview
+            const sampleData = [
+                { employee: 'John Smith', changeType: 'Role Change', from: 'Software Engineer', to: 'Senior Engineer', status: 'Ready', hrAttention: true },
+                { employee: 'Sarah Johnson', changeType: 'Department', from: 'Marketing', to: 'Product', status: 'Ready', hrAttention: false },
+                { employee: 'Mike Davis', changeType: 'Location', from: 'New York', to: 'Remote', status: 'Ready', hrAttention: true }
+            ];
+            
+            tbody.innerHTML = sampleData.map(row => `
+                <tr>
+                    <td class="px-4 py-2 text-sm">${row.employee}</td>
+                    <td class="px-4 py-2 text-sm">${row.changeType}</td>
+                    <td class="px-4 py-2 text-sm">${row.from}</td>
+                    <td class="px-4 py-2 text-sm">${row.to}</td>
+                    <td class="px-4 py-2 text-sm">
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">${row.status}</span>
+                    </td>
+                    <td class="px-4 py-2 text-sm">
+                        ${row.hrAttention ? '<span class="text-yellow-600">⚠️ Required</span>' : '<span class="text-green-600">✓ None</span>'}
+                    </td>
+                </tr>
+            `).join('');
+            
+            previewDiv.classList.remove('hidden');
+            
+            // Show HR attention items
+            const attentionDiv = document.getElementById('bulkHRAttention');
+            const attentionList = document.getElementById('bulkAttentionList');
+            attentionDiv.classList.remove('hidden');
+            
+            attentionList.innerHTML = `
+                <label class="flex items-center text-sm">
+                    <input type="checkbox" onchange="checkBulkHRItems()" class="mr-2 bulk-hr-item"> Review salary changes for promoted employees
+                </label>
+                <label class="flex items-center text-sm">
+                    <input type="checkbox" onchange="checkBulkHRItems()" class="mr-2 bulk-hr-item"> Approve remote work arrangements
+                </label>
+                <label class="flex items-center text-sm">
+                    <input type="checkbox" onchange="checkBulkHRItems()" class="mr-2 bulk-hr-item"> Update organizational chart
+                </label>
+            `;
+        }
+
+        function checkBulkHRItems() {
+            const items = document.querySelectorAll('.bulk-hr-item');
+            const updateBtn = document.getElementById('bulkUpdateBtn');
+            const allChecked = Array.from(items).every(item => item.checked);
+            
+            if (allChecked) {
+                updateBtn.disabled = false;
+                updateBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg cursor-pointer';
+            } else {
+                updateBtn.disabled = true;
+                updateBtn.className = 'bg-gray-400 text-white px-6 py-2 rounded-lg cursor-not-allowed';
+            }
+        }
+
+        function processBulkUpdate() {
+            alert('Bulk update processed successfully! All employee changes have been applied.');
+            showHRAdminDashboard();
+        }
+
+        function downloadTemplate() {
+            alert('CSV template downloaded! Check your downloads folder.');
+        }
+
+        function exportResults() {
+            alert('Results exported successfully!');
+        }
+
+        function accessFeature(feature, role) {
+            alert(`Accessing ${feature} for ${role}.\n\nThis would typically navigate to the specific feature page or open a modal with the relevant functionality.`);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98617327515e1262',t:'MTc1OTA0MzcyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
