@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Career Reality Check – 1‑Min Quiz</title>
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#0b1220; --card:#111827; --muted:#94a3b8; --ink:#e5e7eb; --brand:#6d28d9; --brand2:#22d3ee; --ok:#10b981; --warn:#f59e0b; --bad:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(135deg,#0f172a 0%,#1f2937 100%);color:var(--ink);}
+    .wrap{max-width:720px;margin:4rem auto;padding:1rem}
+    .card{background:linear-gradient(180deg,#111827 0%,#0b1220 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+    header{padding:28px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px}
+    header .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+    header h1{font-size:22px;margin:0}
+    header p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+
+    .body{padding:24px}
+    .progress{height:8px;background:#1f2937;border-radius:9999px;overflow:hidden;margin-bottom:16px}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .35s ease}
+
+    .step{display:none}
+    .step.active{display:block}
+
+    .q{font-weight:700;font-size:20px;margin:6px 0 18px}
+    .choices{display:grid;grid-template-columns:1fr;gap:10px}
+    .opt{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#0d1524;cursor:pointer;transition:transform .1s ease, background .2s}
+    .opt:hover{transform:translateY(-1px);background:#0f1f38}
+    .opt input{display:none}
+    .opt .bullet{width:22px;height:22px;border-radius:50%;border:2px solid var(--brand2);display:flex;align-items:center;justify-content:center}
+    .opt input:checked + .label .bullet{background:var(--brand2)}
+    .opt .label{display:flex;align-items:center;gap:12px;width:100%}
+    .emoji{font-size:20px}
+
+    .row{display:flex;gap:10px;margin-top:18px}
+    .btn{flex:1; background:linear-gradient(90deg,var(--brand),#8b5cf6);color:white;border:none;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(109,40,217,.35)}
+    .btn:disabled{opacity:.4;cursor:not-allowed}
+    .btn.secondary{background:#1f2937;border:1px solid rgba(255,255,255,.15);box-shadow:none}
+
+    .result{display:none; text-align:center}
+    .score{font-size:48px;font-weight:900;letter-spacing:1px;margin:8px 0}
+    .tag{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:999px;background:#0b2542;font-size:12px;color:#9bdcf0}
+    .meter{height:10px;background:#1f2937;border-radius:999px;overflow:hidden;margin:16px 0}
+    .meter>.fill{height:100%;width:0;background:linear-gradient(90deg,#ef4444,#f59e0b,#10b981);transition:width .6s ease}
+
+    .cta{display:inline-block;margin-top:16px;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,#10b981,#34d399);color:#053527;text-decoration:none;font-weight:800}
+
+    .share{margin-top:18px;display:flex;gap:10px;justify-content:center}
+    .share a{color:#d1d5db;text-decoration:none;border:1px solid rgba(255,255,255,.15);padding:8px 12px;border-radius:10px}
+
+    .caption{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Career Reality Check Quiz">
+      <header>
+        <div class="dot"></div>
+        <div>
+          <h1>Career Reality Check <span class="tag">1‑min quiz</span></h1>
+          <p>Bright, fast, and honest. Let’s gauge your readiness 🔎</p>
+        </div>
+      </header>
+
+      <div class="body">
+        <div class="progress"><div class="bar" id="bar"></div></div>
+
+        <!-- STEP 1 -->
+        <section class="step active" data-step="1">
+          <div class="q">1) Do you feel stuck at work? <span class="emoji">🤔</span></div>
+          <div class="choices">
+            <label class="opt"><input type="radio" name="q1" value="30"><span class="label"><span class="bullet"></span><span>Often — I’m not moving forward</span></span></label>
+            <label class="opt"><input type="radio" name="q1" value="65"><span class="label"><span class="bullet"></span><span>Sometimes — progress is slow</span></span></label>
+            <label class="opt"><input type="radio" name="q1" value="90"><span class="label"><span class="bullet"></span><span>Rarely — I see momentum</span></span></label>
+          </div>
+          <div class="row">
+            <button class="btn secondary" id="b1prev" disabled>Back</button>
+            <button class="btn" id="b1next" disabled>Next →</button>
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="step" data-step="2">
+          <div class="q">2) When was your last promotion/level‑up? <span class="emoji">📈</span></div>
+          <div class="choices">
+            <label class="opt"><input type="radio" name="q2" value="85"><span class="label"><span class="bullet"></span><span>In the last 12 months</span></span></label>
+            <label class="opt"><input type="radio" name="q2" value="65"><span class="label"><span class="bullet"></span><span>1–2 years ago</span></span></label>
+            <label class="opt"><input type="radio" name="q2" value="45"><span class="label"><span class="bullet"></span><span>2–3 years ago</span></span></label>
+            <label class="opt"><input type="radio" name="q2" value="30"><span class="label"><span class="bullet"></span><span>3+ years ago / never</span></span></label>
+          </div>
+          <div class="row">
+            <button class="btn secondary" id="b2prev">← Back</button>
+            <button class="btn" id="b2next" disabled>Next →</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="step" data-step="3">
+          <div class="q">3) How ready do you feel for the next role? <span class="emoji">🚀</span></div>
+          <div class="choices">
+            <label class="opt"><input type="radio" name="q3" value="50"><span class="label"><span class="bullet"></span><span>Not sure — need guidance</span></span></label>
+            <label class="opt"><input type="radio" name="q3" value="75"><span class="label"><span class="bullet"></span><span>Somewhat ready — need a plan</span></span></label>
+            <label class="opt"><input type="radio" name="q3" value="95"><span class="label"><span class="bullet"></span><span>Ready now — looking for momentum</span></span></label>
+          </div>
+          <div class="row">
+            <button class="btn secondary" id="b3prev">← Back</button>
+            <button class="btn" id="submit" disabled>See my score ⭐</button>
+          </div>
+        </section>
+
+        <!-- RESULT -->
+        <section class="result" id="result">
+          <div style="font-size:18px;opacity:.9">Your readiness score</div>
+          <div class="score" id="score">0%</div>
+          <div class="meter"><div class="fill" id="fill"></div></div>
+          <div id="verdict" style="font-size:16px;margin-top:8px"></div>
+          <a class="cta" id="cta" href="https://www.productleadership.com/" target="_blank" rel="noopener">Close the gap →</a>
+          <div class="share">
+            <a id="shareWA" target="_blank" rel="noopener">Share on WhatsApp</a>
+            <a id="restart">Retake quiz</a>
+          </div>
+          <p class="caption">We use this quick check to help you pick the right next step — from micro‑tips to full programs.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const steps = Array.from(document.querySelectorAll('.step'));
+    const bar = document.getElementById('bar');
+
+    function showStep(n){
+      steps.forEach(s=>s.classList.remove('active'));
+      const step = steps[n-1];
+      if(step){ step.classList.add('active'); }
+      const pct = Math.round(((n-1)/(steps.length))*100);
+      bar.style.width = pct + '%';
+    }
+
+    function enableNext(stepIdx){
+      const inputs = steps[stepIdx-1].querySelectorAll('input[type="radio"]');
+      const any = Array.from(inputs).some(i=>i.checked);
+      const nextBtn = document.getElementById(stepIdx===1? 'b1next' : stepIdx===2 ? 'b2next' : 'submit');
+      nextBtn.disabled = !any;
+    }
+
+    // Wire up radio groups to enable next
+    steps.forEach((s, idx)=>{
+      s.addEventListener('change', ()=> enableNext(idx+1));
+    });
+
+    // Navigation
+    document.getElementById('b1next').onclick = ()=> showStep(2);
+    document.getElementById('b2next').onclick = ()=> showStep(3);
+    document.getElementById('b2prev').onclick = ()=> showStep(1);
+    document.getElementById('b3prev').onclick = ()=> showStep(2);
+
+    // Submit
+    document.getElementById('submit').onclick = ()=>{
+      const v1 = Number(document.querySelector('input[name="q1"]:checked')?.value||0);
+      const v2 = Number(document.querySelector('input[name="q2"]:checked')?.value||0);
+      const v3 = Number(document.querySelector('input[name="q3"]:checked')?.value||0);
+      const avg = Math.round((v1 + v2 + v3)/3);
+      // show result
+      document.querySelector('.body .progress').style.display='none';
+      steps.forEach(s=> s.style.display='none');
+      const res = document.getElementById('result');
+      res.style.display='block';
+      document.getElementById('score').textContent = `${avg}%`;
+      const fill = document.getElementById('fill');
+      fill.style.width = `${avg}%`;
+      fill.style.background = avg<50? 'linear-gradient(90deg,#ef4444,#f59e0b)' : 'linear-gradient(90deg,#f59e0b,#10b981)';
+
+      const verdict = document.getElementById('verdict');
+      if(avg < 50){
+        verdict.textContent = 'You’re building your base. Start with 1‑minute tips and a short course — momentum beats perfection.';
+      } else if (avg < 75){
+        verdict.textContent = 'You’re ~' + avg + '% ready. A focused plan (skillathon + mentor chat) will close the gap fast.';
+      } else {
+        verdict.textContent = 'You’re almost there! Double down with a project + presentation to signal readiness.';
+      }
+
+      const wa = document.getElementById('shareWA');
+      const msg = encodeURIComponent(`My Career Reality Check score: ${avg}% – ready to level up!`);
+      wa.href = `https://wa.me/?text=${msg}`;
+    };
+
+    // Restart
+    document.getElementById('restart').onclick = ()=> window.location.reload();
+
+    // init
+    showStep(1);
+  </script>
+</body>
+</html>
