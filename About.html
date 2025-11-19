@@ -51,6 +51,7 @@
       font-size: 32px;
       font-weight: 800;
       letter-spacing: -0.5px;
+      cursor: pointer;
     }
 
     .back-btn {
@@ -68,6 +69,189 @@
 
     .back-btn:hover {
       background: rgba(255,255,255,0.3);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Board Member Card */
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .board-member {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .board-member:hover {
+      border-color: #667eea;
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+      transform: translateY(-8px);
+    }
+
+    .board-avatar {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 48px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .board-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .board-title {
+      font-size: 15px;
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .board-bio {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .board-social {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      background: #f5f7fa;
+      border: 2px solid #e1e8ed;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+      text-decoration: none;
+      color: #666;
+    }
+
+    .social-icon:hover {
+      background: #667eea;
+      border-color: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Vision/Mission Cards */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .value-card {
+      background: white;
+      border: 3px solid #e1e8ed;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
+      transform: translateY(-8px);
+    }
+
+    .value-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    .value-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .value-description {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: 20px;
+      padding: 48px;
+      margin: 48px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 56px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: #666;
+      font-weight: 600;
     }
 
     /* Main Content */
@@ -773,7 +957,7 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
 
         <nav>
           <a class="nav-btn" href="EPIC.html">Home</a>
-          <a class="nav-btn" href="#" onclick="showPage('about'); return false;">About</a>
+          <a class="nav-btn" href="About.html">About</a>
           <a class="nav-btn" href="Resources.html">Resources</a>
           <a class="nav-btn" href="Opportunities.html">Opportunities</a>
           <a class="nav-btn" href="Community.html">Community</a>
@@ -785,8 +969,204 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
     </div>
   </header>
   <main>
-   <div class="container"><!-- Main Profile Page -->
-    <div id="main-page">
+   <div class="container"><!-- About Page -->
+    <div id="about-page"><!-- Hero Section -->
+     <div class="hero-section">
+      <div class="container">
+       <div class="hero-title">
+        About EPIC Council
+       </div>
+       <div class="hero-subtitle">
+        Empowering Product Innovation &amp; Career Excellence
+       </div>
+      </div>
+     </div><!-- About EPIC Section -->
+     <div class="section" style="margin-top: -40px; border-radius: 24px;">
+      <h2 style="text-align: center; font-size: 36px; margin-bottom: 24px;">Who We Are</h2>
+      <p style="font-size: 18px; color: #666; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto 40px;">EPIC Council is a premier global community dedicated to nurturing the next generation of product management leaders. We provide world-class education, mentorship, and career opportunities to aspiring and experienced product managers worldwide.</p>
+      <div class="stats-section">
+       <div class="stats-grid">
+        <div>
+         <div class="stat-number">
+          50K+
+         </div>
+         <div class="stat-label">
+          Active Members
+         </div>
+        </div>
+        <div>
+         <div class="stat-number">
+          200+
+         </div>
+         <div class="stat-label">
+          Expert Instructors
+         </div>
+        </div>
+        <div>
+         <div class="stat-number">
+          500+
+         </div>
+         <div class="stat-label">
+          Premium Courses
+         </div>
+        </div>
+        <div>
+         <div class="stat-number">
+          95%
+         </div>
+         <div class="stat-label">
+          Job Placement Rate
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Mission & Vision -->
+     <div class="section">
+      <h2 style="text-align: center; font-size: 36px; margin-bottom: 48px;">Our Mission &amp; Vision</h2>
+      <div class="values-grid">
+       <div class="value-card">
+        <div class="value-icon">
+         🎯
+        </div>
+        <div class="value-title">
+         Our Mission
+        </div>
+        <div class="value-description">
+         To democratize access to world-class product management education and provide aspiring PMs with the skills, knowledge, and network they need to launch and accelerate their careers in product management.
+        </div>
+       </div>
+       <div class="value-card">
+        <div class="value-icon">
+         🚀
+        </div>
+        <div class="value-title">
+         Our Vision
+        </div>
+        <div class="value-description">
+         To become the world's most trusted and comprehensive platform for product management education, creating a global community where every aspiring PM has the opportunity to learn, grow, and succeed.
+        </div>
+       </div>
+       <div class="value-card">
+        <div class="value-icon">
+         💡
+        </div>
+        <div class="value-title">
+         Our Values
+        </div>
+        <div class="value-description">
+         Excellence in education, inclusive community, continuous innovation, data-driven decisions, and unwavering commitment to student success. We believe in learning by doing and growing together.
+        </div>
+       </div>
+      </div>
+     </div><!-- Board of Directors -->
+     <div class="section">
+      <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">Board of Directors</h2>
+      <p style="font-size: 16px; color: #666; text-align: center; max-width: 800px; margin: 0 auto 48px; line-height: 1.6;">Our board brings together decades of product leadership experience from the world's most innovative companies, guiding EPIC Council's strategic vision and commitment to excellence.</p>
+      <div class="board-grid"><!-- Board Member 1 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         JC
+        </div>
+        <div class="board-name">
+         Jennifer Chen
+        </div>
+        <div class="board-title">
+         Chair &amp; Co-Founder
+        </div>
+        <div class="board-bio">
+         Former VP of Product at Meta. 15+ years building products used by billions. Passionate about mentoring the next generation of PMs.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div><!-- Board Member 2 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         MP
+        </div>
+        <div class="board-name">
+         Michael Patel
+        </div>
+        <div class="board-title">
+         Co-Founder &amp; CEO
+        </div>
+        <div class="board-bio">
+         Ex-Google PM and Stanford lecturer. Built multiple 0-to-1 products. On a mission to make PM education accessible to everyone globally.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div><!-- Board Member 3 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         SK
+        </div>
+        <div class="board-name">
+         Sarah Kim
+        </div>
+        <div class="board-title">
+         Director of Education
+        </div>
+        <div class="board-bio">
+         Former Director of PM at Airbnb. Created training programs for 500+ PMs. Expert in curriculum design and experiential learning.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div><!-- Board Member 4 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         RG
+        </div>
+        <div class="board-name">
+         Raj Gupta
+        </div>
+        <div class="board-title">
+         Director of Technology
+        </div>
+        <div class="board-bio">
+         Former CTO at multiple startups. Built platforms serving millions. Drives innovation in our learning technology and AI systems.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div><!-- Board Member 5 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         EM
+        </div>
+        <div class="board-name">
+         Emily Martinez
+        </div>
+        <div class="board-title">
+         Director of Community
+        </div>
+        <div class="board-bio">
+         Built PM communities at Amazon and Microsoft. Expert in creating engaging, supportive environments where members thrive together.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div><!-- Board Member 6 -->
+       <div class="board-member">
+        <div class="board-avatar">
+         DL
+        </div>
+        <div class="board-name">
+         David Liu
+        </div>
+        <div class="board-title">
+         Director of Partnerships
+        </div>
+        <div class="board-bio">
+         Former Head of Recruiting at top tech companies. Built partnerships with 200+ organizations to create career opportunities for our members.
+        </div>
+        <div class="board-social"><a href="#" class="social-icon" title="LinkedIn">💼</a> <a href="#" class="social-icon" title="Twitter">🐦</a> <a href="#" class="social-icon" title="Website">🌐</a>
+        </div>
+       </div>
+      </div>
+     </div><!-- Call to Action -->
+     <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 64px 32px;">
+      <h2 style="color: white; font-size: 40px; margin-bottom: 20px;">Join Our Community</h2>
+      <p style="font-size: 20px; margin-bottom: 32px; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto;">Start your journey to becoming a world-class product manager. Learn from the best, build real projects, and launch your dream career.</p><button class="btn" style="background: white; color: #667eea; font-size: 18px; padding: 16px 40px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);" onclick="showPage('main')"> 🚀 Get Started Today </button>
+     </div>
+    </div><!-- Main Profile Page -->
+    <div id="main-page" style="display: none;">
      <div class="section">
       <div class="user-card">
        <div class="user-avatar">
@@ -1233,7 +1613,7 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
        <div class="course-description">
         Analyze Netflix's recommendation algorithm and propose improvements to increase user engagement.
        </div>
-       <div class="course-stats" style="margin-top: 16px;"><span>📝 Submitted on Nov 15, 2024</span> <span>👥 248 participants</span> <span>🏆 Results on Dec 1, 2024</span>
+       <div class="course-stats" style="margin-top: 16px;"><span>📝 Submitted on Nov 15, 2024</span> <span>👥 248 participants</span> <span>�� Results on Dec 1, 2024</span>
        </div>
        <div style="margin-top: 16px;"><button class="btn btn-secondary">📄 View My Submission</button> <button class="btn btn-secondary">👁️ View Contest Details</button>
        </div>
@@ -1333,6 +1713,14 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
          </div>
          <div class="achievement-name">
           Course Master
+         </div>
+        </div>
+        <div class="achievement-badge">
+         <div class="achievement-icon">
+          🔥
+         </div>
+         <div class="achievement-name">
+          7-Day Streak
          </div>
         </div>
         <div class="achievement-badge">
@@ -1650,7 +2038,7 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
   </footer>
   <script>
     function showPage(pageId) {
-      const pages = ['main', 'my-profile', 'my-courses', 'my-contests', 'progress'];
+      const pages = ['about', 'main', 'my-profile', 'my-courses', 'my-contests', 'progress'];
       pages.forEach(page => {
         const element = document.getElementById(page + '-page');
         if (element) element.style.display = 'none';
@@ -1795,5 +2183,5 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a124cfaf3872f6d',t:'MTc2MzU4MjQ5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a12729742957f06',t:'MTc2MzU4NDAzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
