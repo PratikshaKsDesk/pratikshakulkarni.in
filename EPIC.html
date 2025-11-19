@@ -1,0 +1,2874 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPIC - Executive Product Industry Council</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f8f9fa;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #667eea;
+    }
+
+    .login-btn {
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Main Content */
+    main {
+      min-height: calc(100% - 200px);
+      padding: 40px 0;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      background: white;
+      border-radius: 12px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      color: #667eea;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: #667eea;
+      margin-bottom: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h3 {
+      font-size: 20px;
+      color: #764ba2;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .section p, .section li {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .section ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+      border: 1px solid #e1e8ed;
+      border-radius: 10px;
+      padding: 24px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
+      border-color: #667eea;
+    }
+
+    .card h4 {
+      font-size: 18px;
+      color: #667eea;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .resource-item {
+      background: white;
+      border: 1px solid #e1e8ed;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .resource-item:hover {
+      border-color: #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+    }
+
+    .resource-item h4 {
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .resource-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .resource-tag {
+      background: #f3f4f6;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+    }
+
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-play-btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #667eea;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .video-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #ef4444;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .video-info {
+      padding: 16px;
+    }
+
+    .video-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .portfolio-card {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.15);
+    }
+
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .portfolio-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .portfolio-avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .portfolio-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .portfolio-item-thumb {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      border: 1px solid #e1e8ed;
+    }
+
+    .portfolio-stats {
+      display: flex;
+      gap: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #e1e8ed;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .my-portfolio-item {
+      background: white;
+      border: 1px solid #e1e8ed;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+      transition: all 0.2s;
+    }
+
+    .my-portfolio-item:hover {
+      border-color: #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+    }
+
+    .portfolio-item-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .portfolio-item-content {
+      flex: 1;
+    }
+
+    .portfolio-item-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .portfolio-item-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-item-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-item-actions {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .icon-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: #e5e7eb;
+      border-color: #667eea;
+    }
+
+    .privacy-toggle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: #f5f7fa;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      background: #d1d5db;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .toggle-switch.active .toggle-knob {
+      left: 26px;
+    }
+
+    .add-portfolio-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: 2px dashed rgba(255,255,255,0.5);
+      padding: 32px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .add-portfolio-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .back-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #e5e7eb;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .opportunity-card {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .opportunity-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .opportunity-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .opportunity-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .opportunity-company {
+      font-size: 14px;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .opportunity-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .event-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+      border: 1px solid #e1e8ed;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.3s;
+    }
+
+    .event-card:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .event-date {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      width: 80px;
+      float: left;
+      margin-right: 16px;
+    }
+
+    .event-day {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .event-month {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .feature-card {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .feature-card h3 {
+      color: #667eea;
+      font-size: 22px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .icon {
+      font-size: 24px;
+    }
+
+    .tab-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #f5f7fa;
+      border: 1px solid #e1e8ed;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: #e8ecf1;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .company-card {
+      background: white;
+      border: 1px solid #e1e8ed;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .company-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .company-logo {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .company-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .profile-section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .profile-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 10px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      background: white;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .profile-details {
+      background: white;
+      border-radius: 10px;
+      padding: 32px;
+      border: 1px solid #e1e8ed;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #e1e8ed;
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .detail-value {
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    /* Journey Map Styles */
+    .journey-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 32px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+      border-radius: 12px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .level-node {
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .level-node:hover {
+      transform: scale(1.1);
+    }
+
+    .level-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 8px;
+      border: 4px solid;
+      transition: all 0.3s;
+    }
+
+    .level-node.completed .level-icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .level-node.current .level-icon {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    .level-node.locked .level-icon {
+      background: #e5e7eb;
+      border-color: #d1d5db;
+      opacity: 0.6;
+    }
+
+    .level-node.expert .level-icon {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      border-color: #fbbf24;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .level-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 4px;
+    }
+
+    .level-node.locked .level-number {
+      color: #9ca3af;
+    }
+
+    .level-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #374151;
+      line-height: 1.3;
+    }
+
+    .level-node.locked .level-title {
+      color: #9ca3af;
+    }
+
+    .level-connector {
+      width: 40px;
+      height: 4px;
+      background: #e5e7eb;
+      margin: 35px 0;
+      border-radius: 2px;
+    }
+
+    .level-connector.completed {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .level-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .level-modal.active {
+      display: flex;
+    }
+
+    .level-modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .level-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #f3f4f6;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      color: #6b7280;
+      transition: all 0.2s;
+    }
+
+    .level-modal-close:hover {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    footer {
+      background: #2d3748;
+      color: white;
+      text-align: center;
+      padding: 24px;
+      margin-top: 48px;
+    }
+
+    footer p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 24px 20px;
+      }
+
+      .profile-section {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-map {
+        padding: 20px;
+      }
+
+      .level-node {
+        width: 80px;
+      }
+
+      .level-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .level-connector {
+        width: 30px;
+        margin: 30px 0;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="header-content">
+     <div>
+      <div class="logo" id="site-title">
+       EPIC
+      </div>
+      <div class="tagline" id="tagline">
+       Executive Product Industry Council
+      </div>
+     </div>
+     <nav><button class="nav-btn active" onclick="showPage('home')">Home</button> <button class="nav-btn" onclick="showPage('about')">About</button> <button class="nav-btn" onclick="showPage('resources')">Resources</button> <button class="nav-btn" onclick="showPage('opportunities')">Opportunities</button> <button class="nav-btn" onclick="showPage('portfolios')">Portfolios</button> <button class="nav-btn" onclick="showPage('community')">Community</button> <button class="nav-btn" onclick="showPage('companies')">Companies</button> <button class="login-btn" onclick="showPage('profile')">My Profile</button>
+     </nav>
+    </div>
+   </div>
+  </header>
+  <main>
+   <div class="container"><!-- Home Page -->
+    <div id="home" class="page active">
+     <div class="hero">
+      <h1 id="home-heading">Executive Product Industry Council</h1>
+      <p id="home-description">Institute of Product Leadership is an Industry driven B-school. Sharing the common vision of creating 10K Product Leaders, these captains of the Product Industry drive the Institute's charter to structurally create product mindset and professionals equipped with skillsets through industry immersions and relevant curriculum.</p>
+     </div>
+     <div class="section">
+      <h2>🎯 Our Mission</h2>
+      <p>We bridge the gap between aspiring product professionals and industry excellence through comprehensive learning, real-world experience, and community collaboration.</p>
+     </div>
+     <div class="grid">
+      <div class="card">
+       <h4>📚 Premium Resources</h4>
+       <p>Access curated learning materials, case studies, and real product documentation from industry leaders.</p>
+      </div>
+      <div class="card">
+       <h4>🚀 Career Opportunities</h4>
+       <p>Verified portfolio platform, skill assessments, and direct connections to top companies.</p>
+      </div>
+      <div class="card">
+       <h4>🤝 Thriving Community</h4>
+       <p>Join meetups, roundtables, and connect with product leaders and peers worldwide.</p>
+      </div>
+     </div>
+    </div><!-- About Page -->
+    <div id="about" class="page">
+     <div class="section">
+      <h2>📖 About EPIC</h2>
+      <div class="tab-container"><button class="tab-btn active" onclick="showTab('about', 'vision')">Vision</button> <button class="tab-btn" onclick="showTab('about', 'mission')">Mission</button> <button class="tab-btn" onclick="showTab('about', 'board')">Board Members</button>
+      </div>
+      <div id="about-vision" class="tab-content active">
+       <h3>Our Vision</h3>
+       <p>To create a world-class ecosystem that nurtures 10,000 exceptional Product Leaders who will shape the future of technology and innovation. We envision a community where aspiring product professionals have access to industry-standard knowledge, real-world experiences, and mentorship from successful product leaders.</p>
+       <p style="margin-top: 16px;">Our vision extends beyond traditional education - we aim to create a sustainable platform where knowledge flows freely between industry veterans and emerging talent, fostering innovation and excellence in product management.</p>
+      </div>
+      <div id="about-mission" class="tab-content">
+       <h3>Our Mission</h3>
+       <p>Our mission is to structurally create product mindset and equip professionals with essential skillsets through:</p>
+       <ul>
+        <li>Industry-driven curriculum designed by active product leaders</li>
+        <li>Hands-on immersions in real product development scenarios</li>
+        <li>Continuous learning through webinars, workshops, and masterclasses</li>
+        <li>Direct mentorship and guidance from experienced practitioners</li>
+        <li>Building a supportive community of product professionals</li>
+        <li>Bridging the gap between academic learning and industry requirements</li>
+       </ul>
+      </div>
+      <div id="about-board" class="tab-content">
+       <h3>Board Members</h3>
+       <p>Our board comprises distinguished product leaders from leading technology companies who are passionate about nurturing the next generation of product professionals.</p>
+       <div class="grid" style="margin-top: 20px;">
+        <div class="card">
+         <h4>👤 Senior Product Leaders</h4>
+         <p>Executives from Fortune 500 companies with 15+ years of product experience</p>
+        </div>
+        <div class="card">
+         <h4>👤 Startup Founders</h4>
+         <p>Successful entrepreneurs who have built and scaled product organizations</p>
+        </div>
+        <div class="card">
+         <h4>👤 Academic Advisors</h4>
+         <p>Professors and researchers bridging academia with industry practices</p>
+        </div>
+        <div class="card">
+         <h4>👤 Innovation Champions</h4>
+         <p>Leaders driving product innovation in emerging technologies</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Resources Page -->
+    <div id="resources" class="page">
+     <div class="section">
+      <div id="resources-main">
+       <h2>📚 Resources</h2>
+       <p>Access comprehensive learning materials and real-world product documentation.</p>
+       <h3>Portfolio Resources</h3>
+       <div class="grid">
+        <div class="card" onclick="showResourceCategory('prds')">
+         <h4>📄 PRDs</h4>
+         <p>Product Requirements Documents from successful products</p>
+         <div style="margin-top: 12px; color: #667eea; font-size: 13px; font-weight: 600;">
+          24 Documents →
+         </div>
+        </div>
+        <div class="card" onclick="showResourceCategory('research')">
+         <h4>🔍 User Research</h4>
+         <p>Research reports and user study methodologies</p>
+         <div style="margin-top: 12px; color: #667eea; font-size: 13px; font-weight: 600;">
+          18 Reports →
+         </div>
+        </div>
+        <div class="card" onclick="showResourceCategory('casestudies')">
+         <h4>📱 Real Product Data</h4>
+         <p>Live case studies with strategies from product leaders</p>
+         <div style="margin-top: 12px; color: #667eea; font-size: 13px; font-weight: 600;">
+          28 Case Studies →
+         </div>
+        </div>
+       </div>
+       <h3>Online Courses</h3>
+       <div class="video-grid">
+        <div class="video-card" onclick="showResourceCategory('foundation')">
+         <div class="video-thumbnail">
+          <div class="video-play-btn">
+           ▶
+          </div>
+          <div class="video-duration">
+           8 Courses
+          </div>
+          <div class="video-badge">
+           FREE
+          </div>
+         </div>
+         <div class="video-info">
+          <div class="video-title">
+           🎓 Foundation Courses
+          </div>
+          <p style="font-size: 14px; color: #666;">Core PM fundamentals and principles</p>
+          <div class="video-meta"><span>👥 2.4K enrolled</span> <span>⭐ 4.8</span>
+          </div>
+         </div>
+        </div>
+        <div class="video-card" onclick="showResourceCategory('topic')">
+         <div class="video-thumbnail" style="background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);">
+          <div class="video-play-btn">
+           ▶
+          </div>
+          <div class="video-duration">
+           22 Courses
+          </div>
+          <div class="video-badge">
+           PREMIUM
+          </div>
+         </div>
+         <div class="video-info">
+          <div class="video-title">
+           📌 Topic-Based Courses
+          </div>
+          <p style="font-size: 14px; color: #666;">Deep dives into specific PM areas</p>
+          <div class="video-meta"><span>👥 1.8K enrolled</span> <span>⭐ 4.9</span>
+          </div>
+         </div>
+        </div>
+        <div class="video-card" onclick="showResourceCategory('webinars')">
+         <div class="video-thumbnail" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+          <div class="video-play-btn">
+           ▶
+          </div>
+          <div class="video-duration">
+           35 Videos
+          </div>
+          <div class="video-badge">
+           LIVE
+          </div>
+         </div>
+         <div class="video-info">
+          <div class="video-title">
+           🎥 Webinars &amp; Sessions
+          </div>
+          <p style="font-size: 14px; color: #666;">Career guidance, AMA sessions, and insights</p>
+          <div class="video-meta"><span>👥 5.2K enrolled</span> <span>⭐ 4.7</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Resource Category Detail View -->
+      <div id="resources-detail" style="display: none;"></div>
+     </div>
+    </div><!-- Opportunities Page -->
+    <div id="opportunities" class="page">
+     <div class="section">
+      <div id="opportunities-main">
+       <h2>🚀 Opportunities</h2>
+       <p>Real job openings, contests, and growth opportunities</p>
+       <div class="tab-container"><button class="tab-btn active" onclick="showOpportunityTab('jobs')">Job Openings</button> <button class="tab-btn" onclick="showOpportunityTab('contests')">Product Contests</button> <button class="tab-btn" onclick="showOpportunityTab('apprenticeship')">Apprenticeships</button> <button class="tab-btn" onclick="showOpportunityTab('mock')">Mock Interviews</button>
+       </div>
+       <div id="opp-jobs" class="tab-content active">
+        <div class="opportunity-card" onclick="showOpportunityDetail('job1')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            Senior Product Manager
+           </div>
+           <div class="opportunity-company">
+            TechCorp Inc.
+           </div>
+          </div><span class="resource-tag">New</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Lead product strategy for AI-powered analytics platform. 5+ years experience required.</p>
+         <div class="opportunity-meta"><span>📍 San Francisco, CA</span> <span>💰 $150k - $180k</span> <span>⏰ Posted 2 days ago</span>
+         </div>
+        </div>
+        <div class="opportunity-card" onclick="showOpportunityDetail('job2')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            Product Manager - Mobile
+           </div>
+           <div class="opportunity-company">
+            InnovateLabs
+           </div>
+          </div><span class="resource-tag">Featured</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Drive mobile app experience for 2M+ users. B2C experience preferred.</p>
+         <div class="opportunity-meta"><span>📍 Remote</span> <span>💰 $120k - $150k</span> <span>⏰ Posted 5 days ago</span>
+         </div>
+        </div>
+        <div class="opportunity-card" onclick="showOpportunityDetail('job3')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            Associate Product Manager
+           </div>
+           <div class="opportunity-company">
+            StartupX
+           </div>
+          </div>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Perfect for career switchers. Work directly with founders on fintech products.</p>
+         <div class="opportunity-meta"><span>📍 New York, NY</span> <span>💰 $90k - $110k</span> <span>⏰ Posted 1 week ago</span>
+         </div>
+        </div>
+       </div>
+       <div id="opp-contests" class="tab-content">
+        <div class="opportunity-card" onclick="showOpportunityDetail('contest1')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            🏆 E-commerce Checkout Redesign Challenge
+           </div>
+           <div class="opportunity-company">
+            By GlobalTech
+           </div>
+          </div><span class="resource-tag">$5000 Prize</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Redesign checkout flow to reduce cart abandonment. Winner gets cash prize + interview opportunity.</p>
+         <div class="opportunity-meta"><span>⏰ Deadline: 15 days left</span> <span>👥 142 participants</span> <span>🎯 Submit PRD + Wireframes</span>
+         </div>
+        </div>
+        <div class="opportunity-card" onclick="showOpportunityDetail('contest2')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            🏆 AI Feature Ideation Contest
+           </div>
+           <div class="opportunity-company">
+            By AI Solutions
+           </div>
+          </div><span class="resource-tag">Hiring Prize</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Propose an AI feature for productivity tools. Top 5 finalists present live to leadership.</p>
+         <div class="opportunity-meta"><span>⏰ Deadline: 22 days left</span> <span>👥 89 participants</span> <span>🎯 Submit Strategy Doc</span>
+         </div>
+        </div>
+       </div>
+       <div id="opp-apprenticeship" class="tab-content">
+        <div class="opportunity-card" onclick="showOpportunityDetail('apprentice1')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            Micro-Internship: Product Roadmap Planning
+           </div>
+           <div class="opportunity-company">
+            CloudVentures
+           </div>
+          </div><span class="resource-tag">2 Weeks</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Work with Senior PM to build Q2 roadmap. Includes mentorship + certificate.</p>
+         <div class="opportunity-meta"><span>📍 Remote</span> <span>⏰ Starts March 15</span> <span>🎓 Certificate Included</span>
+         </div>
+        </div>
+        <div class="opportunity-card" onclick="showOpportunityDetail('apprentice2')">
+         <div class="opportunity-header">
+          <div>
+           <div class="opportunity-title">
+            Apprenticeship: User Research Project
+           </div>
+           <div class="opportunity-company">
+            DesignFirst
+           </div>
+          </div><span class="resource-tag">4 Weeks</span>
+         </div>
+         <p style="color: #666; font-size: 14px; margin: 12px 0;">Conduct user interviews and create research report. Real portfolio case study.</p>
+         <div class="opportunity-meta"><span>📍 Hybrid - Boston</span> <span>⏰ Starts April 1</span> <span>💼 Portfolio Piece</span>
+         </div>
+        </div>
+       </div>
+       <div id="opp-mock" class="tab-content">
+        <h3>Book a Mock Interview</h3>
+        <p style="color: #666; margin-bottom: 20px;">Practice with experienced PMs and get personalized feedback</p>
+        <div class="grid">
+         <div class="card">
+          <h4>🎯 Company-Specific Prep</h4>
+          <p>Prepare for specific company interviews with targeted practice</p><button class="action-btn" style="margin-top: 16px;">Book Session</button>
+         </div>
+         <div class="card">
+          <h4>🤖 AI Mock Interview</h4>
+          <p>Practice anytime with AI-powered interview simulation</p><button class="action-btn" style="margin-top: 16px;">Start Now</button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Opportunity Detail View -->
+      <div id="opportunities-detail" style="display: none;"></div>
+     </div>
+    </div><!-- Community Page -->
+    <div id="community" class="page">
+     <div class="section">
+      <div id="community-main">
+       <h2>🤝 Community</h2>
+       <p>Join a thriving community of product professionals and leaders</p>
+       <div class="tab-container"><button class="tab-btn active" onclick="showCommunityTab('events')">Upcoming Events</button> <button class="tab-btn" onclick="showCommunityTab('past')">Past Events</button> <button class="tab-btn" onclick="showCommunityTab('communities')">Communities</button>
+       </div>
+       <div id="comm-events" class="tab-content active">
+        <div class="event-card" onclick="showEventDetail('event1')">
+         <div class="event-date">
+          <div class="event-day">
+           18
+          </div>
+          <div class="event-month">
+           MAR
+          </div>
+         </div>
+         <div>
+          <h4 style="color: #667eea; font-size: 18px; margin-bottom: 8px;">Product Leadership Roundtable</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 8px;">Deep dive into scaling product teams from 5 to 50. Featuring VPs from top tech companies.</p>
+          <div style="font-size: 13px; color: #888;"><span>📍 Online (Zoom)</span> • <span>⏰ 6:00 PM PST</span> • <span>👥 85 registered</span>
+          </div>
+         </div>
+        </div>
+        <div class="event-card" onclick="showEventDetail('event2')">
+         <div class="event-date">
+          <div class="event-day">
+           22
+          </div>
+          <div class="event-month">
+           MAR
+          </div>
+         </div>
+         <div>
+          <h4 style="color: #667eea; font-size: 18px; margin-bottom: 8px;">SF Bay Area PM Meetup</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 8px;">In-person networking with local product professionals. Food and drinks provided.</p>
+          <div style="font-size: 13px; color: #888;"><span>📍 San Francisco, CA</span> • <span>⏰ 7:00 PM</span> • <span>👥 42 registered</span>
+          </div>
+         </div>
+        </div>
+        <div class="event-card" onclick="showEventDetail('event3')">
+         <div class="event-date">
+          <div class="event-day">
+           25
+          </div>
+          <div class="event-month">
+           MAR
+          </div>
+         </div>
+         <div>
+          <h4 style="color: #667eea; font-size: 18px; margin-bottom: 8px;">AMA with Head of Product at TechCorp</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 8px;">Ask anything about product strategy, career growth, and interview tips.</p>
+          <div style="font-size: 13px; color: #888;"><span>📍 Online (YouTube Live)</span> • <span>⏰ 5:00 PM PST</span> • <span>👥 230 registered</span>
+          </div>
+         </div>
+        </div>
+        <div class="event-card" onclick="showEventDetail('event4')">
+         <div class="event-date">
+          <div class="event-day">
+           29
+          </div>
+          <div class="event-month">
+           MAR
+          </div>
+         </div>
+         <div>
+          <h4 style="color: #667eea; font-size: 18px; margin-bottom: 8px;">B2B SaaS Product Strategy Workshop</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 8px;">Hands-on workshop covering pricing, packaging, and go-to-market for B2B products.</p>
+          <div style="font-size: 13px; color: #888;"><span>📍 Online (Interactive)</span> • <span>⏰ 10:00 AM PST</span> • <span>👥 156 registered</span>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div id="comm-past" class="tab-content">
+        <div class="resource-item" onclick="showEventDetail('past1')">
+         <h4>AI in Product Management - Panel Discussion</h4>
+         <p style="color: #666; font-size: 14px;">5 product leaders discussed leveraging AI for product decisions. Watch recording.</p>
+         <div class="resource-meta"><span>📅 March 5, 2024</span> <span>👁️ 1,234 views</span> <span style="color: #667eea; font-weight: 600;">Watch Recording →</span>
+         </div>
+        </div>
+        <div class="resource-item" onclick="showEventDetail('past2')">
+         <h4>Product Metrics That Matter - Workshop</h4>
+         <p style="color: #666; font-size: 14px;">Learn which metrics to track at different stages. Includes templates.</p>
+         <div class="resource-meta"><span>📅 February 28, 2024</span> <span>👁️ 892 views</span> <span style="color: #667eea; font-weight: 600;">Watch Recording →</span>
+         </div>
+        </div>
+        <div class="resource-item" onclick="showEventDetail('past3')">
+         <h4>Career Switchers Success Stories</h4>
+         <p style="color: #666; font-size: 14px;">4 PMs shared their journey from different careers into product management.</p>
+         <div class="resource-meta"><span>📅 February 15, 2024</span> <span>👁️ 2,145 views</span> <span style="color: #667eea; font-weight: 600;">Watch Recording →</span>
+         </div>
+        </div>
+       </div>
+       <div id="comm-communities" class="tab-content">
+        <div class="grid">
+         <div class="card">
+          <h4>💼 B2B SaaS Community</h4>
+          <p>Connect with PMs working on B2B products</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           342 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+         <div class="card">
+          <h4>🛍️ B2C &amp; E-commerce</h4>
+          <p>For PMs in consumer-facing products</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           567 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+         <div class="card">
+          <h4>�� Mobile Product Leaders</h4>
+          <p>iOS, Android, and cross-platform PMs</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           423 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+         <div class="card">
+          <h4>🤖 AI/ML Product Community</h4>
+          <p>Building products with AI and machine learning</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           289 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+         <div class="card">
+          <h4>🌱 Career Switchers</h4>
+          <p>Support group for transitioning into PM</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           891 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+         <div class="card">
+          <h4>🎓 APM &amp; Early Career</h4>
+          <p>For PMs with 0-3 years experience</p>
+          <div style="margin-top: 12px; color: #888; font-size: 13px;">
+           1,234 members
+          </div><button class="action-btn" style="margin-top: 12px; font-size: 13px; padding: 8px 16px;">Join</button>
+         </div>
+        </div>
+       </div>
+      </div><!-- Event Detail View -->
+      <div id="community-detail" style="display: none;"></div>
+     </div>
+    </div><!-- Portfolios Page -->
+    <div id="portfolios" class="page">
+     <div class="section">
+      <h2>💼 Member Portfolios</h2>
+      <p>Explore verified portfolios from EPIC community members</p>
+      <div style="margin: 24px 0;"><input type="text" placeholder="🔍 Search portfolios by name, skill, or company..." style="width: 100%; padding: 12px 16px; border: 1px solid #e1e8ed; border-radius: 8px; font-size: 14px;">
+      </div>
+      <div class="portfolio-card" onclick="showPortfolioDetail('portfolio1')">
+       <div class="portfolio-header">
+        <div class="portfolio-user">
+         <div class="portfolio-avatar">
+          SC
+         </div>
+         <div>
+          <h4 style="font-size: 18px; font-weight: 600; color: #333; margin-bottom: 4px;">Sarah Chen</h4>
+          <p style="font-size: 14px; color: #667eea; font-weight: 600;">Senior Product Manager at TechCorp</p>
+         </div>
+        </div><span class="badge">✓ Verified</span>
+       </div>
+       <p style="color: #666; font-size: 14px; margin-bottom: 12px;">5+ years building B2B SaaS products. Specialized in AI/ML features and data-driven product strategy.</p>
+       <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;"><span class="resource-tag">B2B SaaS</span> <span class="resource-tag">AI/ML</span> <span class="resource-tag">Analytics</span> <span class="resource-tag">Growth</span>
+       </div>
+       <div class="portfolio-preview">
+        <div class="portfolio-item-thumb">
+         📄
+        </div>
+        <div class="portfolio-item-thumb">
+         📊
+        </div>
+        <div class="portfolio-item-thumb">
+         🎨
+        </div>
+        <div class="portfolio-item-thumb">
+         📹
+        </div>
+        <div class="portfolio-item-thumb">
+         🔗
+        </div>
+        <div class="portfolio-item-thumb">
+         📱
+        </div>
+       </div>
+       <div class="portfolio-stats"><span><strong>8</strong> Projects</span> <span><strong>342</strong> Profile Views</span> <span><strong>24</strong> Downloads</span> <span>Updated 2 days ago</span>
+       </div>
+      </div>
+      <div class="portfolio-card" onclick="showPortfolioDetail('portfolio2')">
+       <div class="portfolio-header">
+        <div class="portfolio-user">
+         <div class="portfolio-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+          MJ
+         </div>
+         <div>
+          <h4 style="font-size: 18px; font-weight: 600; color: #333; margin-bottom: 4px;">Michael Johnson</h4>
+          <p style="font-size: 14px; color: #667eea; font-weight: 600;">Product Lead at E-commerce Startup</p>
+         </div>
+        </div><span class="badge">✓ Verified</span>
+       </div>
+       <p style="color: #666; font-size: 14px; margin-bottom: 12px;">Expert in e-commerce, conversion optimization, and mobile product design. Led products from 0 to 1M users.</p>
+       <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;"><span class="resource-tag">E-commerce</span> <span class="resource-tag">Mobile</span> <span class="resource-tag">0-1 Products</span> <span class="resource-tag">Growth</span>
+       </div>
+       <div class="portfolio-preview">
+        <div class="portfolio-item-thumb">
+         📄
+        </div>
+        <div class="portfolio-item-thumb">
+         🎨
+        </div>
+        <div class="portfolio-item-thumb">
+         📊
+        </div>
+        <div class="portfolio-item-thumb">
+         📹
+        </div>
+        <div class="portfolio-item-thumb">
+         🔗
+        </div>
+        <div class="portfolio-item-thumb">
+         📱
+        </div>
+       </div>
+       <div class="portfolio-stats"><span><strong>12</strong> Projects</span> <span><strong>567</strong> Profile Views</span> <span><strong>38</strong> Downloads</span> <span>Updated 1 week ago</span>
+       </div>
+      </div>
+      <div class="portfolio-card" onclick="showPortfolioDetail('portfolio3')">
+       <div class="portfolio-header">
+        <div class="portfolio-user">
+         <div class="portfolio-avatar" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+          PS
+         </div>
+         <div>
+          <h4 style="font-size: 18px; font-weight: 600; color: #333; margin-bottom: 4px;">Priya Sharma</h4>
+          <p style="font-size: 14px; color: #667eea; font-weight: 600;">APM at FinTech Company</p>
+         </div>
+        </div><span class="badge">✓ Verified</span>
+       </div>
+       <p style="color: #666; font-size: 14px; margin-bottom: 12px;">Recent MBA grad passionate about financial products. Experience in payments, lending, and user research.</p>
+       <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;"><span class="resource-tag">FinTech</span> <span class="resource-tag">Payments</span> <span class="resource-tag">User Research</span>
+       </div>
+       <div class="portfolio-preview">
+        <div class="portfolio-item-thumb">
+         📄
+        </div>
+        <div class="portfolio-item-thumb">
+         🔍
+        </div>
+        <div class="portfolio-item-thumb">
+         📊
+        </div>
+        <div class="portfolio-item-thumb">
+         🎨
+        </div>
+        <div class="portfolio-item-thumb">
+         🔗
+        </div>
+        <div class="portfolio-item-thumb" style="background: transparent;"></div>
+       </div>
+       <div class="portfolio-stats"><span><strong>5</strong> Projects</span> <span><strong>189</strong> Profile Views</span> <span><strong>12</strong> Downloads</span> <span>Updated 3 days ago</span>
+       </div>
+      </div>
+      <div style="text-align: center; margin-top: 32px;"><button class="action-btn" style="padding: 12px 32px;">Load More Portfolios</button>
+      </div>
+     </div>
+    </div><!-- Companies Page -->
+    <div id="companies" class="page">
+     <div class="section">
+      <h2>🏢 Partner Companies</h2>
+      <p>Leading organizations collaborating with EPIC to nurture product talent</p>
+      <div class="company-grid">
+       <div class="company-card">
+        <div class="company-logo">
+         🚀
+        </div>
+        <div class="company-name">
+         TechCorp
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         💡
+        </div>
+        <div class="company-name">
+         InnovateLabs
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🎯
+        </div>
+        <div class="company-name">
+         ProductCo
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🌟
+        </div>
+        <div class="company-name">
+         StartupX
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🔥
+        </div>
+        <div class="company-name">
+         ScaleUp
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         ⚡
+        </div>
+        <div class="company-name">
+         FastGrow
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🎨
+        </div>
+        <div class="company-name">
+         DesignFirst
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🌐
+        </div>
+        <div class="company-name">
+         GlobalTech
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         📱
+        </div>
+        <div class="company-name">
+         MobileHub
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         ☁️
+        </div>
+        <div class="company-name">
+         CloudVentures
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         🤖
+        </div>
+        <div class="company-name">
+         AI Solutions
+        </div>
+       </div>
+       <div class="company-card">
+        <div class="company-logo">
+         💼
+        </div>
+        <div class="company-name">
+         Enterprise Co
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 32px; padding: 24px; background: #f5f7fa; border-radius: 10px; text-align: center;">
+       <h3 style="color: #667eea; margin-bottom: 12px;">Partner With Us</h3>
+       <p style="color: #555;">Interested in joining our network of partner companies?</p><button style="margin-top: 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px 24px; border-radius: 6px; cursor: pointer; font-weight: 600;">Learn More</button>
+      </div>
+     </div>
+    </div><!-- Profile Page -->
+    <div id="profile" class="page">
+     <div class="section">
+      <h2>👤 My Profile</h2>
+      <div class="profile-section">
+       <div class="profile-card">
+        <div class="profile-avatar">
+         👤
+        </div>
+        <h3 style="color: white; margin-bottom: 8px;">John Doe</h3>
+        <p style="font-size: 14px; opacity: 0.9;">Product Manager</p>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+         <div style="margin-bottom: 12px;"><strong>Membership:</strong> Premium
+         </div>
+         <div><strong>Valid Until:</strong> Dec 31, 2024
+         </div>
+        </div>
+       </div>
+       <div class="profile-details">
+        <h3>Profile Details</h3>
+        <div class="detail-row"><span class="detail-label">Email</span> <span class="detail-value">john.doe@example.com</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">Location</span> <span class="detail-value">San Francisco, CA</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">Experience</span> <span class="detail-value">5 years</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">Education</span> <span class="detail-value">MBA, Stanford</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">Portfolio Status</span> <span class="detail-value">✅ Verified</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">PM Skill Score</span> <span class="detail-value">85/100</span>
+        </div>
+       </div>
+      </div>
+      <h3 style="margin-top: 48px;">📁 My Portfolio</h3>
+      <div class="privacy-toggle">
+       <div class="toggle-switch active" onclick="togglePrivacy(this)">
+        <div class="toggle-knob"></div>
+       </div>
+       <div><strong style="color: #333;">Portfolio is Public</strong>
+        <p style="font-size: 13px; color: #666; margin-top: 4px;">Your portfolio is visible to all EPIC members and recruiters</p>
+       </div>
+      </div>
+      <div style="background: #f5f7fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+       <h4 style="color: #667eea; margin-bottom: 12px;">📊 Portfolio Stats</h4>
+       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+        <div>
+         <div style="font-size: 24px; font-weight: 700; color: #667eea;">
+          342
+         </div>
+         <div style="font-size: 13px; color: #666;">
+          Profile Views
+         </div>
+        </div>
+        <div>
+         <div style="font-size: 24px; font-weight: 700; color: #764ba2;">
+          24
+         </div>
+         <div style="font-size: 13px; color: #666;">
+          Downloads
+         </div>
+        </div>
+        <div>
+         <div style="font-size: 24px; font-weight: 700; color: #10b981;">
+          8
+         </div>
+         <div style="font-size: 13px; color: #666;">
+          Total Projects
+         </div>
+        </div>
+        <div>
+         <div style="font-size: 24px; font-weight: 700; color: #f59e0b;">
+          85%
+         </div>
+         <div style="font-size: 13px; color: #666;">
+          Completion
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="add-portfolio-btn" onclick="showAddPortfolioForm()">
+       <div style="font-size: 36px; margin-bottom: 8px;">
+        ➕
+       </div>
+       <h4 style="font-size: 18px; margin-bottom: 4px;">Add Portfolio Item</h4>
+       <p style="font-size: 14px; opacity: 0.9;">Add your projects, case studies, documents, videos, or links</p>
+      </div>
+      <div class="my-portfolio-item">
+       <div class="portfolio-item-icon">
+        📄
+       </div>
+       <div class="portfolio-item-content">
+        <div class="portfolio-item-title">
+         E-commerce Checkout Redesign - PRD
+        </div>
+        <div class="portfolio-item-desc">
+         Comprehensive PRD for reducing cart abandonment from 45% to 28%. Includes user research, wireframes, and success metrics.
+        </div>
+        <div class="portfolio-item-tags"><span class="resource-tag">PRD</span> <span class="resource-tag">E-commerce</span> <span class="resource-tag">UX Design</span>
+        </div>
+       </div>
+       <div class="portfolio-item-actions"><span style="font-size: 12px; color: #10b981; font-weight: 600;">✓ Verified</span> <button class="icon-btn">✏️ Edit</button> <button class="icon-btn">🗑️ Delete</button>
+       </div>
+      </div>
+      <div class="my-portfolio-item">
+       <div class="portfolio-item-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+        📊
+       </div>
+       <div class="portfolio-item-content">
+        <div class="portfolio-item-title">
+         Mobile App Analytics Dashboard
+        </div>
+        <div class="portfolio-item-desc">
+         Designed and launched analytics dashboard that increased user engagement by 35%. Includes product strategy and data visualization.
+        </div>
+        <div class="portfolio-item-tags"><span class="resource-tag">Product Strategy</span> <span class="resource-tag">Analytics</span> <span class="resource-tag">Mobile</span>
+        </div>
+       </div>
+       <div class="portfolio-item-actions"><span style="font-size: 12px; color: #10b981; font-weight: 600;">✓ Verified</span> <button class="icon-btn">✏️ Edit</button> <button class="icon-btn">🗑️ Delete</button>
+       </div>
+      </div>
+      <div class="my-portfolio-item">
+       <div class="portfolio-item-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        🎨
+       </div>
+       <div class="portfolio-item-content">
+        <div class="portfolio-item-title">
+         User Research: SaaS Onboarding Study
+        </div>
+        <div class="portfolio-item-desc">
+         Conducted 24 user interviews to understand pain points in B2B onboarding. Led to 3 key product improvements.
+        </div>
+        <div class="portfolio-item-tags"><span class="resource-tag">User Research</span> <span class="resource-tag">B2B SaaS</span> <span class="resource-tag">Onboarding</span>
+        </div>
+       </div>
+       <div class="portfolio-item-actions"><span style="font-size: 12px; color: #f59e0b; font-weight: 600;">⏳ Pending Review</span> <button class="icon-btn">✏️ Edit</button> <button class="icon-btn">🗑️ Delete</button>
+       </div>
+      </div>
+      <div class="my-portfolio-item">
+       <div class="portfolio-item-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+        📹
+       </div>
+       <div class="portfolio-item-content">
+        <div class="portfolio-item-title">
+         Product Demo Video - AI Feature Launch
+        </div>
+        <div class="portfolio-item-desc">
+         Created product demo video showcasing new AI-powered recommendation engine. Used for marketing and sales enablement.
+        </div>
+        <div class="portfolio-item-tags"><span class="resource-tag">Video</span> <span class="resource-tag">AI/ML</span> <span class="resource-tag">Demo</span>
+        </div>
+       </div>
+       <div class="portfolio-item-actions"><span style="font-size: 12px; color: #10b981; font-weight: 600;">✓ Verified</span> <button class="icon-btn">✏️ Edit</button> <button class="icon-btn">🗑️ Delete</button>
+       </div>
+      </div>
+      <div class="my-portfolio-item">
+       <div class="portfolio-item-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+        🔗
+       </div>
+       <div class="portfolio-item-content">
+        <div class="portfolio-item-title">
+         Live Product: Task Management App
+        </div>
+        <div class="portfolio-item-desc">
+         Link to live product I built and launched. 10K+ active users, featured on Product Hunt.
+        </div>
+        <div class="portfolio-item-tags"><span class="resource-tag">Live Product</span> <span class="resource-tag">SaaS</span> <span class="resource-tag">Side Project</span>
+        </div>
+       </div>
+       <div class="portfolio-item-actions"><span style="font-size: 12px; color: #10b981; font-weight: 600;">✓ Verified</span> <button class="icon-btn">✏️ Edit</button> <button class="icon-btn">🗑️ Delete</button>
+       </div>
+      </div>
+      <h3 style="margin-top: 48px;">Your Journey Map 🗺️</h3>
+      <p style="color: #666; margin-bottom: 24px;">Complete levels to unlock your path to becoming a Product Leader</p>
+      <div class="journey-map"><!-- Levels 1-4: Completed -->
+       <div class="level-node completed" onclick="showLevelDetails(1)">
+        <div class="level-icon">
+         ✅
+        </div>
+        <div class="level-number">
+         1
+        </div>
+        <div class="level-title">
+         Create Profile
+        </div>
+       </div>
+       <div class="level-connector completed"></div>
+       <div class="level-node completed" onclick="showLevelDetails(2)">
+        <div class="level-icon">
+         ✅
+        </div>
+        <div class="level-number">
+         2
+        </div>
+        <div class="level-title">
+         Share LinkedIn
+        </div>
+       </div>
+       <div class="level-connector completed"></div>
+       <div class="level-node completed" onclick="showLevelDetails(3)">
+        <div class="level-icon">
+         ✅
+        </div>
+        <div class="level-number">
+         3
+        </div>
+        <div class="level-title">
+         Skill Test
+        </div>
+       </div>
+       <div class="level-connector completed"></div>
+       <div class="level-node completed" onclick="showLevelDetails(4)">
+        <div class="level-icon">
+         ✅
+        </div>
+        <div class="level-number">
+         4
+        </div>
+        <div class="level-title">
+         MCQ Test
+        </div>
+       </div>
+       <div class="level-connector completed"></div><!-- Level 5: Current -->
+       <div class="level-node current" onclick="showLevelDetails(5)">
+        <div class="level-icon">
+         🎯
+        </div>
+        <div class="level-number">
+         5
+        </div>
+        <div class="level-title">
+         Free Courses
+        </div>
+       </div>
+       <div class="level-connector"></div><!-- Levels 6-25: Locked -->
+       <div class="level-node locked" onclick="showLevelDetails(6)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         6
+        </div>
+        <div class="level-title">
+         Share Certificate
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(7)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         7
+        </div>
+        <div class="level-title">
+         Resources Pack
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(8)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         8
+        </div>
+        <div class="level-title">
+         Member Template
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(9)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         9
+        </div>
+        <div class="level-title">
+         AI Courses
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(10)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         10
+        </div>
+        <div class="level-title">
+         IPL Course
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(11)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         11
+        </div>
+        <div class="level-title">
+         Join Community
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(12)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         12
+        </div>
+        <div class="level-title">
+         Attend Events
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(13)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         13
+        </div>
+        <div class="level-title">
+         Share Experience
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(14)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         14
+        </div>
+        <div class="level-title">
+         Network &amp; Learn
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(15)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         15
+        </div>
+        <div class="level-title">
+         Complete Courses
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(16)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         16
+        </div>
+        <div class="level-title">
+         Apply Jobs
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(17)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         17
+        </div>
+        <div class="level-title">
+         Improve Skills
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(18)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         18
+        </div>
+        <div class="level-title">
+         Build Portfolio
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(19)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         19
+        </div>
+        <div class="level-title">
+         Keep Learning
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(20)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         20
+        </div>
+        <div class="level-title">
+         Live Portfolio
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(21)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         21
+        </div>
+        <div class="level-title">
+         Share Portfolio
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(22)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         22
+        </div>
+        <div class="level-title">
+         Try Contests
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(23)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         23
+        </div>
+        <div class="level-title">
+         Persist &amp; Win
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked" onclick="showLevelDetails(24)">
+        <div class="level-icon">
+         🔒
+        </div>
+        <div class="level-number">
+         24
+        </div>
+        <div class="level-title">
+         Get Hired!
+        </div>
+       </div>
+       <div class="level-connector"></div>
+       <div class="level-node locked expert" onclick="showLevelDetails(25)">
+        <div class="level-icon">
+         👑
+        </div>
+        <div class="level-number">
+         25
+        </div>
+        <div class="level-title">
+         Become Expert
+        </div>
+       </div>
+      </div><!-- Level Details Modal -->
+      <div id="level-modal" class="level-modal">
+       <div class="level-modal-content"><button class="level-modal-close" onclick="closeLevelModal()">✕</button>
+        <div id="level-details"></div>
+       </div>
+      </div>
+      <h3 style="margin-top: 48px;">Quick Stats</h3>
+      <div class="grid">
+       <div class="card">
+        <h4>📚 Completed Courses</h4>
+        <p style="font-size: 24px; color: #667eea; font-weight: 700; margin-top: 8px;">12</p>
+       </div>
+       <div class="card">
+        <h4>⏱️ In Progress</h4>
+        <p style="font-size: 24px; color: #764ba2; font-weight: 700; margin-top: 8px;">3</p>
+       </div>
+       <div class="card">
+        <h4>🎯 Current Level</h4>
+        <p style="font-size: 24px; color: #f59e0b; font-weight: 700; margin-top: 8px;">5 / 25</p>
+       </div>
+       <div class="card">
+        <h4>🏆 Achievements</h4>
+        <p style="font-size: 24px; color: #667eea; font-weight: 700; margin-top: 8px;">8</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main>
+  <footer>
+   <div class="container">
+    <p>© 2024 EPIC - Executive Product Industry Council. All rights reserved.</p>
+    <p style="margin-top: 8px; font-size: 13px;">Building the future of product leadership, one professional at a time.</p>
+   </div>
+  </footer>
+  <script>
+    const defaultConfig = {
+      site_title: "EPIC",
+      tagline: "Executive Product Industry Council",
+      home_heading: "Executive Product Industry Council",
+      home_description: "Institute of Product Leadership is an Industry driven B-school. Sharing the common vision of creating 10K Product Leaders, these captains of the Product Industry drive the Institute's charter to structurally create product mindset and professionals equipped with skillsets through industry immersions and relevant curriculum."
+    };
+
+    async function onConfigChange(config) {
+      const siteTitle = config.site_title || defaultConfig.site_title;
+      const tagline = config.tagline || defaultConfig.tagline;
+      const homeHeading = config.home_heading || defaultConfig.home_heading;
+      const homeDescription = config.home_description || defaultConfig.home_description;
+
+      document.getElementById('site-title').textContent = siteTitle;
+      document.getElementById('tagline').textContent = tagline;
+      document.getElementById('home-heading').textContent = homeHeading;
+      document.getElementById('home-description').textContent = homeDescription;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["site_title", config.site_title || defaultConfig.site_title],
+          ["tagline", config.tagline || defaultConfig.tagline],
+          ["home_heading", config.home_heading || defaultConfig.home_heading],
+          ["home_description", config.home_description || defaultConfig.home_description]
+        ])
+      });
+    }
+
+    // Resource data
+    const resourcesData = {
+      prds: {
+        title: '📄 Product Requirements Documents',
+        items: [
+          { title: 'Mobile App Feature Spec - Push Notifications', author: 'Sarah Chen, PM at MobileHub', desc: 'Complete PRD for implementing intelligent push notification system', tags: ['Mobile', 'B2C', 'Advanced'] },
+          { title: 'E-commerce Checkout Redesign PRD', author: 'Mike Johnson, Lead PM at GlobalTech', desc: 'Comprehensive spec for reducing cart abandonment by 25%', tags: ['E-commerce', 'B2C', 'Intermediate'] },
+          { title: 'SaaS Dashboard Analytics Feature', author: 'Priya Sharma, Senior PM at CloudVentures', desc: 'PRD for building customizable analytics dashboard', tags: ['B2B', 'SaaS', 'Advanced'] },
+          { title: 'Social Feed Algorithm Update', author: 'Alex Martinez, PM at SocialCo', desc: 'Specification for improving feed relevance and engagement', tags: ['Social', 'B2C', 'Advanced'] },
+        ]
+      },
+      research: {
+        title: '🔍 User Research Reports',
+        items: [
+          { title: 'B2B SaaS Onboarding Study', author: 'Research Team at InnovateLabs', desc: 'In-depth analysis of user onboarding patterns in B2B products', tags: ['B2B', 'Research', 'Onboarding'] },
+          { title: 'Mobile Gaming User Behavior Analysis', author: 'UX Research at GameTech', desc: 'Understanding player motivation and retention patterns', tags: ['Gaming', 'Mobile', 'Behavioral'] },
+          { title: 'E-learning Platform Usability Test', author: 'Sarah Lee, UX Researcher', desc: 'Comprehensive usability testing results with recommendations', tags: ['EdTech', 'Usability', 'Research'] },
+        ]
+      },
+      casestudies: {
+        title: '📱 Real Product Case Studies',
+        items: [
+          { title: 'How Spotify Built Discover Weekly', author: 'Product Strategy Team', desc: 'Behind the scenes of building personalized playlists at scale', tags: ['Music', 'AI/ML', 'B2C'] },
+          { title: 'Airbnb Trust & Safety Evolution', author: 'Safety PM at Airbnb', desc: 'Building trust in a two-sided marketplace', tags: ['Marketplace', 'Trust', 'B2C'] },
+          { title: 'Slack: From 0 to 10M Users', author: 'Growth Team Retrospective', desc: 'Product-led growth strategies that drove rapid adoption', tags: ['B2B', 'SaaS', 'Growth'] },
+          { title: 'Netflix Recommendation Algorithm', author: 'ML Product Lead', desc: 'How data science drives content discovery', tags: ['Streaming', 'AI/ML', 'B2C'] },
+        ]
+      },
+      foundation: {
+        title: '🎓 Foundation Courses',
+        items: [
+          { title: 'Product Management Fundamentals', author: 'EPIC Faculty', desc: '8-week comprehensive introduction to PM role and responsibilities', tags: ['Beginner', '8 weeks', 'Certificate'] },
+          { title: 'User-Centered Product Development', author: 'Dr. Maria Garcia', desc: 'Learn to build products users love through design thinking', tags: ['Beginner', '6 weeks', 'Free'] },
+          { title: 'Data-Driven Decision Making', author: 'Analytics Team', desc: 'Master metrics, analytics, and A/B testing fundamentals', tags: ['Intermediate', '5 weeks', 'Certificate'] },
+          { title: 'Product Strategy Essentials', author: 'Strategy Faculty', desc: 'Create compelling product vision and roadmaps', tags: ['Intermediate', '6 weeks', 'Free'] },
+        ]
+      },
+      topic: {
+        title: '📌 Topic-Based Courses',
+        items: [
+          { title: 'AI Product Management', author: 'ML Product Leaders', desc: 'Build and scale AI-powered products', tags: ['AI/ML', '8 weeks', 'Advanced'] },
+          { title: 'B2B SaaS Pricing Strategy', author: 'Monetization Expert', desc: 'Master pricing, packaging, and go-to-market', tags: ['B2B', '4 weeks', 'Intermediate'] },
+          { title: 'Growth Product Management', author: 'Growth PM at StartupX', desc: 'Drive user acquisition and retention', tags: ['Growth', '6 weeks', 'Intermediate'] },
+          { title: 'Mobile Product Design', author: 'Mobile PM Faculty', desc: 'iOS and Android product development', tags: ['Mobile', '5 weeks', 'Intermediate'] },
+        ]
+      },
+      webinars: {
+        title: '🎥 Webinars & Sessions',
+        items: [
+          { title: 'Breaking into Product Management', author: 'Career Coach Panel', desc: 'Live Q&A with PMs who successfully transitioned careers', tags: ['Career', 'Live', 'Free'] },
+          { title: 'Inside Google Product Culture', author: 'Google PM', desc: 'Exclusive look at how Google builds products', tags: ['Company', 'Culture', 'Recorded'] },
+          { title: 'Product Manager Interview Masterclass', author: 'Interview Coach', desc: 'Ace your PM interviews with proven strategies', tags: ['Interview', '2 hours', 'Premium'] },
+          { title: 'Stakeholder Management Workshop', author: 'Senior PM', desc: 'Navigate complex organizations and drive alignment', tags: ['Skills', 'Workshop', 'Premium'] },
+        ]
+      }
+    };
+
+    // Opportunity detail data
+    const opportunityData = {
+      job1: {
+        title: 'Senior Product Manager',
+        company: 'TechCorp Inc.',
+        location: 'San Francisco, CA',
+        salary: '$150k - $180k',
+        type: 'Full-time',
+        posted: '2 days ago',
+        description: 'We\'re looking for an experienced PM to lead our AI-powered analytics platform. You\'ll work with a talented team of engineers and designers to build products that help businesses make better decisions.',
+        requirements: [
+          '5+ years of product management experience',
+          'Experience with B2B SaaS products',
+          'Strong analytical and data-driven mindset',
+          'Excellent communication and stakeholder management',
+          'Technical background preferred'
+        ],
+        benefits: [
+          'Competitive salary + equity',
+          'Health, dental, vision insurance',
+          'Unlimited PTO',
+          'Remote-friendly culture',
+          '401(k) matching'
+        ]
+      },
+      job2: {
+        title: 'Product Manager - Mobile',
+        company: 'InnovateLabs',
+        location: 'Remote',
+        salary: '$120k - $150k',
+        type: 'Full-time',
+        posted: '5 days ago',
+        description: 'Drive mobile app experience for 2M+ users. Own the product roadmap, work closely with design and engineering teams, and use data to make informed decisions.',
+        requirements: [
+          '3+ years PM experience in mobile',
+          'Experience with iOS and Android platforms',
+          'Strong product sense and user empathy',
+          'Data-driven approach to decision making',
+          'Startup experience is a plus'
+        ],
+        benefits: [
+          'Fully remote position',
+          'Stock options',
+          'Learning & development budget',
+          'Home office setup',
+          'Flexible working hours'
+        ]
+      },
+      contest1: {
+        title: 'E-commerce Checkout Redesign Challenge',
+        company: 'GlobalTech',
+        prize: '$5,000 + Interview Opportunity',
+        deadline: '15 days left',
+        participants: '142 participants',
+        description: 'Our checkout flow has a 45% cart abandonment rate. Design a better experience that reduces abandonment and increases conversion. Winners get cash prize and fast-track interview.',
+        deliverables: [
+          'Problem analysis and user research summary',
+          'Redesigned checkout flow with wireframes',
+          'PRD covering key features and requirements',
+          'Success metrics and measurement plan'
+        ],
+        judging: [
+          'User experience and design quality (40%)',
+          'Problem solving and PM thinking (30%)',
+          'Feasibility and implementation plan (20%)',
+          'Presentation and communication (10%)'
+        ]
+      },
+      event1: {
+        title: 'Product Leadership Roundtable',
+        date: 'March 18, 2024',
+        time: '6:00 PM PST',
+        format: 'Online (Zoom)',
+        registered: '85 people',
+        description: 'Deep dive into scaling product teams from 5 to 50 people. Our panel of VPs of Product from top tech companies will share their experiences, challenges, and best practices.',
+        speakers: [
+          'Jane Smith - VP Product at TechCorp',
+          'David Lee - CPO at ScaleUp',
+          'Maria Rodriguez - Head of Product at InnovateLabs'
+        ],
+        agenda: [
+          '6:00 - Welcome & Introductions',
+          '6:10 - Panel Discussion',
+          '6:45 - Audience Q&A',
+          '7:15 - Networking in Breakout Rooms',
+          '7:30 - Wrap up'
+        ]
+      }
+    };
+
+    const levelData = {
+      1: { title: "Create Your Profile", desc: "Complete your profile with education, experience, skills, and aspirations. This is your foundation!", status: "completed" },
+      2: { title: "Share on LinkedIn", desc: "Share your EPIC membership post on LinkedIn to showcase you're part of this product leadership community.", status: "completed" },
+      3: { title: "Take Skill Test", desc: "Complete the initial assessment to understand your starting point and identify areas for growth.", status: "completed" },
+      4: { title: "Product MCQ Test", desc: "Test your product knowledge with MCQ questions covering fundamentals, frameworks, and best practices.", status: "completed" },
+      5: { title: "Complete Free Courses", desc: "Access and complete foundational courses to build your PM knowledge base.", status: "current" },
+      6: { title: "Share Your Certificate", desc: "Post your course completion certificate on LinkedIn to build credibility and visibility.", status: "locked" },
+      7: { title: "Resources Package", desc: "Upgrade to premium resources package with advanced courses, case studies, and exclusive content.", status: "locked" },
+      8: { title: "Get Member Template", desc: "Unlock the council member profile picture template to boost your hiring market visibility.", status: "locked" },
+      9: { title: "AI-Suggested Courses", desc: "Complete personalized courses suggested by AI based on your goals, experience, and interests.", status: "locked" },
+      10: { title: "IPL Course (Optional)", desc: "Take the Institute of Product Leadership course to deepen your understanding (not mandatory).", status: "locked" },
+      11: { title: "Join Community", desc: "Become an active community member. Connect, engage, and collaborate with fellow product professionals.", status: "locked" },
+      12: { title: "Attend Events", desc: "Join webinars, meetups, roundtables, and activities. Learn from experts and expand your network.", status: "locked" },
+      13: { title: "Share Your Experience", desc: "Post about your learnings and experiences from events and courses. Inspire others!", status: "locked" },
+      14: { title: "Network & Learn", desc: "Connect with people, engage in discussions, and continuously learn from the community.", status: "locked" },
+      15: { title: "Complete All Courses", desc: "Finish any pending courses to strengthen your skills and complete your learning journey.", status: "locked" },
+      16: { title: "Apply for Opportunities", desc: "Submit applications to opportunities. If not selected, don't give up - keep improving!", status: "locked" },
+      17: { title: "Improve & Update", desc: "Take feedback, update your skills, complete recommended courses, and refine your approach.", status: "locked" },
+      18: { title: "Build Your Portfolio", desc: "Create your verified portfolio with case studies and work samples. Iterate based on feedback.", status: "locked" },
+      19: { title: "Keep Learning & Improving", desc: "If not selected again, persist! Learn from feedback, take courses, and continuously improve.", status: "locked" },
+      20: { title: "Live Portfolio", desc: "Your portfolio goes live after verification by AI and senior PMs. It's now publicly accessible!", status: "locked" },
+      21: { title: "Share Portfolio Link", desc: "Share your verified portfolio link on social media, resume, and with recruiters.", status: "locked" },
+      22: { title: "Try Contests", desc: "Participate in product contests. Solve real challenges and showcase your PM thinking.", status: "locked" },
+      23: { title: "Persist & Keep Trying", desc: "Even if you don't win initially, keep participating and learning. Success comes with persistence!", status: "locked" },
+      24: { title: "Get Hired!", desc: "Land your product role! Share your success story and experience with the community.", status: "locked" },
+      25: { title: "Become Expert/Reviewer", desc: "Based on your experience, education, and credibility, earn the opportunity to become an expert reviewer!", status: "locked" }
+    };
+
+    function showPage(pageName) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      
+      const targetPage = document.getElementById(pageName);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      const navBtns = document.querySelectorAll('.nav-btn');
+      navBtns.forEach(btn => btn.classList.remove('active'));
+      
+      const activeBtn = event?.target;
+      if (activeBtn && activeBtn.classList.contains('nav-btn')) {
+        activeBtn.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showTab(section, tabName) {
+      const tabs = document.querySelectorAll(`#${section} .tab-content`);
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      const targetTab = document.getElementById(`${section}-${tabName}`);
+      if (targetTab) {
+        targetTab.classList.add('active');
+      }
+
+      const tabBtns = document.querySelectorAll(`#${section} .tab-btn`);
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      
+      event.target.classList.add('active');
+    }
+
+    // Resource category navigation
+    function showResourceCategory(category) {
+      const data = resourcesData[category];
+      const mainView = document.getElementById('resources-main');
+      const detailView = document.getElementById('resources-detail');
+      
+      let itemsHTML = '';
+      data.items.forEach(item => {
+        itemsHTML += `
+          <div class="resource-item">
+            <h4>${item.title}</h4>
+            <p style="color: #666; font-size: 14px; margin: 8px 0;">${item.desc}</p>
+            <div style="display: flex; gap: 8px; margin-top: 12px;">
+              ${item.tags.map(tag => `<span class="resource-tag">${tag}</span>`).join('')}
+            </div>
+            <div class="resource-meta" style="margin-top: 12px;">
+              <span>👤 ${item.author}</span>
+              <span style="color: #667eea; font-weight: 600; cursor: pointer;">View ���</span>
+            </div>
+          </div>
+        `;
+      });
+      
+      detailView.innerHTML = `
+        <button class="back-btn" onclick="backToResources()">← Back to Resources</button>
+        <h2>${data.title}</h2>
+        <p style="color: #666; margin-bottom: 24px;">${data.items.length} resources available</p>
+        ${itemsHTML}
+      `;
+      
+      mainView.style.display = 'none';
+      detailView.style.display = 'block';
+    }
+
+    function backToResources() {
+      document.getElementById('resources-main').style.display = 'block';
+      document.getElementById('resources-detail').style.display = 'none';
+    }
+
+    // Opportunity tab navigation
+    function showOpportunityTab(tabName) {
+      const tabs = document.querySelectorAll('#opportunities-main .tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      document.getElementById(`opp-${tabName}`).classList.add('active');
+      
+      const tabBtns = document.querySelectorAll('#opportunities-main .tab-btn');
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Opportunity detail navigation
+    function showOpportunityDetail(oppId) {
+      const data = opportunityData[oppId];
+      if (!data) return;
+      
+      const mainView = document.getElementById('opportunities-main');
+      const detailView = document.getElementById('opportunities-detail');
+      
+      let detailHTML = `
+        <button class="back-btn" onclick="backToOpportunities()">← Back to Opportunities</button>
+        <h2>${data.title}</h2>
+        <h3 style="color: #667eea; margin-bottom: 24px;">${data.company}</h3>
+      `;
+      
+      if (data.salary) {
+        detailHTML += `
+          <div style="display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;">
+            <div><strong>📍 Location:</strong> ${data.location}</div>
+            <div><strong>💰 Salary:</strong> ${data.salary}</div>
+            <div><strong>⏰ Posted:</strong> ${data.posted}</div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; margin-bottom: 24px;">${data.description}</p>
+          <h3 style="color: #764ba2; margin-bottom: 12px;">Requirements</h3>
+          <ul style="margin-left: 20px; margin-bottom: 24px;">
+            ${data.requirements.map(req => `<li style="margin-bottom: 8px;">${req}</li>`).join('')}
+          </ul>
+          <h3 style="color: #764ba2; margin-bottom: 12px;">Benefits</h3>
+          <ul style="margin-left: 20px; margin-bottom: 24px;">
+            ${data.benefits.map(ben => `<li style="margin-bottom: 8px;">${ben}</li>`).join('')}
+          </ul>
+          <button class="action-btn" style="font-size: 16px; padding: 12px 32px;">Apply Now</button>
+        `;
+      } else if (data.prize) {
+        detailHTML += `
+          <div style="display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;">
+            <div><strong>🏆 Prize:</strong> ${data.prize}</div>
+            <div><strong>⏰ Deadline:</strong> ${data.deadline}</div>
+            <div><strong>👥 Participants:</strong> ${data.participants}</div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; margin-bottom: 24px;">${data.description}</p>
+          <h3 style="color: #764ba2; margin-bottom: 12px;">Deliverables</h3>
+          <ul style="margin-left: 20px; margin-bottom: 24px;">
+            ${data.deliverables.map(item => `<li style="margin-bottom: 8px;">${item}</li>`).join('')}
+          </ul>
+          <h3 style="color: #764ba2; margin-bottom: 12px;">Judging Criteria</h3>
+          <ul style="margin-left: 20px; margin-bottom: 24px;">
+            ${data.judging.map(item => `<li style="margin-bottom: 8px;">${item}</li>`).join('')}
+          </ul>
+          <button class="action-btn" style="font-size: 16px; padding: 12px 32px;">Submit Entry</button>
+        `;
+      }
+      
+      detailView.innerHTML = detailHTML;
+      mainView.style.display = 'none';
+      detailView.style.display = 'block';
+    }
+
+    function backToOpportunities() {
+      document.getElementById('opportunities-main').style.display = 'block';
+      document.getElementById('opportunities-detail').style.display = 'none';
+    }
+
+    // Community tab navigation
+    function showCommunityTab(tabName) {
+      const tabs = document.querySelectorAll('#community-main .tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      document.getElementById(`comm-${tabName}`).classList.add('active');
+      
+      const tabBtns = document.querySelectorAll('#community-main .tab-btn');
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Event detail navigation
+    function showEventDetail(eventId) {
+      const data = opportunityData[eventId];
+      if (!data) return;
+      
+      const mainView = document.getElementById('community-main');
+      const detailView = document.getElementById('community-detail');
+      
+      let detailHTML = `
+        <button class="back-btn" onclick="backToCommunity()">← Back to Community</button>
+        <h2>${data.title}</h2>
+        <div style="display: flex; gap: 24px; margin: 24px 0; flex-wrap: wrap;">
+          <div><strong>📅 Date:</strong> ${data.date}</div>
+          <div><strong>⏰ Time:</strong> ${data.time}</div>
+          <div><strong>📍 Format:</strong> ${data.format}</div>
+          <div><strong>👥 Registered:</strong> ${data.registered}</div>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; margin-bottom: 24px;">${data.description}</p>
+        <h3 style="color: #764ba2; margin-bottom: 12px;">Speakers</h3>
+        <ul style="margin-left: 20px; margin-bottom: 24px;">
+          ${data.speakers.map(speaker => `<li style="margin-bottom: 8px;">${speaker}</li>`).join('')}
+        </ul>
+        <h3 style="color: #764ba2; margin-bottom: 12px;">Agenda</h3>
+        <ul style="margin-left: 20px; margin-bottom: 24px;">
+          ${data.agenda.map(item => `<li style="margin-bottom: 8px;">${item}</li>`).join('')}
+        </ul>
+        <button class="action-btn" style="font-size: 16px; padding: 12px 32px;">Register Now</button>
+      `;
+      
+      detailView.innerHTML = detailHTML;
+      mainView.style.display = 'none';
+      detailView.style.display = 'block';
+    }
+
+    function backToCommunity() {
+      document.getElementById('community-main').style.display = 'block';
+      document.getElementById('community-detail').style.display = 'none';
+    }
+
+    function showLevelDetails(levelNum) {
+      const level = levelData[levelNum];
+      const modal = document.getElementById('level-modal');
+      const detailsDiv = document.getElementById('level-details');
+      
+      let statusBadge = '';
+      let statusColor = '';
+      
+      if (level.status === 'completed') {
+        statusBadge = '✅ Completed';
+        statusColor = '#10b981';
+      } else if (level.status === 'current') {
+        statusBadge = '🎯 Current Level';
+        statusColor = '#f59e0b';
+      } else {
+        statusBadge = '🔒 Locked';
+        statusColor = '#9ca3af';
+      }
+      
+      detailsDiv.innerHTML = `
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 16px;">
+            ${level.status === 'completed' ? '✅' : level.status === 'current' ? '🎯' : levelNum === 25 ? '👑' : '🔒'}
+          </div>
+          <div style="font-size: 14px; color: ${statusColor}; font-weight: 600; margin-bottom: 8px;">${statusBadge}</div>
+          <h2 style="font-size: 24px; color: #667eea; margin-bottom: 8px;">Level ${levelNum}</h2>
+          <h3 style="font-size: 20px; color: #333; font-weight: 600;">${level.title}</h3>
+        </div>
+        <p style="font-size: 16px; color: #555; line-height: 1.7; text-align: center;">${level.desc}</p>
+        ${level.status === 'current' ? '<div style="margin-top: 24px; text-align: center;"><button class="action-btn" style="font-size: 16px; padding: 12px 32px;">Start Now</button></div>' : ''}
+      `;
+      
+      modal.classList.add('active');
+    }
+
+    function closeLevelModal() {
+      const modal = document.getElementById('level-modal');
+      modal.classList.remove('active');
+    }
+
+    document.getElementById('level-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLevelModal();
+      }
+    });
+
+    // Portfolio functions
+    function togglePrivacy(element) {
+      element.classList.toggle('active');
+      const isPublic = element.classList.contains('active');
+      const textDiv = element.nextElementSibling;
+      
+      if (isPublic) {
+        textDiv.innerHTML = `
+          <strong style="color: #333;">Portfolio is Public</strong>
+          <p style="font-size: 13px; color: #666; margin-top: 4px;">Your portfolio is visible to all EPIC members and recruiters</p>
+        `;
+      } else {
+        textDiv.innerHTML = `
+          <strong style="color: #333;">Portfolio is Private</strong>
+          <p style="font-size: 13px; color: #666; margin-top: 4px;">Only you can see your portfolio</p>
+        `;
+      }
+    }
+
+    function showAddPortfolioForm() {
+      const formHTML = `
+        <div style="background: white; border: 1px solid #e1e8ed; border-radius: 10px; padding: 24px; margin-bottom: 20px;">
+          <h4 style="color: #667eea; margin-bottom: 16px;">Add New Portfolio Item</h4>
+          <form onsubmit="event.preventDefault(); handlePortfolioSubmit();">
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 6px; color: #333;">Title *</label>
+              <input type="text" required style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 6px; font-size: 14px;" placeholder="e.g., E-commerce PRD">
+            </div>
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 6px; color: #333;">Description *</label>
+              <textarea required rows="3" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 6px; font-size: 14px; resize: vertical;" placeholder="Describe your work, impact, and key achievements"></textarea>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 6px; color: #333;">Type *</label>
+              <select required style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 6px; font-size: 14px;">
+                <option value="">Select type...</option>
+                <option value="prd">📄 PRD / Document</option>
+                <option value="case">📊 Case Study</option>
+                <option value="design">🎨 Design Work</option>
+                <option value="video">📹 Video / Demo</option>
+                <option value="link">🔗 Live Product / Link</option>
+                <option value="research">🔍 User Research</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 6px; color: #333;">Tags</label>
+              <input type="text" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 6px; font-size: 14px;" placeholder="e.g., B2B, SaaS, Mobile (comma separated)">
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <button type="submit" class="action-btn">Submit for Review</button>
+              <button type="button" class="icon-btn" onclick="this.closest('div').closest('div').remove()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      `;
+      
+      const addBtn = document.querySelector('.add-portfolio-btn');
+      addBtn.insertAdjacentHTML('afterend', formHTML);
+      addBtn.style.display = 'none';
+    }
+
+    function handlePortfolioSubmit() {
+      const message = document.createElement('div');
+      message.style.cssText = 'background: #d1fae5; color: #065f46; padding: 16px; border-radius: 8px; margin: 20px 0; text-align: center; font-weight: 600;';
+      message.textContent = '✓ Portfolio item submitted! It will be reviewed within 24-48 hours.';
+      
+      const form = document.querySelector('form');
+      form.closest('div').replaceWith(message);
+      
+      setTimeout(() => {
+        message.remove();
+        document.querySelector('.add-portfolio-btn').style.display = 'block';
+      }, 3000);
+    }
+
+    function showPortfolioDetail(portfolioId) {
+      // Mock portfolio detail data
+      const portfolioDetails = {
+        portfolio1: {
+          name: 'Sarah Chen',
+          title: 'Senior Product Manager at TechCorp',
+          avatar: 'SC',
+          bio: '5+ years building B2B SaaS products. Specialized in AI/ML features and data-driven product strategy. Led teams of 3-8 people and launched 5 major features with 2M+ users.',
+          skills: ['B2B SaaS', 'AI/ML', 'Analytics', 'Growth', 'Team Leadership'],
+          items: [
+            { icon: '📄', title: 'AI Recommendation Engine PRD', desc: 'Complete PRD for ML-powered recommendation system' },
+            { icon: '📊', title: 'Analytics Platform Case Study', desc: 'Scaled analytics product from 50K to 500K users' },
+            { icon: '🎨', title: 'Dashboard Design System', desc: 'Built comprehensive design system for analytics dashboard' },
+            { icon: '📹', title: 'Product Demo: Smart Alerts', desc: 'Demo video for AI-powered alert system' },
+            { icon: '🔗', title: 'Live Product: Data Insights App', desc: 'Link to live SaaS product with 100K+ users' },
+            { icon: '📱', title: 'Mobile App Redesign', desc: 'Led complete redesign of iOS and Android apps' }
+          ]
+        }
+      };
+      
+      const data = portfolioDetails[portfolioId];
+      if (!data) return;
+      
+      const detailHTML = `
+        <div style="background: white; padding: 32px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto;">
+          <button class="back-btn" onclick="this.closest('div').remove()">← Back to Portfolios</button>
+          
+          <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: 700;">${data.avatar}</div>
+            <div>
+              <h2 style="color: #333; margin-bottom: 6px;">${data.name}</h2>
+              <p style="color: #667eea; font-weight: 600; margin-bottom: 8px;">${data.title}</p>
+              <span class="badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">✓ Verified Portfolio</span>
+            </div>
+          </div>
+          
+          <p style="color: #666; line-height: 1.7; margin-bottom: 20px;">${data.bio}</p>
+          
+          <div style="margin-bottom: 24px;">
+            <h4 style="color: #667eea; margin-bottom: 12px;">Skills & Expertise</h4>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              ${data.skills.map(skill => `<span class="resource-tag">${skill}</span>`).join('')}
+            </div>
+          </div>
+          
+          <h4 style="color: #667eea; margin-bottom: 16px;">Portfolio Items (${data.items.length})</h4>
+          ${data.items.map(item => `
+            <div style="background: #f5f7fa; border: 1px solid #e1e8ed; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; gap: 16px; align-items: center;">
+              <div style="font-size: 32px;">${item.icon}</div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600; color: #333; margin-bottom: 4px;">${item.title}</div>
+                <div style="font-size: 14px; color: #666;">${item.desc}</div>
+              </div>
+              <button class="action-btn" style="font-size: 13px; padding: 8px 16px;">View</button>
+            </div>
+          `).join('')}
+          
+          <div style="margin-top: 24px; text-align: center;">
+            <button class="action-btn" style="padding: 12px 32px;">📧 Contact ${data.name.split(' ')[0]}</button>
+          </div>
+        </div>
+      `;
+      
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; padding: 40px 20px;';
+      overlay.innerHTML = detailHTML;
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.remove();
+        }
+      });
+      document.body.appendChild(overlay);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a114a2d00342f6d',t:'MTc2MzU3MTg5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
