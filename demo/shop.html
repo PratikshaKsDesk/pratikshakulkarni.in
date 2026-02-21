@@ -407,19 +407,7 @@
     }
   
   </script>
-  
-  <script>
-function openModal(link) {
-  document.getElementById("buyModal").classList.remove("hidden");
-  document.getElementById("buyModal").classList.add("flex");
-  document.getElementById("billbookFrame").src = link;
-}
 
-function closeModal() {
-  document.getElementById("buyModal").classList.add("hidden");
-  document.getElementById("billbookFrame").src = "";
-}
-</script>
 
 <!-- ADD THIS BELOW -->
 
@@ -612,10 +600,11 @@ if (selectedCategory === "all") {
               ₹${product.price}
             </span>
 
-            <button onclick="openModal('${product.billbookLink}')"
-              class="text-orange font-semibold text-sm hover:underline">
-              BUY NOW →
-            </button>
+            <a href="${product.billbookLink}" 
+            class="text-orange font-semibold text-sm hover:underline"
+            ${!product.billbookLink || product.billbookLink === '' ? 'style="pointer-events:none;opacity:0.4;"' : ''}>
+            BUY NOW →
+          </a>
           </div>
         </div>
 
@@ -696,10 +685,5 @@ renderProducts();
 
 </script>
 
-<div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-white w-11/12 md:w-2/3 h-3/4 rounded-lg overflow-hidden relative">
-    <button onclick="closeModal()" class="absolute top-4 right-4 text-black text-xl">✕</button>
-    <iframe id="billbookFrame" class="w-full h-full"></iframe>
-  </div>
-</div>
+
 </html>
