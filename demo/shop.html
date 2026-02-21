@@ -517,36 +517,66 @@ function renderProducts() {
 
 if (selectedCategory === "all") {
 
-  // 1️⃣ Separate Tripole
-  const tripoleProducts = filteredProducts.filter(p => p.subcategory === "Tripole");
-  const others = filteredProducts.filter(p => p.subcategory !== "Tripole");
+  // 🔥 YOUR PRIORITY PRODUCT NAMES
+  const priorityNames = [
+    "Studds Riding Gloves SMG2 - Multicolour",
+    "Tripole SummitGrip Waterproof Winter Gloves - M Size",
+    "Tripole Detachable Pants - Charcoal (M Size)",
+    "Tripole Full Sleeve Jersey - Blue (M Size)",
+    "Tripole Full Sleeve Jersey - Rust (M Size)",
+    "Tripole Pocket Fleece Jacket - Psuede Green (M Size)",
+    "Tripole Venture Pant - Green (M Size)",
+    "Tripole Air 62 Liter - Black",
+    "Tripole Hydra Waist Pack - Green",
+    "Tripole Organizer Combo - Sea Green",
+    "Tripole PakEasy 25 Litre - Blue",
+    "Tripole Terra 50 Liter - Blue",
+    "Tripole Astra-A Headlight AAA Cells",
+    "Tripole Hydration Bladder - 2 Litre",
+    "Tripole Soft Flask 500ml - White",
+    "Tripole Trailcore Foldable Poles"
+  ];
 
-  // 2️⃣ Group others by category
-  const grouped = {};
-  others.forEach(product => {
-    if (!grouped[product.category]) {
-      grouped[product.category] = [];
+  const helmetPriority = [
+    "SMK Flip Up Helmet Gullwing Sonic GL231 Gloss - L",
+    "SMK Full Face Helmet Retro Electro GL621 Gloss - XL",
+    "SMK Full Face Helmet Stellar Sports K Power GL245 Gloss - L",
+    "SMK Full Face Helmet Typhoon Rival GL263 Gloss-M",
+    "SMK Full face Helmet Typhoon RD1 GL264 Gloss - L",
+    "SMK Offroad Helmet Alterra Maverix GL627 Gloss - XL",
+    "Steelbird Air SBA-19 R2K Flip Up - Black",
+    "Steelbird Rox Double Visor Decor - Multicolour"
+  ];
+
+  // 🎯 Separate products
+  const priorityProducts = [];
+  const helmetProducts = [];
+  const remainingProducts = [];
+
+  filteredProducts.forEach(product => {
+
+    if (priorityNames.includes(product.name)) {
+      priorityProducts.push(product);
+
+    } else if (helmetPriority.includes(product.name)) {
+      helmetProducts.push(product);
+
+    } else {
+      remainingProducts.push(product);
     }
-    grouped[product.category].push(product);
+
   });
 
-  // 3️⃣ Rotate categories one-by-one
-  const mixedOthers = [];
-  let stillProducts = true;
+  // 🟢 Put BAGS first inside priority
+  const bagsFirst = priorityProducts.filter(p => p.category === "BAGS");
+  const otherPriority = priorityProducts.filter(p => p.category !== "BAGS");
 
-  while (stillProducts) {
-    stillProducts = false;
-
-    for (let category in grouped) {
-      if (grouped[category].length > 0) {
-        mixedOthers.push(grouped[category].shift());
-        stillProducts = true;
-      }
-    }
-  }
-
-  // 4️⃣ Final order: Tripole first, then rotated mix
-  filteredProducts = [...tripoleProducts, ...mixedOthers];
+  filteredProducts = [
+    ...bagsFirst,
+    ...otherPriority,
+    ...helmetProducts,
+    ...remainingProducts
+  ];
 }
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
