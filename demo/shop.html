@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoTrek - Website Prototype</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest-green: #1a3d2e;
+      --burnt-orange: #c45d2a;
+      --off-white: #f8f6f3;
+      --charcoal: #2d2d2d;
+      --light-green: #2a5442;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--charcoal);
+    }
+    
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    
+    .bg-forest { background-color: var(--forest-green); }
+    .bg-orange { background-color: var(--burnt-orange); }
+    .bg-offwhite { background-color: var(--off-white); }
+    .text-forest { color: var(--forest-green); }
+    .text-orange { color: var(--burnt-orange); }
+    .text-charcoal { color: var(--charcoal); }
+    
+    .btn-primary {
+      background: var(--burnt-orange);
+      color: white;
+      padding: 14px 32px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 14px;
+    }
+    
+    .btn-primary:hover {
+      background: #a84d22;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 14px 32px;
+      font-weight: 600;
+      border: 2px solid white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 14px;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--forest-green);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(26, 61, 46, 0.9) 0%, rgba(26, 61, 46, 0.7) 50%, rgba(196, 93, 42, 0.3) 100%);
+    }
+    
+    .product-card {
+      background: white;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(26, 61, 46, 0.15);
+    }
+    
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .category-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26, 61, 46, 0.95), transparent 60%);
+    }
+    
+    .category-card:hover .category-img {
+      transform: scale(1.1);
+    }
+    
+    .category-img {
+      transition: transform 0.5s ease;
+    }
+    
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--burnt-orange);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .slide-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .slide-dot.active {
+      background: var(--burnt-orange);
+      transform: scale(1.2);
+    }
+    
+    .slide-dot:hover {
+      background: rgba(255,255,255,0.6);
+    }
+    
+    .trek-card {
+      background: white;
+      border-left: 4px solid var(--burnt-orange);
+      transition: all 0.3s ease;
+    }
+    
+    .trek-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--forest-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .scroll-container {
+      overflow-y: auto;
+      flex: 1;
+    }
+    .category-btn {
+  padding: 8px 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+  background: #1a3d2e;
+  color: white;
+}
+
+.category-active {
+  background: #1a3d2e;
+  color: white;
+  border-color: #1a3d2e;
+}
+
+.subcategory-active {
+  background: #c45d2a;
+  color: white;
+  border-color: #c45d2a;
+} 
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+
+    <div class="scroll-container"><!-- Navigation -->
+     <nav class="bg-forest fixed w-full top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+       <div class="flex items-center gap-3">
+        <svg class="w-10 h-10 text-orange" viewbox="0 0 40 40" fill="none"><path d="M20 5L35 35H5L20 5Z" stroke="currentColor" stroke-width="2.5" fill="none" /> <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" /> <path d="M17 22L19 24L23 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg><span id="brand-name" class="font-display text-2xl text-white tracking-wider">MOTOTREK</span>
+       </div>
+       <a href="index.html" class="nav-link text-white text-sm font-medium tracking-wide">HOME</a> 
+       <a href="shop.html" class="nav-link text-orange text-sm font-medium tracking-wide">SHOP</a> 
+       <a href="treks.html" class="nav-link text-white text-sm font-medium tracking-wide">TREKS</a> 
+       <a href="about.html" class="nav-link text-white text-sm font-medium tracking-wide">ABOUT</a> 
+       <a href="contact.html" class="nav-link text-white text-sm font-medium tracking-wide">CONTACT</a>
+       <div class="flex items-center gap-4"><button class="text-white">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+         </svg></button> <button class="text-white relative">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+         </svg><span class="absolute -top-2 -right-2 bg-orange text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span> </button>
+       </div>
+      </div>
+
+     </nav><!-- Shop Banner -->
+     <section class="relative pt-16" style="height: 45vh; min-height: 320px;">
+      <div class="absolute inset-0 bg-forest">
+       <div class="absolute inset-0" style="background: linear-gradient(135deg, #1a3d2e 0%, #2a5442 100%);"></div>
+       <svg class="absolute right-0 bottom-0 w-64 h-64 opacity-10" viewbox="0 0 200 200"><circle cx="100" cy="100" r="80" stroke="white" stroke-width="1" fill="none" /> <circle cx="100" cy="100" r="60" stroke="white" stroke-width="1" fill="none" /> <circle cx="100" cy="100" r="40" stroke="white" stroke-width="1" fill="none" />
+       </svg>
+      </div>
+      <div class="relative z-10 h-full flex items-center">
+       <div class="max-w-7xl mx-auto px-6 w-full text-center">
+        <p class="text-orange font-semibold tracking-widest text-sm mb-4">MOTOTREK STORE</p>
+        <h1 class="font-display text-5xl md:text-6xl text-white mb-4">EXPLORE OUR GEAR COLLECTION</h1>
+        <p class="text-gray-300 text-lg max-w-xl mx-auto">Engineered for safety. Designed for adventure.</p>
+       </div>
+      </div>
+     </section>
+     <section class="bg-white border-b sticky top-16 z-40">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+
+        <!-- MAIN CATEGORY ROW -->
+        <div id="mainCategories" 
+            class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+        </div>
+
+        <!-- SUBCATEGORY ROW -->
+        <div id="subCategories" 
+            class="flex gap-3 mt-3 overflow-x-auto pb-1">
+        </div>
+
+      </div>
+    </section>
+     <!-- Product Grid -->
+     <section class="py-12 bg-offwhite">
+      <div class="max-w-7xl mx-auto px-6">
+       <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+       </div><!-- Pagination -->
+       <div class="flex justify-center items-center gap-2 mt-12"><button class="w-10 h-10 rounded bg-forest text-white font-semibold">1</button> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">2</button> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">3</button> <span class="text-gray-400 mx-2">...</span> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">
+         <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg></button>
+       </div>
+      </div>
+     
+    </section><!-- Footer -->
+     <footer class="bg-forest py-12">
+      <div class="max-w-7xl mx-auto px-6">
+       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+         <svg class="w-8 h-8 text-orange" viewbox="0 0 40 40" fill="none"><path d="M20 5L35 35H5L20 5Z" stroke="currentColor" stroke-width="2.5" fill="none" /> <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" />
+         </svg><span class="font-display text-xl text-white">MOTOTREK</span>
+        </div>
+        <p class="text-gray-400 text-sm">© 2024 MotoTrek. Gear Up &amp; Explore Beyond.</p>
+        <div class="flex gap-4"><a href="#" class="text-gray-400 hover:text-orange transition text-sm">Privacy</a> <a href="#" class="text-gray-400 hover:text-orange transition text-sm">Terms</a> <a href="#" class="text-gray-400 hover:text-orange transition text-sm" onclick="goToSlide(6)">Contact</a>
+        </div>
+       </div>
+      </div>
+     </footer>
+   
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      brand_name: 'MOTOTREK',
+      tagline: 'Gear Up. Explore Beyond.',
+      hero_headline: 'GEAR UP. EXPLORE BEYOND.',
+      contact_email: 'hello@mototrek.in',
+      contact_phone: '+91 98765 43210',
+      background_color: '#f8f6f3',
+      surface_color: '#ffffff',
+      text_color: '#2d2d2d',
+      primary_action_color: '#c45d2a',
+      secondary_action_color: '#1a3d2e',
+      font_family: 'Inter',
+      font_size: 16
+    };
+    
+    // Element SDK integration
+    function updateUI(config) {
+      // Update brand name
+      const brandElements = document.querySelectorAll('#brand-name');
+      brandElements.forEach(el => {
+        if (el) el.textContent = config.brand_name || defaultConfig.brand_name;
+      });
+      
+      // Update hero headline
+      const heroHeadline = document.getElementById('hero-headline');
+      if (heroHeadline) {
+        const headline = config.hero_headline || defaultConfig.hero_headline;
+        heroHeadline.innerHTML = headline.replace('. ', '.<br/>');
+      }
+      
+      // Update footer tagline
+      const footerTagline = document.getElementById('footer-tagline');
+      if (footerTagline) {
+        footerTagline.textContent = config.tagline || defaultConfig.tagline;
+      }
+      
+      // Update contact info
+      const contactEmail = document.getElementById('contact-email-display');
+      if (contactEmail) {
+        contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      }
+      
+      const footerEmail = document.getElementById('footer-email');
+      if (footerEmail) {
+        footerEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      }
+      
+      const contactPhone = document.getElementById('contact-phone');
+      if (contactPhone) {
+        contactPhone.textContent = config.contact_phone || defaultConfig.contact_phone;
+      }
+      
+      // Update colors
+      document.documentElement.style.setProperty('--off-white', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--burnt-orange', config.primary_action_color || defaultConfig.primary_action_color);
+      document.documentElement.style.setProperty('--forest-green', config.secondary_action_color || defaultConfig.secondary_action_color);
+      document.documentElement.style.setProperty('--charcoal', config.text_color || defaultConfig.text_color);
+      
+      // Update font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `'${fontFamily}', sans-serif`;
+      
+      // Update font size
+      const fontSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${fontSize}px`;
+    }
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: async (config) => {
+          updateUI(config);
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['brand_name', config.brand_name || defaultConfig.brand_name],
+          ['tagline', config.tagline || defaultConfig.tagline],
+          ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+          ['contact_email', config.contact_email || defaultConfig.contact_email],
+          ['contact_phone', config.contact_phone || defaultConfig.contact_phone]
+        ])
+      });
+    } else {
+      // Fallback if SDK not available
+      updateUI(defaultConfig);
+    }
+  
+  </script>
+  
+  <script>
+function openModal(link) {
+  document.getElementById("buyModal").classList.remove("hidden");
+  document.getElementById("buyModal").classList.add("flex");
+  document.getElementById("billbookFrame").src = link;
+}
+
+function closeModal() {
+  document.getElementById("buyModal").classList.add("hidden");
+  document.getElementById("billbookFrame").src = "";
+}
+</script>
+
+<!-- ADD THIS BELOW -->
+
+<script src="products.js"></script>
+<script>
+const grid = document.getElementById("productGrid");
+const mainContainer = document.getElementById("mainCategories");
+const subContainer = document.getElementById("subCategories");
+
+let selectedCategory = "all";
+let selectedSub = "all";
+
+/* ---------------- FIXED CATEGORY STRUCTURE ---------------- */
+
+const categoryStructure = {
+  "HELMETS": ["SMK", "Steelbird", "Studds"],
+  "GLOVES": ["Raida", "Steelbird", "Studds", "Tripole"],
+  "RIDING GEAR": ["Raida", "Scala", "Tripole"],
+  "BOOTS": [],
+  "BAGS": ["Hydration", "Scala", "Tripole"],
+  "BIKE ACCESSORIES": ["Bobo", "BluArmor", "HJG", "Tripole"],
+  "MAINTENANCE": [],
+  "OTHERS": ["Tripole"]
+};
+
+/* ---------------- MAIN CATEGORY RENDER ---------------- */
+
+function renderMainCategories() {
+
+  mainContainer.innerHTML = "";
+
+  mainContainer.innerHTML += `
+    <button onclick="selectCategory('all')" 
+      class="category-btn ${selectedCategory === 'all' ? 'category-active' : ''}">
+      ALL
+    </button>
+  `;
+
+  Object.keys(categoryStructure).forEach(cat => {
+    mainContainer.innerHTML += `
+      <button onclick="selectCategory('${cat}')" 
+        class="category-btn ${selectedCategory === cat ? 'category-active' : ''}">
+        ${cat}
+      </button>
+    `;
+  });
+}
+
+/* ---------------- SUBCATEGORY RENDER ---------------- */
+
+function renderSubCategories() {
+
+  if (selectedCategory === "all") {
+    subContainer.innerHTML = "";
+    return;
+  }
+
+  const subs = categoryStructure[selectedCategory];
+
+  subContainer.innerHTML = "";
+
+  if (subs.length === 0) {
+    return; // No subcategory for this category
+  }
+
+  subContainer.innerHTML += `
+    <button onclick="selectSub('all')" 
+      class="category-btn ${selectedSub === 'all' ? 'subcategory-active' : ''}">
+      ALL
+    </button>
+  `;
+
+  subs.forEach(sub => {
+    subContainer.innerHTML += `
+      <button onclick="selectSub('${sub}')"
+        class="category-btn ${selectedSub === sub ? 'subcategory-active' : ''}">
+        ${sub}
+      </button>
+    `;
+  });
+}
+
+/* ---------------- PRODUCT RENDER ---------------- */
+
+function renderProducts() {
+
+  grid.innerHTML = "";
+
+  products.forEach(product => {
+
+    if (
+      (selectedCategory === "all" || product.category === selectedCategory) &&
+      (selectedSub === "all" || product.subcategory === selectedSub)
+    ) {
+
+      grid.innerHTML += `
+        <div class="product-card rounded-lg overflow-hidden cursor-pointer">
+
+          <div class="aspect-square bg-gray-100 relative">
+            <img src="${product.image}" 
+              class="w-full h-full object-contain p-12" />
+          </div>
+
+          <div class="p-6">
+            <span class="text-xs text-orange font-semibold tracking-wide">
+              ${product.subcategory}
+            </span>
+
+            <h3 class="font-semibold text-lg text-charcoal mt-1 mb-2">
+              ${product.name}
+            </h3>
+
+            <div class="flex items-center justify-between">
+              <span class="font-display text-2xl text-forest">
+                ₹${product.price}
+              </span>
+
+              <button onclick="openModal('${product.billbookLink}')"
+                class="text-orange font-semibold text-sm hover:underline">
+                BUY NOW →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+  });
+}
+
+/* ---------------- SELECT FUNCTIONS ---------------- */
+
+function selectCategory(cat) {
+  selectedCategory = cat;
+  selectedSub = "all";
+  renderMainCategories();
+  renderSubCategories();
+  renderProducts();
+}
+
+function selectSub(sub) {
+  selectedSub = sub;
+  renderSubCategories();
+  renderProducts();
+}
+
+/* ---------------- INIT ---------------- */
+
+renderMainCategories();
+renderSubCategories();
+renderProducts();
+
+</script>
+
+<div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white w-11/12 md:w-2/3 h-3/4 rounded-lg overflow-hidden relative">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-black text-xl">✕</button>
+    <iframe id="billbookFrame" class="w-full h-full"></iframe>
+  </div>
+</div>
+</html>
