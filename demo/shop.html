@@ -263,14 +263,11 @@
      <!-- Product Grid -->
      <section class="py-12 bg-offwhite">
       <div class="max-w-7xl mx-auto px-6">
-       <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+       <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-       </div><!-- Pagination -->
-       <div class="flex justify-center items-center gap-2 mt-12"><button class="w-10 h-10 rounded bg-forest text-white font-semibold">1</button> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">2</button> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">3</button> <span class="text-gray-400 mx-2">...</span> <button class="w-10 h-10 rounded bg-gray-200 text-charcoal font-semibold hover:bg-gray-300">
-         <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-         </svg></button>
-       </div>
-      </div>
+    <div id="pagination" class="flex justify-center items-center gap-2 mt-12"></div>
+    
+  
      
     </section><!-- Footer -->
      <footer class="bg-forest py-12">
@@ -434,6 +431,8 @@ const subContainer = document.getElementById("subCategories");
 
 let selectedCategory = "all";
 let selectedSub = "all";
+const itemsPerPage = 30;
+let currentPage = 1;
 
 /* ---------------- FIXED CATEGORY STRUCTURE ---------------- */
 
@@ -511,46 +510,134 @@ function renderProducts() {
 
   grid.innerHTML = "";
 
-  products.forEach(product => {
+  let filteredProducts = products.filter(product =>
+  (selectedCategory === "all" || product.category === selectedCategory) &&
+  (selectedSub === "all" || product.subcategory === selectedSub)
+);
 
-    if (
-      (selectedCategory === "all" || product.category === selectedCategory) &&
-      (selectedSub === "all" || product.subcategory === selectedSub)
-    ) {
+if (selectedCategory === "all") {
 
-      grid.innerHTML += `
-        <div class="product-card rounded-lg overflow-hidden cursor-pointer">
+  // 1️⃣ Separate Tripole
+  const tripoleProducts = filteredProducts.filter(p => p.subcategory === "Tripole");
+  const others = filteredProducts.filter(p => p.subcategory !== "Tripole");
 
-          <div class="aspect-square bg-gray-100 relative">
-            <img src="${product.image}" 
-              class="w-full h-full object-contain p-12" />
-          </div>
+  // 2️⃣ Group others by category
+  const grouped = {};
+  others.forEach(product => {
+    if (!grouped[product.category]) {
+      grouped[product.category] = [];
+    }
+    grouped[product.category].push(product);
+  });
 
-          <div class="p-6">
-            <span class="text-xs text-orange font-semibold tracking-wide">
-              ${product.subcategory}
+  // 3️⃣ Rotate categories one-by-one
+  const mixedOthers = [];
+  let stillProducts = true;
+
+  while (stillProducts) {
+    stillProducts = false;
+
+    for (let category in grouped) {
+      if (grouped[category].length > 0) {
+        mixedOthers.push(grouped[category].shift());
+        stillProducts = true;
+      }
+    }
+  }
+
+  // 4️⃣ Final order: Tripole first, then rotated mix
+  filteredProducts = [...tripoleProducts, ...mixedOthers];
+}
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  if (currentPage > totalPages) currentPage = 1;
+
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+
+  const paginatedProducts = filteredProducts.slice(start, end);
+
+  paginatedProducts.forEach(product => {
+
+    grid.innerHTML += `
+      <div class="product-card rounded-lg overflow-hidden cursor-pointer">
+
+        <div class="aspect-square bg-gray-100 relative">
+          <img src="${product.image}" 
+            class="w-full h-full object-contain p-12" />
+        </div>
+
+        <div class="p-6">
+          <span class="text-xs text-orange font-semibold tracking-wide">
+            ${product.subcategory || ""}
+          </span>
+
+          <h3 class="font-semibold text-lg text-charcoal mt-1 mb-2">
+            ${product.name}
+          </h3>
+
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-forest">
+              ₹${product.price}
             </span>
 
-            <h3 class="font-semibold text-lg text-charcoal mt-1 mb-2">
-              ${product.name}
-            </h3>
-
-            <div class="flex items-center justify-between">
-              <span class="font-display text-2xl text-forest">
-                ₹${product.price}
-              </span>
-
-              <button onclick="openModal('${product.billbookLink}')"
-                class="text-orange font-semibold text-sm hover:underline">
-                BUY NOW →
-              </button>
-            </div>
+            <button onclick="openModal('${product.billbookLink}')"
+              class="text-orange font-semibold text-sm hover:underline">
+              BUY NOW →
+            </button>
           </div>
-
         </div>
-      `;
-    }
+
+      </div>
+    `;
   });
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  if (totalPages <= 1) return;
+
+  // Previous button
+  if (currentPage > 1) {
+    pagination.innerHTML += `
+      <button onclick="changePage(${currentPage - 1})"
+        class="w-10 h-10 rounded bg-gray-200 font-semibold">
+        ‹
+      </button>
+    `;
+  }
+
+  for (let i = 1; i <= totalPages; i++) {
+    pagination.innerHTML += `
+      <button onclick="changePage(${i})"
+        class="w-10 h-10 rounded font-semibold 
+        ${i === currentPage ? 'bg-forest text-white' : 'bg-gray-200'}">
+        ${i}
+      </button>
+    `;
+  }
+
+  // Next button
+  if (currentPage < totalPages) {
+    pagination.innerHTML += `
+      <button onclick="changePage(${currentPage + 1})"
+        class="w-10 h-10 rounded bg-gray-200 font-semibold">
+        ›
+      </button>
+    `;
+  }
+}
+
+function changePage(page) {
+  currentPage = page;
+  renderProducts();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /* ---------------- SELECT FUNCTIONS ---------------- */
@@ -558,6 +645,7 @@ function renderProducts() {
 function selectCategory(cat) {
   selectedCategory = cat;
   selectedSub = "all";
+  currentPage = 1;
   renderMainCategories();
   renderSubCategories();
   renderProducts();
@@ -565,6 +653,7 @@ function selectCategory(cat) {
 
 function selectSub(sub) {
   selectedSub = sub;
+  currentPage = 1;
   renderSubCategories();
   renderProducts();
 }
