@@ -187,24 +187,25 @@
     <div class="scroll-container"><!-- Navigation -->
      <nav class="bg-forest fixed w-full top-0 z-50">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-       <div class="flex items-center gap-3">
-        <svg class="w-10 h-10 text-orange" viewbox="0 0 40 40" fill="none"><path d="M20 5L35 35H5L20 5Z" stroke="currentColor" stroke-width="2.5" fill="none" /> <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" /> <path d="M17 22L19 24L23 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg><span id="brand-name" class="font-display text-2xl text-white tracking-wider">MOTOTREK</span>
-       </div>
-       <a href="index.html" class="nav-link text-white text-sm font-medium tracking-wide">HOME</a> 
-       <a href="shop.html" class="nav-link text-white text-sm font-medium tracking-wide">SHOP</a> 
-       <a href="treks.html" class="nav-link text-white text-sm font-medium tracking-wide">TREKS</a> 
-       <a href="about.html" class="nav-link text-white text-sm font-medium tracking-wide">ABOUT</a> 
-       <a href="contact.html" class="nav-link text-orange text-sm font-medium tracking-wide">CONTACT</a>
-       <div class="flex items-center gap-4"><button class="text-white">
-         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-         </svg></button> <button class="text-white relative">
-         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-         </svg><span class="absolute -top-2 -right-2 bg-orange text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span> </button>
-       </div>
-      </div>
 
-     </nav><!-- Contact Banner -->
+        <div class="flex items-center">
+          <a href="index.html">
+            <img src="images/logo.png"
+                alt="Mototrek Logo"
+                class="h-12 w-auto object-contain">
+          </a>
+        </div>
+
+        <div class="flex items-center gap-12">
+          <a href="index.html" class="nav-link text-white text-sm font-medium">HOME</a> 
+          <a href="shop.html" class="nav-link text-white text-sm font-medium">SHOP</a> 
+          <a href="treks.html" class="nav-link text-white text-sm font-medium">TREKS</a> 
+          <a href="about.html" class="nav-link text-white text-sm font-medium">ABOUT</a> 
+          <a href="contact.html" class="nav-link text-orange text-sm font-medium">CONTACT</a>
+        </div>
+    </nav>
+    
+    <!-- Contact Banner -->
      <section class="relative pt-16" style="height: 40vh; min-height: 300px;">
       <div class="absolute inset-0 bg-forest">
        <div class="absolute inset-0" style="background: linear-gradient(135deg, #1a3d2e 0%, #0f251b 100%);"></div>
@@ -222,71 +223,108 @@
        <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Info -->
         <div>
          <h2 class="font-display text-3xl text-forest mb-8">REACH OUT TO US</h2>
-         <div class="space-y-6">
-          <div class="flex items-start gap-4">
-           <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-           </div>
-           <div>
-            <h4 class="font-semibold text-charcoal mb-1">Store Address</h4>
-            <p class="text-gray-600">123 Adventure Lane, Bandra West<br>
-             Mumbai, Maharashtra 400050</p>
-           </div>
-          </div>
-          <div class="flex items-start gap-4">
-           <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-           </div>
-           <div>
-            <h4 class="font-semibold text-charcoal mb-1">Phone</h4>
-            <p id="contact-phone" class="text-gray-600">+91 98765 43210</p>
-           </div>
-          </div>
-          <div class="flex items-start gap-4">
-           <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-           </div>
-           <div>
-            <h4 class="font-semibold text-charcoal mb-1">Email</h4>
-            <p id="contact-email-display" class="text-gray-600">hello@mototrek.in</p>
-           </div>
-          </div>
-         </div><!-- Social Links -->
-         <div class="mt-10">
-          <h4 class="font-semibold text-charcoal mb-4">FOLLOW US</h4>
-          <div class="flex gap-4"><a href="#" class="w-12 h-12 bg-forest rounded-full flex items-center justify-center hover:bg-orange transition" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-            </svg></a> <a href="#" class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg></a> <a href="#" class="w-12 h-12 bg-forest rounded-full flex items-center justify-center hover:bg-orange transition" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-            </svg></a>
-          </div>
-         </div>
-        </div><!-- Map Placeholder -->
-        <div>
-         <div class="bg-white rounded-lg overflow-hidden shadow-sm h-full min-h-96">
-          <div class="bg-gray-200 h-80 flex items-center justify-center relative">
-           <svg class="absolute inset-0 w-full h-full opacity-30" viewbox="0 0 400 300"><rect fill="#e5e7eb" width="400" height="300" /> <path d="M0 200 Q100 150 200 180 Q300 210 400 160" stroke="#d1d5db" stroke-width="2" fill="none" /> <path d="M0 220 Q150 190 300 220 Q350 230 400 210" stroke="#d1d5db" stroke-width="2" fill="none" /> <circle cx="200" cy="140" r="30" fill="#1a3d2e" opacity="0.3" /> <path d="M200 110 L200 130 M190 120 L210 120" stroke="#1a3d2e" stroke-width="3" />
-           </svg>
-           <div class="relative z-10 text-center">
-            <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-             </svg>
+
+          <div class="space-y-8">
+
+            <!-- PHONE -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-charcoal mb-1">Phone</h4>
+                <a href="tel:+919511901753"
+                  class="text-orange font-medium hover:underline">
+                  +91 95119 01753
+                </a>
+              </div>
             </div>
-            <p class="font-display text-xl text-forest">MOTOTREK STORE</p>
-            <p class="text-gray-500 text-sm">Bandra West, Mumbai</p>
-           </div>
+
+            <!-- EMAIL -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-charcoal mb-1">Email</h4>
+                <a href="mailto:mototrekstores@gmail.com"
+                  class="text-orange font-medium hover:underline">
+                  mototrekstores@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-charcoal mb-1">Store Address</h4>
+                <a href="https://www.google.com/maps?q=SB+Patil+School+Road+Ravet+Pune"
+                  target="_blank"
+                  class="text-gray-600 hover:text-orange leading-relaxed block">
+                  Sr. No. 94, SB Patil School Rd,<br>
+                  Siddhivinayak Nagar, Ravet,<br>
+                  Pimpri-Chinchwad, Maharashtra 412101,<br>
+                  Pune, India
+                </a>
+              </div>
+            </div>
+
+            <!-- STORE HOURS -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" stroke-width="2"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 7v5l3 3"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-charcoal mb-1">Store Hours</h4>
+                <p class="text-gray-600">
+                  Sunday - Saturday: 10:00 AM - 9:00 PM
+                </p>
+              </div>
+            </div>
+
           </div>
-          <div class="p-6">
-           <h4 class="font-semibold text-charcoal mb-2">Store Hours</h4>
-           <div class="text-gray-600 text-sm space-y-1">
-            <p>Monday - Saturday: 10:00 AM - 8:00 PM</p>
-            <p>Sunday: 11:00 AM - 6:00 PM</p>
+          
+          
+          <!-- ✅ CLOSE LEFT COLUMN PROPERLY -->
            </div>
+
+          <!-- RIGHT COLUMN (MAP) -->
+          <div>
+
+            <div class="rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps?q=SB+Patil+School+Road+Ravet+Pune&output=embed"
+                class="w-full h-[420px]"
+                style="border:0;"
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="text-center mt-6">
+              <a href="https://www.google.com/maps?q=SB+Patil+School+Road+Ravet+Pune"
+                target="_blank"
+                class="btn-primary">
+                VIEW ON GOOGLE MAPS
+              </a>
+            </div>
           </div>
          </div>
         </div>
@@ -297,13 +335,65 @@
      <footer class="bg-forest py-12">
       <div class="max-w-7xl mx-auto px-6">
        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-         <svg class="w-8 h-8 text-orange" viewbox="0 0 40 40" fill="none"><path d="M20 5L35 35H5L20 5Z" stroke="currentColor" stroke-width="2.5" fill="none" /> <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" />
-         </svg><span class="font-display text-xl text-white">MOTOTREK</span>
-        </div>
-        <p class="text-gray-400 text-sm">© 2024 MotoTrek. Gear Up &amp; Explore Beyond.</p>
-        <div class="flex gap-4"><a href="#" class="text-gray-400 hover:text-orange transition text-sm">Privacy</a> <a href="#" class="text-gray-400 hover:text-orange transition text-sm">Terms</a> <a href="#" class="text-gray-400 hover:text-orange transition text-sm" onclick="goToSlide(6)">Contact</a>
-        </div>
+        <div class="flex items-center">
+        <img src="images/logo.png"
+            alt="Mototrek Logo"
+            class="h-10 w-auto object-contain">
+      </div>
+        <p class="text-gray-400 text-sm">© 2026 MotoTrek. Gear Up &amp; Explore Beyond.</p>
+        <div class="flex items-center gap-5">
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/mototrek.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-orange transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5C20 18.216 18.216 20 16.25 20h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm4.25 3.5A4.75 4.75 0 1016.75 12 4.756 4.756 0 0012 7.5zm0 2A2.75 2.75 0 119.25 12 2.754 2.754 0 0112 9.5zm5-3a1 1 0 11-1 1 1 1 0 011-1z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61587946781857"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-orange transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22 12a10 10 0 10-11.5 9.87v-6.99H8.07V12h2.43V9.8c0-2.4 1.43-3.73 3.63-3.73 1.05 0 2.15.19 2.15.19v2.37h-1.21c-1.19 0-1.56.74-1.56 1.5V12h2.66l-.43 2.88h-2.23v6.99A10 10 0 0022 12z"/>
+          </svg>
+        </a>
+
+        <!-- YouTube (Dummy for now) -->
+        <a href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-orange transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 00.5 6.2 31.7 31.7 0 000 12a31.7 31.7 0 00.5 5.8 3 3 0 002.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 002.1-2.1A31.7 31.7 0 0024 12a31.7 31.7 0 00-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/mototrekadventures/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-orange transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.45 20.45h-3.55v-5.6c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.69H9.35V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/>
+          </svg>
+        </a>
+
+        <!-- X (Dummy for now) -->
+        <a href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-orange transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2H21l-6.5 7.44L22 22h-6.828l-5.35-6.99L3.8 22H1l6.93-7.93L2 2h6.828l4.85 6.32L18.244 2z"/>
+          </svg>
+        </a>
+
+      </div>
        </div>
       </div>
      </footer>
@@ -314,8 +404,8 @@
       brand_name: 'MOTOTREK',
       tagline: 'Gear Up. Explore Beyond.',
       hero_headline: 'GEAR UP. EXPLORE BEYOND.',
-      contact_email: 'hello@mototrek.in',
-      contact_phone: '+91 98765 43210',
+      contact_email: 'mototrekstores@gmail.com',
+      contact_phone: '+91 95119 01753',
       background_color: '#f8f6f3',
       surface_color: '#ffffff',
       text_color: '#2d2d2d',
