@@ -1,1110 +1,613 @@
-<!doctype html>
-<html lang="en" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swaati Enterprises - Construction Chemical &amp; Engineering Solutions</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            royal: {
-              50: '#eff3ff',
-              100: '#dbe4fe',
-              200: '#bfcefe',
-              300: '#93aafd',
-              400: '#6078fa',
-              500: '#3b4ef5',
-              600: '#1e2a8f',
-              700: '#152070',
-              800: '#0f1a5c',
-              900: '#0a1142',
-              950: '#060a2e'
-            },
-            slate: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              150: '#eaeff5',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              400: '#94a3b8',
-              500: '#64748b',
-              600: '#475569',
-              700: '#334155',
-              800: '#1e293b',
-              900: '#0f172a'
-            }
-          },
-          fontFamily: {
-            'jakarta': ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    html, body { height: 100%; margin: 0; }
-    .app-wrapper { height: 100%; width: 100%; overflow-y: auto; overflow-x: hidden; }
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #1e2a8f;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after { width: 100%; }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(30, 42, 143, 0.15); }
-    .btn-primary {
-      background: linear-gradient(135deg, #1e2a8f 0%, #152070 100%);
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #152070 0%, #0f1a5c 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px -10px rgba(30, 42, 143, 0.5);
-    }
-    .btn-secondary {
-      border: 2px solid #1e2a8f;
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background: #1e2a8f;
-      color: white;
-    }
-    .geometric-pattern {
-      background-image: 
-        linear-gradient(30deg, rgba(30, 42, 143, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 42, 143, 0.03) 87.5%, rgba(30, 42, 143, 0.03)),
-        linear-gradient(150deg, rgba(30, 42, 143, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 42, 143, 0.03) 87.5%, rgba(30, 42, 143, 0.03)),
-        linear-gradient(30deg, rgba(30, 42, 143, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 42, 143, 0.03) 87.5%, rgba(30, 42, 143, 0.03)),
-        linear-gradient(150deg, rgba(30, 42, 143, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 42, 143, 0.03) 87.5%, rgba(30, 42, 143, 0.03));
-      background-size: 80px 140px;
-      background-position: 0 0, 0 0, 40px 70px, 40px 70px;
-    }
-    .hero-gradient {
-      background: linear-gradient(135deg, #0a1142 0%, #1e2a8f 50%, #152070 100%);
-    }
-    .section-divider {
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #1e2a8f, transparent);
-      opacity: 0.2;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in { animation: fadeInUp 0.6s ease-out forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .product-card { border-left: 4px solid #1e2a8f; }
-    .stat-number { 
-      background: linear-gradient(135deg, #1e2a8f, #3b4ef5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .dropdown-menu {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-    }
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .mobile-menu {
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #1e2a8f;
-      box-shadow: 0 0 0 3px rgba(30, 42, 143, 0.1);
-    }
-    .process-step::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -50%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, #1e2a8f, transparent);
-    }
-    .process-step:last-child::before { display: none; }
-  </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <!-- Website Favicon & Icons -->
-<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE3TD08MC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<!-- Website Logo for SEO / Social -->
-<meta property="og:image" content="images/se-logo.webp">
-</head>
- <body class="h-full">
-  <div class="app-wrapper bg-white" id="app">
+  gtag('config', 'G-VYE3TD08MC');
+</script>
     
-  <!-- Top Bar -->
-<div class="bg-royal-900 text-white py-2 text-sm hidden md:block">
-
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-
-    <!-- Contact -->
-    <div class="flex items-center gap-6">
-
-      <!-- Phone -->
-      <span class="flex items-center gap-2">
-
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-
-        <a href="tel:+919370011133" class="hover:text-royal-300 transition-colors">
-          +91 93700 11133
-        </a>
-
-      </span>
-
-      <!-- Email -->
-      <span class="flex items-center gap-2">
-
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-        </svg>
-
-        <a href="mailto:swaatienterprises@gmail.com" class="hover:text-royal-300 transition-colors">
-          swaatienterprises@gmail.com
-        </a>
-
-      </span>
-
-    </div>
-
-    <!-- Right Section -->
-    <div class="flex items-center gap-4">
-
-      <span class="text-royal-300">
-        Mon - Sat: 9:00 AM - 6:00 PM
-      </span>
-
-      <!-- Social Icons -->
-      <div class="flex gap-4">
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/swaatienterprises" target="_blank"
-           class="hover:text-royal-300 hover:scale-110 transition-transform">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M22 12.073C22 6.504 17.523 2 12 2S2 6.504 2 12.073c0 5.019 3.657 9.177 8.438 9.927v-7.025H7.898v-2.902h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.774-1.63 1.566v1.88h2.773l-.443 2.902h-2.33V22c4.78-.75 8.437-4.908 8.437-9.927z"/>
-          </svg>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/swaatienterprises/" target="_blank"
-           class="hover:text-royal-300 hover:scale-110 transition-transform">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5c3.176 0 5.75-2.574 5.75-5.75v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5C20 18.216 18.216 20 16.25 20h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm9.25 1.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-          </svg>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/swaati-enterprises/" target="_blank"
-           class="hover:text-royal-300 hover:scale-110 transition-transform">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.037-1.849-3.037-1.849 0-2.131 1.445-2.131 2.939v5.667H9.356V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.37-1.849 3.604 0 4.269 2.372 4.269 5.456v6.284zM5.337 7.433a1.984 1.984 0 110-3.967 1.984 1.984 0 010 3.967zM7.119 20.452H3.556V9h3.563v11.452z"/>
-          </svg>
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-   <!-- Main Navigation -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex justify-between items-center h-20">
-
-      <!-- Logo -->
-       
-      <a href="index.html" class="flex items-center gap-3">
-
-      <img src="images/se-logo.webp" alt="Swaati Enterprises Logo" class="h-12 w-auto">
-
-      <div>
-        <img src="images/se-eng-logo.webp" alt="Swaati Enterprises Logo" class="h-6 w-auto">
-      </div>
-
-    </a>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-8">
-
-        <a href="index.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium">Home</a>
-
-        <a href="about.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium">About Us</a>
-
-        <!-- Products Dropdown -->
-        <div class="dropdown relative">
-
-          <a href="products.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium flex items-center gap-1">
-            Products
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </a>
-
-          <div class="dropdown-menu absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-100 py-2">
-
-            <a href="products-waterproofing_systems.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Waterproofing Systems
-            </a>
-
-            <a href="products-concrete_admixtures.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Concrete Admixtures
-            </a>
-
-            <a href="products-epoxy_systems.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Epoxy Flooring
-            </a>
-
-            <a href="products-structural_repair.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Structural Repair
-            </a>
-
-            <a href="products-grouts_anchors.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Grouts & Anchors
-            </a>
-
-            <a href="products-industrial_solution.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Industrial Solutions
-            </a>
-
-            <a href="products-flooring_and_coatings.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Flooring & Coatings
-            </a>
-
-            <a href="products-building_and_joint_sealants.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Building & Joint Sealants
-            </a>
-
-            <a href="products-specialized_coatings.html"
-              class="block px-4 py-3 hover:bg-royal-50 text-slate-700 hover:text-royal-600">
-              Specialized Coatings
-            </a>
-
-          </div>
-
-        </div>
-        <a href="services.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium">Services</a>
-
-        <a href="projects.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium">Projects</a>
-
-        <a href="contact.html" class="nav-link text-slate-700 hover:text-royal-600 font-medium">Contact</a>
-
-      </div>
-
-      <!-- CTA -->
-      <div class="hidden lg:flex items-center gap-4">
-        <a href="contact.html"
-           class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-sm">
-           Get Quote
-        </a>
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-   <!-- Page Content Container -->
-   <main id="pageContent"><!-- Home Page (Default) -->
-   </main>
-   <!-- Footer -->
-    <footer class="bg-royal-900 text-white">
-
-      <div class="max-w-7xl mx-auto px-6 py-16">
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-
-          <!-- Company Info -->
-          <div>
-
-            <img src="images/se-full-white-logo.webp" alt="Swaati Enterprises Logo" class="h-8 mb-4">
-
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
-              Trusted construction chemical solutions for modern building projects.</p>
-
-            <!-- Social Links -->
-            <div class="flex gap-4 mt-4">
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/swaatienterprises" target="_blank"
-            class="text-slate-300 hover:text-white transition-colors hover:scale-110">
-
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M22 12.073C22 6.504 17.523 2 12 2S2 6.504 2 12.073c0 5.019 3.657 9.177 8.438 9.927v-7.025H7.898v-2.902h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.774-1.63 1.566v1.88h2.773l-.443 2.902h-2.33V22c4.78-.75 8.437-4.908 8.437-9.927z"/>
-            </svg>
-
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/swaatienterprises/" target="_blank"
-            class="text-slate-300 hover:text-white transition-colors hover:scale-110">
-
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5c3.176 0 5.75-2.574 5.75-5.75v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5C20 18.216 18.216 20 16.25 20h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm9.25 1.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-            </svg>
-
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/company/swaati-enterprises/" target="_blank"
-            class="text-slate-300 hover:text-white transition-colors hover:scale-110">
-
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.037-1.849-3.037-1.849 0-2.131 1.445-2.131 2.939v5.667H9.356V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.37-1.849 3.604 0 4.269 2.372 4.269 5.456v6.284zM5.337 7.433a1.984 1.984 0 110-3.967 1.984 1.984 0 010 3.967zM7.119 20.452H3.556V9h3.563v11.452z"/>
-            </svg>
-
-            </a>
-
-            </div>
-
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-
-            <h3 class="text-lg font-semibold mb-4">
-              Quick Links
-            </h3>
-
-            <ul class="space-y-3 text-sm">
-
-              <li><a href="index.html" class="text-slate-300 hover:text-white">Home</a></li>
-
-              <li><a href="about.html" class="text-slate-300 hover:text-white">About Us</a></li>
-
-              <li><a href="products.html" class="text-slate-300 hover:text-white">Products</a></li>
-
-              <li><a href="services.html" class="text-slate-300 hover:text-white">Services</a></li>
-
-              <li><a href="projects.html" class="text-slate-300 hover:text-white">Projects</a></li>
-
-              <li><a href="contact.html" class="text-slate-300 hover:text-white">Contact</a></li>
-
-            </ul>
-
-          </div>
-
-          <!-- Product Categories -->
-          <div>
-
-            <h3 class="text-lg font-semibold mb-4">
-              Products
-            </h3>
-
-            <ul class="space-y-3 text-sm">
-
-              <li><a href="products-waterproofing_systems.html" class="text-slate-300 hover:text-white">Waterproofing Systems</a></li>
-
-              <li><a href="products-concrete_admixtures.html" class="text-slate-300 hover:text-white">Concrete Admixtures</a></li>
-
-              <li><a href="products-epoxy_systems.html" class="text-slate-300 hover:text-white">Epoxy Flooring</a></li>
-
-              <li><a href="products-structural_repair.html" class="text-slate-300 hover:text-white">Structural Repair</a></li>
-
-              <li><a href="products-grouts_anchors.html" class="text-slate-300 hover:text-white">Grouts & Anchors</a></li>
-
-              <li><a href="products-industrial_solution.html" class="text-slate-300 hover:text-white">Industrial Solutions</a></li>
-
-            </ul>
-
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-
-            <h3 class="text-lg font-semibold mb-4">
-              Contact Us
-            </h3>
-
-            <ul class="space-y-4 text-sm text-slate-300">
-
-              <li>
-                📍 Office No. 2, Building No. D,<br>
-                Shraddha Garden, Gawade Park,<br>
-                Opp Tata Motors, Chinchwad<br>
-                Pune – 411033
-              </li>
-
-              <li>
-                📞 <a href="tel:+919370011133" class="hover:text-white">+91 93700 11133</a><br>
-                📞 <a href="tel:+918380017333" class="hover:text-white">+91 83800 17333</a>
-              </li>
-
-              <li>
-                ✉ <a href="mailto:swaatienterprises@gmail.com" class="hover:text-white">
-                swaatienterprises@gmail.com
-                </a>
-              </li>
-
-            </ul>
-
-          </div>
-
-        </div>
-
-        <!-- Bottom -->
-        <div class="border-t border-white/10 mt-12 pt-8 text-center">
-
-          <p class="text-slate-400 text-sm">
-            © 2026 Swaati Enterprises. All Rights Reserved.
-          </p>
-
-        </div>
-
-      </div>
-
-    </footer>
-  </div>
-  <script>
-    // Configuration
-    const defaultConfig = {
-      company_name: 'SWAATI ENTERPRISES',
-
-      hero_headline: 'Complete Construction Chemical & Engineering Solutions',
-
-      hero_subtext: 'Trusted partner for Waterproofing Systems, Concrete Admixtures, Epoxy Flooring, Structural Repair and Industrial Solutions.',
-
-      phone_number: '+91 93700 11133',
-
-      email_address: 'swaatienterprises@gmail.com',
-
-      company_address: 'Office No. 2, Building No. D, Shraddha Garden, Gawade Park, Opp Tata Motors, Chinchwad, Pune - 411033',
-
-      primary_color: '#1e2a8f',
-
-      secondary_color: '#f8fafc',
-
-      text_color: '#334155',
-
-      accent_color: '#3b4ef5',
-
-      surface_color: '#ffffff',
-
-      font_family: 'Plus Jakarta Sans',
-
-      font_size: 16
-    };
-
-    let currentPage = 'home';
-
-    // Page Templates
-    const pages = {
-      home: () => `
-        <!-- Hero Section -->
-        <section class="hero-gradient relative overflow-hidden">
-          <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute bottom-0 left-0 w-96 h-96 bg-royal-400 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
-          </div>
-          <div class="max-w-7xl mx-auto px-6 py-24 lg:py-32 relative">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-              <div class="animate-fade-in">
-               <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6" id="hero-headline">
-                Construction <br>
-                Chemicals & <br>
-                Engineering <br>
-                Solutions <br>
-                You Can Rely On!
-              </h1>
-                <p class="text-xl text-royal-200 mb-8 leading-relaxed" id="hero-subtext">
-                  We supply proven solutions for waterproofing, concrete performance, epoxy flooring, structural repair and industrial protection, helping builders and contractors deliver stronger, longer-lasting structures.
-                </p>
-                <div class="flex flex-wrap gap-4">
-
-              <a href="products.html" class="bg-white text-royal-700 px-8 py-4 rounded-lg font-semibold hover:bg-royal-50 transition-all transform hover:scale-105 shadow-lg">
-                Explore Products
-              </a>
-
-              <a href="contact.html" class="bg-royal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-royal-700 transition-all transform hover:scale-105 shadow-lg">
-                Request Quotation
-              </a>
-
-            </div>
-              </div>
-              <div class="hidden lg:block animate-fade-in delay-200">
-                <div class="relative">
-                  <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <div class="grid grid-cols-2 gap-4">
-                      <div class="bg-white/10 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-white mb-2">20+</div>
-                        <div class="text-royal-200 text-sm">Years Experience</div>
-                      </div>
-                      <div class="bg-white/10 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-white mb-2">6500+</div>
-                        <div class="text-royal-200 text-sm">Projects Completed</div>
-                      </div>
-                      <div class="bg-white/10 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-white mb-2">500+</div>
-                        <div class="text-royal-200 text-sm">Products Range</div>
-                      </div>
-                      <div class="bg-white/10 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-white mb-2">50+</div>
-                        <div class="text-royal-200 text-sm">Expert Engineers</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-royal-400/30 rounded-full blur-xl"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Wave Divider -->
-          <div class="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-            </svg>
-          </div>
-        </section>
-
-        <!-- About Preview -->
-        <section class="py-20 bg-white">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <span class="text-royal-600 font-semibold text-sm tracking-wider uppercase">About Swaati Enterprises</span>
-                <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mt-3 mb-6">
-                  Practical Solutions for Real Construction Challenges
-                </h2>
-                <p class="text-slate-600 leading-relaxed mb-6">
-                  Swaati Enterprises provides construction chemicals and engineering solutions trusted by contractors, builders and industrial clients. Our products are designed to solve everyday site challenges like water leakage, concrete durability, surface protection and structural repair.
-                </p>
-                <p class="text-slate-600 leading-relaxed mb-8">
-                  With strong industry experience and a reliable supply network, we help projects run smoothly by providing the right materials at the right time. Our team also supports clients with technical guidance so products are used correctly and deliver long-term performance.
-                </p>
-                <div class="grid grid-cols-2 gap-6 mb-8">
-                  <div class="flex items-start gap-3">
-                    <div class="w-10 h-10 bg-royal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg class="w-5 h-5 text-royal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-slate-800">Quality Assured</h4>
-                      <p class="text-sm text-slate-500">Trusted Manufacturers</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-3">
-                    <div class="w-10 h-10 bg-royal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg class="w-5 h-5 text-royal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-slate-800">Fast & Reliable Supply</h4>
-                      <p class="text-sm text-slate-500">Quick Product Availability</p>
-                    </div>
-                  </div>
-                </div>
-                <a href="about.html" class="btn-primary inline-flex items-center gap-2 text-white px-6 py-3 rounded-lg font-semibold">
-                  Learn More About Us
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </a>
-              </div>
-              <div class="relative">
-                <div class="rounded-2xl overflow-hidden shadow-lg">
-                <img src="images/home-about.webp" 
-                    alt="Swaati Enterprises Construction Solutions"
-                    class="w-full h-full object-cover">
-              </div>
-                <div class="absolute -bottom-6 -left-6 bg-royal-600 text-white p-6 rounded-xl shadow-xl">
-                  <div class="text-3xl font-bold">20+</div>
-                  <div class="text-royal-200 text-sm">Years of Excellence</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Solutions Section -->
-        <section class="py-20 bg-slate-50 geometric-pattern">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-              <span class="text-royal-600 font-semibold text-sm tracking-wider uppercase">Our Solutions</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mt-3 mb-4">
-                Construction Chemical Solutions for Every Stage of Building
-              </h2>
-              <p class="text-slate-600 max-w-2xl mx-auto">
-                From foundation protection to industrial flooring, we provide materials that improve the strength, durability and lifespan of structures.
-              </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              ${[
-                { 
-                name: 'Waterproofing Systems',
-                link: 'products-waterproofing_systems.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>',
-                desc: 'Waterproofing solutions designed to prevent leakage and moisture damage in buildings. Used for terraces, basements, water tanks, bathrooms, podium slabs and foundations.'
-                },
-
-                { 
-                name: 'Concrete Admixtures',
-                link: 'products-concrete_admixtures.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>',
-                desc: 'Admixtures that improve concrete workability, strength and long-term durability. Widely used in ready-mix plants, commercial buildings and infrastructure projects.'
-                },
-
-                { 
-                name: 'Epoxy Flooring',
-                link: 'products-epoxy_systems.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>',
-                desc: 'Seamless, high-strength epoxy flooring for industrial and commercial environments. Commonly installed in factories, warehouses, hospitals, laboratories and parking areas.'
-                },
-
-                { 
-                name: 'Structural Repair & Strengthening',
-                link: 'products-structural_repair.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>',
-                desc: 'Repair solutions for damaged concrete structures. Includes repair mortars, bonding agents, injection systems and strengthening technologies.'
-                },
-
-                { 
-                name: 'Grouts & Anchors',
-                link: 'products-grouts_anchors.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>',
-                desc: 'Precision grouting and anchoring products used for machinery foundations and structural fixing. Provides strong load transfer and reliable structural support.'
-                },
-
-                { 
-                name: 'Industrial Solutions',
-                link: 'products-industrial_solution.html',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',
-                desc: 'Protective coatings and maintenance solutions designed for harsh industrial environments exposed to chemicals, moisture and heavy usage.'
-                }
-                ].map(solution => `
-                <a href="${solution.link}" class="card-hover bg-white rounded-xl p-8 border border-slate-200 group">
-                  <div class="w-14 h-14 bg-royal-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-royal-600 transition-colors">
-                    <svg class="w-7 h-7 text-royal-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      ${solution.icon}
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-bold text-slate-800 mb-3">${solution.name}</h3>
-                  <p class="text-slate-600 text-sm leading-relaxed mb-4">${solution.desc}</p>
-                  <span class="inline-flex items-center gap-2 text-royal-600 font-semibold text-sm group-hover:gap-3 transition-all">
-                    View Products
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                  </span>
-                </a>
-              `).join('')}
-            </div>
-          </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="py-20 bg-white">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <span class="text-royal-600 font-semibold text-sm tracking-wider uppercase">Why Choose Us</span>
-                <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mt-3 mb-8">
-                  A Reliable Partner for Builders and Contractors
-                </h2>
-                <div class="space-y-6">
-                  ${[
-                    { title: 'Technical Expertise', desc: 'Our team helps clients choose the right materials and application methods for their specific project needs.' },
-                    { title: 'Proven Products', desc: 'We supply products that are widely used across construction and infrastructure projects.' },
-                    { title: 'Site Support', desc: 'Technical guidance helps ensure proper application and long-term performance.' },
-                    { title: 'Reliable Supply', desc: 'Strong vendor network ensures consistent product availability.' },
-                    { title: 'Complete Solutions', desc: 'From waterproofing to structural repair, we provide a full range of construction chemical solutions.' }
-                  ].map((item, i) => `
-                    <div class="flex gap-4">
-                      <div class="w-12 h-12 bg-royal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span class="text-royal-600 font-bold">${String(i + 1).padStart(2, '0')}</span>
-                      </div>
-                      <div>
-                        <h4 class="font-semibold text-slate-800 mb-1">${item.title}</h4>
-                        <p class="text-slate-600 text-sm">${item.desc}</p>
-                      </div>
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-6">
-                <div class="bg-royal-600 text-white p-8 rounded-xl">
-                  <div class="text-4xl font-bold mb-2">6500+</div>
-                  <div class="text-royal-200">Projects Delivered</div>
-                </div>
-                <div class="bg-slate-100 p-8 rounded-xl">
-                  <div class="text-4xl font-bold text-royal-600 mb-2">500+</div>
-                  <div class="text-slate-600">Products Range</div>
-                </div>
-                <div class="bg-slate-100 p-8 rounded-xl">
-                  <div class="text-4xl font-bold text-royal-600 mb-2">20+</div>
-                  <div class="text-slate-600">Years Experience</div>
-                </div>
-                <div class="bg-royal-600 text-white p-8 rounded-xl">
-                  <div class="text-4xl font-bold mb-2">5000+</div>
-                  <div class="text-royal-200">Happy Clients</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="py-16 bg-gradient-to-r from-royal-700 to-royal-900">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div class="text-center lg:text-left">
-                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-2">Need Help Choosing the Right Product?</h2>
-                <p class="text-royal-200">Our technical team can help you select the best solution for your project requirements.</p>
-              </div>
-              <div class="flex flex-wrap justify-center gap-4">
-                <a href="tel:+919370011133" class="bg-white text-royal-700 px-8 py-4 rounded-lg font-semibold hover:bg-royal-50 transition-all flex items-center gap-2">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                  </svg>
-                  Call Now
-                </a>
-                <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-royal-700 transition-all flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-                Get Quote
-              </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      `
-    };
-
-    // Generate Product Category Page
-    function generateProductCategoryPage(title, category, intro, products) {
-      return `
-        <!-- Home Page Header / Hero -->
-<section class="hero-gradient py-24 relative overflow-hidden">
-
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 relative">
-
-    <h1 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-      Complete Construction Chemical & Engineering Solutions
-    </h1>
-
-    <p class="text-xl text-royal-200 max-w-3xl mb-8">
-      Trusted partner for Waterproofing, Concrete Admixtures, Epoxy Flooring, Structural Repair and Industrial Solutions across diverse construction and infrastructure projects.
-    </p>
-
-    <div class="flex flex-wrap gap-4">
-
-  <a href="products.html"
-     class="bg-white text-royal-700 px-8 py-4 rounded-lg font-semibold hover:bg-royal-50 transition-all">
-     Explore Products
-  </a>
-
-  <a href="contact.html"
-     class="bg-white text-royal-700 px-8 py-4 rounded-lg font-semibold hover:bg-royal-50 transition-all">
-     Request Quotation
-  </a>
-
-</div>
-
-  </div>
-
-</section>
-
-        <!-- Products List -->
-        <section class="py-20 bg-slate-50">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="grid gap-8">
-              ${products.map(product => `
-                <div class="product-card bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-                  <div class="grid lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2">
-                      <h3 class="text-2xl font-bold text-slate-800 mb-3">${product.name}</h3>
-                      <p class="text-slate-600 mb-6">${product.desc}</p>
-                      <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h4 class="font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-royal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            Key Features
-                          </h4>
-                          <ul class="space-y-2">
-                            ${product.features.map(f => `<li class="text-slate-600 text-sm flex items-center gap-2"><span class="w-1.5 h-1.5 bg-royal-600 rounded-full"></span>${f}</li>`).join('')}
-                          </ul>
-                        </div>
-                        <div>
-                          <h4 class="font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-royal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                            </svg>
-                            Applications
-                          </h4>
-                          <ul class="space-y-2">
-                            ${product.apps.map(a => `<li class="text-slate-600 text-sm flex items-center gap-2"><span class="w-1.5 h-1.5 bg-royal-600 rounded-full"></span>${a}</li>`).join('')}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col gap-3 lg:border-l lg:pl-8 lg:border-slate-200">
-                      <button onclick="showToast('Datasheet download requested for ${product.name}')" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        Download Datasheet
-                      </button>
-                      <button href="contact.html" class="btn-secondary text-royal-600 px-6 py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        Request Quotation
-                      </a>
-                      <a href="tel:+919370011133" class="border border-slate-300 text-slate-700 px-6 py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        Call Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="py-16 bg-white">
-          <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-gradient-to-r from-royal-700 to-royal-900 rounded-2xl p-12 text-center">
-              <h2 class="text-2xl lg:text-3xl font-bold text-white mb-4">Need Technical Guidance?</h2>
-              <p class="text-royal-200 mb-8 max-w-2xl mx-auto">Our technical team can help you select the right product for your application.</p>
-              <a href="contact.html" class="bg-white text-royal-700 px-8 py-4 rounded-lg font-semibold hover:bg-royal-50 transition-all inline-block">
-                Contact Technical Team
-              </a>
-            </div>
-          </div>
-        </section>
-      `;
-    }
-
-    // Navigation
-    function navigateTo(page) {
-      currentPage = page;
-      const pageContent = document.getElementById('pageContent');
-      if (pages[page]) {
-        pageContent.innerHTML = pages[page]();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    // Mobile Menu Toggle
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
-    }
-
-    // Form Submit Handler
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const form = document.getElementById('contactForm');
-      const success = document.getElementById('formSuccess');
-      form.style.display = 'none';
-      success.classList.remove('hidden');
-    }
-
-    // Toast Notification
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.className = 'fixed bottom-6 right-6 bg-royal-700 text-white px-6 py-4 rounded-lg shadow-xl z-50 animate-fade-in';
-      toast.innerHTML = `
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <span>${message}</span>
-        </div>
-      `;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
-    }
-
-    // Element SDK Integration
-    async function onConfigChange(config) {
-      const companyName = config.company_name || defaultConfig.company_name;
-      const heroHeadline = config.hero_headline || defaultConfig.hero_headline;
-      const heroSubtext = config.hero_subtext || defaultConfig.hero_subtext;
-      const phone = config.phone_number || defaultConfig.phone_number;
-      const email = config.email_address || defaultConfig.email_address;
-      const address = config.company_address || defaultConfig.company_address;
-
-      // Update navigation
-      const navCompany = document.getElementById('nav-company-name');
-      if (navCompany) navCompany.textContent = companyName;
-
-      // Update top bar
-      const topPhone = document.getElementById('top-phone');
-      const topEmail = document.getElementById('top-email');
-      if (topPhone) topPhone.textContent = phone;
-      if (topEmail) topEmail.textContent = email;
-
-      // Update footer
-      const footerCompany = document.getElementById('footer-company-name');
-      const footerPhone = document.getElementById('footer-phone');
-      const footerEmail = document.getElementById('footer-email');
-      const footerAddress = document.getElementById('footer-address');
-      if (footerCompany) footerCompany.textContent = companyName;
-      if (footerPhone) footerPhone.textContent = phone;
-      if (footerEmail) footerEmail.textContent = email;
-      if (footerAddress) footerAddress.innerHTML = address.replace(/, /g, '<br>');
-
-      // Update hero if on home page
-      const heroHeadlineEl = document.getElementById('hero-headline');
-      const heroSubtextEl = document.getElementById('hero-subtext');
-      if (heroHeadlineEl) heroHeadlineEl.textContent = heroHeadline;
-      if (heroSubtextEl) heroSubtextEl.textContent = heroSubtext;
-
-      // Update contact page if visible
-      const contactPhone = document.getElementById('contact-phone');
-      const contactEmail = document.getElementById('contact-email');
-      const contactAddress = document.getElementById('contact-address');
-      if (contactPhone) contactPhone.textContent = phone;
-      if (contactEmail) contactEmail.textContent = email;
-      if (contactAddress) contactAddress.innerHTML = address.replace(/, /g, '<br>');
-
-      // Apply font
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      document.body.style.fontFamily = `${fontFamily}, system-ui, sans-serif`;
-
-      // Apply font size
-      const fontSize = config.font_size || defaultConfig.font_size;
-      document.documentElement.style.fontSize = `${fontSize}px`;
-    }
-
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [
-          {
-            get: () => config.primary_color || defaultConfig.primary_color,
-            set: (value) => {
-              config.primary_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
-            }
-          },
-          {
-            get: () => config.secondary_color || defaultConfig.secondary_color,
-            set: (value) => {
-              config.secondary_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
-            }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => {
-              config.text_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
-            }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (value) => {
-              config.accent_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
-            }
-          },
-          {
-            get: () => config.surface_color || defaultConfig.surface_color,
-            set: (value) => {
-              config.surface_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
-            }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => {
-            config.font_family = value;
-            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
-          }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => {
-            config.font_size = value;
-            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratiksha Kulkarni - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
         }
-      };
-    }
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        .image-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-align: center;
+            border: 2px dashed #d1d5db;
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-white font-sans overflow-x-hidden flex flex-col min-h-screen">
+        <!-- Navigation --> 
+        <nav class="bg-black shadow-2xl sticky top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+                Pratiksha Kulkarni
+            </a>
 
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ['company_name', config.company_name || defaultConfig.company_name],
-        ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
-        ['hero_subtext', config.hero_subtext || defaultConfig.hero_subtext],
-        ['phone_number', config.phone_number || defaultConfig.phone_number],
-        ['email_address', config.email_address || defaultConfig.email_address],
-        ['company_address', config.company_address || defaultConfig.company_address]
-      ]);
-    }
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+                ☰
+            </button>
 
-    // Initialize
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
+            <!-- Desktop Links -->
+            <div class="hidden md:flex flex-row space-x-1">
+                <a href="index.html" class="px-6 py-3 text-white font-semibold bg-gray-800">Home</a>
+                <a href="product.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Products</a>
+                <a href="creatives.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Creatives</a>
+                <a href="blog.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Blog</a>
+                <a href="justasaying.html" class="px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white">Just A Saying</a>
+            </div>
+            </div>
+        </div>
+        </nav>
 
-    // Load default page
-    navigateTo('home');
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d0f794316837e9a',t:'MTc3MTYwNTkxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 hidden flex-col justify-center items-center space-y-8 z-50">
+        <a href="index.html" class="text-white text-2xl font-bold hover:text-gray-300 transition">Home</a>
+        <a href="product.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Products</a>
+        <a href="creatives.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Creatives</a>
+        <a href="blog.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Blog</a>
+        <a href="justasaying.html" class="text-white text-2xl font-light hover:text-gray-300 transition">Just A Saying</a>
+        <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+        </div>
+
+        <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('flex');
+            mobileMenu.classList.add('hidden');
+        });
+        </script>
+
+        <style>
+        /* Mobile menu fade + slide animation */
+        #mobileMenu {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #mobileMenu.flex {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        </style>
+
+
+    <main>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-content">
+        <!-- Hero Section -->
+        <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-20 left-20 w-32 h-32 bg-white rounded-full floating-animation"></div>
+                <div class="absolute top-40 right-32 w-24 h-24 bg-gray-300 rounded-full floating-animation" style="animation-delay: 2s;"></div>
+                <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-gray-400 rounded-full floating-animation" style="animation-delay: 4s;"></div>
+                <div class="absolute bottom-20 right-20 w-28 h-28 bg-gray-200 rounded-full floating-animation" style="animation-delay: 1s;"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+                <div class="fade-in">
+                    <h1 class="text-7xl md:text-8xl font-bold text-gradient mb-8 tracking-wider">IDEA TO IMPACT</h1>
+                    <h2 class="text-5xl md:text-7xl font-light text-white mb-12 tracking-wide">I MAKE PRODUCTS THRIVE!</h2>
+                </div>
+                
+                <div class="fade-in stagger-1">
+                    <p class="text-3xl md:text-2xl text-gray-300 mb-16 font-light leading-relaxed max-w-4xl mx-auto">
+                        With expertise in product and design, I blend creativity, user insight, and business strategy to craft impactful solutions. My focus is on creating work that solves real problems and tells the right story.
+                    </p>
+                </div>
+                
+                <div class="fade-in stagger-2 flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="scrollToSection('featured-work')" class="bg-white text-black px-12 py-4 rounded-none text-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 tracking-wide">
+                        VIEW MY WORK
+                    </button>
+                    <button onclick="scrollToSection('about')" class="border-2 border-white text-white px-12 py-4 rounded-none text-lg font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 tracking-wide">
+                        ABOUT ME
+                    </button>
+                </div>
+            
+            
+            <!-- <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg> -->
+            </div>
+        </section>
+
+        <!-- Featured Work Section -->
+            <section id="featured-work" class="pt-12 pb-4 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Featured Project 1 -->
+                <div class="grid lg:grid-cols-1 gap-8 mb-14">
+                    <a href="product.html" class="group cursor-pointer hover-lift transition-all duration-500 block">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+                        <div class="h-80 overflow-hidden">
+                        <img src="images/design/Ideating_and_Building_Products.webp" alt="Product" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder w-full h-full" style="display: none;">Product Building<br>600x400px</div>
+                        </div>
+                        <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-black text-white px-4 py-2 rounded-full text-sm font-medium tracking-wide">Product</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-black mb-4 tracking-wide">Ideating & Building Products</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Checkout Products I have worked on...</p>
+                        <div class="flex items-center text-black font-semibold group-hover:text-gray-600 transition-colors">
+                            <span class="mr-2">VIEW PROJECT</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <!-- Featured Project 2 -->
+                <div class="grid lg:grid-cols-1 gap-8 mb-14">
+                    <a href="creatives.html" class="group cursor-pointer hover-lift transition-all duration-500 block">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+                        <div class="h-80 overflow-hidden">
+                        <img src="images/design/Designing_and_Marketing_Brands.webp" alt="Design" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder w-full h-full" style="display: none;">Designing<br>600x400px</div>
+                        </div>
+                        <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wide">Design</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-black mb-4 tracking-wide">Designing & Marketing Brands</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Checkout My Designing Journey...</p>
+                        <div class="flex items-center text-black font-semibold group-hover:text-gray-600 transition-colors">
+                            <span class="mr-2">VIEW CONCEPT</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                </div>
+            </div>
+            </section>
+
+                
+              <!-- Quick Preview Grid -->
+               <section id="quick-preview" class="pt-12 pb-12 bg-white">
+                <div class="max-w-6xl mx-auto px-4">
+                <div class="grid md:grid-cols-4 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div>
+                    <a href="product.html" class="group cursor-pointer hover-lift transition-all duration-300 block">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div class="h-32 overflow-hidden">
+                            <img src="images/design/Mobile_Apps.webp" alt="Mobile Apps" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder w-full h-full" style="display: none;">UI/UX Design<br>300x200px</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-black mb-1 tracking-wide">Mobile Apps</h4>
+                            <p class="text-gray-600 text-sm">Building Apps from 0 - 10</p>
+                        </div>
+                        </div>
+                    </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div>
+                    <a href="creatives.html" class="group cursor-pointer hover-lift transition-all duration-300 block">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div class="h-32 overflow-hidden">
+                            <img src="images/design/Ideation.webp" alt="Ideation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder w-full h-full" style="display: none;">Ideation<br>300x200px</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-black mb-1 tracking-wide">Ideation</h4>
+                            <p class="text-gray-600 text-sm">Creating User Focused Advertising</p>
+                        </div>
+                        </div>
+                    </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div>
+                    <a href="creatives.html" class="group cursor-pointer hover-lift transition-all duration-300 block">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div class="h-32 overflow-hidden">
+                            <img src="images/design/Brand_Designing_and_Advertising.webp" alt="Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder w-full h-full" style="display: none;">Design<br>300x200px</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-black mb-1 tracking-wide">Design</h4>
+                            <p class="text-gray-600 text-sm">Brand Designing & Advertising</p>
+                        </div>
+                        </div>
+                    </a>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div>
+                    <a href="blog.html" class="group cursor-pointer hover-lift transition-all duration-300 block">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div class="h-32 overflow-hidden">
+                            <img src="images/design/Professional_Blogs_and_Moody_Writeups.webp" alt="Blogging" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder w-full h-full" style="display: none;">Blogging<br>300x200px</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-black mb-1 tracking-wide">Blogging</h4>
+                            <p class="text-gray-600 text-sm">Blogs & Writeups</p>
+                        </div>
+                        </div>
+                    </a>
+                    </div>
+
+                </div>
+                </div>
+
+
+            <!-- About Section (Visually Balanced & Compact) -->
+            <section id="about" class="py-20 pb-12 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <!-- Flex for desktop, stack for mobile -->
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-12">
+
+                <!-- Left: Text -->
+                <div class="flex-1">
+                    <h2 class="text-3xl font-bold text-black mb-4">Pratiksha Kulkarni</h2>
+                    <p class="text-lg text-gray-600 mb-4 font-light">
+                    – Product Manager | User-Focused Thinker | Creative Strategist
+                    </p>
+                    <p class="text-base text-gray-600 mb-6 leading-relaxed font-light">
+                    I blend UX research, product strategy, and marketing execution to drive measurable results. My work has improved user engagement by 40%, retention by 38%, and led to successful launches across 6+ mobile apps. Skilled at working with designers, engineers, marketers, and leadership teams, I create strategies that don't just look good on paper - they perform in the market.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-sm font-semibold text-black mb-2">EXPERTISE</h3>
+                        <ul class="space-y-1 text-sm text-gray-700">
+                        <li>• Creative Strategy & Problem Solving</li>
+                        <li>• User Research & Product Thinking</li>
+                        <li>• UX Writing & Brand Storytelling</li>
+                        <li>• Cross-functional Collaboration</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-black mb-2">TOOLS</h3>
+                        <ul class="space-y-1 text-sm text-gray-700">
+                        <li>• Figma, Canva, Google Workspace</li>
+                        <li>• CorelDraw, Adobe Creative Suite</li>
+                        <li>• Meta Ads, Google Ads, GA</li>
+                        <li>• GitHub, Jira, VS Code</li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Right: Photo -->
+                <div class="flex-1 relative w-full max-w-sm mx-auto">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-4 shadow-xl">
+                    <div class="rounded-lg overflow-hidden">
+                        <img src="images/design/pratiksha_kulkarni_profile.webp" alt="Profile Photo"
+                            class="w-full h-auto object-cover"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder w-full h-64 flex items-center justify-center text-center text-sm text-gray-600" style="display: none;">
+                        Professional Photo<br>500x500px
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-4 -left-4 bg-white border border-black p-3 rounded-lg shadow-md floating-animation" style="animation-delay: 1s;">
+                    <div class="text-lg font-bold text-black">8+</div>
+                    <div class="text-xs text-gray-600">Years Exp</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </section>
+
+        
+        <!-- Certificates Section -->
+        <section id="certificates" class="py-16 bg-gray-50">
+          <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-black mb-10">Certificates</h2>
+        
+            <div class="overflow-hidden relative">
+              <div id="certificatesCarousel" class="flex space-x-6 overflow-x-auto scroll-smooth">
+                    
+                    <!-- Certificate 1 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_complete_product.webp" alt="Certificate 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Product Manager Complete Guide</h4>
+                    </div>
+                    </div>
+                    
+                    <!-- Certificate 2 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_transitioning_to_product_management.webp" alt="Certificate 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Transitioning to Product Management</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_technology_for_product_manager.webp" alt="Certificate 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Technology for Product Manager</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_product_management_insights.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Product Management Insights</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 5 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_udemy_certificate_MBA_in_PM.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">MBA in Product Manager</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 6 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_conducting_a_SWOT_analysis.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Conducting a SWOT Analysis</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 7 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_building_a_product_from_sratch.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Building a Product from Scratch</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 8 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedIn_certificate_ai_first_product leader.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">AI First Product Leader</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 9 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_udemy_certificate_SQL_Course.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">SQL for Managers & Marketing</h4>
+                    </div>
+                    </div>
+
+                    <!-- Certificate 10 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedin_certificate_Design_Business_Inclusion.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Design, Business & Inclusion</h4>
+                    </div>
+                    </div>
+
+                     <!-- Certificate 11 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedin_certificate_productivity.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Productivity for Product Managers</h4>
+                    </div>
+                    </div>
+
+                     <!-- Certificate 12 -->
+                    <div class="min-w-[300px] bg-white rounded-none shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/design/pratiksha_linkedin_Product_Innovation.webp" alt="Certificate 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800">Product Innovations</h4>
+                    </div>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+            </section>
+
+            <style>
+            /* Smooth horizontal scroll animation */
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            #certificates-carousel {
+                animation: scroll 30s linear infinite;
+            }
+            #certificates-carousel:hover {
+                animation-play-state: paused; /* Pause on hover */
+            }
+            </style>
+
+
+
+        <!-- About Section -->
+            <div class="bg-white rounded-none shadow-2xl p-12 mb-16 border border-gray-200 hover-lift">
+                <div class="grid md:grid-cols-1 gap-12">
+                    <div>
+                        <p class="text-gray-700 leading-relaxed text-2xl font-light">
+                            "Every project is a chance to solve real problems and serve users with meaningful solutions. I believe in collaboration, continuous learning, and thoughtful execution more than speeches filled with jargon... because what matters is creating real value that works."
+                        </p>
+                    </div>
+                </div>
+            </div>    
+    </main>
+
+    <!-- Contact Footer -->
+    <footer class="bg-black text-white py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">👤</div>
+                        <span class="text-white font-light">Pratiksha Kulkarni</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">📧</div>
+                        <a href="mailto:contact@pratikshakulkarni.in" class="text-white hover:text-gray-300 transition-colors font-light">contact@pratikshakulkarni.in</a>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-full text-white">💼</div>
+                        <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="text-white hover:text-gray-300 transition-colors font-light">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="text-gray-400 text-sm font-light">
+                    © 2025 Pratiksha Kulkarni
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+        // Page Navigation
+        function showPage(pageId) {
+            // This would typically navigate to different pages
+            // For demo purposes, we'll show an alert
+            if (pageId === 'home') {
+                return; // Already on home page
+            }
+            alert(`Navigating to ${pageId.charAt(0).toUpperCase() + pageId.slice(1)} page...`);
+        }
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Contact Form Handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Resume Download
+        function downloadResume() {
+            alert('Resume download would start here. This is a demo version.');
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.hover-lift, .floating-animation');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('backdrop-blur-lg');
+            } else {
+                nav.classList.remove('backdrop-blur-lg');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96879892228a396c',t:'MTc1NDA3NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+const carousel = document.getElementById("certificatesCarousel");
+
+// Auto scroll
+let scrollSpeed = 1;
+function autoScroll() {
+  if (carousel) {
+    carousel.scrollLeft += scrollSpeed;
+    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+      carousel.scrollLeft = 0; // loop back
+    }
+  }
+}
+let autoScrollInterval = setInterval(autoScroll, 30);
+
+// Stop when user interacts
+carousel.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
+carousel.addEventListener("mouseleave", () => autoScrollInterval = setInterval(autoScroll, 30));
+</script>                   
+</body>
 </html>
