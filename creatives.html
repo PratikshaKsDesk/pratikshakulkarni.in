@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE3TD08MC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VYE3TD08MC');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growth Partner Agency</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL FONT SIZE FIX ===== */
+html {
+  font-size: 17px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Increase paragraph size */
+.text-sm {
+  font-size: 1rem !important;
+}
+
+/* Fix too much spacing */
+.leading-loose {
+  line-height: 1.7 !important;
+}
+html,body{height:100%;margin:0;padding:0;scroll-behavior:smooth;background:#f8f8f8;color:#111}
+*{box-sizing:border-box}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f8f8f8}
+::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#aaa}
+.font-heading{font-family:'Playfair Display',Georgia,serif}
+.font-body{font-family:'Outfit',sans-serif}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.anim-up{animation:fadeUp .8s ease forwards;opacity:0}
+.anim-fade{animation:fadeIn .6s ease forwards;opacity:0}
+.delay-1{animation-delay:.15s}
+.delay-2{animation-delay:.3s}
+.delay-3{animation-delay:.45s}
+.delay-4{animation-delay:.6s}
+.delay-5{animation-delay:.75s}
+.nav-link{position:relative;cursor:pointer;color:#111;transition:color .3s}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#111;transition:width .3s ease}
+.nav-link:hover::after,.nav-link.active-link::after{width:100%}
+.btn-primary{border:1px solid #111;padding:13px 36px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .3s ease;cursor:pointer;background:#111;color:#fff;font-weight:500}
+.btn-primary:hover{background:#fff;color:#111;border-color:#111}
+.btn-outline{border:1px solid #111;padding:13px 36px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .3s ease;cursor:pointer;background:transparent;color:#111;font-weight:500}
+.btn-outline:hover{background:#111;color:#fff}
+.service-card{border:1px solid #e5e5e5;padding:40px;transition:all .4s ease;background:#fff;cursor:pointer}
+.service-card:hover{border-color:#ccc;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.work-card{overflow:hidden;cursor:pointer;position:relative;background:#f0f0f0;transition:background .3s}
+.work-card .overlay{position:absolute;inset:0;background:rgba(0,0,0,.1);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center}
+.work-card:hover .overlay{opacity:1}
+.creative-item{overflow:hidden;position:relative;cursor:pointer}
+.creative-item .placeholder{transition:transform .5s ease}
+.creative-item:hover .placeholder{transform:scale(1.02)}
+.form-input{background:transparent;border:none;border-bottom:1px solid #ccc;padding:12px 0;width:100%;color:#111;font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+.form-input:focus{border-color:#111;border-bottom:2px solid #111;padding-bottom:11px}
+.form-input::placeholder{color:#999}
+select.form-input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0 center;background-size:14px}
+select.form-input option{background:#fff;color:#111}
+textarea.form-input{border-bottom:none;border:1px solid #ccc;padding:12px;font-family:'Outfit',sans-serif;resize:vertical}
+textarea.form-input:focus{border:1px solid #111}
+.blog-card{border-bottom:1px solid #e5e5e5;padding:40px 0;transition:padding-left .3s ease;cursor:pointer}
+.blog-card:hover{padding-left:20px}
+.testimonial-card{border-left:2px solid #d0d0d0;padding-left:32px;transition:border-color .3s}
+.testimonial-card:hover{border-color:#111}
+.approach-step{counter-increment:step;position:relative;padding-left:60px;padding-top:8px}
+.approach-step::before{content:counter(step);position:absolute;left:0;top:0;font-family:'Playfair Display',serif;font-size:36px;color:#e5e5e5;font-weight:600;line-height:1}
+.loading-spinner{width:14px;height:14px;border:2px solid transparent;border-top:2px solid #111;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(100px);background:#111;color:#fff;padding:14px 28px;font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:.5px;z-index:9999;transition:transform .4s ease;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.marquee{overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-block;animation:marquee 25s linear infinite}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.creative-item {
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.creative-item img {
+  transition: transform 0.5s ease;
+}
+
+.creative-item:hover img {
+  transform: scale(1.05);
+}
+/* ===== ANIMATION SYSTEM ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variations */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.8s ease;
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Delay utilities */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Smooth hover (premium feel) */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-white font-body overflow-auto">
+  <div id="app" class="w-full h-full" style="min-height:100%;background:#f8f8f8">
+    
+  <!-- Navigation -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:rgba(248,248,248,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-[72px]">
+    
+    <!-- Brand -->
+    <a href="index.html" id="nav-brand" class="font-heading text-lg tracking-wider font-semibold" style="color:#111">
+      Pratiksha Kulkarni
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link font-body text-xs tracking-widest uppercase">Home</a>
+      <a href="services.html" class="nav-link font-body text-xs tracking-widest uppercase">Services</a>
+      <a href="growth.html" class="nav-link font-body text-xs tracking-widest uppercase">Growth</a>
+      <a href="it.html" class="nav-link font-body text-xs tracking-widest uppercase">IT Solutions</a>
+      <a href="products.html" class="nav-link font-body text-xs tracking-widest uppercase">Products</a>
+      <a href="creatives.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Creatives</a>
+      <a href="blog.html" class="nav-link font-body text-xs tracking-widest uppercase">Journal</a>
+      <a href="about.html" class="nav-link font-body text-xs tracking-widest uppercase">About</a>
+      <a href="contact.html" class="nav-link font-body text-xs tracking-widest uppercase">Contact</a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button id="mobile-toggle" class="lg:hidden" style="color:#111" onclick="toggleMobileNav()">
+      <i data-lucide="menu" style="width:24px;height:24px"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav" class="lg:hidden hidden w-full px-6 pb-6" style="background:#f8f8f8;border-top:1px solid #e5e5e5">
+    <div class="flex flex-col gap-3 pt-4">
+
+      <a href="index.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Home</a>
+      <a href="services.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Services</a>
+      <a href="growth.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Growth</a>
+      <a href="it.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">IT Solutions</a>
+      <a href="products.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Products</a>
+      <a href="creatives.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Creatives</a>
+      <a href="blog.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Journal</a>
+      <a href="about.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">About</a>
+      <a href="contact.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Contact</a>
+
+    </div>
+  </div>
+
+</nav>
+
+<!-- ==================== CREATIVES ==================== -->
+  <section class="px-6 lg:px-12 pt-32 pb-20">
+
+  <div class="max-w-7xl mx-auto">
+
+    <p class="text-xs tracking-[4px] uppercase mb-4 text-gray-400">
+      Creatives
+    </p>
+
+    <h1 class="font-heading text-5xl md:text-7xl font-bold mb-8 text-black">
+      Design That Builds Brands
+    </h1>
+
+    <p class="text-sm leading-loose mb-16 max-w-2xl text-gray-600">
+      Through design, content, and communication, we shape how people see, trust, and connect with a brand. Every visual and every message is created to attract the right audience and drive action.
+      <br><br>
+      From branding and social media creatives to campaigns and digital design, everything is built with clarity and purpose.
+    </p>
+
+    <p class="text-2xl tracking-[4px] uppercase mb-8 text-black-400">
+      Good design builds clarity. Great design builds brands.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[180px] grid-flow-dense">
+
+      <!-- BIG HERO -->
+      <div onclick="openCreative('ajavu')" class="col-span-2 row-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_ajavu.webp"
+          class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition">
+      </div>
+
+      <!-- TALL -->
+      <div onclick="openCreative('g1gold')" class="row-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_g1gold.webp"
+          class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition">
+      </div>
+
+      <!-- NORMAL -->
+      <div onclick="openCreative('mototrek')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_mototrek.webp"
+          class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('swaatienterprises')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_swaatienterprises.webp"
+          class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <!-- WIDE -->
+      <div onclick="openCreative('myma')" class="col-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_myma.webp"
+          class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <!-- SECOND PRIORITY -->
+      <div onclick="openCreative('firstock')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_firstock_broking.webp"
+          class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('swayampoorna')" class="row-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_swayampoorna_foundation.webp"
+          class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <!-- REST AUTO-FILL (NO GAPS NOW) -->
+      <div onclick="openCreative('ks')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_ks_engineers.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('kathakali')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_kathakali_restaurant.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('nakhara')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_nakhara.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('chandrapur')" class="col-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_chandrapur_urban.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('identity')" class="cursor-pointer group">
+        <img src="images/Identity_Design_1.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('pavanraje')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_pavanraje_multistate.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('ozo')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_ozo.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('rejoyce')" class="row-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_rejoyce.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('aarogya')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_aarogya_club.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('unique')" class="col-span-2 cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_unique_mpsc_upsc_academy.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('senses')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_senses_spalon.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('lemontree')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_lemontree_media.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <div onclick="openCreative('urth')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_urth_trooper.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+      <!-- LAST -->
+      <div onclick="openCreative('biba')" class="cursor-pointer group">
+        <img src="images/creative_page_work_thumbnail_biba.webp" class="w-full h-full object-cover rounded-2xl">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="px-6 lg:px-12 py-20 border-t border-gray-300 text-center">
+
+  <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6">
+    Let’s Build Your Brand Right
+  </h2>
+
+  <p class="text-sm text-gray-600 mb-10 max-w-xl mx-auto">
+    If you are working on your brand, design, or marketing, we can help you create visuals and communication that attract the right audience and actually work.
+  </p>
+
+  <a href="contact.html" class="btn-primary">
+    Start a Conversation
+  </a>
+
+</section>
+
+   <!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-gray-300 px-6 lg:px-12 py-16" style="background:#fff">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+
+      <!-- Brand -->
+      <div>
+        <p class="font-heading text-lg tracking-wider mb-4 font-semibold" style="color:#111">
+          Pratiksha Kulkarni
+        </p>
+        <p class="text-sm leading-relaxed" style="color:#999">
+          Strategic growth partner helping brands scale through design, marketing, and technology.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Navigation</p>
+        <div class="flex flex-col gap-2 text-sm" style="color:#999">
+          <a href="services.html" class="hover:text-black transition-colors">Services</a>
+          <a href="products.html" class="hover:text-black transition-colors">Products</a>
+          <a href="creatives.html" class="hover:text-black transition-colors">Creatives</a>
+          <a href="about.html" class="hover:text-black transition-colors">About</a>
+          <a href="contact.html" class="hover:text-black transition-colors">Contact</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Contact</p>
+
+        <div class="flex flex-col gap-3 text-sm" style="color:#999">
+
+          <!-- Phone / WhatsApp -->
+          <a href="tel:+918888986172" class="hover:text-black transition-colors">
+            +91 8888986172
+          </a>
+
+          <a href="https://wa.me/918888986172" target="_blank" class="hover:text-black transition-colors">
+            WhatsApp
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-black transition-colors">
+            contact@pratikshakulkarni.in
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="hover:text-black transition-colors">
+            LinkedIn
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row md:justify-between text-xs" style="color:#999">
+      <p>© 2026 Pratiksha Kulkarni. All rights reserved.</p>
+      <p>Built with intent.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+  </div>
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+  <script>
+const defaultConfig = {
+  brand_name: 'Pratiksha Kulkarni',
+  hero_headline: 'We Build Brands That Command Attention',
+  hero_subline: 'Digital marketing, brand strategy, website design & IT procurement — unified under one strategic vision to accelerate your growth.',
+  about_text: 'Born from the belief that great businesses deserve great execution. What started as a personal brand evolved into a strategic growth practice — serving companies who want more than templates and tactics.',
+  contact_cta: "Let's Talk"
+};
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  nav.classList.toggle('hidden');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const statusEl = document.getElementById('form-status');
+  const textEl = document.getElementById('submit-text');
+
+  btn.disabled = true;
+  textEl.innerHTML = '<span class="loading-spinner"></span>';
+
+  const data = {
+    name: document.getElementById('f-name').value,
+    email: document.getElementById('f-email').value,
+    company: document.getElementById('f-company').value || '',
+    service: document.getElementById('f-service').value || '',
+    message: document.getElementById('f-message').value || '',
+    submitted_at: new Date().toISOString()
+  };
+
+  const result = await window.dataSdk.create(data);
+  btn.disabled = false;
+  textEl.textContent = window.elementSdk?.config?.contact_cta || defaultConfig.contact_cta;
+
+  if (result.isOk) {
+    document.getElementById('contact-form').reset();
+    statusEl.style.display = 'block';
+    statusEl.style.color = '#111';
+    statusEl.textContent = 'Message sent. We\'ll be in touch.';
+    showToast('Message sent successfully');
+    setTimeout(() => statusEl.style.display = 'none', 4000);
+  } else {
+    statusEl.style.display = 'block';
+    statusEl.style.color = '#999';
+    statusEl.textContent = 'Something went wrong. Please try again.';
+    setTimeout(() => statusEl.style.display = 'none', 4000);
+  }
+}
+
+function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+  const brandEl = document.getElementById('nav-brand');
+  if (brandEl) brandEl.textContent = c.brand_name;
+  const footerBrand = document.getElementById('footer-brand');
+  if (footerBrand) footerBrand.textContent = c.brand_name;
+
+  const heroH = document.getElementById('hero-headline');
+  if (heroH) heroH.innerHTML = c.hero_headline.replace(/\n/g, '<br>');
+  const heroS = document.getElementById('hero-subline');
+  if (heroS) heroS.textContent = c.hero_subline;
+
+  const aboutEl = document.getElementById('about-text');
+  if (aboutEl) aboutEl.textContent = c.about_text;
+
+  const submitText = document.getElementById('submit-text');
+  if (submitText && !document.getElementById('submit-btn').disabled) {
+    submitText.textContent = c.contact_cta;
+  }
+}
+  mapToEditPanelValues: (config) => {
+    const c = { ...defaultConfig, ...config };
+    return new Map([
+      ['brand_name', c.brand_name],
+      ['hero_headline', c.hero_headline],
+      ['hero_subline', c.hero_subline],
+      ['about_text', c.about_text],
+      ['contact_cta', c.contact_cta]
+    ]);
+  }
+
+lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f2c1720b3a97d39',t:'MTc3NzI3NDY5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+/* ===== SCROLL REVEAL ===== */
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+<script>
+function openCreative(id) {
+
+  const data = {
+
+    ajavu: {
+    title: "Ajavu Tech",
+    desc: "Designed brand creatives, website visuals, and social media content focused on building a clear and professional presence for IT procurement and tech solutions.",
+    images: [
+      "/images/Creative_Ajavu_1.webp",
+      "/images/Creative_Ajavu_2.webp",
+      "/images/Creative_Ajavu_3.webp",
+      "/images/Creative_Ajavu_4.webp",
+      "/images/Creative_Ajavu_5.webp",
+      "/images/Creative_Ajavu_6.webp",
+      "/images/Creative_Ajavu_7.webp",
+      "/images/Creative_Ajavu_8.webp",
+      "/images/Creative_Ajavu_9.webp",
+      "/images/Creative_Ajavu_10.webp",
+      "/images/Creative_Ajavu_11.webp",
+      "/images/Creative_Ajavu_12.webp",
+      "/images/Creative_Ajavu_13.webp",
+      "/images/Creative_Ajavu_14.webp",
+      "/images/Creative_Ajavu_15.webp",
+      "/images/Creative_Ajavu_16.webp"
+    ]
+  },
+
+  g1gold: {
+    title: "G1 Gold",
+    desc: "Created branding and social media creatives focused on building trust, clarity, and a clean visual identity for gold investment and buying.",
+    images: [
+      "/images/Creative_G1Gold_1.webp",
+      "/images/Creative_G1Gold_2.webp",
+      "/images/Creative_G1Gold_3.webp",
+      "/images/Creative_G1Gold_4.webp",
+      "/images/Creative_G1Gold_5.webp",
+      "/images/Creative_G1Gold_6.webp",
+      "/images/Creative_G1Gold_7.webp",
+      "/images/Creative_G1Gold_8.webp",
+      "/images/Creative_G1Gold_9.webp",
+      "/images/Creative_G1Gold_10.webp"
+    ]
+  },
+
+  mototrek: {
+    title: "Mototrek",
+    desc: "Designed creatives across adventure and store verticals, maintaining a consistent brand tone while supporting campaigns, events, and digital presence.",
+    images: [
+      "/images/Creative_Mototrek_1.webp",
+      "/images/Creative_Mototrek_2.webp",
+      "/images/Creative_Mototrek_3.webp",
+      "/images/Creative_Mototrek_4.webp",
+      "/images/Creative_Mototrek_5.webp",
+      "/images/Creative_Mototrek_6.webp",
+      "/images/Creative_Mototrek_7.webp",
+      "/images/Creative_Mototrek_8.webp",
+      "/images/Creative_Mototrek_9.webp"
+    ]
+  },
+
+  swaatienterprises: {
+    title: "Swaati Enterprises",
+    desc: "Worked on website visuals and social media creatives to improve clarity, consistency, and overall digital presentation.",
+    images: [
+      "/images/Creative_Swaati_1.webp",
+      "/images/Creative_Swaati_2.webp",
+      "/images/Creative_Swaati_3.webp",
+      "/images/Creative_Swaati_4.webp",
+      "/images/Creative_Swaati_5.webp",
+      "/images/Creative_Swaati_6.webp",
+      "/images/Creative_Swaati_7.webp",
+      "/images/Creative_Swaati_8.webp",
+      "/images/Creative_Swaati_9.webp"
+    ]
+  },
+
+
+firstock: {
+  title: "Firstock Broking Pvt Ltd",
+  desc: "Designed stock market creatives that simplify financial concepts while keeping communication clear and engaging.",
+  images: [
+    "/images/Creative_Firstock_1.webp",
+    "/images/Creative_Firstock_2.webp",
+    "/images/Creative_Firstock_3.webp",
+    "/images/Creative_Firstock_4.webp",
+    "/images/Creative_Firstock_5.webp",
+    "/images/Creative_Firstock_6.webp",
+    "/images/Creative_Firstock_7.webp",
+    "/images/Creative_Firstock_8.webp",
+    "/images/Creative_Firstock_9.webp",
+    "/images/Creative_Firstock_10.webp",
+    "/images/Creative_Firstock_11.webp",
+    "/images/Creative_Firstock_12.webp",
+    "/images/Creative_Firstock_13.webp"
+  ]
+},
+
+ks: {
+  title: "KS Engineers",
+  desc: "Created brand and festive creatives to maintain a professional identity and consistent communication across platforms.",
+  images: [
+    "/images/KS_Engineers_SM_Posts_1.webp",
+    "/images/KS_Engineers_SM_Posts_2.webp",
+    "/images/KS_Engineers_SM_Posts_3.webp",
+    "/images/KS_Engineers_SM_Posts_4.webp",
+    "/images/KS_Engineers_SM_Posts_5.webp",
+    "/images/KS_Engineers_SM_Posts_6.webp",
+    "/images/KS_Engineers_SM_Posts_7.webp",
+    "/images/KS_Engineers_SM_Posts_8.webp",
+    "/images/KS_Engineers_SM_Posts_9.webp",
+    "/images/KS_Engineers_SM_Posts_10.webp"
+  ]
+},
+
+kathakali: {
+  title: "Kathakali Restaurant",
+  desc: "Designed culturally inspired creatives and branding elements to reflect identity and improve brand recall.",
+  images: [
+    "/images/Kathakali_1.webp",
+    "/images/Kathakali_2.webp",
+    "/images/Kathakali_3.webp",
+    "/images/Kathakali_4.webp"
+  ]
+},
+
+myma: {
+  title: "Myma Meals Pvt Ltd",
+  desc: "Worked on marketing creatives focused on storytelling, trust building, and user engagement across campaigns.",
+  images: [
+    "/images/Myma_Marketing_Post_1.webp",
+    "/images/Myma_Marketing_Post_2.webp",
+    "/images/Myma_Marketing_Post_3.webp",
+    "/images/Myma_Marketing_Post_4.webp",
+    "/images/Myma_Marketing_Post_5.webp",
+    "/images/Myma_Marketing_Post_6.webp",
+    "/images/Myma_Marketing_Post_7.webp",
+    "/images/Myma_Marketing_Post_8.webp",
+    "/images/Myma_Marketing_Post_9.webp",
+    "/images/Myma_Marketing_Post_10.webp",
+    "/images/Myma_Marketing_Post_11.webp",
+    "/images/Myma_Marketing_Post_12.webp",
+    "/images/Myma_Marketing_Post_13.webp",
+    "/images/Myma_Marketing_Post_14.webp",
+    "/images/Myma_Marketing_Post_15.webp",
+    "/images/Myma_Marketing_Post_16.webp",
+    "/images/Myma_Marketing_Post_17.webp",
+    "/images/Myma_Marketing_Post_18.webp",
+    "/images/Myma_Marketing_Post_19.webp",
+    "/images/Myma_Marketing_Post_20.webp",
+    "/images/Myma_Marketing_Post_21.webp",
+    "/images/Myma_Marketing_Post_22.webp",
+    "/images/Myma_Marketing_Post_23.webp",
+    "/images/Myma_Marketing_Post_24.webp",
+    "/images/Myma_Marketing_Post_25.webp",
+    "/images/Myma_Marketing_Post_26.webp",
+    "/images/Myma_Marketing_Post_27.webp",
+    "/images/Myma_Marketing_Post_28.webp",
+    "/images/Myma_Marketing_Post_29.webp",
+    "/images/Myma_Marketing_Post_30.webp"
+  ]
+},
+
+nakhara: {
+  title: "Nakhara Makeup Artist",
+  desc: "Created branding and visual identity reflecting elegance and premium positioning for the brand.",
+  images: [
+    "/images/Nakhara_1.webp",
+    "/images/Nakhara_2.webp",
+    "/images/Nakhara_3.webp",
+    "/images/Nakhara_4.webp",
+    "/images/Nakhara_5.webp",
+    "/images/Nakhara_6.webp",
+    "/images/Nakhara_7.webp",
+    "/images/Nakhara_8.webp"
+  ]
+},
+
+swayampoorna: {
+  title: "Swayampoorna Foundation",
+  desc: "Designed purpose-driven creatives for campaigns focused on women empowerment, awareness, and community growth.",
+  images: [
+    "/images/swayampoorna_foundation_1.webp",
+    "/images/swayampoorna_foundation_2.webp",
+    "/images/swayampoorna_foundation_3.webp",
+    "/images/swayampoorna_foundation_4.webp",
+    "/images/swayampoorna_foundation_5.webp",
+    "/images/swayampoorna_foundation_6.webp",
+    "/images/swayampoorna_foundation_7.webp",
+    "/images/swayampoorna_foundation_8.webp",
+    "/images/swayampoorna_foundation_9.webp",
+    "/images/swayampoorna_foundation_10.webp",
+    "/images/swayampoorna_foundation_11.webp",
+    "/images/swayampoorna_foundation_12.webp",
+    "/images/swayampoorna_foundation_13.webp",
+    "/images/swayampoorna_foundation_14.webp",
+    "/images/swayampoorna_foundation_15.webp",
+    "/images/swayampoorna_foundation_16.webp",
+    "/images/swayampoorna_foundation_17.webp",
+    "/images/swayampoorna_foundation_18.webp"
+  ]
+},
+
+    chandrapur: {
+  title: "Chandrapur Urban",
+  desc: "Designed banking creatives focused on clear communication and making information easier to understand.",
+  images: [
+    "/images/Chandrapur_Urban_1.webp",
+    "/images/Chandrapur_Urban_2.webp",
+    "/images/Chandrapur_Urban_3.webp",
+    "/images/Chandrapur_Urban_4.webp",
+    "/images/Chandrapur_Urban_5.webp",
+    "/images/Chandrapur_Urban_6.webp",
+    "/images/Chandrapur_Urban_7.webp",
+    "/images/Chandrapur_Urban_8.webp",
+    "/images/Chandrapur_Urban_9.webp",
+    "/images/Chandrapur_Urban_10.webp",
+    "/images/Chandrapur_Urban_11.webp",
+    "/images/Chandrapur_Urban_12.webp",
+    "/images/Chandrapur_Urban_13.webp",
+    "/images/Chandrapur_Urban_14.webp",
+    "/images/Chandrapur_Urban_15.webp",
+    "/images/Chandrapur_Urban_16.webp"
+  ]
+},
+
+identity: {
+  title: "Identity Design",
+  desc: "Created logos and brand identities based on business type, audience, and overall positioning.",
+  images: [
+    "/images/Identity_Design_1.webp",
+    "/images/Identity_Design_2.webp",
+    "/images/Identity_Design_3.webp",
+    "/images/Identity_Design_4.webp",
+    "/images/Identity_Design_5.webp",
+    "/images/Identity_Design_6.webp",
+    "/images/Identity_Design_7.webp",
+    "/images/Identity_Design_8.webp",
+    "/images/Identity_Design_9.webp",
+    "/images/Identity_Design_10.webp",
+    "/images/Identity_Design_11.webp"
+  ]
+},
+
+pavanraje: {
+  title: "Pavanraje Multistate",
+  desc: "Designed social media creatives for a banking brand with focus on clarity and easy communication.",
+  images: [
+    "/images/Pavanraje_Multistate_Social_Media_Post_1.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_2.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_3.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_4.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_5.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_6.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_7.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_8.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_9.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_10.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_11.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_12.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_13.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_14.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_15.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_16.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_17.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_18.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_19.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_20.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_21.webp",
+    "/images/Pavanraje_Multistate_Social_Media_Post_22.webp"
+  ]
+},
+
+ozo: {
+  title: "Ozo Aesthetic Clinique",
+  desc: "Worked on branding and stationery design with a clean and minimal visual approach.",
+  images: [
+    "/images/Ozo_Aesthetic_Clinique_1.webp",
+    "/images/Ozo_Aesthetic_Clinique_2.webp",
+    "/images/Ozo_Aesthetic_Clinique_3.webp",
+    "/images/Ozo_Aesthetic_Clinique_4.webp",
+    "/images/Ozo_Aesthetic_Clinique_5.webp"
+    
+  ]
+},
+
+biba: {
+  title: "Biba",
+  desc: "Created fashion creatives focused on visual storytelling and presentation.",
+  images: [
+    "/images/Biba_College_Assignment_1.webp",
+    "/images/Biba_College_Assignment_2.webp",
+    "/images/Biba_College_Assignment_3.webp"
+  ]
+},
+
+    rejoyce: {
+  title: "Rejoyce",
+  desc: "Designed packaging with focus on clean visuals and better product presentation.",
+  images: [
+    "/images/Rejoyce_Package_Designing_1.webp",
+    "/images/Rejoyce_Package_Designing_2.webp",
+    "/images/Rejoyce_Package_Designing_3.webp"
+  ]
+},
+
+aarogya: {
+  title: "Aarogya Club",
+  desc: "Created wellness-focused creatives to support communication and community engagement.",
+  images: [
+    "/images/Aarogya_Club_Posts_1.webp",
+    "/images/Aarogya_Club_Posts_2.webp",
+    "/images/Aarogya_Club_Posts_3.webp",
+    "/images/Aarogya_Club_Posts_4.webp",
+    "/images/Aarogya_Club_Posts_5.webp",
+    "/images/Aarogya_Club_Posts_6.webp",
+    "/images/Aarogya_Club_Posts_7.webp",
+    "/images/Aarogya_Club_Posts_8.webp"
+  ]
+},
+
+unique: {
+  title: "Unique Academy",
+  desc: "Designed print and newspaper ads with clear and structured communication.",
+  images: [
+    "/images/Unique_Academy_1.webp",
+    "/images/Unique_Academy_2.webp",
+    "/images/Unique_Academy_3.webp",
+    "/images/Unique_Academy_4.webp",
+    "/images/Unique_Academy_5.webp",
+    "/images/Unique_Academy_6.webp"
+  ]
+},
+
+senses: {
+  title: "Senses Spalon",
+  desc: "Created clean and minimal creatives aligned with a premium brand feel.",
+  images: [
+    "/images/Senses_Spalon_1.webp",
+    "/images/Senses_Spalon_2.webp",
+    "/images/Senses_Spalon_3.webp",
+    "/images/Senses_Spalon_4.webp"
+  ]
+},
+
+lemontree: {
+  title: "LemonTree Media Works",
+  desc: "Worked on social media creatives across different brands and campaigns.",
+  images: [
+    "/images/LemonTree_Media_ABCD_1.webp",
+    "/images/LemonTree_Media_ABCD_2.webp",
+    "/images/LemonTree_Media_ABCD_3.webp",
+    "/images/LemonTree_Media_ABCD_4.webp",
+    "/images/LemonTree_Media_ABCD_5.webp",
+    "/images/LemonTree_Media_ABCD_6.webp"
+  ]
+},
+
+urth: {
+  title: "Urth Trooper",
+  desc: "Designed brand visuals focused on a clean and eco-conscious look.",
+  images: [
+    "/images/Urth_Trooper_1.webp",
+    "/images/Urth_Trooper_2.webp",
+    "/images/Urth_Trooper_3.webp",
+    "/images/Urth_Trooper_4.webp",
+    "/images/Urth_Trooper_5.webp"
+  ]
+},
+
+adwebstar: {
+  title: "AD Webstar",
+  desc: "Created social media creatives combining ideas, copy, and visual design.",
+  images: [
+    "/images/AdWebstar_1.webp",
+    "/images/AdWebstar_2.webp",
+    "/images/AdWebstar_3.webp",
+    "/images/AdWebstar_4.webp",
+    "/images/AdWebstar_5.webp"
+  ]
+ }
+
+  };
+
+  const item = data[id];
+
+  document.getElementById("creativeTitle").innerText = item.title;
+  document.getElementById("creativeDesc").innerText = item.desc;
+
+  document.getElementById("creativeImages").innerHTML =
+    item.images.map(img => `
+      <img src="${img}" class="w-full rounded-lg hover:scale-105 transition">
+    `).join('');
+
+  document.getElementById("creativeModal").classList.remove("hidden");
+  document.getElementById("creativeModal").classList.add("flex");
+
+  document.body.style.overflow = "hidden";
+}
+
+function closeCreative() {
+  document.getElementById("creativeModal").classList.add("hidden");
+  document.body.style.overflow = "auto";
+}
+</script>
+
+<div id="creativeModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-6">
+
+  <div class="bg-white max-w-6xl w-full max-h-[90vh] overflow-y-auto rounded-xl p-8">
+
+    <div class="flex justify-between items-center mb-6">
+      <h2 id="creativeTitle" class="text-2xl font-bold"></h2>
+      <button onclick="closeCreative()" class="text-2xl">&times;</button>
+    </div>
+
+    <p id="creativeDesc" class="text-gray-600 mb-6"></p>
+
+    <div id="creativeImages" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

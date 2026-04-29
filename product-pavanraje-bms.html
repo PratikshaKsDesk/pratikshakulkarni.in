@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE3TD08MC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VYE3TD08MC');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Pavanraje BMS – SaaS for Multistate Business Operations</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <!-- Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Global Styles (MATCH YOUR MAIN SITE) -->
+  <style>
+
+    /* ===== GLOBAL TYPOGRAPHY FIX ===== */
+html {
+  font-size: 17px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.text-sm {
+  font-size: 1rem !important;
+}
+
+.leading-loose {
+  line-height: 1.7 !important;
+}
+
+/* ===== ANIMATION SYSTEM ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth hover */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      scroll-behavior:smooth;
+      background:#f8f8f8;
+      color:#111;
+      font-family:'Outfit',sans-serif;
+    }
+
+    *{box-sizing:border-box}
+
+    /* Typography */
+    .font-heading{font-family:'Playfair Display',serif}
+    .font-body{font-family:'Outfit',sans-serif}
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:#f8f8f8}
+    ::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
+
+    /* Navigation */
+    .nav-link{
+      position:relative;
+      color:#111;
+      transition:color .3s;
+    }
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      bottom:-2px;
+      left:0;
+      width:0;
+      height:1px;
+      background:#111;
+      transition:width .3s ease;
+    }
+    .nav-link:hover::after,
+    .active-link::after{
+      width:100%;
+    }
+
+    /* Buttons */
+    .btn-outline{
+      border:1px solid #111;
+      padding:12px 32px;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      transition:.3s;
+      background:transparent;
+      color:#111;
+    }
+    .btn-outline:hover{
+      background:#111;
+      color:#fff;
+    }
+
+    /* Layout */
+    .section{
+      padding-top:120px;
+      padding-bottom:80px;
+    }
+
+    /* Divider */
+    .divider{
+      width:60px;
+      height:1px;
+      background:#d0d0d0;
+    }
+
+    /* Labels */
+    .label{
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#999;
+    }
+  </style>
+
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Navigation -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:rgba(248,248,248,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-[72px]">
+    
+    <!-- Brand -->
+    <a href="index.html" id="nav-brand" class="font-heading text-lg tracking-wider font-semibold" style="color:#111">
+      Pratiksha Kulkarni
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link font-body text-xs tracking-widest uppercase">Home</a>
+      <a href="services.html" class="nav-link font-body text-xs tracking-widest uppercase">Services</a>
+      <a href="growth.html" class="nav-link font-body text-xs tracking-widest uppercase">Growth</a>
+      <a href="it.html" class="nav-link font-body text-xs tracking-widest uppercase">IT Solutions</a>
+      <a href="products.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Products</a>
+      <a href="creatives.html" class="nav-link font-body text-xs tracking-widest uppercase">Creatives</a>
+      <a href="blog.html" class="nav-link font-body text-xs tracking-widest uppercase">Journal</a>
+      <a href="about.html" class="nav-link font-body text-xs tracking-widest uppercase">About</a>
+      <a href="contact.html" class="nav-link font-body text-xs tracking-widest uppercase">Contact</a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button id="mobile-toggle" class="lg:hidden" style="color:#111" onclick="toggleMobileNav()">
+      <i data-lucide="menu" style="width:24px;height:24px"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav" class="lg:hidden hidden w-full px-6 pb-6" style="background:#f8f8f8;border-top:1px solid #e5e5e5">
+    <div class="flex flex-col gap-3 pt-4">
+
+      <a href="index.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Home</a>
+      <a href="services.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Services</a>
+      <a href="growth.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Growth</a>
+      <a href="it.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">IT Solutions</a>
+      <a href="products.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Products</a>
+      <a href="creatives.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Creatives</a>
+      <a href="blog.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Journal</a>
+      <a href="about.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">About</a>
+      <a href="contact.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Contact</a>
+
+    </div>
+  </div>
+
+</nav>
+ <!-- Main Content -->
+<section class="section px-6 lg:px-12 pt-32 pb-20">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- HERO -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+
+      <div>
+        <p class="label mb-4">Project</p>
+
+        <h1 class="font-heading text-5xl md:text-7xl font-bold mb-8">
+          Pavanraje BMS
+        </h1>
+
+        <div class="divider"></div>
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <p class="text-sm leading-loose text-gray-600 mb-8">
+          This project focused on simplifying daily operations for institutions that were still working manually.
+        </p>
+
+        <p class="text-sm leading-loose text-gray-400">
+          The challenge was not building features, but making the system usable for people with low technical familiarity.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- STORY -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- LEFT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">Understanding</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Processes like attendance, expenses, and tracking were done manually.
+            <br><br>
+            Existing tools were available, but users found them too complex to use regularly.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Approach</p>
+          <p class="text-sm leading-loose text-gray-600">
+            The focus was to simplify workflows instead of adding more features.
+            <br><br>
+            Everything needed to be easy to understand and usable on mobile.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Execution</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Key flows like attendance, task tracking, and expenses were redesigned with minimal steps.
+            <br><br>
+            The system was built to match how users already work, not force them to change behavior.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">My Role</p>
+          <p class="text-sm leading-loose text-gray-600">
+            I worked on understanding user challenges, designing the experience, and ensuring smooth execution.
+            <br><br>
+            This included research, UX, coordination with teams, and testing.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Outcome</p>
+
+          <div class="space-y-4 text-sm text-gray-600">
+            <p>• Reduced manual effort in daily operations</p>
+            <p>• Improved adoption due to simpler flows</p>
+            <p>• Faster execution of daily tasks</p>
+            <p>• Scalable system for multiple institutions</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- VISUALS -->
+    <div class="mt-32">
+
+      <p class="label mb-6">Product Experience</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <img src="images/pms_saas_mobile_app_1.webp" alt="Pavanraje app screen 1" class="hover-lift">
+        <img src="images/pms_saas_mobile_app_2.webp" alt="Pavanraje app screen 2" class="hover-lift">
+        <img src="images/pms_saas_mobile_app_3.webp" alt="Pavanraje app workflow" class="hover-lift">
+        <img src="images/pms_saas_mobile_app_4.webp" alt="Pavanraje mobile interface" class="hover-lift">
+        <img src="images/pms_saas_mobile_app_5.webp" alt="Pavanraje system UI" class="hover-lift">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- Feature Popup -->
+  <div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl">
+      <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+      <div id="featurePopupContent"></div>
+    </div>
+  </div>
+
+  <script>
+  const featureContent = {
+    feature1: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Onboarding</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Onboarding was slow and unstructured.
+          <br><br>
+          HR teams had to manage everything manually, and employees often did not get access on time.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The goal was to make onboarding simple and fast.
+          <br><br>
+          Employees should be able to complete their setup easily, and HR should not have to manage everything manually.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Structured onboarding flow for company, branch, and employees</li>
+          <li>Self profile completion for employees</li>
+          <li>Simple verification process for HR</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Designed clear step by step flow</li>
+          <li>Added approval and feedback system</li>
+          <li>Used simple language for easy understanding</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Onboarding time reduced significantly</li>
+          <li>Employees got faster access to the system</li>
+          <li>Reduced manual work for HR teams</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Guided flows work better than open forms.
+          <br><br>
+          Clear steps help users complete tasks faster without confusion.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature2: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Attendance</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Attendance was managed manually, which caused errors and confusion.
+          <br><br>
+          It was also difficult to track accurately and affected payroll.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The goal was to make attendance simple, reliable, and easy to use.
+          <br><br>
+          It needed to work smoothly even for users who are not comfortable with technology.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Photo-based login and logout</li>
+          <li>Time and location tracking for accuracy</li>
+          <li>Simple approval system for HR</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>One-step photo check-in and check-out</li>
+          <li>Clear flow for approval and corrections</li>
+          <li>Connected attendance with payroll data</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Reduced errors and misuse</li>
+          <li>Faster payroll processing</li>
+          <li>Better transparency for employees and HR</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Simple actions like one-tap check-in increase usage.
+          <br><br>
+          The easier the flow, the more consistently people use it.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature3: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Leave Management</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Leave requests were not structured.
+          <br><br>
+          This caused delays, confusion, and disputes between employees and management.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The goal was to make the process clear and easy to track.
+          <br><br>
+          Both employees and approvers should know what is happening at each step.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Structured leave request flow</li>
+          <li>Clear approval process with defined steps</li>
+          <li>Instant updates for employees</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Multiple approval levels based on hierarchy</li>
+          <li>Option to forward requests when needed</li>
+          <li>Flexibility to edit or cancel requests</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Faster approval process</li>
+          <li>Reduced confusion and disputes</li>
+          <li>Better clarity for both employees and management</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Giving users control improves adoption.
+          <br><br>
+          When people can edit or manage their own requests, the system feels easier to use.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature4: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Task Assignment</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Tasks were shared informally, mostly on WhatsApp.
+          <br><br>
+          This made it difficult to track work, follow up, and ensure completion.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The goal was to bring all tasks into one clear system.
+          <br><br>
+          Everyone should know what is assigned, what is pending, and what is completed.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Central system to assign and track tasks</li>
+          <li>Clear actions like accept, reject, or reassign</li>
+          <li>Submission with proof for better clarity</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Defined simple task flow from assignment to completion</li>
+          <li>Added status updates and file uploads</li>
+          <li>Ensured clear visibility for both managers and employees</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Better task tracking and follow-ups</li>
+          <li>Reduced miscommunication</li>
+          <li>Improved accountability across teams</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          When tasks are visible and structured, people take more ownership.
+          <br><br>
+          Adding proof and status updates improves trust in the system.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+
+  <!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-gray-300 px-6 lg:px-12 py-16" style="background:#fff">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+
+      <!-- Brand -->
+      <div>
+        <p class="font-heading text-lg tracking-wider mb-4 font-semibold" style="color:#111">
+          Pratiksha Kulkarni
+        </p>
+        <p class="text-sm leading-relaxed" style="color:#999">
+          Strategic growth partner helping brands scale through design, marketing, and technology.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Navigation</p>
+        <div class="flex flex-col gap-2 text-sm" style="color:#999">
+          <a href="services.html" class="hover:text-black transition-colors">Services</a>
+          <a href="products.html" class="hover:text-black transition-colors">Products</a>
+          <a href="creatives.html" class="hover:text-black transition-colors">Creatives</a>
+          <a href="about.html" class="hover:text-black transition-colors">About</a>
+          <a href="contact.html" class="hover:text-black transition-colors">Contact</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Contact</p>
+
+        <div class="flex flex-col gap-3 text-sm" style="color:#999">
+
+          <!-- Phone / WhatsApp -->
+          <a href="tel:+918888986172" class="hover:text-black transition-colors">
+            +91 8888986172
+          </a>
+
+          <a href="https://wa.me/918888986172" target="_blank" class="hover:text-black transition-colors">
+            WhatsApp
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-black transition-colors">
+            contact@pratikshakulkarni.in
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="hover:text-black transition-colors">
+            LinkedIn
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row md:justify-between text-xs" style="color:#999">
+      <p>© 2026 Pratiksha Kulkarni. All rights reserved.</p>
+      <p>Built with intent.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
+
+
+
+

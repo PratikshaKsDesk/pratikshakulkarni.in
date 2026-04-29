@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE3TD08MC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VYE3TD08MC');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Swayampoorna – Empowering Women Through Community & Opportunity</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <!-- Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Global Styles (MATCH YOUR MAIN SITE) -->
+  <style>
+    /* ===== GLOBAL TYPOGRAPHY FIX ===== */
+html {
+  font-size: 17px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.text-sm {
+  font-size: 1rem !important;
+}
+
+.leading-loose {
+  line-height: 1.7 !important;
+}
+
+/* ===== ANIMATION SYSTEM ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth hover */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      scroll-behavior:smooth;
+      background:#f8f8f8;
+      color:#111;
+      font-family:'Outfit',sans-serif;
+    }
+
+    *{box-sizing:border-box}
+
+    /* Typography */
+    .font-heading{font-family:'Playfair Display',serif}
+    .font-body{font-family:'Outfit',sans-serif}
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:#f8f8f8}
+    ::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
+
+    /* Navigation */
+    .nav-link{
+      position:relative;
+      color:#111;
+      transition:color .3s;
+    }
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      bottom:-2px;
+      left:0;
+      width:0;
+      height:1px;
+      background:#111;
+      transition:width .3s ease;
+    }
+    .nav-link:hover::after,
+    .active-link::after{
+      width:100%;
+    }
+
+    /* Buttons */
+    .btn-outline{
+      border:1px solid #111;
+      padding:12px 32px;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      transition:.3s;
+      background:transparent;
+      color:#111;
+    }
+    .btn-outline:hover{
+      background:#111;
+      color:#fff;
+    }
+
+    /* Layout */
+    .section{
+      padding-top:120px;
+      padding-bottom:80px;
+    }
+
+    /* Divider */
+    .divider{
+      width:60px;
+      height:1px;
+      background:#d0d0d0;
+    }
+
+    /* Labels */
+    .label{
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#999;
+    }
+  </style>
+
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Navigation -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:rgba(248,248,248,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-[72px]">
+    
+    <!-- Brand -->
+    <a href="index.html" id="nav-brand" class="font-heading text-lg tracking-wider font-semibold" style="color:#111">
+      Pratiksha Kulkarni
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link font-body text-xs tracking-widest uppercase">Home</a>
+      <a href="services.html" class="nav-link font-body text-xs tracking-widest uppercase">Services</a>
+      <a href="growth.html" class="nav-link font-body text-xs tracking-widest uppercase">Growth</a>
+      <a href="it.html" class="nav-link font-body text-xs tracking-widest uppercase">IT Solutions</a>
+      <a href="products.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Products</a>
+      <a href="creatives.html" class="nav-link font-body text-xs tracking-widest uppercase">Creatives</a>
+      <a href="blog.html" class="nav-link font-body text-xs tracking-widest uppercase">Journal</a>
+      <a href="about.html" class="nav-link font-body text-xs tracking-widest uppercase">About</a>
+      <a href="contact.html" class="nav-link font-body text-xs tracking-widest uppercase">Contact</a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button id="mobile-toggle" class="lg:hidden" style="color:#111" onclick="toggleMobileNav()">
+      <i data-lucide="menu" style="width:24px;height:24px"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav" class="lg:hidden hidden w-full px-6 pb-6" style="background:#f8f8f8;border-top:1px solid #e5e5e5">
+    <div class="flex flex-col gap-3 pt-4">
+
+      <a href="index.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Home</a>
+      <a href="services.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Services</a>
+      <a href="growth.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Growth</a>
+      <a href="it.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">IT Solutions</a>
+      <a href="products.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Products</a>
+      <a href="creatives.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Creatives</a>
+      <a href="blog.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Journal</a>
+      <a href="about.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">About</a>
+      <a href="contact.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Contact</a>
+
+    </div>
+  </div>
+
+</nav>
+
+  <!-- Main Content -->
+<section class="section px-6 lg:px-12 pt-32 pb-20">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- HERO -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+
+      <div>
+        <p class="label mb-4">Foundation</p>
+
+        <h1 class="font-heading text-5xl md:text-7xl font-bold mb-8">
+          Swayampoorna
+        </h1>
+
+        <div class="divider"></div>
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <p class="text-sm leading-loose text-gray-600 mb-8">
+          This initiative focuses on helping women move from learning to earning.
+        </p>
+
+        <p class="text-sm leading-loose text-gray-400">
+          The goal was not just motivation, but creating clear paths where they can take action.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- STORY -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- LEFT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">Understanding</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Many women have skills but lack confidence and direction.
+            <br><br>
+            The main gap was not ability, but access, awareness, and support.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Approach</p>
+          <p class="text-sm leading-loose text-gray-600">
+            The focus was to build a system that connects learning with real opportunities.
+            <br><br>
+            Instead of one platform, the idea was to create multiple entry points based on interest and capability.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Execution</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Built communities on WhatsApp and Facebook to engage and guide users.
+            <br><br>
+            Created campaigns and pathways that connected women to platforms like Myma, Maan India, and others.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">My Role</p>
+          <p class="text-sm leading-loose text-gray-600">
+            I was involved in building this from the ground up.
+            <br><br>
+            This included research, planning, campaigns, community building, and connecting users to real opportunities.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Outcome</p>
+
+          <div class="space-y-4 text-sm text-gray-600">
+            <p>• 10,000+ women reached</p>
+            <p>• Active participation across communities</p>
+            <p>• Multiple pathways created for earning</p>
+            <p>• Expansion into offline activities and networks</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ECOSYSTEM BLOCK -->
+    <div class="mt-32">
+
+      <p class="label mb-6">Connected Platforms</p>
+
+      <p class="text-sm leading-loose text-gray-600 max-w-3xl mb-8">
+        The idea was to connect women to different platforms based on their interests, so they can move from learning to actual earning.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-gray-600">
+
+        <div class="border border-gray-300 p-6">Myma</div>
+        <div class="border border-gray-300 p-6">Maan India</div>
+        <div class="border border-gray-300 p-6">Storytelling App</div>
+        <div class="border border-gray-300 p-6">E-Learning Platform</div>
+
+      </div>
+
+    </div>
+
+    <!-- MEDIA -->
+    <div class="mt-32">
+
+      <p class="label mb-6">Campaigns and Stories</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="https://youtu.be/KTrZSXp5VAs" target="_blank" class="hover-lift">
+          <img src="https://img.youtube.com/vi/KTrZSXp5VAs/hqdefault.jpg" alt="Swayampoorna story campaign">
+          <p class="mt-2 text-sm">Story Campaign</p>
+        </a>
+
+        <a href="https://youtu.be/JayehX1_UII" target="_blank" class="hover-lift">
+          <img src="https://img.youtube.com/vi/JayehX1_UII/hqdefault.jpg" alt="Swayampoorna community voice">
+          <p class="mt-2 text-sm">Community Voice</p>
+        </a>
+
+        <a href="https://youtu.be/3c_lfNcpk-w" target="_blank" class="hover-lift">
+          <img src="https://img.youtube.com/vi/3c_lfNcpk-w/hqdefault.jpg" alt="Swayampoorna campaign">
+          <p class="mt-2 text-sm">Campaign</p>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- LINKS -->
+    <div class="mt-24">
+
+      <p class="label mb-6">Explore</p>
+
+      <div class="flex flex-wrap gap-4">
+
+        <a href="https://swayampoorna.com/" target="_blank" class="btn-outline">Website</a>
+        <a href="https://www.instagram.com/swayampoorna_foundation/" target="_blank" class="btn-outline">Instagram</a>
+        <a href="https://www.facebook.com/meswayampoorna" target="_blank" class="btn-outline">Facebook</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <script>
+  const featureContent = {
+    feature1: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Skill Recognition Campaign</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Many homemakers had skills but did not see value in them.
+          <br><br>
+          The biggest barrier was not ability, but confidence and self-belief.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The focus was to help women recognize their own abilities.
+          <br><br>
+          Instead of telling them what to do, the idea was to show real examples they could relate to.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Created storytelling campaign with real women</li>
+          <li>Shared relatable journeys and experiences</li>
+          <li>Focused on simple and emotional communication</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Collected and shared real stories across Facebook and WhatsApp</li>
+          <li>Used video and text content for better connection</li>
+          <li>Amplified through small creators and communities</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>18,000+ women reached organically</li>
+          <li>Increase in program registrations</li>
+          <li>Strong word of mouth through shared stories</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          People connect more with real stories than polished messaging.
+          <br><br>
+          Relatability builds confidence faster than motivation alone.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature2: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Learning and Support System</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Many women wanted to start something but did not know how.
+          <br><br>
+          They needed simple guidance and continuous support.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The focus was to make learning easy and accessible.
+          <br><br>
+          Instead of complex courses, the idea was to provide simple and practical guidance regularly.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Created small and easy learning content</li>
+          <li>Shared guidance on pricing, marketing, and selling</li>
+          <li>Built communities for continuous support</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Daily updates through WhatsApp groups</li>
+          <li>Live sessions with experts and experienced users</li>
+          <li>Content in multiple languages for better reach</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Large and active communities built</li>
+          <li>High engagement across content</li>
+          <li>Many women started small businesses after learning</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Simple and regular guidance works better than complex training.
+          <br><br>
+          Community support helps people take action faster.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature3: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Opportunities and Earning Pathways</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Many women were ready to take action but did not have clear ways to earn.
+          <br><br>
+          Motivation alone was not enough without real opportunities.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The focus was to create simple platforms where women can start with low effort.
+          <br><br>
+          Each platform was designed around a specific skill or interest.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Created multiple platforms for different use cases</li>
+          <li>Food, storytelling, learning, and artisan-based opportunities</li>
+          <li>Focused on easy onboarding and usability</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Identified common skill areas and user needs</li>
+          <li>Built simple and usable systems for each category</li>
+          <li>Onboarded users through targeted community efforts</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Enabled thousands of women to start earning</li>
+          <li>Created multiple entry points based on different skills</li>
+          <li>Turned interest into real action</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Real opportunities drive action.
+          <br><br>
+          When people see a clear way to earn, they move faster than with motivation alone.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature4: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Community Building</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Many women felt alone while trying to start something.
+          <br><br>
+          Without support, they would lose consistency or stop midway.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The focus was to create a space where people feel supported and connected.
+          <br><br>
+          Learning alone was not enough, they needed a sense of belonging.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Built communities across WhatsApp and Facebook</li>
+          <li>Connected users with similar interests</li>
+          <li>Encouraged peer support and interaction</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Created multiple groups based on skills and interests</li>
+          <li>Organized offline meetups and sessions</li>
+          <li>Encouraged volunteers to guide and support others</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>Strong and active community built</li>
+          <li>Better consistency and participation</li>
+          <li>Users stayed engaged for longer periods</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          People stay longer when they feel connected.
+          <br><br>
+          Community plays a big role in long-term growth.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+    feature5: `
+  <div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    <h2 class="text-2xl font-bold mb-4">Street Interview Campaign</h2>
+
+    <div class="space-y-6 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding</h3>
+        <p>
+          Many women do not get recognition for their work.
+          <br><br>
+          This affects how they see their own value and confidence.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Approach</h3>
+        <p>
+          The idea was to bring public appreciation into the conversation.
+          <br><br>
+          Instead of direct messaging, we used real people and real reactions.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Solution</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Street interviews asking people to appreciate women in their lives</li>
+          <li>Simple and relatable format</li>
+          <li>Focused on real reactions</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Execution</h3>
+        <ul class="list-disc list-inside">
+          <li>Recorded interviews during Navratri</li>
+          <li>Shared across YouTube, Facebook, and Instagram</li>
+          <li>Used cultural context to increase relatability</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Outcome</h3>
+        <ul class="list-disc list-inside">
+          <li>400,000+ views organically</li>
+          <li>35,000+ women joined the foundation</li>
+          <li>Increase in inbound interest and participation</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning</h3>
+        <p>
+          Public appreciation builds confidence faster than direct motivation.
+          <br><br>
+          When people see others being valued, they start valuing themselves.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+`,
+
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+<!-- Feature Popup -->
+<div id="featurePopup" 
+     class="hidden fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-6">
+  <div class="bg-white rounded-lg shadow-2xl max-w-3xl w-full p-6 relative">
+
+    <!-- Close Button -->
+    <button onclick="closeFeaturePopup()" 
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+      ✕
+    </button>
+
+    <!-- Dynamic Content Goes Here -->
+    <div id="featurePopupContent"></div>
+
+  </div>
+</div>
+
+  <!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-gray-300 px-6 lg:px-12 py-16" style="background:#fff">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+
+      <!-- Brand -->
+      <div>
+        <p class="font-heading text-lg tracking-wider mb-4 font-semibold" style="color:#111">
+          Pratiksha Kulkarni
+        </p>
+        <p class="text-sm leading-relaxed" style="color:#999">
+          Strategic growth partner helping brands scale through design, marketing, and technology.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Navigation</p>
+        <div class="flex flex-col gap-2 text-sm" style="color:#999">
+          <a href="services.html" class="hover:text-black transition-colors">Services</a>
+          <a href="products.html" class="hover:text-black transition-colors">Products</a>
+          <a href="creatives.html" class="hover:text-black transition-colors">Creatives</a>
+          <a href="about.html" class="hover:text-black transition-colors">About</a>
+          <a href="contact.html" class="hover:text-black transition-colors">Contact</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Contact</p>
+
+        <div class="flex flex-col gap-3 text-sm" style="color:#999">
+
+          <!-- Phone / WhatsApp -->
+          <a href="tel:+918888986172" class="hover:text-black transition-colors">
+            +91 8888986172
+          </a>
+
+          <a href="https://wa.me/918888986172" target="_blank" class="hover:text-black transition-colors">
+            WhatsApp
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-black transition-colors">
+            contact@pratikshakulkarni.in
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="hover:text-black transition-colors">
+            LinkedIn
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row md:justify-between text-xs" style="color:#999">
+      <p>© 2026 Pratiksha Kulkarni. All rights reserved.</p>
+      <p>Built with intent.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
+
+

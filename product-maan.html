@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE3TD08MC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VYE3TD08MC');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Maan India – Empowering Women Artisans with Digital Commerce</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <!-- Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Global Styles (MATCH YOUR MAIN SITE) -->
+  <style>
+
+    /* ===== GLOBAL TYPOGRAPHY FIX ===== */
+html {
+  font-size: 17px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.text-sm {
+  font-size: 1rem !important;
+}
+
+.leading-loose {
+  line-height: 1.7 !important;
+}
+
+/* ===== ANIMATION SYSTEM ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth hover */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      scroll-behavior:smooth;
+      background:#f8f8f8;
+      color:#111;
+      font-family:'Outfit',sans-serif;
+    }
+
+    *{box-sizing:border-box}
+
+    /* Typography */
+    .font-heading{font-family:'Playfair Display',serif}
+    .font-body{font-family:'Outfit',sans-serif}
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:#f8f8f8}
+    ::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
+
+    /* Navigation */
+    .nav-link{
+      position:relative;
+      color:#111;
+      transition:color .3s;
+    }
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      bottom:-2px;
+      left:0;
+      width:0;
+      height:1px;
+      background:#111;
+      transition:width .3s ease;
+    }
+    .nav-link:hover::after,
+    .active-link::after{
+      width:100%;
+    }
+
+    /* Buttons */
+    .btn-outline{
+      border:1px solid #111;
+      padding:12px 32px;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      transition:.3s;
+      background:transparent;
+      color:#111;
+    }
+    .btn-outline:hover{
+      background:#111;
+      color:#fff;
+    }
+
+    /* Layout */
+    .section{
+      padding-top:120px;
+      padding-bottom:80px;
+    }
+
+    /* Divider */
+    .divider{
+      width:60px;
+      height:1px;
+      background:#d0d0d0;
+    }
+
+    /* Labels */
+    .label{
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#999;
+    }
+  </style>
+
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Navigation -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:rgba(248,248,248,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-[72px]">
+    
+    <!-- Brand -->
+    <a href="index.html" id="nav-brand" class="font-heading text-lg tracking-wider font-semibold" style="color:#111">
+      Pratiksha Kulkarni
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link font-body text-xs tracking-widest uppercase">Home</a>
+      <a href="services.html" class="nav-link font-body text-xs tracking-widest uppercase">Services</a>
+      <a href="growth.html" class="nav-link font-body text-xs tracking-widest uppercase">Growth</a>
+      <a href="it.html" class="nav-link font-body text-xs tracking-widest uppercase">IT Solutions</a>
+      <a href="products.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Products</a>
+      <a href="creatives.html" class="nav-link font-body text-xs tracking-widest uppercase">Creatives</a>
+      <a href="blog.html" class="nav-link font-body text-xs tracking-widest uppercase">Journal</a>
+      <a href="about.html" class="nav-link font-body text-xs tracking-widest uppercase">About</a>
+      <a href="contact.html" class="nav-link font-body text-xs tracking-widest uppercase">Contact</a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button id="mobile-toggle" class="lg:hidden" style="color:#111" onclick="toggleMobileNav()">
+      <i data-lucide="menu" style="width:24px;height:24px"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav" class="lg:hidden hidden w-full px-6 pb-6" style="background:#f8f8f8;border-top:1px solid #e5e5e5">
+    <div class="flex flex-col gap-3 pt-4">
+
+      <a href="index.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Home</a>
+      <a href="services.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Services</a>
+      <a href="growth.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Growth</a>
+      <a href="it.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">IT Solutions</a>
+      <a href="products.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Products</a>
+      <a href="creatives.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Creatives</a>
+      <a href="blog.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Journal</a>
+      <a href="about.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">About</a>
+      <a href="contact.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Contact</a>
+
+    </div>
+  </div>
+
+</nav>
+
+  <!-- Main Content -->
+<section class="section px-6 lg:px-12 pt-32 pb-20">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- HERO -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+
+      <div>
+        <p class="label mb-4">Project</p>
+
+        <h1 class="font-heading text-5xl md:text-7xl font-bold mb-8">
+          Maan India
+        </h1>
+
+        <div class="divider"></div>
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <p class="text-sm leading-loose text-gray-600 mb-8">
+          This project focuses on helping women artisans turn their skills into something sustainable.
+        </p>
+
+        <p class="text-sm leading-loose text-gray-400">
+          The idea was to simplify how they showcase, sell, and manage their work without depending on complex systems.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- STORY -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- LEFT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">Understanding</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Women artisans already have strong skills.
+            <br><br>
+            The challenge is not capability. It is lack of access, structure, and a clear way to reach buyers.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Approach</p>
+          <p class="text-sm leading-loose text-gray-600">
+            Instead of building a complex marketplace, the focus was on creating a simple system they can actually use.
+            <br><br>
+            Everything was planned around ease of use and clarity.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Execution</p>
+          <p class="text-sm leading-loose text-gray-600">
+            The platform was structured to allow easy product listing, order handling, and communication.
+            <br><br>
+            Supporting layers like logistics and payments were also considered to make the system complete.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="space-y-16">
+
+        <div>
+          <p class="label mb-3">My Role</p>
+          <p class="text-sm leading-loose text-gray-600">
+            I worked on understanding the problem, defining how the system should work, and shaping the product accordingly.
+            <br><br>
+            This included research, product direction, and structuring the experience for low-tech users.
+          </p>
+        </div>
+
+        <div>
+          <p class="label mb-3">Current State</p>
+          <p class="text-sm leading-loose text-gray-600">
+            The platform is currently in development.
+            <br><br>
+            The focus is on building something that is simple to use and can scale as more artisans join.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- Feature Popup -->
+<div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-xl max-w-3xl w-full p-8 relative shadow-2xl overflow-y-auto max-h-[80vh]">
+    <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+    <div id="featurePopupContent"></div>
+  </div>
+</div>
+
+<!-- Feature Popup -->
+<div id="featurePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-xl max-w-4xl w-full p-8 relative shadow-2xl overflow-y-auto max-h-[85vh]">
+    <button onclick="closeFeaturePopup()" class="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+    <div id="featurePopupContent"></div>
+  </div>
+</div>
+
+<script>
+  const featureContent = {
+    feature1: `
+    <h2 class="text-2xl font-bold mb-4">Businesswomen Registration</h2>
+
+    <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Understanding</h3>
+        <p>
+          Women artisans were interested in joining but were getting stuck at the first step.
+          <br><br>
+          Most registration processes were too complex. Forms, documents, and multiple steps made it difficult for low-tech users to complete.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Approach</h3>
+        <p>
+          The focus was to make onboarding simple and easy to complete.
+          <br><br>
+          Instead of asking for everything at once, the idea was to reduce effort and help users move forward without confusion.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Solution</h3>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Only essential details like name, mobile, and location</li>
+          <li>Simple category selection based on their work</li>
+          <li>Option to share documents through WhatsApp instead of complex uploads</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Execution</h3>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Step by step flow to reduce confusion</li>
+          <li>Language support for better understanding</li>
+          <li>Alternative WhatsApp flow for users who struggled with the app</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Outcome</h3>
+        <p>
+          The process became easier to complete, reducing drop-offs and helping more artisans get onboarded.
+        </p>
+      </div>
+
+    </div>
+  `,
+
+    feature2: `
+    <h2 class="text-2xl font-bold mb-4">Publishing Products and Managing Orders</h2>
+
+    <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Understanding</h3>
+        <p>
+          Creating product listings and handling orders was difficult for artisans.
+          <br><br>
+          Tasks like adding photos, writing details, setting prices, and managing orders were not simple for low-tech users.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Approach</h3>
+        <p>
+          The focus was to make selling and order handling easy to understand and easy to manage.
+          <br><br>
+          Everything needed to be simple enough to use without training.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Solution</h3>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Simple product upload using phone gallery</li>
+          <li>Basic templates to help with product details</li>
+          <li>Easy order actions like accept or reject</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Execution</h3>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Step by step flow to guide users</li>
+          <li>Support in local languages for better understanding</li>
+          <li>Clear order status updates for both buyer and seller</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900">Outcome</h3>
+        <p>
+          Artisans were able to list products and manage orders with more clarity, improving overall experience and reducing errors.
+        </p>
+      </div>
+
+    </div>
+  `,
+
+    feature3: `
+  <h2 class="text-2xl font-bold mb-4">Buyer Flow and Ordering</h2>
+
+  <div class="space-y-5 text-gray-700 text-sm leading-relaxed">
+
+    <div>
+      <h3 class="font-semibold text-gray-900">Understanding</h3>
+      <p>
+        Buyers were interested in handmade products but the process was not clear or reliable.
+        <br><br>
+        Finding the right products, trusting the seller, and tracking orders were all unclear.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-gray-900">Approach</h3>
+      <p>
+        The focus was to make the buying process simple and easy to trust.
+        <br><br>
+        Buyers should be able to explore, order, and track without confusion.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-gray-900">Solution</h3>
+      <ul class="list-disc ml-5 space-y-2">
+        <li>Simple account creation with quick login</li>
+        <li>Easy browsing by category and type of product</li>
+        <li>Clear checkout with multiple payment options</li>
+        <li>Order tracking for better visibility</li>
+        <li>Basic trust indicators like verified sellers</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-gray-900">Execution</h3>
+      <ul class="list-disc ml-5 space-y-2">
+        <li>Clean browsing and filtering to help users find products faster</li>
+        <li>Order updates shared clearly after purchase</li>
+        <li>System built to make the process smooth for both buyer and seller</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-gray-900">Outcome</h3>
+      <p>
+        The buying experience became clearer and more reliable, helping build trust and making it easier for artisans to reach more customers.
+      </p>
+    </div>
+
+  </div>
+`,
+  };
+
+  function openFeaturePopup(feature) {
+    document.getElementById('featurePopupContent').innerHTML = featureContent[feature];
+    document.getElementById('featurePopup').classList.remove('hidden');
+    document.getElementById('featurePopup').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeaturePopup() {
+    document.getElementById('featurePopup').classList.add('hidden');
+    document.getElementById('featurePopup').classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-gray-300 px-6 lg:px-12 py-16" style="background:#fff">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+
+      <!-- Brand -->
+      <div>
+        <p class="font-heading text-lg tracking-wider mb-4 font-semibold" style="color:#111">
+          Pratiksha Kulkarni
+        </p>
+        <p class="text-sm leading-relaxed" style="color:#999">
+          Strategic growth partner helping brands scale through design, marketing, and technology.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Navigation</p>
+        <div class="flex flex-col gap-2 text-sm" style="color:#999">
+          <a href="services.html" class="hover:text-black transition-colors">Services</a>
+          <a href="products.html" class="hover:text-black transition-colors">Products</a>
+          <a href="creatives.html" class="hover:text-black transition-colors">Creatives</a>
+          <a href="about.html" class="hover:text-black transition-colors">About</a>
+          <a href="contact.html" class="hover:text-black transition-colors">Contact</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-xs tracking-[2px] uppercase mb-4" style="color:#999">Contact</p>
+
+        <div class="flex flex-col gap-3 text-sm" style="color:#999">
+
+          <!-- Phone / WhatsApp -->
+          <a href="tel:+918888986172" class="hover:text-black transition-colors">
+            +91 8888986172
+          </a>
+
+          <a href="https://wa.me/918888986172" target="_blank" class="hover:text-black transition-colors">
+            WhatsApp
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:contact@pratikshakulkarni.in" class="hover:text-black transition-colors">
+            contact@pratikshakulkarni.in
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/pragmatic-pratiksha-kulkarni/" target="_blank" class="hover:text-black transition-colors">
+            LinkedIn
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row md:justify-between text-xs" style="color:#999">
+      <p>© 2026 Pratiksha Kulkarni. All rights reserved.</p>
+      <p>Built with intent.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
+
+
