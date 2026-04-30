@@ -153,7 +153,20 @@ textarea.form-input:focus{border:1px solid #111}
 .hover-lift:hover {
   transform: translateY(-4px);
 }
+@media (max-width: 768px) {
+  .creative-item img {
+    object-fit: contain;
+    padding: 20px;
+    background: #fff;
+  }
 
+  /* BUT only for logos that need it */
+  .no-contain img {
+    object-fit: cover;
+    padding: 0;
+    background: transparent;
+  }
+}
   </style>
   <style>body { box-sizing: border-box; }</style>
  </head>
@@ -234,103 +247,240 @@ textarea.form-input:focus{border:1px solid #111}
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[180px] grid-flow-dense">
 
-      <!-- BIG HERO -->
-      <div onclick="openCreative('ajavu')" class="col-span-2 row-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_ajavu.webp"
-          class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition">
+      <div onclick="openCreative('ajavu')" 
+     class="col-span-2 row-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+      <img src="images/creative_page_work_thumbnail_ajavu.webp"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+
+      <!-- Overlay (desktop only) -->
+      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+        <p class="text-white text-base md:text-lg tracking-wide font-medium">
+          View Project
+        </p>
       </div>
 
-      <!-- TALL -->
-      <div onclick="openCreative('g1gold')" class="row-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_g1gold.webp"
-          class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition">
-      </div>
+    </div>
 
-      <!-- NORMAL -->
-      <div onclick="openCreative('mototrek')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_mototrek.webp"
-          class="w-full h-full object-cover rounded-2xl">
-      </div>
+      <div onclick="openCreative('g1gold')" 
+     class="row-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('swaatienterprises')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_swaatienterprises.webp"
-          class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_g1gold.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <!-- WIDE -->
-      <div onclick="openCreative('myma')" class="col-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_myma.webp"
-          class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <!-- SECOND PRIORITY -->
-      <div onclick="openCreative('firstock')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_firstock_broking.webp"
-          class="w-full h-full object-cover rounded-2xl">
-      </div>
+<div onclick="openCreative('mototrek')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('swayampoorna')" class="row-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_swayampoorna_foundation.webp"
-          class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_mototrek.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <!-- REST AUTO-FILL (NO GAPS NOW) -->
-      <div onclick="openCreative('ks')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_ks_engineers.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <div onclick="openCreative('kathakali')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_kathakali_restaurant.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+<div onclick="openCreative('swaatienterprises')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('nakhara')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_nakhara.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_swaatienterprises.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <div onclick="openCreative('chandrapur')" class="col-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_chandrapur_urban.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <div onclick="openCreative('identity')" class="cursor-pointer group">
-        <img src="images/Identity_Design_1.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+<div onclick="openCreative('myma')" 
+     class="col-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('pavanraje')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_pavanraje_multistate.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_myma.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <div onclick="openCreative('ozo')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_ozo.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <div onclick="openCreative('rejoyce')" class="row-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_rejoyce.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+<div onclick="openCreative('firstock')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('aarogya')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_aarogya_club.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_firstock_broking.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <div onclick="openCreative('unique')" class="col-span-2 cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_unique_mpsc_upsc_academy.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <div onclick="openCreative('senses')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_senses_spalon.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+<div onclick="openCreative('swayampoorna')" 
+     class="row-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
 
-      <div onclick="openCreative('lemontree')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_lemontree_media.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <img src="images/creative_page_work_thumbnail_swayampoorna_foundation.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-      <div onclick="openCreative('urth')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_urth_trooper.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
-      <!-- LAST -->
-      <div onclick="openCreative('biba')" class="cursor-pointer group">
-        <img src="images/creative_page_work_thumbnail_biba.webp" class="w-full h-full object-cover rounded-2xl">
-      </div>
+      <div onclick="openCreative('ks')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_ks_engineers.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('kathakali')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_kathakali_restaurant.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('nakhara')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_nakhara.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('chandrapur')" 
+     class="col-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_chandrapur_urban.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('identity')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/Identity_Design_1.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('pavanraje')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_pavanraje_multistate.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('ozo')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_ozo.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+      <div onclick="openCreative('rejoyce')" 
+     class="row-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_rejoyce.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('aarogya')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_aarogya_club.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('unique')" 
+     class="col-span-2 cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_unique_mpsc_upsc_academy.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('senses')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_senses_spalon.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('lemontree')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_lemontree_media.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('urth')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_urth_trooper.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
+
+<div onclick="openCreative('biba')" 
+     class="cursor-pointer group relative overflow-hidden rounded-2xl active:scale-95 transition">
+
+  <img src="images/creative_page_work_thumbnail_biba.webp"
+       class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center rounded-2xl">
+    <p class="text-white text-base md:text-lg tracking-wide font-medium">View Project</p>
+  </div>
+</div>
 
     </div>
 
