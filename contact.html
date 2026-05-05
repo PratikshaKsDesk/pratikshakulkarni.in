@@ -249,65 +249,65 @@ textarea.form-input:focus{border:1px solid #111}
       <!-- Right -->
       <div>
 
-        <form id="contact-form">
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
 
-          <div class="space-y-8">
+  <div class="space-y-8">
 
-            <!-- Name -->
-            <div>
-              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-                Name
-              </label>
-              <input type="text" name="name" class="form-input" placeholder="Your name" required>
-            </div>
+    <!-- Name -->
+    <div>
+      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+        Name
+      </label>
+      <input id="f-name" type="text" name="name" class="form-input" placeholder="Your name" required>
+    </div>
 
-            <!-- Email -->
-            <div>
-              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-                Email
-              </label>
-              <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
-            </div>
+    <!-- Email -->
+    <div>
+      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+        Email
+      </label>
+      <input id="f-email" type="email" name="email" class="form-input" placeholder="your@email.com" required>
+    </div>
 
-            <!-- Company -->
-            <div>
-              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-                Company
-              </label>
-              <input type="text" name="company" class="form-input" placeholder="Company name (optional)">
-            </div>
+    <!-- Company -->
+    <div>
+      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+        Company
+      </label>
+      <input id="f-company" type="text" name="company" class="form-input" placeholder="Company name (optional)">
+    </div>
 
-            <!-- Service -->
-            <div>
-              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-                What do you need help with
-              </label>
-              <select name="service" class="form-input">
-                <option value="">Select</option>
-                <option>Brand Building</option>
-                <option>Website</option>
-                <option>Marketing</option>
-                <option>IT Procurement</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
+    <!-- Service -->
+    <div>
+      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+        What do you need help with
+      </label>
+      <select id="f-service" name="service" class="form-input">
+        <option value="">Select</option>
+        <option>Brand Building</option>
+        <option>Website</option>
+        <option>Marketing</option>
+        <option>IT Procurement</option>
+        <option>Not sure yet</option>
+      </select>
+    </div>
 
-            <!-- Message -->
-            <div>
-              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-                Requirement
-              </label>
-              <textarea name="message" class="form-input" rows="4" placeholder="Briefly tell us what you need"></textarea>
-            </div>
+    <!-- Message -->
+    <div>
+      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+        Requirement
+      </label>
+      <textarea id="f-message" name="message" class="form-input" rows="4" placeholder="Briefly tell us what you need"></textarea>
+    </div>
 
-            <!-- CTA -->
-            <button type="submit" class="btn-primary w-full text-center">
-              Send Message
-            </button>
+    <!-- CTA -->
+    <button type="submit" class="btn-primary w-full text-center">
+      Send Message
+    </button>
 
-          </div>
+  </div>
 
-        </form>
+</form>
 
       </div>
 
@@ -412,12 +412,6 @@ function showToast(msg) {
 
 async function handleFormSubmit(e) {
   e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  const statusEl = document.getElementById('form-status');
-  const textEl = document.getElementById('submit-text');
-
-  btn.disabled = true;
-  textEl.innerHTML = '<span class="loading-spinner"></span>';
 
   const data = {
     name: document.getElementById('f-name').value,
@@ -428,25 +422,25 @@ async function handleFormSubmit(e) {
     submitted_at: new Date().toISOString()
   };
 
-  const result = await window.dataSdk.create(data);
-  btn.disabled = false;
-  textEl.textContent = window.elementSdk?.config?.contact_cta || defaultConfig.contact_cta;
+  console.log("Sending data:", data);
 
-  if (result.isOk) {
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbz5Ann8IUphrB8RhAhe8IZafqbqHOCSGMl8bl0t-ZZSEjZkmn7rrNn0Fk8QQj2j-WEP/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    alert("Message sent successfully!");
     document.getElementById('contact-form').reset();
-    statusEl.style.display = 'block';
-    statusEl.style.color = '#111';
-    statusEl.textContent = 'Message sent. We\'ll be in touch.';
-    showToast('Message sent successfully');
-    setTimeout(() => statusEl.style.display = 'none', 4000);
-  } else {
-    statusEl.style.display = 'block';
-    statusEl.style.color = '#999';
-    statusEl.textContent = 'Something went wrong. Please try again.';
-    setTimeout(() => statusEl.style.display = 'none', 4000);
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Check console.");
   }
 }
-
 function applyConfig(config) {
   const c = { ...defaultConfig, ...config };
   const brandEl = document.getElementById('nav-brand');
@@ -461,22 +455,8 @@ function applyConfig(config) {
 
   const aboutEl = document.getElementById('about-text');
   if (aboutEl) aboutEl.textContent = c.about_text;
-
-  const submitText = document.getElementById('submit-text');
-  if (submitText && !document.getElementById('submit-btn').disabled) {
-    submitText.textContent = c.contact_cta;
-  }
 }
-  mapToEditPanelValues: (config) => {
-    const c = { ...defaultConfig, ...config };
-    return new Map([
-      ['brand_name', c.brand_name],
-      ['hero_headline', c.hero_headline],
-      ['hero_subline', c.hero_subline],
-      ['about_text', c.about_text],
-      ['contact_cta', c.contact_cta]
-    ]);
-  }
+
 
 lucide.createIcons();
   </script>
