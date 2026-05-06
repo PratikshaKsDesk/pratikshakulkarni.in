@@ -214,7 +214,7 @@ textarea.form-input:focus{border:1px solid #111}
 </nav>
   
 <!-- ==================== CONTACT ==================== -->
-    <section class="px-6 lg:px-12 pt-32 pb-20">
+<section class="px-6 lg:px-12 pt-32 pb-20">
 
   <div class="max-w-7xl mx-auto">
 
@@ -239,11 +239,6 @@ textarea.form-input:focus{border:1px solid #111}
           We will understand your requirement and guide you on the next steps.
         </p>
 
-        <div class="space-y-4 text-sm" style="color:#999">
-
-
-        </div>
-
       </div>
 
       <!-- Right -->
@@ -251,63 +246,63 @@ textarea.form-input:focus{border:1px solid #111}
 
         <form id="contact-form" onsubmit="handleFormSubmit(event)">
 
-  <div class="space-y-8">
+          <div class="space-y-8">
 
-    <!-- Name -->
-    <div>
-      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-        Name
-      </label>
-      <input id="f-name" type="text" name="name" class="form-input" placeholder="Your name" required>
-    </div>
+            <!-- Name -->
+            <div>
+              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+                Name
+              </label>
+              <input id="f-name" name="name" type="text" class="form-input" placeholder="Your name" required>
+            </div>
 
-    <!-- Email -->
-    <div>
-      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-        Email
-      </label>
-      <input id="f-email" type="email" name="email" class="form-input" placeholder="your@email.com" required>
-    </div>
+            <!-- Email -->
+            <div>
+              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+                Email
+              </label>
+              <input id="f-email" name="email" type="email" class="form-input" placeholder="your@email.com" required>
+            </div>
 
-    <!-- Company -->
-    <div>
-      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-        Company
-      </label>
-      <input id="f-company" type="text" name="company" class="form-input" placeholder="Company name (optional)">
-    </div>
+            <!-- Company -->
+            <div>
+              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+                Company
+              </label>
+              <input id="f-company" name="company" type="text" class="form-input" placeholder="Company name (optional)">
+            </div>
 
-    <!-- Service -->
-    <div>
-      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-        What do you need help with
-      </label>
-      <select id="f-service" name="service" class="form-input">
-        <option value="">Select</option>
-        <option>Brand Building</option>
-        <option>Website</option>
-        <option>Marketing</option>
-        <option>IT Procurement</option>
-        <option>Not sure yet</option>
-      </select>
-    </div>
+            <!-- Service -->
+            <div>
+              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+                What do you need help with
+              </label>
+              <select id="f-service" name="service" class="form-input">
+                <option value="">Select</option>
+                <option>Brand Building</option>
+                <option>Website</option>
+                <option>Marketing</option>
+                <option>IT Procurement</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
 
-    <!-- Message -->
-    <div>
-      <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
-        Requirement
-      </label>
-      <textarea id="f-message" name="message" class="form-input" rows="4" placeholder="Briefly tell us what you need"></textarea>
-    </div>
+            <!-- Message -->
+            <div>
+              <label class="text-xs tracking-[2px] uppercase block mb-2" style="color:#999">
+                Requirement
+              </label>
+              <textarea id="f-message" name="message" class="form-input"></textarea>
+            </div>
 
-    <!-- CTA -->
-    <button type="submit" class="btn-primary w-full text-center">
-      Send Message
-    </button>
+            <!-- Submit -->
+            <button type="submit" class="btn-primary w-full text-center">
+              Send Message
+            </button>
 
-  </div>
+          </div>
 
-</form>
+        </form>
 
       </div>
 
@@ -411,45 +406,50 @@ function showToast(msg) {
 }
 
 async function handleFormSubmit(e) {
+
   e.preventDefault();
 
-  const data = {
-    name: document.getElementById('f-name').value,
-    email: document.getElementById('f-email').value,
-    company: document.getElementById('f-company').value || '',
-    service: document.getElementById('f-service').value || '',
-    message: document.getElementById('f-message').value || '',
-    submitted_at: new Date().toISOString()
-  };
+  const form = document.getElementById("contact-form");
 
-  console.log("Sending data:", data);
+  const formData = new FormData(form);
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbz5Ann8IUphrB8RhAhe8IZafqbqHOCSGMl8bl0t-ZZSEjZkmn7rrNn0Fk8QQj2j-WEP/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbxyhbmWS4PGcmMBEAj9gq7g8fLmxatz2qb1naJY9WZyLxu7_y-Z--ItG8t3784BYaj2/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
       }
-    });
+    );
 
-    alert("Message sent successfully!");
-    document.getElementById('contact-form').reset();
+    showToast("Message sent successfully!");
 
-  } catch (error) {
+    form.reset();
+
+  } catch(error) {
+
     console.error(error);
-    alert("Something went wrong. Check console.");
+
+    showToast("Something went wrong");
+
   }
+
 }
+
 function applyConfig(config) {
   const c = { ...defaultConfig, ...config };
+
   const brandEl = document.getElementById('nav-brand');
   if (brandEl) brandEl.textContent = c.brand_name;
+
   const footerBrand = document.getElementById('footer-brand');
   if (footerBrand) footerBrand.textContent = c.brand_name;
 
   const heroH = document.getElementById('hero-headline');
   if (heroH) heroH.innerHTML = c.hero_headline.replace(/\n/g, '<br>');
+
   const heroS = document.getElementById('hero-subline');
   if (heroS) heroS.textContent = c.hero_subline;
 
@@ -457,9 +457,8 @@ function applyConfig(config) {
   if (aboutEl) aboutEl.textContent = c.about_text;
 }
 
-
 lucide.createIcons();
-  </script>
+</script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f2c1720b3a97d39',t:'MTc3NzI3NDY5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>
 /* ===== SCROLL REVEAL ===== */
