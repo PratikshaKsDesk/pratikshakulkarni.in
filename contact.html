@@ -14,9 +14,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Brand Building & IT Procurement Services</title>
-  <meta name="description" content="Contact us for brand building and IT procurement services. Share your requirement and we will guide you with the right approach and execution.">
-
+  <title>Contact | Brand Building, Product Development & Business Growth</title>
+  <meta name="description" content="Get in touch for brand building, product development and business growth support. Share your goals and let's explore the right direction together.">
   <meta name="author" content="Pratiksha Kulkarni">
   <meta name="robots" content="index, follow">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -75,13 +74,6 @@ html,body{height:100%;margin:0;padding:0;scroll-behavior:smooth;background:#f8f8
 .creative-item{overflow:hidden;position:relative;cursor:pointer}
 .creative-item .placeholder{transition:transform .5s ease}
 .creative-item:hover .placeholder{transform:scale(1.02)}
-.form-input{background:transparent;border:none;border-bottom:1px solid #ccc;padding:12px 0;width:100%;color:#111;font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
-.form-input:focus{border-color:#111;border-bottom:2px solid #111;padding-bottom:11px}
-.form-input::placeholder{color:#999}
-select.form-input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0 center;background-size:14px}
-select.form-input option{background:#fff;color:#111}
-textarea.form-input{border-bottom:none;border:1px solid #ccc;padding:12px;font-family:'Outfit',sans-serif;resize:vertical}
-textarea.form-input:focus{border:1px solid #111}
 .blog-card{border-bottom:1px solid #e5e5e5;padding:40px 0;transition:padding-left .3s ease;cursor:pointer}
 .blog-card:hover{padding-left:20px}
 .testimonial-card{border-left:2px solid #d0d0d0;padding-left:32px;transition:border-color .3s}
@@ -179,10 +171,9 @@ textarea.form-input:focus{border:1px solid #111}
       <a href="index.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Home</a>
       <a href="services.html" class="nav-link font-body text-xs tracking-widest uppercase">Services</a>
       <a href="growth.html" class="nav-link font-body text-xs tracking-widest uppercase">Growth</a>
-      <a href="it.html" class="nav-link font-body text-xs tracking-widest uppercase">IT Solutions</a>
       <a href="products.html" class="nav-link font-body text-xs tracking-widest uppercase">Products</a>
       <a href="creatives.html" class="nav-link font-body text-xs tracking-widest uppercase">Creatives</a>
-      <a href="blog.html" class="nav-link font-body text-xs tracking-widest uppercase">Journal</a>
+      <a href="insights.html" class="nav-link font-body text-xs tracking-widest uppercase">Insights</a>
       <a href="about.html" class="nav-link font-body text-xs tracking-widest uppercase">About</a>
       <a href="contact.html" class="nav-link font-body text-xs tracking-widest uppercase active-link">Contact</a>
     </div>
@@ -201,10 +192,9 @@ textarea.form-input:focus{border:1px solid #111}
       <a href="index.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Home</a>
       <a href="services.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Services</a>
       <a href="growth.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Growth</a>
-      <a href="it.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">IT Solutions</a>
       <a href="products.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Products</a>
       <a href="creatives.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Creatives</a>
-      <a href="blog.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Journal</a>
+      <a href="insights.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Insights</a>
       <a href="about.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">About</a>
       <a href="contact.html" class="font-body text-sm tracking-widest uppercase" style="color:#111">Contact</a>
 
@@ -233,9 +223,8 @@ textarea.form-input:focus{border:1px solid #111}
 
     <!-- Description -->
     <p class="text-base md:text-lg leading-loose max-w-2xl mx-auto mb-16" style="color:#666">
-      Whether you are building a brand, launching a product,
-      scaling your business, or looking for strategic support...
-      feel free to connect directly.
+      Whether you are building a brand, planning a digital product, improving a website or exploring new growth opportunities, feel free to connect directly.
+      Let's understand your goals and identify the right direction together.
     </p>
 
     <!-- Contact Cards -->
@@ -330,7 +319,7 @@ textarea.form-input:focus{border:1px solid #111}
           Pratiksha Kulkarni
         </p>
         <p class="text-sm leading-relaxed" style="color:#999">
-          Strategic growth partner helping brands scale through design, marketing, and technology.
+          Helping businesses build stronger brands, better digital experiences and meaningful growth.
         </p>
       </div>
 
@@ -393,8 +382,8 @@ textarea.form-input:focus{border:1px solid #111}
 const defaultConfig = {
   brand_name: 'Pratiksha Kulkarni',
   hero_headline: 'We Build Brands That Command Attention',
-  hero_subline: 'Digital marketing, brand strategy, website design & IT procurement - unified under one strategic vision to accelerate your growth.',
-  about_text: 'Born from the belief that great businesses deserve great execution. What started as a personal brand evolved into a strategic growth practice - serving companies who want more than templates and tactics.',
+  hero_subline: 'Brand building, product development and business growth brought together through research, strategy and purposeful execution.',  
+  about_text: 'Built on the belief that meaningful growth starts with understanding. We help businesses strengthen their brands, create better products and build with clarity.',
   contact_cta: "Let's Talk"
 };
 
@@ -408,39 +397,6 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-async function handleFormSubmit(e) {
-
-  e.preventDefault();
-
-  const form = document.getElementById("contact-form");
-
-  const formData = new FormData(form);
-
-  try {
-
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbxyhbmWS4PGcmMBEAj9gq7g8fLmxatz2qb1naJY9WZyLxu7_y-Z--ItG8t3784BYaj2/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      }
-    );
-
-    showToast("Message sent successfully!");
-
-    form.reset();
-
-  } catch(error) {
-
-    console.error(error);
-
-    showToast("Something went wrong");
-
-  }
-
 }
 
 function applyConfig(config) {
@@ -483,57 +439,6 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
-</script>
-
-<script>
-
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwfMRMnYPVspJ6oa9ighWkk295rOv_UWhRpdIeU3E08uRdnxurkQDYTxU4JHf0maLBg/exec";
-
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", async function(e) {
-
-  e.preventDefault();
-
-  const data = {
-    name: document.getElementById("f-name").value,
-    email: document.getElementById("f-email").value,
-    company: document.getElementById("f-company").value,
-    service: document.getElementById("f-service").value,
-    requirement: document.getElementById("f-message").value
-  };
-
-  try {
-
-    const response = await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(data)
-    });
-
-    const result = await response.text();
-
-    console.log(result);
-
-    if (result === "Success") {
-
-      alert("Message sent successfully!");
-
-      form.reset();
-
-    } else {
-
-      alert(result);
-    }
-
-  } catch(error) {
-
-    console.error(error);
-
-    alert("Form submission failed");
-  }
-
-});
-
 </script>
 
 </body>
